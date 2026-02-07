@@ -12,7 +12,12 @@ export const metadata: Metadata = {
   title: "Subhash Jha | Retro Portfolio",
   description:
     "Software Developer at Adobe Systems — Photoshop · Bangalore, India",
-  icons: { icon: "/images/profile.png" },
+  icons: {
+    icon: [
+      { url: "/icon.png" },
+      { url: "/images/profile.png" },
+    ],
+  },
 };
 
 export default function RootLayout({
