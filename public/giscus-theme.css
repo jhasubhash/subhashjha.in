@@ -1,0 +1,170 @@
+/* Custom Giscus theme — subhashjha.in warm paper style
+   Covers both Primer v7 (--color-*) and Primer v8 (--fgColor-*, --bgColor-*) variable names */
+
+:root {
+  /* ── Foreground / text ── */
+  /* v7 */ --color-fg-default: #1a1714;
+  /* v7 */ --color-fg-muted: #6b6560;
+  /* v7 */ --color-fg-subtle: #9e9890;
+  /* v7 */ --color-fg-on-emphasis: #ffffff;
+  /* v8 */ --fgColor-default: #1a1714;
+  /* v8 */ --fgColor-muted: #6b6560;
+  /* v8 */ --fgColor-subtle: #9e9890;
+  /* v8 */ --fgColor-onEmphasis: #ffffff;
+  /* v8 */ --fgColor-link: #c4622d;
+  /* v8 */ --fgColor-accent: #c4622d;
+  /* v8 */ --fgColor-success: #3a6b3a;
+  /* v8 */ --fgColor-attention: #7a6020;
+  /* v8 */ --fgColor-danger: #8a3020;
+
+  /* ── Background / canvas ── */
+  /* v7 */ --color-canvas-default: #faf8f4;
+  /* v7 */ --color-canvas-subtle: #f2ede4;
+  /* v7 */ --color-canvas-inset: #f2ede4;
+  /* v7 */ --color-canvas-overlay: #ffffff;
+  /* v8 */ --bgColor-default: #faf8f4;
+  /* v8 */ --bgColor-muted: #f2ede4;
+  /* v8 */ --bgColor-inset: #f2ede4;
+  /* v8 */ --bgColor-emphasis: #1a1714;
+  /* v8 */ --bgColor-inverse: #1a1714;
+  /* v8 */ --bgColor-accent-muted: #f5ede6;
+  /* v8 */ --bgColor-accent-emphasis: #c4622d;
+  /* v8 */ --bgColor-success-muted: #e8f0e8;
+  /* v8 */ --bgColor-danger-muted: #f5e8e6;
+  /* v8 */ --bgColor-attention-muted: #f5f0e0;
+
+  /* ── Borders ── */
+  /* v7 */ --color-border-default: #e8e2d8;
+  /* v7 */ --color-border-muted: #ede8df;
+  /* v7 */ --color-border-subtle: rgba(26, 23, 20, 0.1);
+  /* v8 */ --borderColor-default: #e8e2d8;
+  /* v8 */ --borderColor-muted: #ede8df;
+  /* v8 */ --borderColor-subtle: rgba(26, 23, 20, 0.1);
+  /* v8 */ --borderColor-accent-emphasis: #c4622d;
+  /* v8 */ --borderColor-success-emphasis: #3a6b3a;
+  /* v8 */ --borderColor-danger-emphasis: #8a3020;
+
+  /* ── Neutral ── */
+  /* v7 */ --color-neutral-emphasis-plus: #1a1714;
+  /* v7 */ --color-neutral-emphasis: #6b6560;
+  /* v7 */ --color-neutral-muted: rgba(26, 23, 20, 0.08);
+  /* v7 */ --color-neutral-subtle: rgba(26, 23, 20, 0.04);
+
+  /* ── Accent ── */
+  /* v7 */ --color-accent-fg: #c4622d;
+  /* v7 */ --color-accent-emphasis: #c4622d;
+  /* v7 */ --color-accent-muted: rgba(196, 98, 45, 0.15);
+  /* v7 */ --color-accent-subtle: #f5ede6;
+
+  /* ── Buttons — default ── */
+  /* v7 */ --color-btn-text: #1a1714;
+  /* v7 */ --color-btn-bg: #f2ede4;
+  /* v7 */ --color-btn-border: rgba(26, 23, 20, 0.15);
+  /* v7 */ --color-btn-hover-bg: #ede8df;
+  /* v7 */ --color-btn-hover-border: rgba(26, 23, 20, 0.2);
+  /* v7 */ --color-btn-active-bg: #e8e2d8;
+  /* v7 */ --color-btn-shadow: 0 1px 0 rgba(26, 23, 20, 0.04);
+  /* v7 */ --color-btn-disabled-text: rgba(26, 23, 20, 0.4);
+  /* v7 */ --color-btn-disabled-bg: #f2ede4;
+
+  /* ── Buttons — primary (Sign in with GitHub) ── */
+  /* v7 */ --color-btn-primary-text: #ffffff;
+  /* v7 */ --color-btn-primary-bg: #c4622d;
+  /* v7 */ --color-btn-primary-border: rgba(26, 23, 20, 0.1);
+  /* v7 */ --color-btn-primary-shadow: 0 1px 0 rgba(196, 98, 45, 0.2);
+  /* v7 */ --color-btn-primary-hover-bg: #b55526;
+  /* v7 */ --color-btn-primary-hover-border: rgba(26, 23, 20, 0.1);
+  /* v7 */ --color-btn-primary-selected-bg: #a44820;
+  /* v7 */ --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.7);
+  /* v7 */ --color-btn-primary-disabled-bg: rgba(196, 98, 45, 0.5);
+
+  /* ── Inputs ── */
+  /* v7 */ --color-input-bg: #ffffff;
+  /* v7 */ --color-input-border: #e8e2d8;
+  /* v7 */ --color-input-border-hover: #c8c0b4;
+  /* v7 */ --color-input-shadow: inset 0 1px 0 rgba(26, 23, 20, 0.04);
+  /* v8 */ --control-bgColor-rest: #ffffff;
+  /* v8 */ --control-bgColor-hover: #f2ede4;
+  /* v8 */ --control-bgColor-active: #e8e2d8;
+  /* v8 */ --control-bgColor-disabled: rgba(26, 23, 20, 0.04);
+  /* v8 */ --control-borderColor-rest: #e8e2d8;
+  /* v8 */ --control-borderColor-emphasis: #c8c0b4;
+  /* v8 */ --control-fgColor-placeholder: #9e9890;
+  /* v8 */ --control-fgColor-disabled: rgba(26, 23, 20, 0.4);
+
+  /* ── Reactions / social ── */
+  /* v7 */ --color-social-reaction-bg-hover: #f5ede6;
+  /* v7 */ --color-social-reaction-bg-reacted-hover: #f5ede6;
+
+  /* ── Focus ── */
+  --color-focus-outline: #c4622d;
+  --focus-outlineColor: #c4622d;
+
+  /* ── Code syntax ── */
+  --color-prettylights-syntax-comment: #9e9890;
+  --color-prettylights-syntax-constant: #2d5c8a;
+  --color-prettylights-syntax-entity: #3a6b3a;
+  --color-prettylights-syntax-keyword: #c4622d;
+  --color-prettylights-syntax-string: #3a6b3a;
+  --color-prettylights-syntax-variable: #6b6560;
+  --color-prettylights-syntax-markup-heading: #2d5c8a;
+  --color-prettylights-syntax-markup-inserted-text: #3a6b3a;
+  --color-prettylights-syntax-markup-inserted-bg: #e8f0e8;
+  --color-prettylights-syntax-markup-deleted-text: #8a3020;
+  --color-prettylights-syntax-markup-deleted-bg: #f5e8e6;
+}
+
+/* ── Hard fallbacks in case variables don't propagate ── */
+body {
+  color: #1a1714;
+  background-color: #faf8f4;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+a { color: #c4622d; }
+
+/* Primary button (Sign in with GitHub) */
+.btn-primary,
+[data-component="buttonPrimary"],
+button[type="submit"] {
+  background-color: #c4622d !important;
+  border-color: rgba(26, 23, 20, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover,
+[data-component="buttonPrimary"]:hover {
+  background-color: #b55526 !important;
+}
+
+/* Tab bar */
+.tabnav-tab.selected,
+.tabnav-tab[aria-selected="true"] {
+  color: #1a1714 !important;
+  background-color: #faf8f4 !important;
+}
+
+.tabnav-tab {
+  color: #6b6560 !important;
+}
+
+/* Comment box */
+.comment-body,
+.timeline-comment-header,
+.gsc-comment {
+  color: #1a1714 !important;
+}
+
+.text-muted,
+.color-fg-muted {
+  color: #6b6560 !important;
+}
+
+.color-fg-subtle,
+.text-gray-light {
+  color: #9e9890 !important;
+}
+
+/* Reaction emoji bar */
+.reaction-summary-item { border-color: #e8e2d8 !important; }
+.reaction-summary-item:hover { background-color: #f5ede6 !important; }

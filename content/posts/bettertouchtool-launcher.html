@@ -1,0 +1,238 @@
+<div class="article-body">
+
+  <p>I've been using <strong>BetterTouchTool</strong> for years, probably longer than most. Back when it was primarily a utility for remapping trackpad gestures, I was already deep in the weeds building complex automation scripts, multi-finger workflows, and trigger chains that would make my colleagues raise an eyebrow. BTT is the kind of tool that rewards obsession, and I was happily obsessed.</p>
+
+  <p>But I also had Raycast sitting right next to it in my menu bar, handling everything launcher-related: quick app switching, clipboard history, file search, and a handful of extensions I'd come to rely on daily. The two tools coexisted peacefully for a long time. Then <a href="https://updates.folivora.ai/bettertouchtool_release_notes.html">BTT 6.493</a> shipped — and among a sweeping set of improvements, it included a full Spotlight-style launcher built in SwiftUI. Things got interesting.</p>
+
+  <hr class="section-rule">
+
+  <h2>My Raycast Relationship: It's Complicated</h2>
+
+  <p>Let me be clear: Raycast is genuinely excellent software. It's fast, well-designed, and has one of the most thoughtful extension ecosystems on macOS. I've recommended it to dozens of people and I don't regret a single one of those recommendations.</p>
+
+  <p>But over the past year or so, cracks started showing. The AI integration arrived with a lot of fanfare, and while <a href="https://www.raycast.com/pricing">Raycast's Pro plan</a> bundles AI into its $8/month subscription, there's no real BYOK path; you're using their model selection and their API spend. Want frontier models like GPT-5 or Claude Sonnet? That's the Advanced AI add-on: an extra $8/month stacked on top of Pro, bringing the all-in price to $16/month. Raycast's own FAQ is transparent about it: you can't get a Pro subscription without AI bundled in, even if you want to disable the feature entirely.</p>
+
+  <div class="pullquote">
+    "Unlimited clipboard history and cloud sync — features that once felt like table stakes — sit behind the Pro paywall. The free tier caps clipboard history at 30 days. It nudged me from 'loyal user' to 'looking around.'"
+  </div>
+
+  <p>To be fair, the free tier is still legitimately good. App launching, file search, window management, and the full community extension store (1,000+ extensions) are free forever. But the moment you want unlimited clipboard history, cloud sync across your Macs, or meaningful AI integration, you're subscribing. When you already pay for direct Claude or OpenAI API access, being funneled toward a parallel subscription for the same underlying models (with no BYOK escape) creates a compounding friction that's hard to ignore.</p>
+
+  <div class="fact-box">
+    <strong>Raycast pricing at a glance — May 2026</strong>
+    <ul>
+      <li>Free — app launching, file search, window management, 1,000+ community extensions, clipboard history capped at 30 days</li>
+      <li>Pro ($8/mo annual) — unlimited clipboard, cloud sync, AI with standard models (GPT-4o-mini, Claude Haiku 3.5, Llama 3.3)</li>
+      <li>Pro + Advanced AI ($16/mo annual) — adds frontier models: GPT-5, Claude Sonnet, o3, Gemini 2.5 Pro</li>
+      <li>No BYOK option — you use Raycast's API keys, not your own</li>
+    </ul>
+  </div>
+
+  <hr class="section-rule">
+
+  <h2>Enter the BTT Launcher</h2>
+
+  <p>When I saw that BTT 6.493 had shipped a launcher, my reaction was cautious curiosity. Andreas Hegenberg has a track record of shipping features that go much deeper than the surface suggests, but launchers are crowded territory and first versions are usually rough.</p>
+
+  <p>I was wrong to be cautious.</p>
+
+  <p>The scope of what shipped in the <a href="https://updates.folivora.ai/bettertouchtool_release_notes.html">6.493 release</a> is genuinely impressive. The launcher can search and run installed apps, running apps, windows, BTT actions, configured triggers, floating menus, clipboard history, files, folders, System Settings panes, AI assistants, calendar items, reminders, notes, timers, emoji, and Now Playing controls, all from a single prompt. You can configure multiple independent launcher instances, each with their own sections and behaviors, pin frequently used items, and assign custom keywords, aliases, and per-item shortcuts. Usage learning and fuzzy matching means it gets faster the more you use it.</p>
+
+  <figure class="post-figure">
+    <img src="/images/posts/btt-launcher.png" alt="The BTT launcher showing Jira, Clipboard, Widgets, Commands, AI, Apps, System Settings, and File Browser in a single prompt interface" class="post-screenshot" loading="lazy" />
+    <figcaption>The BTT launcher surfacing apps, clipboard history, AI, files, and custom plugins — all from a single prompt.</figcaption>
+  </figure>
+
+  <div class="callout">
+    <strong>Maturity note:</strong> The launcher is currently in beta and is primarily tested on macOS 26. Andreas has noted it may end up being a macOS 26+ feature given how heavily it leans on modern SwiftUI; older macOS support is being evaluated. Worth checking the <a href="https://community.folivora.ai/t/discussion-bettertouchtool-launcher-spotlight-replacement-very-much-work-in-progress/46768">community thread</a> before committing if you're on an older release.
+  </div>
+
+  <p>Beyond search, the launcher includes built-in utility surfaces for timers, speech dictation, unit conversion, currency conversion, and notes. The natural language math is powered by the <a href="https://soulver.app">Soulver</a> core engine, which means expressions like "1h 30min + 1h 25min + 30min", "100°C - 23°F", or "55usd + 33%" are resolved instantly with no special syntax. Having used Soulver as a standalone app for years, having that engine baked into a launcher is a genuinely exciting integration.</p>
+
+  <p>Two things stood out most to me. First, the <strong>in-launcher file browser</strong>: you can navigate folders, Quick Look files, use Open With, copy paths, and drag items out, all without leaving the launcher. That's a level of depth Raycast's file search doesn't match. Second, the <strong>Swift-based plugin model</strong>, which deserves real attention.</p>
+
+  <p>Raycast extensions are built in JavaScript and TypeScript via React, approachable for web developers but constrained in what they can do natively on macOS. BTT's plugin system, documented at <a href="https://docs.folivora.ai/docs/plugins/overview">docs.folivora.ai/docs/plugins</a>, lets you write actual Swift (or Objective-C), with auto-compilation from <code>.swift</code> files, hot reload when source files change, and a trust system that requires user approval before any plugin runs and re-approval after any modification. The full macOS SDK is available. It's a fundamentally different ceiling.</p>
+
+  <hr class="section-rule">
+
+  <h2>The AI Story</h2>
+
+  <p>BTT's AI integration is the mirror image of Raycast's. Rather than bundling specific models and charging for tier access, BTT lets you connect your own keys: OpenAI, Anthropic Claude, local models via Ollama, LM Studio, or Jan, Apple Foundation Models, and Claude or Codex CLI tools. The 6.493 release notes list support for GPT-5.5, redesigned setup flows for all major AI providers, and ChatGPT OAuth sign-in for users who have a ChatGPT subscription but no API key.</p>
+
+  <p>More importantly for plugin builders: you can use AI to generate Swift plugin code directly inside BTT. Describe what you want, get working scaffolded Swift, iterate. For someone who already lives in BTT for automation work, this collapses the barrier to building custom tooling dramatically.</p>
+
+  <hr class="section-rule">
+
+  <h2>A Word on the Developer</h2>
+
+  <p>I don't usually write about developers in product reviews, but Andreas Hegenberg deserves a specific mention here. The pace of iteration on BTT is unusual for a one-person project. The launcher went from initial alpha to a feature-complete beta tracked in a public community thread, with feature requests visibly landing in subsequent betas, in a matter of weeks. The release notes read like a developer who genuinely uses their own software and is trying to make it better for people who use it the same way he does.</p>
+
+  <p>When I reported a specific quirk in the launcher, I got a thoughtful response within hours. That kind of relationship with a developer changes how you use a tool: you trust it more, you invest more, you push its limits with the confidence that weirdness will get fixed.</p>
+
+  <hr class="section-rule">
+
+  <h2>Three Plugins, One Weekend</h2>
+
+  <p>The real test was whether I could replicate my most-used Raycast workflows in BTT. I picked the three extensions I rely on most heavily and rebuilt them as native Swift plugins, using BTT's AI integration to scaffold the initial code. Here's how that went:</p>
+
+  <h3>Plugin 01</h3>
+  <div class="plugin-card">
+    <div class="plugin-card-tag">Live</div>
+    <h4>
+      <div class="plugin-card-icon" style="background: #1a1a1a;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      </div>
+      GitHub PR Search
+    </h4>
+    <p>Quick access to my open pull requests across all repositories, surfacing PR status, reviewers, and CI state in a single keystroke without opening a browser tab.</p>
+    <p>The BTT version ended up more capable than the Raycast equivalent because I could use the GitHub API directly from Swift and cache results locally between calls. Hot reload meant I could iterate on the UI without restarting anything. Noticeably snappier response times than the JS-based Raycast extension.</p>
+    <figure class="post-figure" style="margin-top: 16px;">
+      <img src="/images/posts/plugin-github-pr.png" alt="GitHub PR Search plugin showing open and review-requested pull requests grouped by repository" class="post-screenshot" loading="lazy" />
+      <figcaption>Open PRs and review requests, grouped by repo — one keystroke away.</figcaption>
+    </figure>
+  </div>
+
+  <h3>Plugin 02</h3>
+  <div class="plugin-card">
+    <div class="plugin-card-tag">Live</div>
+    <h4>
+      <div class="plugin-card-icon" style="background: #0052cc;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.004-1.005zm5.723-5.756H5.736a5.215 5.215 0 0 0 5.215 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.762a1.005 1.005 0 0 0-1.001-1.005zM17.299 0H6.105a5.215 5.215 0 0 0 5.215 5.215h2.129V7.27a5.215 5.215 0 0 0 5.214 5.216V1.005A1.005 1.005 0 0 0 17.3 0z"/></svg>
+      </div>
+      Jira Issue Browser
+    </h4>
+    <p>Instant access to my assigned Jira issues, filtered by sprint, status, and priority, with the ability to open issues directly in the browser without leaving the launcher.</p>
+    <p>This is where BTT's plugin model really shone. The Raycast Jira extension always felt slightly neutered; the BTT version handles my team's custom Jira field schemas that the React-based extension couldn't expose. Swift's concurrency model made the async API calls clean to write and fast to run.</p>
+    <figure class="post-figure" style="margin-top: 16px;">
+      <img src="/images/posts/plugin-jira.png" alt="Jira Issue Browser showing assigned issues with status badges, priority labels, and issue types" class="post-screenshot" loading="lazy" />
+      <figcaption>All assigned Jira issues with status, priority, and type.</figcaption>
+    </figure>
+    <figure class="post-figure" style="margin-top: 16px;">
+      <img src="/images/posts/plugin-jira-jql.png" alt="Jira plugin Custom JQL tab running assignee = currentUser() ORDER BY updated DESC across multiple projects" class="post-screenshot" loading="lazy" />
+      <figcaption>Custom JQL mode — run arbitrary queries across all your Jira projects without leaving the launcher.</figcaption>
+    </figure>
+  </div>
+
+  <h3>Plugin 03</h3>
+  <div class="plugin-card">
+    <div class="plugin-card-tag">Live</div>
+    <h4>
+      <div class="plugin-card-icon" style="background: #1a7f37;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+      </div>
+      Stock Price Tracker
+    </h4>
+    <p>Real-time prices for a watchlist of tickers, with percentage change, in one keystroke with no context switching.</p>
+    <p>Mostly built to stress-test the plugin system with an async data-fetching use case. It worked first try. The plugin trust model, which requires explicit approval before any plugin runs and re-approval after any modification, gave me real confidence about what's executing on my machine, which I appreciate for any plugin touching live data.</p>
+    <figure class="post-figure" style="margin-top: 16px;">
+      <img src="/images/posts/plugin-stocks.png" alt="Stock Price Tracker showing MSFT at $415.06 with a 1-day price chart and change metrics" class="post-screenshot" loading="lazy" />
+      <figcaption>Real-time price, chart, and key metrics for any ticker — without leaving the launcher.</figcaption>
+    </figure>
+  </div>
+
+  <hr class="section-rule">
+
+  <h2>How They Stack Up</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Raycast</th>
+        <th>BTT Launcher</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Speed &amp; responsiveness</td>
+        <td><span class="pill pill-green">Excellent</span></td>
+        <td><span class="pill pill-green">Excellent</span></td>
+      </tr>
+      <tr>
+        <td>File search</td>
+        <td><span class="pill pill-green">Very good</span></td>
+        <td><span class="pill pill-green">Very good + in-launcher browser</span></td>
+      </tr>
+      <tr>
+        <td>Plugin ecosystem breadth</td>
+        <td><span class="pill pill-green">Mature — 1,000+ extensions</span></td>
+        <td><span class="pill pill-amber">Still growing</span></td>
+      </tr>
+      <tr>
+        <td>Plugin depth / control</td>
+        <td><span class="pill pill-amber">Good — JS/TypeScript/React</span></td>
+        <td><span class="pill pill-green">Superior — native Swift</span></td>
+      </tr>
+      <tr>
+        <td>AI / BYOK &amp; model choice</td>
+        <td><span class="pill pill-red">No BYOK; model tier is subscription-gated</span></td>
+        <td><span class="pill pill-green">Full BYOK; OpenAI, Claude, local models</span></td>
+      </tr>
+      <tr>
+        <td>Unlimited clipboard history</td>
+        <td><span class="pill pill-red">Pro only ($8/mo)</span></td>
+        <td><span class="pill pill-green">Included</span></td>
+      </tr>
+      <tr>
+        <td>Config sync across Macs</td>
+        <td><span class="pill pill-red">Pro only (Cloud Sync)</span></td>
+        <td><span class="pill pill-green">Included</span></td>
+      </tr>
+      <tr>
+        <td>Natural language calculator</td>
+        <td><span class="pill pill-amber">Basic</span></td>
+        <td><span class="pill pill-green">Soulver Core — very powerful</span></td>
+      </tr>
+      <tr>
+        <td>macOS version support</td>
+        <td><span class="pill pill-green">Broad support</span></td>
+        <td><span class="pill pill-amber">Launcher optimised for macOS 26+</span></td>
+      </tr>
+      <tr>
+        <td>Dev responsiveness</td>
+        <td><span class="pill pill-green">Good</span></td>
+        <td><span class="pill pill-green">Exceptional — solo dev, fast betas</span></td>
+      </tr>
+      <tr>
+        <td>Overall polish / stability</td>
+        <td><span class="pill pill-green">Excellent — mature product</span></td>
+        <td><span class="pill pill-amber">Good — launcher still beta</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="section-rule">
+
+  <h2>The Honest Verdict</h2>
+
+  <p>I'm not switching completely — not yet. Raycast is a mature, stable product with years of polish and a large community-built extension library. The BTT launcher is still in beta, is primarily tested on macOS 26, and has real gaps in the breadth of community plugins available. That's not nothing.</p>
+
+  <p>But the ingredients are all there. The Swift plugin model is technically superior to what Raycast offers. The AI integration is more open: full BYOK, no subscription tiers gating model access. The features Raycast puts behind its Pro subscription ship as part of BTT by default. The Soulver-powered calculator is the best natural language math I've used in a launcher. And the developer is one of the most responsive I've encountered in years of following macOS software.</p>
+
+  <div class="pullquote">
+    "The best tool switches don't happen because you rage-quit the old one. They happen because the new one earns it, workflow by workflow, until one day you realize you haven't opened the old one in a week."
+  </div>
+
+  <p>The three plugins I rebuilt in a weekend work well enough that I've defaulted to BTT for those specific workflows entirely. Each week that number creeps up a little. I suspect that in a few months, my Raycast usage will be minimal, not because I was pushed out by pricing friction, but because BTT quietly earned it.</p>
+
+  <p>If you're already a BetterTouchTool user (especially if you use it for automation and scripting like I do), the launcher is a natural evolution you should absolutely try. The mental model is already there. You already trust the tool. Now it just does more.</p>
+
+  <p>And if you're a Raycast user feeling the same low-grade friction I was? It might be worth a weekend. Build one plugin. See what it feels like to have the full macOS SDK at your disposal instead of a React component tree. You might be surprised how quickly the ceiling disappears.</p>
+
+  <p class="footer-refs">
+    BTT Launcher docs: <a href="https://docs.folivora.ai/docs/launcher">docs.folivora.ai/docs/launcher</a> &nbsp;·&nbsp;
+    Release notes: <a href="https://updates.folivora.ai/bettertouchtool_release_notes.html">updates.folivora.ai</a> &nbsp;·&nbsp;
+    Community thread: <a href="https://community.folivora.ai/t/discussion-bettertouchtool-launcher-spotlight-replacement-very-much-work-in-progress/46768">folivora.ai/community</a> &nbsp;·&nbsp;
+    Raycast pricing: <a href="https://www.raycast.com/pricing">raycast.com/pricing</a>
+  </p>
+
+</div>
+
+<div class="outro">
+  <div class="outro-inner">
+    <h2>What's next</h2>
+    <p>I'll be writing up the actual Swift code behind each of the three plugins in follow-up posts, including the exact prompts I used with BTT's AI integration to scaffold the initial code and the gotchas I hit along the way. If you want to build your own plugins, the <a href="https://docs.folivora.ai/docs/plugins/overview">official plugin docs</a> are a good starting point, and the community forum has active threads on launcher plugin development.</p>
+    <p>If you've made a similar switch, or tried and gone back to Raycast (or Alfred), I'd genuinely love to hear about it.</p>
+    <span class="badge">✦ &nbsp; More macOS tooling posts to come</span>
+  </div>
+</div>
