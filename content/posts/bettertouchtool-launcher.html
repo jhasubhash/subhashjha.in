@@ -85,7 +85,7 @@
       GitHub PR Search
     </h4>
     <p>Quick access to my open pull requests across all repositories, surfacing PR status, reviewers, and CI state in a single keystroke without opening a browser tab.</p>
-    <p>The BTT version ended up more capable than the Raycast equivalent because I could use the GitHub API directly from Swift and cache results locally between calls. Hot reload meant I could iterate on the UI without restarting anything. Noticeably snappier response times than the JS-based Raycast extension.</p>
+    <p>The BTT version ended up more capable than the Raycast equivalent because I could use the Gh cli directly from Swift and cache results locally between calls. Hot reload meant I could iterate on the UI without restarting anything. Noticeably snappier response times than the JS-based Raycast extension.</p>
     <figure class="post-figure" style="margin-top: 16px;">
       <img src="/images/posts/plugin-github-pr.png" alt="GitHub PR Search plugin showing open and review-requested pull requests grouped by repository" class="post-screenshot" loading="lazy" />
       <figcaption>Open PRs and review requests, grouped by repo — one keystroke away.</figcaption>
@@ -102,7 +102,6 @@
       Jira Issue Browser
     </h4>
     <p>Instant access to my assigned Jira issues, filtered by sprint, status, and priority, with the ability to open issues directly in the browser without leaving the launcher.</p>
-    <p>This is where BTT's plugin model really shone. The Raycast Jira extension always felt slightly neutered; the BTT version handles my team's custom Jira field schemas that the React-based extension couldn't expose. Swift's concurrency model made the async API calls clean to write and fast to run.</p>
     <figure class="post-figure" style="margin-top: 16px;">
       <img src="/images/posts/plugin-jira.png" alt="Jira Issue Browser showing assigned issues with status badges, priority labels, and issue types" class="post-screenshot" loading="lazy" />
       <figcaption>All assigned Jira issues with status, priority, and type.</figcaption>
@@ -123,7 +122,6 @@
       Stock Price Tracker
     </h4>
     <p>Real-time prices for a watchlist of tickers, with percentage change, in one keystroke with no context switching.</p>
-    <p>Mostly built to stress-test the plugin system with an async data-fetching use case. It worked first try. The plugin trust model, which requires explicit approval before any plugin runs and re-approval after any modification, gave me real confidence about what's executing on my machine, which I appreciate for any plugin touching live data.</p>
     <figure class="post-figure" style="margin-top: 16px;">
       <img src="/images/posts/plugin-stocks.png" alt="Stock Price Tracker showing MSFT at $415.06 with a 1-day price chart and change metrics" class="post-screenshot" loading="lazy" />
       <figcaption>Real-time price, chart, and key metrics for any ticker — without leaving the launcher.</figcaption>
