@@ -61,7 +61,7 @@ export default function HomePage() {
       </div>
 
       <footer className="site-footer">
-        <p>© 2026 Subhash Jha · Built with Next.js · Deployed on Vercel</p>
+        <p>© 2026 Subhash Jha</p>
       </footer>
     </>
   );

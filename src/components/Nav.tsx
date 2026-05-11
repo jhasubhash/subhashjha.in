@@ -13,16 +13,7 @@ export default function Nav() {
         <li>
           <Link href="/about">About</Link>
         </li>
-        <li>
-          <a href="https://github.com/jhasubhash" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-        </li>
-        <li>
-          <a href="https://x.com/subhashjha333" target="_blank" rel="noopener noreferrer">
-            Twitter
-          </a>
-        </li>
+
       </ul>
     </nav>
   );
