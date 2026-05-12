@@ -64,9 +64,6 @@ export default async function BlogPost({ params }: Props) {
         <GiscusComments />
       </div>
 
-      <footer className="site-footer">
-        <p>© 2026 Subhash Jha</p>
-      </footer>
     </>
   );
 }

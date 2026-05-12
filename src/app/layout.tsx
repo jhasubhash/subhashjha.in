@@ -33,7 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${dmSans.variable}`}>
-        {children}
+        <div className="site-wrapper">
+          {children}
+        </div>
+        <footer className="site-footer">
+          <p>© 2026 Subhash Jha</p>
+        </footer>
       </body>
     </html>
   );

@@ -3,6 +3,8 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import { getAllPosts } from "@/lib/posts";
 
+const POSTS_PER_PAGE = 10;
+
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
     month: "long",
@@ -11,8 +13,20 @@ function formatDate(dateStr: string) {
   });
 }
 
-export default function HomePage() {
-  const posts = getAllPosts();
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, Number(pageParam ?? 1));
+  const allPosts = getAllPosts();
+  const totalPages = Math.max(1, Math.ceil(allPosts.length / POSTS_PER_PAGE));
+  const currentPage = Math.min(page, totalPages);
+  const posts = allPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
 
   return (
     <>
@@ -58,11 +72,29 @@ export default function HomePage() {
             </Link>
           </article>
         ))}
-      </div>
 
-      <footer className="site-footer">
-        <p>© 2026 Subhash Jha</p>
-      </footer>
+        {totalPages > 1 && (
+          <nav className="pagination">
+            {currentPage > 1 ? (
+              <Link href={`/?page=${currentPage - 1}`} className="pagination-link">
+                ← Newer
+              </Link>
+            ) : (
+              <span className="pagination-link pagination-disabled">← Newer</span>
+            )}
+            <span className="pagination-info">
+              {currentPage} / {totalPages}
+            </span>
+            {currentPage < totalPages ? (
+              <Link href={`/?page=${currentPage + 1}`} className="pagination-link">
+                Older →
+              </Link>
+            ) : (
+              <span className="pagination-link pagination-disabled">Older →</span>
+            )}
+          </nav>
+        )}
+      </div>
     </>
   );
 }

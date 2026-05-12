@@ -135,9 +135,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <footer className="site-footer">
-        <p>© 2026 Subhash Jha</p>
-      </footer>
     </>
   );
 }

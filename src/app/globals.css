@@ -26,6 +26,13 @@ body {
   font-weight: 300;
   line-height: 1.8;
   font-size: 18px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-wrapper {
+  flex: 1;
 }
 
 /* ─── Site Navigation ─── */
@@ -203,6 +210,39 @@ body {
   padding: 32px;
   text-align: center;
   font-size: 13px;
+}
+
+/* ─── Pagination ─── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 48px 0 16px;
+  border-top: 1px solid var(--paper-rule);
+  margin-top: 40px;
+}
+
+.pagination-link {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.pagination-link:hover { text-decoration: underline; }
+
+.pagination-disabled {
+  color: var(--ink-muted);
+  cursor: default;
+  pointer-events: none;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: var(--ink-muted);
 }
 
 .site-footer a { color: var(--accent); text-decoration: none; }
