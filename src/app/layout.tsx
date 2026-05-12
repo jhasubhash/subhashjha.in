@@ -19,8 +19,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Subhash Jha",
-    default: "Subhash Jha — Personal Blog",
+    template: "%s | Code & Coffee with Subhash",
+    default: "Code & Coffee with Subhash",
   },
   description:
     "Software Developer at Adobe building Photoshop. Writing about macOS tools, systems programming, and creative software.",
