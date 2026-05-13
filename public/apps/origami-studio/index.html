@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Origami Studio</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="layout">
+    <aside class="rail">
+      <button class="rail-btn" data-shape="circle" title="Add circle">
+        <span class="rail-icon circle"></span>
+      </button>
+      <button class="rail-btn" data-shape="rectangle" title="Add rectangle">
+        <span class="rail-icon rect"></span>
+      </button>
+      <button class="rail-btn" data-shape="triangle" title="Add triangle">
+        <span class="rail-icon triangle"></span>
+      </button>
+
+      <div class="rail-divider"></div>
+
+      <button class="rail-btn" id="undoBtn" title="Undo (⌘Z)">↶</button>
+      <button class="rail-btn" id="redoBtn" title="Redo (⌘⇧Z)">↷</button>
+
+      <div class="rail-divider"></div>
+
+      <button class="rail-btn" id="clearBtn" title="Clear canvas">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7h16"/>
+          <path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+          <path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/>
+          <path d="M10 11v7M14 11v7"/>
+        </svg>
+      </button>
+      <button class="rail-btn" id="exportBtn" title="Export PNG">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 8H4v13h16V8h-5"/>
+          <path d="M12 3v13"/>
+          <path d="M7 8l5-5 5 5"/>
+        </svg>
+      </button>
+    </aside>
+
+    <section class="canvas-wrap">
+      <div id="canvas" class="canvas">
+        <svg id="paperSvg" class="paper-svg" xmlns="http://www.w3.org/2000/svg">
+          <defs id="svgDefs"></defs>
+        </svg>
+        <div id="selectionLayer" class="selection-layer"></div>
+      </div>
+      <div id="floatingControls" class="floating-controls" aria-live="polite"></div>
+      <div id="statusToast" class="status-toast"></div>
+    </section>
+  </main>
+
+  <div id="modalRoot" class="modal-root" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-message" id="modalMessage"></p>
+      <div class="modal-actions">
+        <button class="fc-btn" id="modalCancel">Cancel</button>
+        <button class="fc-btn" id="modalConfirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
