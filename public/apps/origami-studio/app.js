@@ -715,12 +715,15 @@
   // Trackpad pinch on macOS Chrome/Firefox/Edge fires wheel with ctrlKey=true.
   // Ctrl/Cmd+scroll on Windows works the same. Plain scroll is ignored (the canvas isn't scrollable).
   canvas.addEventListener('wheel', (ev) => {
+    ev.preventDefault();
     if (ev.ctrlKey || ev.metaKey) {
-      ev.preventDefault();
       const pt = getCanvasPoint(ev);
-      // deltaY > 0 = pinch in / zoom out; negate so factor>1 when zooming in.
       const factor = Math.exp(-ev.deltaY * 0.01);
       zoomAt(pt, factor);
+    } else {
+      state.viewport.x -= ev.deltaX;
+      state.viewport.y -= ev.deltaY;
+      render();
     }
   }, { passive: false });
 
