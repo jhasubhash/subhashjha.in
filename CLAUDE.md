@@ -41,6 +41,39 @@ After pushing, always remind the user:
 
 ---
 
+## Creating a New App
+
+When the user asks to create an app or interactive demo, follow this structure:
+
+### 1. Create the app folder
+Add a self-contained folder under `public/apps/{app-name}/`:
+```
+public/apps/{app-name}/
+  index.html   ← full HTML document (includes <html>, <head>, <body>)
+  style.css    ← app styles (separate file, not inline)
+  script.js    ← app logic (separate file, not inline)
+```
+Keep all assets relative (e.g. `<link rel="stylesheet" href="style.css">`). Do not reference `/apps/...` absolute paths inside the app — relative paths work for both direct access and iframe embedding.
+
+### 2. Access URL
+The app is accessible at `subhashjha.in/apps/{app-name}/` — no Next.js route needed, served as static files via the rewrite in `next.config.ts`.
+
+### 3. Embedding in a blog post
+To embed the app inside a post, import and use the `AppEmbed` component in the post's HTML or in the blog page. In an HTML post fragment, add:
+```html
+<!-- AppEmbed: app-name | Title of the app | height=500 -->
+```
+Or if wiring it directly in a TSX page:
+```tsx
+import AppEmbed from "@/components/AppEmbed";
+<AppEmbed appName="app-name" title="Title" height={500} />
+```
+
+### 4. Commit and push
+Include the new `public/apps/{app-name}/` folder in the commit and push to main.
+
+---
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router), React 19, TypeScript
@@ -67,3 +100,6 @@ After pushing, always remind the user:
 | `src/components/NewsletterSignup.tsx` | Beehiiv subscribe form |
 | `.github/workflows/beehiiv-draft.yml` | Auto-creates Beehiiv draft on new post |
 | `.github/scripts/create-beehiiv-draft.mjs` | Script called by the action |
+| `public/apps/{app-name}/` | Self-contained HTML/CSS/JS apps, served at `/apps/{app-name}/` |
+| `src/components/AppEmbed.tsx` | Iframe embed component for apps inside blog posts |
+| `next.config.ts` | Rewrite rule for clean `/apps/{name}` URLs |

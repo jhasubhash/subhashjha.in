@@ -203,6 +203,29 @@ body {
 
 .read-more:hover { text-decoration: underline; }
 
+/* ─── App Embed ─── */
+.app-embed {
+  border: 1px solid var(--paper-rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 32px 0;
+}
+
+.app-embed-footer {
+  padding: 10px 16px;
+  border-top: 1px solid var(--paper-rule);
+  background: var(--paper-tint);
+  font-size: 13px;
+  text-align: right;
+}
+
+.app-embed-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.app-embed-footer a:hover { text-decoration: underline; }
+
 /* ─── Newsletter ─── */
 .newsletter-section {
   max-width: 680px;
