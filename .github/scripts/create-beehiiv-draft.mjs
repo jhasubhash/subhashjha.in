@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import { readFileSync } from "fs";
 
-const { BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID } = process.env;
+const { BEEHIIV_API_KEY, BEEHIIV_PUBLICATION_ID, FORCE_SLUG } = process.env;
 
 if (!BEEHIIV_API_KEY || !BEEHIIV_PUBLICATION_ID) {
   console.error("Missing BEEHIIV_API_KEY or BEEHIIV_PUBLICATION_ID");
@@ -13,17 +13,28 @@ const currentManifest = JSON.parse(
   readFileSync("content/posts/manifest.json", "utf8")
 );
 
-// Read previous manifest (before this push)
-let prevManifest = [];
-try {
-  const prevJson = execSync("git show HEAD~1:content/posts/manifest.json").toString();
-  prevManifest = JSON.parse(prevJson);
-} catch {
-  // First commit — all posts are new
-}
+let newPosts;
 
-const prevSlugs = new Set(prevManifest.map((p) => p.slug));
-const newPosts = currentManifest.filter((p) => !prevSlugs.has(p.slug));
+if (FORCE_SLUG) {
+  // Manual run: create draft for the specified slug
+  const post = currentManifest.find((p) => p.slug === FORCE_SLUG);
+  if (!post) {
+    console.error(`Slug "${FORCE_SLUG}" not found in manifest.`);
+    process.exit(1);
+  }
+  newPosts = [post];
+} else {
+  // Automatic run: diff against previous commit
+  let prevManifest = [];
+  try {
+    const prevJson = execSync("git show HEAD~1:content/posts/manifest.json").toString();
+    prevManifest = JSON.parse(prevJson);
+  } catch {
+    // First commit — all posts are new
+  }
+  const prevSlugs = new Set(prevManifest.map((p) => p.slug));
+  newPosts = currentManifest.filter((p) => !prevSlugs.has(p.slug));
+}
 
 if (newPosts.length === 0) {
   console.log("No new posts detected, skipping.");

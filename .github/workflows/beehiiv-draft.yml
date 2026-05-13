@@ -6,6 +6,10 @@ on:
     paths:
       - content/posts/manifest.json
   workflow_dispatch:
+    inputs:
+      slug:
+        description: "Post slug to force-create a draft for (e.g. tool-tax)"
+        required: false
 
 jobs:
   create-draft:
@@ -23,4 +27,5 @@ jobs:
         env:
           BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
           BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+          FORCE_SLUG: ${{ inputs.slug }}
         run: node .github/scripts/create-beehiiv-draft.mjs
