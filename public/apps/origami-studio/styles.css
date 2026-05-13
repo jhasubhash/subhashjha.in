@@ -23,7 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-button { font: inherit; cursor: pointer; }
+button { font: inherit; cursor: default; }
 button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .layout { display: flex; height: 100vh; }
@@ -51,8 +51,9 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
     repeating-linear-gradient(-45deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 5px);
   box-shadow: inset 0 0 0 1px var(--border);
   overflow: hidden;
-  cursor: grab;
+  cursor: default;
 }
+.canvas.shift-held { cursor: grab; }
 .canvas.panning { cursor: grabbing; }
 body.panning,
 body.panning * { cursor: grabbing !important; }
@@ -60,7 +61,7 @@ body.panning * { cursor: grabbing !important; }
 .paper-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .selection-layer { position: absolute; inset: 0; pointer-events: none; }
 
-.piece-shape { cursor: grab; }
+.piece-shape { cursor: default; }
 .piece-shape.dragging { cursor: grabbing; }
 
 .selection-box {
@@ -228,7 +229,7 @@ body.panning * { cursor: grabbing !important; }
   padding: 0;
   margin-left: 10px;
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
   -webkit-appearance: none;
   appearance: none;
   box-shadow:

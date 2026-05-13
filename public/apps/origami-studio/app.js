@@ -513,10 +513,10 @@
     const hit = findPieceAtScreen(pt.x, pt.y);
     if (!hit) {
       if (ev.shiftKey) {
-        startMarquee(pt);
+        startPan(pt);
       } else {
         clearSelection();
-        startPan(pt);
+        startMarquee(pt);
       }
       ev.preventDefault();
       return;
@@ -807,7 +807,12 @@
   }
 
   /* ===================== Keyboard ===================== */
+  window.addEventListener('keyup', (ev) => {
+    if (ev.key === 'Shift') canvas.classList.remove('shift-held');
+  });
+
   window.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Shift') canvas.classList.add('shift-held');
     const meta = ev.metaKey || ev.ctrlKey;
     // Don't hijack plain typing in inputs, but let modifier shortcuts (Cmd+Z, etc.) pass through.
     if (!meta && ev.target.matches('input, textarea')) return;
