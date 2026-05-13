@@ -866,7 +866,7 @@
     mutateSelection(p => { p.shadow = s; });
   }
 
-  const QUICK_PALETTE = ['#f5c66b','#e87b6a','#c45a3f','#7eb1cc','#9bbf6a','#b69bc0','#fafaf6','#2a2622'];
+  const QUICK_PALETTE = ['#f5c66b','#e87b6a','#c45a3f','#7eb1cc','#9bbf6a','#b69bc0','#f8c8c0','#cfe0a8','#bfd9e6','#e0c8e0','#fafaf6','#2a2622'];
 
   // Avoid heavy rebuilds: keep a signature; rebuild only when selection identity changes.
   let lastSelSig = null;
