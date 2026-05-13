@@ -104,12 +104,19 @@
     color: var(--tta-ink);
     quotes: '\201C' '\201D';
   }
-  .tool-tax-article .pullquote q::before,
+  .tool-tax-article .pullquote q::before {
+    color: var(--tta-accent);
+    font-size: 38px;
+    line-height: 0;
+    vertical-align: -10px;
+    margin-right: 10px;
+  }
   .tool-tax-article .pullquote q::after {
     color: var(--tta-accent);
     font-size: 38px;
     line-height: 0;
     vertical-align: -10px;
+    margin-left: 6px;
   }
 
   /* Screenshot frame */
@@ -402,7 +409,7 @@
     <q>Learning comes from failure and repeated practice. Productivity gains come from skipping exactly that. We're being asked to optimize for one while still being measured on the other.</q>
   </div>
 
-  <p>The market reality is unforgiving. The competition to get to the customer is brutal, and the push at every workplace is to ship more features, faster, using whatever tools accelerate that. That's not wrong. It's just the new equilibrium. The cost is invisible on any dashboard: my long-term skill development is being deferred to my personal time. Evenings, weekends, side projects — the only place left where I can deliberately struggle.</p>
+  <p>The market reality is unforgiving. The competition to get to the customer is brutal, and the push at every workplace is to ship more features, faster, using whatever tools accelerate that. That's not wrong. It's just the new equilibrium. The cost is invisible on any dashboard: my long-term skill development is being deferred to my personal time. Evenings, weekends, side projects: the only place left where I can deliberately struggle.</p>
 
   <p>I'm fortunate that I love the craft enough to do that. Most engineers I talk to feel the same low-grade unease — productive at the job, but quietly aware that the foundations aren't being laid the way they used to be. We're shipping more and learning less.</p>
 
@@ -417,9 +424,9 @@
     <p class="caption">A Photoshop workspace mid-project: already a stack of layers, three open panels, and you haven't decided on the composition yet.</p>
   </div>
 
-  <p>Photoshop is breathtakingly powerful. It can do approximately everything. The problem is that every one of those capabilities lives somewhere in the UI — across menus, panels, modifier keys, hidden modes, and a dozen tools that all start with the letter B. Just <em>finding</em> the feature you want is a skill. Using it well is another skill. Combining them fluidly is yet another. By the time you've reached the point where the tool gets out of your way, you've invested hundreds of hours that had nothing to do with art.</p>
+  <p>Photoshop is breathtakingly powerful. It can do approximately everything. The problem is that every one of those capabilities lives somewhere in the UI: across menus, panels, modifier keys, hidden modes, and a dozen tools that all start with the letter B. Just <em>finding</em> the feature you want is a skill. Using it well is another skill. Combining them fluidly is yet another. By the time you've reached the point where the tool gets out of your way, you've invested hundreds of hours that had nothing to do with art.</p>
 
-  <p>Blender is the same story in three dimensions. Unreal Engine takes it to a different planet entirely. These tools are miraculous in what they enable for professionals who've internalized them — and a wall of glass for everyone else.</p>
+  <p>Blender is the same story in three dimensions. Unreal Engine takes it to a different planet entirely. These tools are miraculous in what they enable for professionals who've internalized them; a wall of glass for everyone else.</p>
 
   <div class="comparison-panels">
     <div class="panel">
@@ -453,9 +460,9 @@
 
   <h2><span class="num">Part Three</span>The origami experiment</h2>
 
-  <p>A few weeks ago I tried something different. My daughter had been asking for origami-style drawings of animals — clean geometric folds, simple shapes, the kind of thing she could try to copy with paper. I didn't want to fight Photoshop to make them. I wanted to <em>play</em>.</p>
+  <p>A few weeks ago I tried something different. My daughter had been asking for origami-style drawings of animals: clean geometric folds, simple shapes, the kind of thing she could try to copy with paper. I didn't want to fight Photoshop to make them. I wanted to <em>play</em>.</p>
 
-  <p>So I built a small web app for myself. Nothing fancy. A handful of tools — geometric shapes, fold-style strokes, a constrained palette that looks like paper. No layers panel. No history scrubber. No tool I had to learn before I could draw with it. Just the things I actually needed to make origami-style illustrations, and nothing else.</p>
+  <p>So I built a small web app for myself. Nothing fancy. A handful of tools: geometric shapes, fold-style strokes, a constrained palette that looks like paper. No layers panel. No history scrubber. No tool I had to learn before I could draw with it. Just the things I actually needed to make origami-style illustrations, and nothing else.</p>
 
   <div class="app-showcase">
     <div class="app-showcase-header">
@@ -465,20 +472,20 @@
       </div>
       <a class="app-showcase-link" href="/apps/origami-studio/index.html" target="_blank" rel="noopener">Open in new tab ↗</a>
     </div>
-    <p class="intro">A small web app I built to make origami-style illustrations for my daughter. The entire feature set fits on one screen — and that's the point. You can play with it right here:</p>
+    <p class="intro">A small web app I built to make origami-style illustrations for my daughter. The entire feature set fits on one screen. That's the point. You can play with it right here:</p>
     <div class="app-frame">
       <iframe src="/apps/origami-studio/index.html" loading="lazy" title="Origami Studio"></iframe>
     </div>
   </div>
 
-  <p>My daughter and I spent an evening with it. She'd call out animals — "make a dog, make a dog!" — and I'd drag shapes into place, pick colors from a tiny palette, and in five or ten minutes something would emerge. We made a small crew together. This is the one she liked best:</p>
+  <p>My daughter and I spent an evening with it. She'd call out animals: "make a dog, make a dog!" and I'd drag shapes into place, pick colors from a tiny palette, and in five or ten minutes something would emerge. We made a small crew together. This is the one she liked best:</p>
 
   <div class="character-showcase">
     <img src="/images/posts/tool-tax-origami-character.png" alt="A cute origami-style dog character made in Origami Studio">
-    <p class="caption">The little dog my daughter approved of. Squares, triangles, and two yellow circles for eyes — that's the whole vocabulary.</p>
+    <p class="caption">The little dog my daughter approved of. Squares, triangles, and two yellow circles for eyes. That's the whole vocabulary.</p>
   </div>
 
-  <p>The first time I used it, I made five illustrations in an hour. Not because the app is fast (it's barely an app) but because I wasn't fighting it. I wasn't searching for a tool. I wasn't deciding between fourteen brush presets. The constraints did the deciding, and the part of my brain I wanted to use for creativity was actually free to be creative.</p>
+  <p>The first time I used it, I made five illustrations in ten minutes. Not because the app is fast (it's barely an app) but because I wasn't fighting it. I wasn't searching for a tool. I wasn't deciding between fourteen brush presets. The constraints did the deciding, and the part of my brain I wanted to use for creativity was actually free to be creative.</p>
 
   <div class="pullquote">
     <q>Constraints aren't the enemy of creativity. They're its precondition.</q>
@@ -488,13 +495,13 @@
 
   <h2><span class="num">Part Four</span>The pattern, named</h2>
 
-  <p>So here's what I think is actually going on, across software engineering, illustration, writing, filmmaking, design — every field where the tools have grown faster than our ability to use them well.</p>
+  <p>So here's what I think is actually going on, across software engineering, illustration, writing, filmmaking, design: every field where the tools have grown faster than our ability to use them well.</p>
 
   <div class="observation">
     <div class="num">i</div>
     <div>
       <h4>Powerful tools shortcut the loop that makes you skilled.</h4>
-      <p>The loop is: try, fail, understand why, try again. Tools that hand you a result — whether it's an AI generating code or a one-click filter generating a "look" — cut that loop in half. You get output without the understanding that should have accompanied it.</p>
+      <p>The loop is: try, fail, understand why, try again. Tools that hand you a result (whether it's an AI generating code or a one-click filter generating a "look") cut that loop in half. You get output without the understanding that should have accompanied it.</p>
     </div>
   </div>
 
@@ -502,7 +509,7 @@
     <div class="num">ii</div>
     <div>
       <h4>Complex tools tax you before you ever create anything.</h4>
-      <p>Every hour spent learning where a menu lives, what a panel does, or how a feature interacts with another feature is an hour not spent on the actual craft. For professionals, this investment pays off. For everyone else — including professionals dabbling outside their specialty — it's a tax that often prevents the work from ever starting.</p>
+      <p>Every hour spent learning where a menu lives, what a panel does, or how a feature interacts with another feature is an hour not spent on the actual craft. For professionals, this investment pays off. For everyone else, including professionals dabbling outside their specialty, it's a tax that often prevents the work from ever starting.</p>
     </div>
   </div>
 
@@ -510,13 +517,13 @@
     <div class="num">iii</div>
     <div>
       <h4>The market pressure to use these tools is real, and won't go away.</h4>
-      <p>You can't unilaterally opt out. The competition is using them. The customer expectations are calibrated to them. The question isn't whether to use them — it's how to use them without letting them quietly atrophy the underlying skill.</p>
+      <p>You can't unilaterally opt out. The competition is using them. The customer expectations are calibrated to them. The question isn't whether to use them: it's how to use them without letting them quietly atrophy the underlying skill.</p>
     </div>
   </div>
 
   <h2><span class="num">Part Five</span>So what do we actually do?</h2>
 
-  <p>I don't have a clean answer. But after a year of paying attention to my own work, here's what I've started doing — and what I'd suggest to anyone, engineer or illustrator, who feels the same pull:</p>
+  <p>I don't have a clean answer. But after a year of paying attention to my own work, here's what I've started doing, and what I'd suggest to anyone, engineer or illustrator, who feels the same pull:</p>
 
   <div class="takeaways">
     <h3>Practical balance</h3>
@@ -524,7 +531,7 @@
 
     <div class="takeaway-item">
       <div class="mark">i.</div>
-      <div class="body"><strong>Protect a daily struggle.</strong> Spend at least some time each week working without the powerful tool. Write code without the AI. Draw on paper. Edit without auto-suggest. The discomfort is the point — it's where the learning happens.</div>
+      <div class="body"><strong>Protect a daily struggle.</strong> Spend at least some time each week working without the powerful tool. Write code without the AI. Draw on paper. Edit without auto-suggest. The discomfort is the point. That's where the learning happens.</div>
     </div>
 
     <div class="takeaway-item">
@@ -544,12 +551,12 @@
 
     <div class="takeaway-item">
       <div class="mark">v.</div>
-      <div class="body"><strong>Separate "shipping" from "learning."</strong> Use the fast tools to ship. Use the slow practice — on personal time if you must — to learn. They're different activities with different goals, and trying to do both at once is how skill quietly erodes. Be honest with yourself about which is which.</div>
+      <div class="body"><strong>Separate "shipping" from "learning."</strong> Use the fast tools to ship. Use the slow practice, on personal time if you must, to learn. They're different activities with different goals, and trying to do both at once is how skill quietly erodes. Be honest with yourself about which is which.</div>
     </div>
   </div>
 
   <p class="closing">
-    The tools will keep getting more powerful. The pressure to use them will keep growing. The question — for every engineer, illustrator, writer, and designer reading this — is what you're willing to do, on your own time, to stay sharp at the thing the tools are supposedly serving.
+    The tools will keep getting more powerful. The pressure to use them will keep growing. The question, for every engineer, illustrator, writer, and designer reading this, is what you're willing to do, on your own time, to stay sharp at the thing the tools are supposedly serving.
     <span class="signoff">— Thanks for reading ✦</span>
   </p>
 
