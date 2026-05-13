@@ -186,8 +186,8 @@ body.panning * { cursor: grabbing !important; }
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-width: 320px;
-  max-width: 420px;
+  min-width: 420px;
+  max-width: 520px;
 }
 
 .fc-row {
@@ -263,7 +263,7 @@ body.panning * { cursor: grabbing !important; }
   border-color: var(--ink);
 }
 
-.fc-actions { justify-content: flex-end; gap: 6px; flex-wrap: wrap; }
+.fc-actions { justify-content: flex-end; gap: 6px; flex-wrap: nowrap; }
 .fc-sep {
   flex: 1;
   min-width: 4px;
