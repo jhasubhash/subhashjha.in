@@ -1,0 +1,25 @@
+name: Create Beehiiv Draft on New Post
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - content/posts/manifest.json
+
+jobs:
+  create-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Create Beehiiv draft for new posts
+        env:
+          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+        run: node .github/scripts/create-beehiiv-draft.mjs

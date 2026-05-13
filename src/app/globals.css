@@ -203,6 +203,20 @@ body {
 
 .read-more:hover { text-decoration: underline; }
 
+/* ─── Newsletter ─── */
+.newsletter-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  border-top: 1px solid var(--paper-rule);
+  border-bottom: 1px solid var(--paper-rule);
+}
+
+.newsletter-section iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 /* ─── Site Footer ─── */
 .site-footer {
   background: var(--ink);
