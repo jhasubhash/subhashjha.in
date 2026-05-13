@@ -19,7 +19,7 @@ Add a new entry to `content/posts/manifest.json`:
   "category": "Category Name"
 }
 ```
-The manifest drives everything: home page listing, RSS feed, post page rendering, and the Beehiiv draft automation.
+The manifest drives everything: home page listing, RSS feed, and post page rendering.
 
 ### 3. Add any images
 Place post images in `public/images/posts/`. Reference them in the HTML as `/images/posts/filename.png`.
@@ -32,12 +32,6 @@ git push git@github-personal:jhasubhash/subhashjha.in.git main
 
 ### 5. What happens automatically after push
 - **Vercel** picks up the push and deploys the site
-- **GitHub Actions** detects the new entry in `manifest.json` and creates a **draft post in Beehiiv** with the post content pre-filled
-
-### 6. Remind the user
-After pushing, always remind the user:
-
-> "A draft has been created in your Beehiiv dashboard. Go to [app.beehiiv.com](https://app.beehiiv.com), review the draft, and click **Send** to notify your subscribers."
 
 ---
 
@@ -80,7 +74,7 @@ Include the new `public/apps/{app-name}/` folder in the commit and push to main.
 - **Styling**: Tailwind v4 + custom CSS in `src/app/globals.css`
 - **Fonts**: Playfair Display (serif headings) + DM Sans (body)
 - **Comments**: Giscus (GitHub Discussions) — theme follows `document.documentElement.dataset.theme`
-- **Newsletter**: Beehiiv embed (`src/components/NewsletterSignup.tsx`)
+- **Newsletter**: None currently — RSS feed at `/feed.xml` is ready for a future newsletter service
 - **RSS feed**: `/feed.xml` — dynamic Next.js route, auto-reflects manifest on every request
 - **Deployment**: Vercel (auto-deploys on push to `main`)
 - **Git remote**: `git@github-personal:jhasubhash/subhashjha.in.git` (uses `id_ed25519_personal` SSH key for `jhasubhash` GitHub account)
@@ -97,9 +91,6 @@ Include the new `public/apps/{app-name}/` folder in the commit and push to main.
 | `src/app/blog/[slug]/page.tsx` | Individual post page |
 | `src/app/feed.xml/route.ts` | RSS feed route |
 | `src/components/GiscusComments.tsx` | Comments widget |
-| `src/components/NewsletterSignup.tsx` | Beehiiv subscribe form |
-| `.github/workflows/beehiiv-draft.yml` | Auto-creates Beehiiv draft on new post |
-| `.github/scripts/create-beehiiv-draft.mjs` | Script called by the action |
 | `public/apps/{app-name}/` | Self-contained HTML/CSS/JS apps, served at `/apps/{app-name}/` |
 | `src/components/AppEmbed.tsx` | Iframe embed component for apps inside blog posts |
 | `next.config.ts` | Rewrite rule for clean `/apps/{name}` URLs |

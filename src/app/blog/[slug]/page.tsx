@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import GiscusComments from "@/components/GiscusComments";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import { getAllPosts, getPost, getPostContent } from "@/lib/posts";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -63,8 +62,6 @@ export default async function BlogPost({ params }: Props) {
       </div>
 
       <div dangerouslySetInnerHTML={{ __html: content }} />
-
-      <NewsletterSignup />
 
       <div className="comments-section">
         <h2 className="comments-heading">Comments</h2>

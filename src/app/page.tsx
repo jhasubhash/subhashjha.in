@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import { getAllPosts } from "@/lib/posts";
 
 const POSTS_PER_PAGE = 10;
@@ -97,7 +96,6 @@ export default async function HomePage({
         )}
       </div>
 
-      <NewsletterSignup />
     </>
   );
 }
