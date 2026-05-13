@@ -275,6 +275,30 @@
     display: block;
   }
 
+  /* Character showcase */
+  .tool-tax-article .character-showcase {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .tool-tax-article .character-showcase img {
+    width: 320px;
+    max-width: 100%;
+    border-radius: 16px;
+    border: 1px solid var(--tta-rule);
+    background: #f4efe7;
+  }
+  .tool-tax-article .character-showcase .caption {
+    font-size: 13px;
+    color: var(--tta-ink-faint);
+    text-align: center;
+    font-style: italic;
+    max-width: 360px;
+    line-height: 1.55;
+  }
+
   /* Takeaways */
   .tool-tax-article .takeaways {
     background: var(--tta-bg-deep);
@@ -445,6 +469,13 @@
     <div class="app-frame">
       <iframe src="/apps/origami-studio/index.html" loading="lazy" title="Origami Studio"></iframe>
     </div>
+  </div>
+
+  <p>My daughter and I spent an evening with it. She'd call out animals — "make a dog, make a dog!" — and I'd drag shapes into place, pick colors from a tiny palette, and in five or ten minutes something would emerge. We made a small crew together. This is the one she liked best:</p>
+
+  <div class="character-showcase">
+    <img src="/images/posts/tool-tax-origami-character.png" alt="A cute origami-style dog character made in Origami Studio">
+    <p class="caption">The little dog my daughter approved of. Squares, triangles, and two yellow circles for eyes — that's the whole vocabulary.</p>
   </div>
 
   <p>The first time I used it, I made five illustrations in an hour. Not because the app is fast — it's barely an app — but because I wasn't fighting it. I wasn't searching for a tool. I wasn't deciding between fourteen brush presets. The constraints did the deciding, and the part of my brain I wanted to use for creativity was actually free to be creative.</p>
