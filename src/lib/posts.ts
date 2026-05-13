@@ -6,6 +6,7 @@ const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 export type Post = {
   slug: string;
   title: string;
+  htmlTitle?: string;
   description: string;
   date: string;
   readTime: string;

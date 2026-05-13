@@ -494,6 +494,13 @@ body {
   color: var(--ink);
 }
 
+.title-blood {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  color: #8c1a0b;
+}
+
 .hero-dek {
   font-size: 20px;
   line-height: 1.6;
