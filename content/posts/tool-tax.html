@@ -1,0 +1,526 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  .tool-tax-article {
+    --tta-bg: #f7f4ee;
+    --tta-bg-warm: #ede7dc;
+    --tta-bg-deep: #1f1c17;
+    --tta-ink: #1a1715;
+    --tta-ink-mid: #6b6258;
+    --tta-ink-faint: #a39c92;
+    --tta-rule: #d8d0c2;
+    --tta-accent: #b8451f;
+    --tta-accent-soft: #f5e6dd;
+    --tta-signal: #2d6b4d;
+    --tta-highlight: #f0d97a;
+  }
+
+  .tool-tax-article .article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 60px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    font-size: 18px;
+    color: var(--tta-ink);
+  }
+
+  .tool-tax-article .lead {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--tta-ink);
+    margin-bottom: 36px;
+  }
+  .tool-tax-article .lead::first-letter {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 78px;
+    font-weight: 700;
+    float: left;
+    line-height: 0.85;
+    margin: 8px 12px 0 -2px;
+    color: var(--tta-accent);
+  }
+
+  .tool-tax-article .article p { margin-bottom: 26px; }
+  .tool-tax-article .article p:last-child { margin-bottom: 0; }
+  .tool-tax-article .article strong { font-weight: 600; color: var(--tta-ink); }
+  .tool-tax-article .article em { font-style: italic; }
+
+  .tool-tax-article .article h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 72px 0 24px;
+    color: var(--tta-ink);
+  }
+  .tool-tax-article .article h2 .num {
+    display: block;
+    font-size: 13px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--tta-accent);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .tool-tax-article .article h3 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tta-accent);
+    margin: 48px 0 16px;
+  }
+  .tool-tax-article .article a {
+    color: var(--tta-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .tool-tax-article .article a:hover { text-decoration-thickness: 2px; }
+
+  /* Pullquote */
+  .tool-tax-article .pullquote {
+    margin: 56px -32px;
+    padding: 40px 48px;
+    border-top: 1px solid var(--tta-rule);
+    border-bottom: 1px solid var(--tta-rule);
+    text-align: center;
+  }
+  .tool-tax-article .pullquote q {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--tta-ink);
+    quotes: '\201C' '\201D';
+  }
+  .tool-tax-article .pullquote q::before,
+  .tool-tax-article .pullquote q::after {
+    color: var(--tta-accent);
+    font-size: 38px;
+    line-height: 0;
+    vertical-align: -10px;
+  }
+
+  /* Screenshot frame */
+  .tool-tax-article .screenshot-frame {
+    margin: 40px -32px;
+    background: var(--tta-bg-deep);
+    padding: 24px;
+    border-radius: 12px;
+    position: relative;
+  }
+  .tool-tax-article .screenshot-frame::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 16px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow: 14px 0 0 #ffbd2e, 28px 0 0 #27c93f;
+  }
+  .tool-tax-article .screenshot-frame img {
+    margin-top: 16px;
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+  .tool-tax-article .screenshot-frame .caption {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--tta-ink-faint);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Comparison panels */
+  .tool-tax-article .comparison-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 40px -32px;
+  }
+  .tool-tax-article .comparison-panels .panel {
+    background: white;
+    border: 1px solid var(--tta-rule);
+    border-radius: 10px;
+    padding: 28px 24px;
+  }
+  .tool-tax-article .comparison-panels .panel-tag {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .tool-tax-article .comparison-panels .panel-tag.before { color: #a04020; }
+  .tool-tax-article .comparison-panels .panel-tag.after { color: var(--tta-signal); }
+  .tool-tax-article .comparison-panels .panel h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .tool-tax-article .comparison-panels .panel p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--tta-ink-mid);
+  }
+
+  /* Observations */
+  .tool-tax-article .observation {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--tta-rule);
+  }
+  .tool-tax-article .observation .num {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--tta-accent);
+    line-height: 1;
+  }
+  .tool-tax-article .observation h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .tool-tax-article .observation p {
+    font-size: 16px;
+    color: var(--tta-ink-mid);
+    margin: 0;
+  }
+
+  /* App showcase */
+  .tool-tax-article .app-showcase {
+    background: var(--tta-bg-warm);
+    margin: 48px -32px;
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid var(--tta-rule);
+  }
+  .tool-tax-article .app-showcase-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .tool-tax-article .app-showcase-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tta-accent);
+    font-weight: 500;
+  }
+  .tool-tax-article .app-showcase h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .tool-tax-article .app-showcase p.intro {
+    font-size: 15px;
+    color: var(--tta-ink-mid);
+    margin-bottom: 20px;
+    line-height: 1.65;
+  }
+  .tool-tax-article .app-showcase-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--tta-accent);
+    padding: 8px 14px;
+    background: white;
+    border: 1px solid var(--tta-rule);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .tool-tax-article .app-showcase-link:hover { background: var(--tta-accent-soft); text-decoration: none; }
+  .tool-tax-article .app-frame {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--tta-rule);
+    aspect-ratio: 4 / 3;
+    width: 100%;
+  }
+  .tool-tax-article .app-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  /* Takeaways */
+  .tool-tax-article .takeaways {
+    background: var(--tta-bg-deep);
+    color: var(--tta-bg);
+    margin: 64px -32px 0;
+    padding: 48px 40px;
+    border-radius: 12px;
+  }
+  .tool-tax-article .takeaways h3 {
+    color: var(--tta-highlight);
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  .tool-tax-article .takeaways h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    color: var(--tta-bg);
+    line-height: 1.2;
+  }
+  .tool-tax-article .takeaway-item {
+    padding: 16px 0;
+    border-top: 1px solid rgba(247, 244, 238, 0.1);
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .tool-tax-article .takeaway-item:first-of-type { border-top: none; padding-top: 0; }
+  .tool-tax-article .takeaway-item .mark {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--tta-highlight);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .tool-tax-article .takeaway-item .body {
+    color: #c4b8a8;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .tool-tax-article .takeaway-item .body strong { color: var(--tta-bg); font-weight: 500; }
+
+  /* Closing */
+  .tool-tax-article .closing {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--tta-rule);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--tta-ink-mid);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .tool-tax-article .closing .signoff {
+    font-family: 'Inter Tight', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--tta-ink-faint);
+    letter-spacing: 0.1em;
+    margin-top: 24px;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  @media (max-width: 720px) {
+    .tool-tax-article .article { padding: 56px 24px 40px; }
+    .tool-tax-article .pullquote { margin: 40px -24px; padding: 32px 28px; }
+    .tool-tax-article .pullquote q { font-size: 22px; }
+    .tool-tax-article .screenshot-frame,
+    .tool-tax-article .app-showcase,
+    .tool-tax-article .takeaways { margin-left: -24px; margin-right: -24px; }
+    .tool-tax-article .comparison-panels { grid-template-columns: 1fr; margin: 32px -24px; }
+    .tool-tax-article .observation { grid-template-columns: 56px 1fr; gap: 16px; }
+    .tool-tax-article .observation .num { font-size: 34px; }
+    .tool-tax-article .lead { font-size: 20px; }
+    .tool-tax-article .article h2 { font-size: 28px; }
+  }
+</style>
+
+<div class="tool-tax-article">
+<article class="article">
+
+  <p class="lead">For the last year, I've been writing code faster than I ever have in my career. And learning less than I ever have. Those two facts are not unrelated — and I'm starting to suspect they describe something much bigger than my own job.</p>
+
+  <p>Like most engineers I know, my workflow now revolves around Cursor, Claude Code, and Codex. The change has been seismic. Features that used to take a sprint take an afternoon. Architectural decisions that used to require a whiteboard and three meetings now happen in a back-and-forth conversation with a model that's read more code than I ever will. My pull requests are bigger, my ticket throughput is up, and on paper I look more productive than I did two years ago.</p>
+
+  <p>But here's the thing nobody warns you about: <strong>I'm not learning the way I used to.</strong></p>
+
+  <h2><span class="num">Part One</span>The vanishing apprenticeship</h2>
+
+  <p>Real programming knowledge — the kind that compounds — never came from tutorials. It came from being stuck. From spending three days chasing a memory leak. From rewriting a feature four times because the first three were wrong in ways you couldn't articulate yet. From the slow, painful, deeply unsexy process of <em>repeated failure</em>.</p>
+
+  <p>That feedback loop is what built every skill I'm proud of. And it's exactly what one-shot code generation, architecture recommendations, and design pattern analysis are quietly replacing. The model doesn't make me struggle. It hands me a working answer. And working answers, repeated often enough, are the enemy of real understanding.</p>
+
+  <div class="pullquote">
+    <q>Learning comes from failure and repeated practice. Productivity gains come from skipping exactly that. We're being asked to optimize for one while still being measured on the other.</q>
+  </div>
+
+  <p>The market reality is unforgiving. The competition to get to the customer is brutal, and the push at work — every work — is to ship more features, faster, using whatever tools accelerate that. That's not wrong. It's just the new equilibrium. The cost is invisible on any dashboard: my long-term skill development is being deferred to my personal time. Evenings, weekends, side projects — the only place left where I can deliberately struggle.</p>
+
+  <p>I'm fortunate that I love the craft enough to do that. Most engineers I talk to feel the same low-grade unease — productive at the job, but quietly aware that the foundations aren't being laid the way they used to be. We're shipping more and learning less.</p>
+
+  <h2><span class="num">Part Two</span>The same pattern, everywhere</h2>
+
+  <p>What surprised me is realizing this isn't an AI-coding problem. It's a <em>tool complexity</em> problem, and it's been quietly playing out in every creative profession for decades. AI just made it visible in software engineering because the productivity jump happened all at once.</p>
+
+  <p>I draw. Both digitally and on paper. It's how I unwind, and it's how I spend time with my young daughter, who has recently discovered that her dad can — with enough patience — turn a folded piece of paper into a dragon. When I started taking digital illustration more seriously, I did what any reasonable adult would do: I opened Photoshop.</p>
+
+  <div class="screenshot-frame">
+    <img src="/images/posts/tool-tax-photoshop.jpg" alt="Photoshop workspace with panels">
+    <p class="caption">A modern Photoshop workspace, before you've drawn a single line.</p>
+  </div>
+
+  <p>Photoshop is breathtakingly powerful. It can do approximately everything. The problem is that every one of those capabilities lives somewhere in the UI — across menus, panels, modifier keys, hidden modes, and a dozen tools that all start with the letter B. Just <em>finding</em> the feature you want is a skill. Using it well is another skill. Combining them fluidly is yet another. By the time you've reached the point where the tool gets out of your way, you've invested hundreds of hours that had nothing to do with art.</p>
+
+  <p>Blender is the same story in three dimensions. Unreal Engine takes it to a different planet entirely. These tools are miraculous in what they enable for professionals who've internalized them — and a wall of glass for everyone else.</p>
+
+  <div class="comparison-panels">
+    <div class="panel">
+      <div class="panel-tag before">The tool</div>
+      <h4>Photoshop, Blender, Unreal</h4>
+      <p>Industry-grade software with decades of accumulated features, panels, and modes. Astonishing capability. A learning curve that resembles a wall.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-tag after">The cost</div>
+      <h4>The tool tax</h4>
+      <p>Months — sometimes years — of effort spent learning where things live, what they do, and how to combine them. Time that doesn't make you a better artist.</p>
+    </div>
+  </div>
+
+  <div class="screenshot-frame">
+    <img src="/images/posts/tool-tax-krita.jpg" alt="Krita digital painting workspace">
+    <p class="caption">Krita — free, open-source, and just as capable of overwhelming you as anything with a price tag.</p>
+  </div>
+
+  <div class="screenshot-frame">
+    <img src="/images/posts/tool-tax-blender.jpg" alt="Blender 3D workspace">
+    <p class="caption">Blender. Free. Powerful. Genuinely overwhelming.</p>
+  </div>
+
+  <div class="screenshot-frame">
+    <img src="/images/posts/tool-tax-unreal.jpg" alt="Unreal Engine 5 editor">
+    <p class="caption">Unreal Engine 5. There is no shallow end of this pool.</p>
+  </div>
+
+  <p>I watched myself spend more time on YouTube tutorials than I did actually drawing. I'd open Photoshop with an idea, get distracted by a setting, fall into a rabbit hole on brush dynamics, and close the app two hours later without having made anything. The tool was hampering exactly the impulse it was supposed to serve.</p>
+
+  <h2><span class="num">Part Three</span>The origami experiment</h2>
+
+  <p>A few weeks ago I tried something different. My daughter had been asking for origami-style drawings of animals — clean geometric folds, simple shapes, the kind of thing she could try to copy with paper. I didn't want to fight Photoshop to make them. I wanted to <em>play</em>.</p>
+
+  <p>So I built a small web app for myself. Nothing fancy. A handful of tools — geometric shapes, fold-style strokes, a constrained palette that looks like paper. No layers panel. No history scrubber. No tool I had to learn before I could draw with it. Just the things I actually needed to make origami-style illustrations, and nothing else.</p>
+
+  <div class="app-showcase">
+    <div class="app-showcase-header">
+      <div>
+        <span class="app-showcase-label">Live · Try it</span>
+        <h4>Origami Studio</h4>
+      </div>
+      <a class="app-showcase-link" href="/apps/origami-studio/index.html" target="_blank" rel="noopener">Open in new tab ↗</a>
+    </div>
+    <p class="intro">A small web app I built to make origami-style illustrations for my daughter. The entire feature set fits on one screen — and that's the point. You can play with it right here:</p>
+    <div class="app-frame">
+      <iframe src="/apps/origami-studio/index.html" loading="lazy" title="Origami Studio"></iframe>
+    </div>
+  </div>
+
+  <p>The first time I used it, I made five illustrations in an hour. Not because the app is fast — it's barely an app — but because I wasn't fighting it. I wasn't searching for a tool. I wasn't deciding between fourteen brush presets. The constraints did the deciding, and the part of my brain I wanted to use for creativity was actually free to be creative.</p>
+
+  <div class="pullquote">
+    <q>Constraints aren't the enemy of creativity. They're its precondition.</q>
+  </div>
+
+  <p>This is something musicians have known forever. A four-track recorder forces choices that a thousand-track DAW doesn't. A fixed-lens camera makes you walk closer instead of zooming. A pencil and paper limits you to what a pencil and paper can do, which turns out to be a remarkable amount once you stop being able to undo. The tools we venerate for their power are often the same ones that make us worst at the underlying craft.</p>
+
+  <h2><span class="num">Part Four</span>The pattern, named</h2>
+
+  <p>So here's what I think is actually going on, across software engineering, illustration, writing, filmmaking, design — every field where the tools have grown faster than our ability to use them well.</p>
+
+  <div class="observation">
+    <div class="num">i</div>
+    <div>
+      <h4>Powerful tools shortcut the loop that makes you skilled.</h4>
+      <p>The loop is: try, fail, understand why, try again. Tools that hand you a result — whether it's an AI generating code or a one-click filter generating a "look" — cut that loop in half. You get output without the understanding that should have accompanied it.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">ii</div>
+    <div>
+      <h4>Complex tools tax you before you ever create anything.</h4>
+      <p>Every hour spent learning where a menu lives, what a panel does, or how a feature interacts with another feature is an hour not spent on the actual craft. For professionals, this investment pays off. For everyone else — including professionals dabbling outside their specialty — it's a tax that often prevents the work from ever starting.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">iii</div>
+    <div>
+      <h4>The market pressure to use these tools is real, and won't go away.</h4>
+      <p>You can't unilaterally opt out. The competition is using them. The customer expectations are calibrated to them. The question isn't whether to use them — it's how to use them without letting them quietly atrophy the underlying skill.</p>
+    </div>
+  </div>
+
+  <h2><span class="num">Part Five</span>So what do we actually do?</h2>
+
+  <p>I don't have a clean answer. But after a year of paying attention to my own work, here's what I've started doing — and what I'd suggest to anyone, engineer or illustrator, who feels the same pull:</p>
+
+  <div class="takeaways">
+    <h3>Practical balance</h3>
+    <h4>How to keep using powerful tools without losing the thing they're supposed to serve.</h4>
+
+    <div class="takeaway-item">
+      <div class="mark">i.</div>
+      <div class="body"><strong>Protect a daily struggle.</strong> Spend at least some time each week working without the powerful tool. Write code without the AI. Draw on paper. Edit without auto-suggest. The discomfort is the point — it's where the learning happens.</div>
+    </div>
+
+    <div class="takeaway-item">
+      <div class="mark">ii.</div>
+      <div class="body"><strong>Read the output you didn't write.</strong> If an AI generates your code, read it line by line and ask why each choice was made. If a filter generates your look, study what it changed. Consumption-as-learning is a poor substitute for production-as-learning, but it's better than nothing.</div>
+    </div>
+
+    <div class="takeaway-item">
+      <div class="mark">iii.</div>
+      <div class="body"><strong>Choose smaller tools for non-professional work.</strong> Not every illustration needs Photoshop. Not every script needs a heavy IDE. The smaller the tool, the less it gets between you and the thing you're trying to make. Use power where power is needed; use constraints everywhere else.</div>
+    </div>
+
+    <div class="takeaway-item">
+      <div class="mark">iv.</div>
+      <div class="body"><strong>Build your own small tools when you can.</strong> The origami app took an evening. Building it taught me more than using a "real" illustration app for the same evening would have. For programmers especially, the ability to make exactly the tool you need is a superpower most of us underuse.</div>
+    </div>
+
+    <div class="takeaway-item">
+      <div class="mark">v.</div>
+      <div class="body"><strong>Separate "shipping" from "learning."</strong> Use the fast tools to ship. Use the slow practice — on personal time if you must — to learn. They're different activities with different goals, and trying to do both at once is how skill quietly erodes. Be honest with yourself about which is which.</div>
+    </div>
+  </div>
+
+  <p class="closing">
+    The tools will keep getting more powerful. The pressure to use them will keep growing. The question — for every engineer, illustrator, writer, and designer reading this — is what you're willing to do, on your own time, to stay sharp at the thing the tools are supposedly serving.
+    <span class="signoff">— Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>

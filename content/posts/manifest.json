@@ -1,5 +1,13 @@
 [
   {
+    "slug": "tool-tax",
+    "title": "The Tool Tax: How Complex Software Quietly Kills Creativity",
+    "description": "The more powerful our tools become, the more they cost us in something we don't measure: the slow, frustrating, essential work of learning.",
+    "date": "2026-05-14",
+    "readTime": "~10 min read",
+    "category": "Essay"
+  },
+  {
     "slug": "bettertouchtool-launcher",
     "title": "BetterTouchTool Just Got a Launcher — And It's Giving Raycast a Run for Its Money",
     "description": "I've been a Raycast loyalist for years. Then BetterTouchTool 6.493 shipped a full SwiftUI launcher, and in one weekend I rebuilt three plugins that outperformed what I had in Raycast.",
