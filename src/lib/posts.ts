@@ -11,6 +11,7 @@ export type Post = {
   date: string;
   readTime: string;
   category: string;
+  eyebrow?: string;
 };
 
 export function getAllPosts(): Post[] {

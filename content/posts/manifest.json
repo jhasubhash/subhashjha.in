@@ -1,12 +1,23 @@
 [
   {
+    "slug": "quiet-coder-disappearing",
+    "title": "The Quiet Coder is Disappearing. And I'm One of Them.",
+    "htmlTitle": "The <span style=\"font-style:italic;font-weight:400;color:#4a5a6a\">quiet coder</span> is disappearing. And I'm one of them.",
+    "description": "For decades, software was a refuge for people who'd rather talk to a computer than a person. AI just took that conversation away, asking us to find our voices in a room full of humans instead.",
+    "date": "2026-05-15",
+    "readTime": "~9 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · AI · The Changing Developer"
+  },
+  {
     "slug": "tool-tax",
     "title": "The Tool Tax: How Complex Software Quietly Kills Creativity",
     "htmlTitle": "The Tool Tax: How Complex Software Quietly <span class=\"title-blood\">Kills Creativity</span>",
     "description": "The more powerful our tools become, the more they cost us in something we don't measure: the slow, frustrating, essential work of learning.",
     "date": "2026-05-14",
     "readTime": "~10 min read",
-    "category": "Essay"
+    "category": "Essay",
+    "eyebrow": "Essay · Tools · Creativity"
   },
   {
     "slug": "bettertouchtool-launcher",

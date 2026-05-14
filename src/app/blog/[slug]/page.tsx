@@ -46,7 +46,7 @@ export default async function BlogPost({ params }: Props) {
       </div>
 
       <div className="hero">
-        <div className="hero-kicker">{post.category}</div>
+        <div className="hero-kicker">{post.eyebrow ?? post.category}</div>
         {post.htmlTitle ? (
           <h1 dangerouslySetInnerHTML={{ __html: post.htmlTitle }} />
         ) : (
