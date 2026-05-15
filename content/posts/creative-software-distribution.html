@@ -1,0 +1,571 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  .csd-article {
+    --csd-bg-elev: #ece8e0;
+    --csd-bg-card: #e4dfd5;
+    --csd-ink: #181612;
+    --csd-ink-mid: #5a5347;
+    --csd-ink-faint: #948c7d;
+    --csd-rule: #d5cdba;
+    --csd-accent: #c54a30;
+    --csd-accent-soft: #f3e2db;
+    --csd-signal: #9a6b10;
+    --csd-signal-soft: #f5e8cd;
+    --csd-night: #1a1814;
+    --csd-night-mid: #c4b8a8;
+  }
+
+  .csd-article .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 88px 32px 60px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 18px;
+    color: var(--csd-ink-mid);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .csd-article p { margin-bottom: 26px; }
+  .csd-article p:last-child { margin-bottom: 0; }
+  .csd-article strong { font-weight: 500; color: var(--csd-ink); }
+  .csd-article em { font-style: italic; }
+
+  .csd-article .lead {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 26px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--csd-ink);
+    margin-bottom: 44px;
+  }
+
+  .csd-article h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 84px 0 30px;
+    color: var(--csd-ink);
+  }
+  .csd-article h2 .num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--csd-accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .csd-article h2 em { color: var(--csd-signal); font-style: italic; }
+
+  .csd-article h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--csd-ink);
+    margin: 36px 0 16px;
+  }
+
+  .csd-article .pullquote {
+    margin: 56px -32px;
+    padding: 48px 56px;
+    background: var(--csd-bg-elev);
+    border-left: 3px solid var(--csd-accent);
+    border-radius: 0 8px 8px 0;
+  }
+  .csd-article .pullquote q {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 30px;
+    line-height: 1.3;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--csd-ink);
+    quotes: '\201C' '\201D';
+    display: block;
+  }
+  .csd-article .pullquote .attrib {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--csd-accent);
+    margin-top: 22px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .csd-article .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin: 48px -32px;
+    background: var(--csd-rule);
+    border: 1px solid var(--csd-rule);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .csd-article .stat-row .stat {
+    background: var(--csd-bg-elev);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .csd-article .stat-row .stat .num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--csd-accent);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .csd-article .stat-row .stat .label {
+    font-size: 13px;
+    color: var(--csd-ink-mid);
+    line-height: 1.4;
+  }
+
+  .csd-article .thesis-block {
+    margin: 56px -32px;
+    padding: 40px 36px;
+    background: var(--csd-night);
+    border: 1px solid var(--csd-accent);
+    border-radius: 10px;
+    position: relative;
+  }
+  .csd-article .thesis-block::before {
+    content: 'The thesis';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    background: #f4f1ea;
+    padding: 0 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--csd-accent);
+    text-transform: uppercase;
+  }
+  .csd-article .thesis-block p {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #f5f0e6;
+    margin: 0;
+    font-style: italic;
+  }
+  .csd-article .thesis-block p strong {
+    font-style: normal;
+    color: var(--csd-accent);
+    font-weight: 500;
+  }
+
+  .csd-article .examples-list {
+    display: grid;
+    gap: 16px;
+    margin: 36px 0;
+  }
+  .csd-article .example-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    padding: 24px 28px;
+    background: var(--csd-bg-elev);
+    border-radius: 8px;
+    border: 1px solid var(--csd-rule);
+    align-items: start;
+  }
+  .csd-article .example-item .industry {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--csd-signal);
+    padding-top: 3px;
+  }
+  .csd-article .example-item .detail h4 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: var(--csd-ink);
+  }
+  .csd-article .example-item .detail p {
+    font-size: 15px;
+    color: var(--csd-ink-mid);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .csd-article .vision {
+    margin: 64px -32px;
+    padding: 48px 40px;
+    background: var(--csd-bg-card);
+    border: 1px solid var(--csd-rule);
+    border-radius: 10px;
+  }
+  .csd-article .vision-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--csd-accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .csd-article .vision h4 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 30px;
+    line-height: 1.25;
+    color: var(--csd-ink);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+  .csd-article .vision-pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 32px 0 24px;
+  }
+  .csd-article .pipeline-step {
+    background: white;
+    padding: 20px 12px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--csd-rule);
+  }
+  .csd-article .pipeline-step .icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+    color: var(--csd-ink-faint);
+  }
+  .csd-article .pipeline-step .name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--csd-signal);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .csd-article .pipeline-step .desc {
+    font-size: 12px;
+    color: var(--csd-ink-mid);
+    line-height: 1.4;
+  }
+  .csd-article .vision-footnote {
+    font-size: 14px;
+    color: var(--csd-ink-mid);
+    font-style: italic;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .csd-article .vision-footnote strong {
+    color: var(--csd-accent);
+    font-style: normal;
+  }
+
+  .csd-article .ads-callout {
+    background: var(--csd-bg-elev);
+    border: 1px solid var(--csd-rule);
+    border-radius: 10px;
+    margin: 48px -32px;
+    padding: 32px 36px;
+    position: relative;
+  }
+  .csd-article .ads-callout::before {
+    content: '⚠';
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-size: 24px;
+    color: var(--csd-signal);
+    opacity: 0.5;
+  }
+  .csd-article .ads-callout h4 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: var(--csd-ink);
+    margin-bottom: 12px;
+    font-weight: 400;
+    max-width: 90%;
+  }
+  .csd-article .ads-callout p {
+    font-size: 15.5px;
+    color: var(--csd-ink-mid);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .csd-article .closing-block {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 2px solid var(--csd-ink);
+  }
+  .csd-article .closing-block h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    color: var(--csd-ink);
+    margin-bottom: 20px;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .csd-article .closing-quote {
+    font-family: 'Instrument Serif', serif;
+    font-size: 30px;
+    line-height: 1.3;
+    color: var(--csd-ink);
+    margin: 40px 0;
+    padding: 32px 0;
+    border-top: 1px solid var(--csd-rule);
+    border-bottom: 1px solid var(--csd-rule);
+    text-align: center;
+    font-weight: 400;
+  }
+  .csd-article .closing-quote em { color: var(--csd-accent); font-style: italic; }
+
+  .csd-article .signoff {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--csd-ink-faint);
+    letter-spacing: 0.1em;
+    margin-top: 40px;
+    text-transform: uppercase;
+  }
+  .csd-article .disclaimer {
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--csd-ink-faint);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 720px) {
+    .csd-article .article-body { padding: 56px 22px 40px; }
+    .csd-article .pullquote { margin: 40px -22px; padding: 32px 28px; }
+    .csd-article .pullquote q { font-size: 22px; }
+    .csd-article .thesis-block,
+    .csd-article .vision,
+    .csd-article .ads-callout { margin-left: -22px; margin-right: -22px; }
+    .csd-article .thesis-block { padding: 32px 24px; }
+    .csd-article .thesis-block p { font-size: 18px; }
+    .csd-article .vision { padding: 32px 24px; }
+    .csd-article .vision h4 { font-size: 22px; }
+    .csd-article .vision-pipeline { grid-template-columns: 1fr 1fr; }
+    .csd-article .stat-row { grid-template-columns: 1fr; margin: 32px -22px; }
+    .csd-article .example-item { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+    .csd-article .ads-callout { padding: 28px 24px; }
+    .csd-article .lead { font-size: 21px; }
+    .csd-article h2 { font-size: 32px; }
+    .csd-article .closing-quote { font-size: 22px; }
+  }
+</style>
+
+<div class="csd-article">
+<div class="article-body">
+
+  <p class="lead">SaaS is dying in slow motion, and most of the companies it's killing don't seem to know it yet. The cause of death is going to look obvious in five years and surprising right now. The cure is going to require an entire generation of creative software companies to reinvent what they fundamentally are.</p>
+
+  <p>I want to talk about why, and what I think the path forward actually looks like. Not as a strategy consultant or industry analyst, but as someone who builds software for a living and has watched the economics of this industry shift faster in the last two years than in the prior twenty.</p>
+
+  <h2><span class="num">Part One</span>The moat has already moved</h2>
+
+  <p>For a long time, the SaaS playbook was simple. You built a hard piece of software that did something most companies couldn't easily build themselves. You charged them a recurring fee for access. The product was the moat, and distribution was the multiplier. The whole industry, from Salesforce down to the smallest niche B2B tool, was built on this premise.</p>
+
+  <p>That premise is collapsing. <strong>Building software has become close to trivial.</strong> The AI tooling stack has compressed the cost of producing functional software by an order of magnitude. A small in-house team with modern AI assistants and a clear spec can now build, in a few months, what used to require a multi-year vendor relationship to access.</p>
+
+  <p>This isn't speculation. It's already happening at the high end of the market:</p>
+
+  <div class="examples-list">
+    <div class="example-item">
+      <div class="industry">Film &amp; VFX</div>
+      <div class="detail">
+        <h4>Hollywood studios run on custom pipelines.</h4>
+        <p>Major production houses have been building proprietary shot management, color, and editing tooling for years. Pixar's RenderMan, Industrial Light &amp; Magic's internal pipeline, and a handful of in-house tools at the major streamers all tell the same story. The biggest players already opted out of "industry standard" software.</p>
+      </div>
+    </div>
+    <div class="example-item">
+      <div class="industry">Gaming</div>
+      <div class="detail">
+        <h4>Top studios build their own engines.</h4>
+        <p>Rockstar's RAGE, Naughty Dog's internal engine, Bethesda's Creation Engine, FromSoftware's tooling. The companies that take their craft most seriously have, for decades, looked at the off-the-shelf engines and decided their needs were too specific to outsource.</p>
+      </div>
+    </div>
+    <div class="example-item">
+      <div class="industry">Finance</div>
+      <div class="detail">
+        <h4>Quants have always rolled their own.</h4>
+        <p>No serious quantitative hedge fund has ever run on off-the-shelf trading software. The competitive edge <em>is</em> the tooling.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Until recently, these were exceptions: companies with the engineering depth, capital, and patience to build internal alternatives. The AI shift is turning the exception into the default. The economics that once made it cheaper to license something now make it cheaper to build it. And once that flips, it doesn't flip back.</p>
+
+  <div class="pullquote">
+    <q>Every large enterprise has its own needs, its own niche, its own way of doing things. The reason they ever licensed industry-standard software was because building one was hard. That reason is going away.</q>
+    <div class="attrib">The shift, in one sentence</div>
+  </div>
+
+  <h2><span class="num">Part Two</span>The squeeze on creative software</h2>
+
+  <p>Creative software is one of the most exposed categories in this shift, and worth examining as a representative case. The major players in this space (image editing, video, motion graphics, 3D, design tools) built businesses on selling category-leading apps to creators, with ecosystem integration as the long-term moat. The standalone app is the product. The bundle is the lock-in. The enterprise contract is the high-margin core.</p>
+
+  <p>Every part of that structure is now under attack from a different direction.</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">↓</div>
+      <div class="label">Standalone apps are losing relevance as AI-native workflows replace them.</div>
+    </div>
+    <div class="stat">
+      <div class="num">↓</div>
+      <div class="label">Ecosystem integration is being replaced by AI assistants that orchestrate all apps.</div>
+    </div>
+    <div class="stat">
+      <div class="num">↓</div>
+      <div class="label">Enterprise contracts will erode as big buyers build custom alternatives.</div>
+    </div>
+  </div>
+
+  <p>The standalone app problem is the most visible. AI-native image tools are eating the hobbyist and prosumer base of the major image editing apps. The professional core is harder to displace, but that core is also the part most likely to build something custom when the alternatives mature. The mid-market is where the squeeze hits hardest.</p>
+
+  <p>The ecosystem play is more interesting, and I think this is where most of the strategic energy at incumbent creative software companies is currently going. The idea is to make their suite of apps work better together, share assets across them, and hand off cleanly from one to the next. The problem with this strategy is that <strong>that's exactly the layer the foundation model companies are building too.</strong> The major AI assistants are increasingly positioning themselves as the place where all your work happens across all your apps. If the "common platform that ties apps together" becomes the assistant layer, the ecosystem advantage of any individual software vendor shrinks dramatically.</p>
+
+  <p>And the enterprise contracts, the highest-margin and stickiest part of these businesses, are exposed to the same forces pulling Hollywood studios and game studios in-house. Once a large enterprise can spin up a custom asset pipeline tuned to their exact brand and workflow for a fraction of what they're paying in seat licenses, the math gets uncomfortable fast.</p>
+
+  <p>I want to be clear: the incumbents in this space aren't going to disappear next year. These are slow shifts, and the leaders have world-class engineers, real distribution today, and brands that buy them time. But "buying time" isn't a strategy. The question is what they're buying it for.</p>
+
+  <h2><span class="num">Part Three</span>Where the new moat actually is</h2>
+
+  <div class="thesis-block">
+    <p>The future of every consumer-facing creative company isn't software. It's <strong>distribution.</strong> Specifically, owning the path between a creator and an audience. That's the one thing AI doesn't disintermediate, and the one thing creators can't easily build for themselves.</p>
+  </div>
+
+  <p>Look at where the money is in AI right now. Every major lab is burning extraordinary amounts of capital not on building better models per se, but on <em>capturing distribution.</em> Free tiers. Aggressive integrations. Browser plugins, desktop apps, mobile presence. The model is increasingly a commodity. The distribution channel is the war.</p>
+
+  <p>The same logic applies one layer up. If you're a creative software company, your product is becoming a commodity. The model can write the filter, generate the image, color-grade the footage, design the layout. What it can't do, and what the model companies aren't yet positioned to do, is <strong>connect the creator to an audience in a way that respects both.</strong></p>
+
+  <p>This is the gap. And it's a real one.</p>
+
+  <h2><span class="num">Part Four</span>The platforms aren't doing this well</h2>
+
+  <p>Instagram is full of ads and slop. The signal-to-noise ratio for serious creators has been getting worse for years, and the algorithm is calibrated to engagement metrics that have nothing to do with quality or craft. TikTok is the same story at higher velocity. YouTube is the most professionalized of the bunch but is increasingly hostile to creators who don't fit its monetization shape.</p>
+
+  <p>The dedicated platforms for creators (Behance, Flickr, Dribbble, ArtStation) solve a different half of the problem. They're respected by creators and largely invisible to general audiences. A piece of work on Behance reaches other designers. It doesn't reach people who might love it but don't know they're looking for it.</p>
+
+  <p>So creators today are stuck choosing between three bad options:</p>
+
+  <p>A general-audience platform that buries their work under ads, slop, and algorithmic incentives that punish craft.</p>
+
+  <p>A creator-only platform where the audience is fellow creators, not the broader public.</p>
+
+  <p>Building their own thing (a personal site, a newsletter, a Patreon), which works but reaches a tiny fraction of who might care.</p>
+
+  <p>This is a real, well-defined product opportunity. And the companies best positioned to address it might be the creative software companies themselves, <em>if they're willing to fundamentally change what they are.</em></p>
+
+  <div class="ads-callout">
+    <h4>A brief word on ads as a business model.</h4>
+    <p>Every time a platform moves to ad-supported revenue, the experience for both creators and consumers gets quietly worse. People are paying extra subscription fees to streaming services <em>specifically to remove ads</em> the service started inserting after they were already paying customers. That tells you everything about what people actually want. The future of premium platforms is going to be paid, transparent, and ad-free. Not because it's morally better, but because it's what the market is already demanding with its wallet.</p>
+  </div>
+
+  <h2><span class="num">Part Five</span>The vision: end to end</h2>
+
+  <p>If I were thinking about strategy at a creative software company today, the bet I'd make is this: stop being a software vendor. Become a <strong>platform for the full creator lifecycle.</strong></p>
+
+  <div class="vision">
+    <div class="vision-label">A platform for the full creator lifecycle</div>
+    <h4>One place to make it, share it, and earn from it.</h4>
+    <div class="vision-pipeline">
+      <div class="pipeline-step">
+        <span class="icon">◐</span>
+        <div class="name">Capture</div>
+        <div class="desc">Shoot photo or video natively in the platform</div>
+      </div>
+      <div class="pipeline-step">
+        <span class="icon">✦</span>
+        <div class="name">Edit</div>
+        <div class="desc">AI-assisted editing tools, integrated</div>
+      </div>
+      <div class="pipeline-step">
+        <span class="icon">◇</span>
+        <div class="name">Share</div>
+        <div class="desc">Curated, audience-facing platform</div>
+      </div>
+      <div class="pipeline-step">
+        <span class="icon">◈</span>
+        <div class="name">Engage</div>
+        <div class="desc">Feedback loop with viewers and peers</div>
+      </div>
+      <div class="pipeline-step">
+        <span class="icon">●</span>
+        <div class="name">Earn</div>
+        <div class="desc">Direct monetization, platform fee</div>
+      </div>
+    </div>
+    <p class="vision-footnote">The business model: <strong>a platform fee on what creators earn.</strong> Aligned incentives instead of extractive ones, the way the App Store or Amazon's marketplace work.</p>
+  </div>
+
+  <p>Each step on its own is a competitive market. The integration is the moat. A photographer shouldn't have to use one tool to shoot, another to edit, a third to share, a fourth to engage with the audience, and a fifth to handle payments. That's the world we're in, and it exists not because anyone designed it but because each company captured a different slice of the workflow and stopped there.</p>
+
+  <p>The opportunity is to capture the whole thing, in a way that respects the craft. No algorithmic doom scrolling. No ads. No engagement bait. Just a clean path from creating to being seen to being paid. And critically, take a percentage of what creators earn, not a flat license fee. <strong>That aligns the platform's incentives with the creator's success,</strong> which is the part Instagram, TikTok, and the ad-driven platforms all fundamentally can't do.</p>
+
+  <h2><span class="num">Part Six</span>Why this is hard</h2>
+
+  <p>I want to be honest that this is much easier to write than to build. There are real reasons creative software companies haven't already done this.</p>
+
+  <h3>It's a different business model.</h3>
+
+  <p>Going from monthly seat licenses to percentage-of-revenue marketplace economics is a massive change to the P&amp;L. Public market investors tend to hate that kind of pivot in the short term. Most incumbents aren't currently structured to take a bet that depresses revenue for two or three years in exchange for a much larger total addressable market on the other side.</p>
+
+  <h3>It requires building a consumer product.</h3>
+
+  <p>Most creative software companies are tools companies. Building Instagram-scale, audience-facing infrastructure is a different muscle entirely. They'd need to either build it or buy it, and buying it at scale is now extraordinarily expensive.</p>
+
+  <h3>The window is narrow.</h3>
+
+  <p>If the incumbents don't move, someone else will. And that someone is more likely to be an AI-native startup with no legacy revenue to protect, or increasingly, one of the foundation model companies themselves, who already have the AI capabilities and are actively looking for surface area to monetize.</p>
+
+  <p>The alternative path of keeping the current business model, adding more apps to the suite, tuning the ecosystem, and hoping the enterprise contracts hold has a clear failure mode. It's the same failure mode that took down a hundred SaaS companies before this one: <em>adding more software at a time when software has become the cheap part of the value chain.</em></p>
+
+  <h2><span class="num">Part Seven</span>The bigger pattern</h2>
+
+  <p>Creative software is just the most visible example. The same logic applies to every category-leading SaaS company whose core product is "software a company couldn't easily build themselves":</p>
+
+  <p>Marketing automation tools competing with in-house teams who can now build their own with a small AI-assisted engineering org.</p>
+
+  <p>Industry-specific design tools in architecture, engineering, and manufacturing competing with custom internal pipelines tuned to each firm's specific workflow.</p>
+
+  <p>Productivity suites competing with the increasingly capable AI assistants that span every app.</p>
+
+  <p>The companies that survive this transition are going to be the ones that figure out what part of the stack <em>isn't</em> easily commoditized by AI, and reposition themselves around it. That part, increasingly, is going to be distribution, audience, community, and trust. The relationships, not the binaries.</p>
+
+  <div class="closing-block">
+    <h3>What this means if you're building or investing in this space</h3>
+
+    <p>If you're building creative tooling today, the question isn't "what's the next great app?" It's "what's the next great platform that uses an app as the entry point?" The app is the bait. The platform is the business.</p>
+
+    <p>If you're at a legacy creative software company, the strategic question is not how to integrate AI into your apps. Every company is integrating AI into their apps. The strategic question is what you become when the apps themselves are the cheap part, and whether you have the institutional courage to make that change while the existing business is still profitable.</p>
+
+    <p>If you're a creator, the practical advice is to keep an eye on this. The platforms that respect your craft and your economics are going to start emerging. The companies that build them are going to be very different from the ones that own the space today.</p>
+
+    <div class="closing-quote">
+      Software is the cheap part now.<br>
+      <em>Audience is the expensive part.</em><br>
+      The moat moved while we were watching the wrong thing.
+    </div>
+
+    <p class="signoff">Thanks for reading ✦</p>
+
+    <p class="disclaimer">These are personal observations on broad industry patterns, not investment advice or commentary on any specific company. I'm describing a shift that I think is real and is going to play out across the SaaS industry over the next decade.</p>
+  </div>
+
+</div>
+</div>

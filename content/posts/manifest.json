@@ -1,5 +1,15 @@
 [
   {
+    "slug": "creative-software-distribution",
+    "title": "The Real Problem for Creative Software Isn't AI. It's Distribution.",
+    "htmlTitle": "The real problem for creative software isn't AI. It's <em style=\"color:#c54a30\">distribution.</em>",
+    "description": "Building software has become trivial. The moat has moved. Creative software companies that don't figure out where it went are going to find themselves outflanked by every enterprise that decides to just build their own.",
+    "date": "2026-05-16",
+    "readTime": "~10 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · Strategy · The AI Shakeout"
+  },
+  {
     "slug": "quiet-coder-disappearing",
     "title": "The Quiet Coder is Disappearing. And I'm One of Them.",
     "htmlTitle": "The <span style=\"font-style:italic;font-weight:400;color:#4a5a6a\">quiet coder</span> is disappearing. And I'm one of them.",
