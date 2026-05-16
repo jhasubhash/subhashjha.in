@@ -1,0 +1,549 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  .cow-article {
+    --cow-bg-warm: #f0ede4;
+    --cow-bg-code: #1e1c1a;
+    --cow-ink: #1a1816;
+    --cow-ink-mid: #5a544a;
+    --cow-ink-faint: #948c7f;
+    --cow-rule: #ddd6c4;
+    --cow-accent: #b04020;
+    --cow-accent-soft: #f3e0d8;
+    --cow-shared: #2d6b8a;
+    --cow-shared-soft: #e0eaf2;
+    --cow-danger: #c33820;
+    --cow-danger-soft: #fae0d8;
+    --cow-safe: #3a7050;
+    --cow-safe-soft: #e0ebe4;
+    --cow-kw: #d4886a;
+    --cow-ty: #c3a868;
+    --cow-st: #8aaa7a;
+    --cow-cm: #6b6258;
+    --cow-fn: #c8a878;
+    --cow-num: #b88a48;
+    --cow-punc: #948a78;
+  }
+
+  .cow-article .article-body {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 64px 32px 60px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    font-size: 17px;
+    color: var(--cow-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .cow-article p { margin-bottom: 22px; color: var(--cow-ink); }
+  .cow-article p:last-child { margin-bottom: 0; }
+  .cow-article strong { font-weight: 600; }
+  .cow-article em { font-style: italic; color: var(--cow-ink-mid); }
+
+  .cow-article code.inline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    background: var(--cow-bg-warm);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--cow-accent);
+    border: 1px solid var(--cow-rule);
+  }
+
+  .cow-article .lead {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--cow-ink);
+    margin-bottom: 36px;
+  }
+
+  .cow-article h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 60px 0 20px;
+    color: var(--cow-ink);
+  }
+  .cow-article h2 .ch {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--cow-accent);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .cow-article .code-block {
+    margin: 28px -16px;
+    background: var(--cow-bg-code);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .cow-article .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #2a2724;
+    border-bottom: 1px solid #333028;
+  }
+  .cow-article .code-header .file { color: #c4b8a8; font-size: 12px; }
+  .cow-article .code-header .lang {
+    font-size: 10px;
+    color: var(--cow-accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .cow-article .code-block pre {
+    padding: 20px 22px;
+    overflow-x: auto;
+    color: #d8d2c2;
+  }
+  .cow-article .code-block pre code {
+    font-family: inherit;
+    font-size: inherit;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    color: #d8d2c2;
+  }
+  .cow-article .kw  { color: var(--cow-kw); }
+  .cow-article .ty  { color: var(--cow-ty); }
+  .cow-article .st  { color: var(--cow-st); }
+  .cow-article .cm  { color: var(--cow-cm); font-style: italic; }
+  .cow-article .fn  { color: var(--cow-fn); }
+  .cow-article .num { color: var(--cow-num); }
+  .cow-article .punc { color: var(--cow-punc); }
+
+  .cow-article .diagram-card {
+    margin: 36px -16px;
+    background: white;
+    border: 1px solid var(--cow-rule);
+    border-radius: 10px;
+    padding: 28px 32px;
+  }
+  .cow-article .diagram-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cow-accent);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .cow-article .diagram-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 18px;
+    line-height: 1.3;
+    color: var(--cow-ink);
+  }
+  .cow-article .diagram-card p {
+    font-size: 14.5px;
+    color: var(--cow-ink-mid);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .cow-article .history-viz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .cow-article .history-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 70px;
+  }
+  .cow-article .history-state .box {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    border: 2px solid var(--cow-rule);
+    background: white;
+  }
+  .cow-article .history-state .box.points-to {
+    background: var(--cow-shared-soft);
+    border-color: var(--cow-shared);
+    color: var(--cow-shared);
+  }
+  .cow-article .history-state .box.danger {
+    background: var(--cow-danger-soft);
+    border-color: var(--cow-danger);
+    color: var(--cow-danger);
+  }
+  .cow-article .history-state .box.safe {
+    background: var(--cow-safe-soft);
+    border-color: var(--cow-safe);
+    color: var(--cow-safe);
+  }
+  .cow-article .history-state .name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--cow-ink-faint);
+    letter-spacing: 0.05em;
+  }
+  .cow-article .arrow { color: var(--cow-ink-faint); font-size: 20px; }
+  .cow-article .shared-marker,
+  .cow-article .danger-marker {
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .cow-article .shared-marker {
+    color: var(--cow-shared);
+    background: var(--cow-shared-soft);
+  }
+  .cow-article .danger-marker {
+    color: var(--cow-danger);
+    background: var(--cow-danger-soft);
+  }
+  .cow-article .viz-wrap { text-align: center; }
+
+  .cow-article .callout {
+    margin: 32px -16px;
+    padding: 24px 28px;
+    background: var(--cow-bg-warm);
+    border-left: 3px solid var(--cow-accent);
+    border-radius: 0 8px 8px 0;
+  }
+  .cow-article .callout p {
+    font-size: 16px;
+    color: var(--cow-ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+  .cow-article .callout p strong { color: var(--cow-accent); }
+
+  .cow-article .pullquote {
+    margin: 48px -16px;
+    padding: 32px 36px;
+    text-align: center;
+    border-top: 1px solid var(--cow-rule);
+    border-bottom: 1px solid var(--cow-rule);
+  }
+  .cow-article .pullquote q {
+    font-family: 'Fraunces', serif;
+    font-size: 23px;
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--cow-ink);
+    quotes: '\201C' '\201D';
+    display: block;
+  }
+  .cow-article .pullquote q::before,
+  .cow-article .pullquote q::after {
+    color: var(--cow-accent);
+    font-size: 28px;
+    line-height: 0;
+    vertical-align: -8px;
+  }
+
+  .cow-article .tradeoffs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 36px -16px;
+    background: var(--cow-rule);
+    border: 1px solid var(--cow-rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .cow-article .tradeoffs .col {
+    background: white;
+    padding: 24px 26px;
+  }
+  .cow-article .tradeoffs .col-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .cow-article .tradeoffs .pros .col-tag { color: var(--cow-safe); }
+  .cow-article .tradeoffs .cons .col-tag { color: var(--cow-accent); }
+  .cow-article .tradeoffs ul { list-style: none; margin: 0; }
+  .cow-article .tradeoffs li {
+    padding: 6px 0 6px 16px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--cow-ink-mid);
+    line-height: 1.6;
+  }
+  .cow-article .tradeoffs .pros li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cow-safe);
+    font-weight: 600;
+  }
+  .cow-article .tradeoffs .cons li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: var(--cow-accent);
+    font-weight: 600;
+  }
+
+  .cow-article .closing {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--cow-rule);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--cow-ink-mid);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .cow-article .signoff {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--cow-ink-faint);
+    letter-spacing: 0.1em;
+    margin-top: 20px;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  @media (max-width: 720px) {
+    .cow-article .article-body { padding: 48px 22px 40px; }
+    .cow-article .code-block,
+    .cow-article .diagram-card,
+    .cow-article .callout,
+    .cow-article .pullquote,
+    .cow-article .tradeoffs { margin-left: -22px; margin-right: -22px; }
+    .cow-article .pullquote q { font-size: 19px; }
+    .cow-article .tradeoffs { grid-template-columns: 1fr; }
+    .cow-article h2 { font-size: 26px; }
+    .cow-article .lead { font-size: 19px; }
+    .cow-article .history-state .box { width: 48px; height: 48px; }
+    .cow-article .history-viz { gap: 8px; }
+    .cow-article .arrow { font-size: 16px; }
+    .cow-article .code-block pre { padding: 16px; font-size: 12.5px; }
+  }
+</style>
+
+<div class="cow-article">
+<div class="article-body">
+
+  <p class="lead">Every developer who has ever implemented undo and redo has, at some point, made the same beautiful mistake. They save pointers to "history states" thinking they've saved the history. They haven't. They've saved five views of the same data.</p>
+
+  <p>One sloppy mutation later, the entire history is corrupted. Future undos restore the future. The past, it turns out, was sharing memory with the present all along.</p>
+
+  <h2><span class="ch">Part One</span>The mistake</h2>
+
+  <p>Imagine a simple document editor. You want undo and redo, so you keep a vector of past document states. Each state is a heavy object (think layers, pixels, or a big text buffer), so to keep things efficient, you store shared pointers instead of full copies.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">naive_history.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">class</span> <span class="ty">Document</span> {
+    <span class="ty">std::vector</span>&lt;<span class="ty">int</span>&gt; data;  <span class="cm">// imagine this is huge</span>
+<span class="kw">public</span>:
+    <span class="kw">void</span> <span class="fn">set</span>(<span class="ty">size_t</span> i, <span class="ty">int</span> v) { data[i] = v; }
+    <span class="ty">int</span>  <span class="fn">get</span>(<span class="ty">size_t</span> i) <span class="kw">const</span> { <span class="kw">return</span> data[i]; }
+};
+
+<span class="ty">std::vector</span>&lt;<span class="ty">std::shared_ptr</span>&lt;<span class="ty">Document</span>&gt;&gt; history;
+
+<span class="cm">// Save current state into history</span>
+history.<span class="fn">push_back</span>(current);
+
+<span class="cm">// Later, user edits the document</span>
+current-&gt;<span class="fn">set</span>(<span class="num">3</span>, <span class="num">42</span>);
+
+<span class="cm">// What just happened to history[history.size()-1]?</span>
+<span class="cm">// It changed too. They point to the same object.</span></code></pre>
+  </div>
+
+  <p>This looks fine until you actually use it. The moment you mutate <code class="inline">current</code>, every prior history entry that shared the pointer mutates with it. The undo stack now contains "the current state" five times in a row.</p>
+
+  <div class="viz-wrap">
+    <div class="history-viz">
+      <div class="history-state">
+        <div class="box points-to">→</div>
+        <div class="name">state_0</div>
+      </div>
+      <div class="history-state">
+        <div class="box points-to">→</div>
+        <div class="name">state_1</div>
+      </div>
+      <div class="history-state">
+        <div class="box points-to">→</div>
+        <div class="name">state_2</div>
+      </div>
+      <div class="arrow">⟶</div>
+      <div class="history-state">
+        <div class="box danger">DOC</div>
+        <div class="name">one object</div>
+      </div>
+    </div>
+    <div class="danger-marker">Mutate the document and every history entry mutates with it.</div>
+  </div>
+
+  <p>The fix that every junior engineer reaches for next is to deep copy the entire document before each edit. That works. It's also catastrophically wasteful. For a 50MB document with 100 edits, you've just allocated 5GB. Most of which is identical to the previous version.</p>
+
+  <div class="pullquote">
+    <q> Copying is correct. Copying everything is the wrong amount of correct.</q>
+  </div>
+
+  <h2><span class="ch">Part Two</span>The trick</h2>
+
+  <p>Copy-on-Write is the obvious idea once you see it: <strong>share data freely until someone tries to change it.</strong> At the moment of mutation, and only then, make a private copy for the mutator. Everyone else keeps the original. The history stays clean. Most reads pay nothing.</p>
+
+  <div class="diagram-card">
+    <div class="label">→ The rule</div>
+    <h4>Reads are free and shared. Writes pay for themselves.</h4>
+    <p>If a shared object has only one owner, mutation happens in place. If it has multiple owners, the mutator clones the data first, then mutates its private copy. The other owners never notice. This is what <code class="inline">std::shared_ptr::use_count()</code> is quietly designed to support.</p>
+  </div>
+
+  <p>In C++, the pattern is small and self-contained. The handle class owns a shared pointer to the data. Read operations forward through directly. Write operations call a helper that detaches if needed, then mutate.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">cow_document.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">class</span> <span class="ty">Document</span> {
+    <span class="ty">std::shared_ptr</span>&lt;<span class="ty">std::vector</span>&lt;<span class="ty">int</span>&gt;&gt; data;
+
+    <span class="kw">void</span> <span class="fn">detach</span>() {
+        <span class="kw">if</span> (data.<span class="fn">use_count</span>() &gt; <span class="num">1</span>) {
+            <span class="cm">// We're sharing. Make our own copy.</span>
+            data = <span class="ty">std::make_shared</span>&lt;<span class="ty">std::vector</span>&lt;<span class="ty">int</span>&gt;&gt;(*data);
+        }
+    }
+
+<span class="kw">public</span>:
+    <span class="fn">Document</span>() : data(<span class="ty">std::make_shared</span>&lt;<span class="ty">std::vector</span>&lt;<span class="ty">int</span>&gt;&gt;()) {}
+
+    <span class="cm">// Read: cheap, shared, no copy</span>
+    <span class="ty">int</span> <span class="fn">get</span>(<span class="ty">size_t</span> i) <span class="kw">const</span> { <span class="kw">return</span> (*data)[i]; }
+
+    <span class="cm">// Write: detach first, then mutate</span>
+    <span class="kw">void</span> <span class="fn">set</span>(<span class="ty">size_t</span> i, <span class="ty">int</span> v) {
+        <span class="fn">detach</span>();
+        (*data)[i] = v;
+    }
+};</code></pre>
+  </div>
+
+  <p>That's the whole pattern. Pushing a copy of the document onto the history stack now costs a pointer bump and a refcount increment. Editing the live document triggers exactly one allocation, and only at the moment of the first edit after a snapshot.</p>
+
+  <div class="viz-wrap">
+    <div class="history-viz">
+      <div class="history-state">
+        <div class="box safe">→</div>
+        <div class="name">state_0</div>
+      </div>
+      <div class="history-state">
+        <div class="box safe">→</div>
+        <div class="name">state_1</div>
+      </div>
+      <div class="history-state">
+        <div class="box safe">→</div>
+        <div class="name">state_2</div>
+      </div>
+      <div class="arrow">⟶</div>
+      <div class="history-state">
+        <div class="box points-to">v1</div>
+        <div class="name">snapshot</div>
+      </div>
+      <div class="history-state">
+        <div class="box safe">v2</div>
+        <div class="name">current</div>
+      </div>
+    </div>
+    <div class="shared-marker">History shares the snapshot. The current state forks only when it changes.</div>
+  </div>
+
+  <h2><span class="ch">Part Three</span>Why this is fast</h2>
+
+  <p>The performance story is straightforward once the mechanics click. Three things happen quickly that used to be slow:</p>
+
+  <p><strong>Snapshots are O(1).</strong> Pushing a document into history is just incrementing a refcount. No allocation, no memcpy, no scaling with document size. You can snapshot every keystroke if you want.</p>
+
+  <p><strong>Reads are free.</strong> Reading from any history state, or the current state, dereferences the same underlying buffer. There's no indirection cost beyond what a shared pointer already imposes.</p>
+
+  <p><strong>Writes are deferred.</strong> If you snapshot and then never edit again, you never paid for the copy. If you snapshot and edit a thousand times, you paid for one copy at the first edit and zero copies after that, until the next snapshot.</p>
+
+  <div class="callout">
+    <p>This is the same idea behind <strong>persistent data structures</strong> in functional languages, behind <strong>fork()</strong> in Unix, and behind how <strong>filesystem snapshots</strong> work in ZFS and Btrfs. Different domains, same insight: sharing is the default, copying is the exception, and the exception only triggers when it has to.</p>
+  </div>
+
+  <h2><span class="ch">Part Four</span>The tradeoffs</h2>
+
+  <p>No pattern is free. COW has real costs worth being honest about before you reach for it:</p>
+
+  <div class="tradeoffs">
+    <div class="col pros">
+      <div class="col-tag">↑ What you gain</div>
+      <ul>
+        <li>O(1) snapshots regardless of data size</li>
+        <li>Memory-efficient history with no duplication of unchanged data</li>
+        <li>Safer mutation semantics across owners</li>
+        <li>Natural fit for undo/redo, transactional state, and immutable APIs</li>
+      </ul>
+    </div>
+    <div class="col cons">
+      <div class="col-tag">↓ What you pay</div>
+      <ul>
+        <li>Every write checks <code class="inline">use_count()</code></li>
+        <li>The first write after sharing triggers a full clone, sometimes at an awkward moment</li>
+        <li>Refcount updates are atomic, which can hurt in highly concurrent code</li>
+        <li>Reasoning about ownership gets subtler than with plain values</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>The last point is the one that bites people in practice. Bugs in COW code tend to be subtle: a missing detach, a const method that mutates through a non-const member, a reference handed out that outlives its sharing context. Static analyzers catch some of this. Discipline catches the rest. There's a reason Qt builds explicit detach calls into many of its containers, and a reason languages like Swift bake COW into the language for arrays and dictionaries: doing it by hand is doable, but not effortless.</p>
+
+  <h2><span class="ch">Part Five</span>When to reach for it</h2>
+
+  <p>COW shines exactly when your access pattern is "many readers, occasional writers, frequent snapshots." That description fits more code than you'd think:</p>
+
+  <p>Document editors with undo and redo. Image manipulation pipelines where filters chain together. Configuration trees that get snapshotted before risky operations. Versioned caches. Anywhere you'd otherwise be tempted to deep-copy a large object "just to be safe."</p>
+
+  <p>Skip it when writes dominate reads, when sharing is rare in practice, or when the cost of an unexpected clone at write time would be worse than the cost of upfront copying. Real-time systems with tight latency budgets often fall in this category. The "unexpected pause to allocate" cost of COW can blow your frame budget at exactly the wrong moment.</p>
+
+  <p class="closing">
+    Copy-on-Write isn't clever. It's just the recognition that most copies don't need to happen. Make the lazy choice the default, and let mutation pay the bill it was always going to pay anyway.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</div>
+</div>

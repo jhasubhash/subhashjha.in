@@ -1,5 +1,15 @@
 [
   {
+    "slug": "copy-on-write-undo-stack",
+    "title": "Copy-on-Write: How One Pattern Quietly Saves Your Undo Stack",
+    "htmlTitle": "Copy-on-Write: how one pattern <em style=\"color:#b04020\">quietly saves</em> your undo stack.",
+    "description": "A short look at why naive history implementations corrupt their own past, and how a 50-year-old trick fixes it without paying the cost of copying everything.",
+    "date": "2026-05-16",
+    "readTime": "~6 min read",
+    "category": "Notes",
+    "eyebrow": "Notes · C++ · Design Patterns"
+  },
+  {
     "slug": "creative-software-distribution",
     "title": "The Real Problem for Creative Software Isn't AI. It's Distribution.",
     "htmlTitle": "The real problem for creative software isn't AI. It's <em style=\"color:#c54a30\">distribution.</em>",
