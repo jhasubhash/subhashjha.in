@@ -1,5 +1,15 @@
 [
   {
+    "slug": "type-erasure-cpp",
+    "title": "Type Erasure in C++: Polymorphism Without the Inheritance Tax",
+    "htmlTitle": "Type erasure in C++: polymorphism <em style=\"color:#8c4424\">without the inheritance tax.</em>",
+    "description": "A pattern for treating unrelated types as if they shared a common interface, without making them inherit from anything. The same trick behind std::function, std::any, and a lot of modern C++ APIs.",
+    "date": "2026-05-17",
+    "readTime": "~8 min read",
+    "category": "Notes",
+    "eyebrow": "Notes · C++ · Design Patterns"
+  },
+  {
     "slug": "copy-on-write-undo-stack",
     "title": "Copy-on-Write: How One Pattern Quietly Saves Your Undo Stack",
     "htmlTitle": "Copy-on-Write: how one pattern <em style=\"color:#b04020\">quietly saves</em> your undo stack.",
