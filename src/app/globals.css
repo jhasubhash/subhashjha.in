@@ -22,7 +22,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans), 'Inter', sans-serif;
   font-weight: 300;
   line-height: 1.8;
   font-size: 18px;
@@ -50,7 +50,7 @@ body {
 }
 
 .site-nav-brand {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 17px;
   font-weight: 700;
   color: var(--ink);
@@ -105,7 +105,7 @@ body {
 }
 
 .home-header-text h1 {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -171,7 +171,7 @@ body {
 }
 
 .post-card-title {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 24px;
   font-weight: 700;
   color: var(--ink);
@@ -248,7 +248,7 @@ body {
 }
 
 .pagination-link {
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans), 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: var(--accent);
@@ -306,7 +306,7 @@ body {
 }
 
 .about-name {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -359,7 +359,7 @@ body {
 .about-work-item:last-child { border-bottom: none; }
 
 .about-work-role {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 17px;
   font-weight: 700;
   color: var(--ink);
@@ -472,19 +472,18 @@ body {
 }
 
 .hero h1 {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: clamp(32px, 5vw, 54px);
-  line-height: 1.15;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.025em;
   margin-bottom: 28px;
   color: var(--ink);
 }
 
 .title-blood {
-  font-family: 'Fraunces', Georgia, serif;
   font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
   color: #8c1a0b;
 }
 
@@ -519,7 +518,7 @@ body {
 .article-body p:last-child { margin-bottom: 0; }
 
 .article-body h2 {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 26px;
   font-weight: 700;
   color: var(--ink);
@@ -540,7 +539,7 @@ body {
 .article-body a:hover { text-decoration: underline; }
 
 .article-body code {
-  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
   font-size: 0.85em;
   background: var(--paper-warm);
   padding: 2px 6px;
@@ -574,7 +573,7 @@ body {
   padding: 32px 48px;
   background: var(--paper-warm);
   border-left: 3px solid var(--accent);
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 22px;
   font-style: italic;
   line-height: 1.5;
@@ -646,7 +645,7 @@ body {
 }
 
 .plugin-card h4 {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
@@ -756,7 +755,7 @@ body {
 .outro-inner { max-width: 680px; margin: 0 auto; }
 
 .outro h2 {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 28px;
   color: var(--paper);
   margin: 0 0 20px;
@@ -787,7 +786,7 @@ body {
 }
 
 .comments-heading {
-  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: 22px;
   font-weight: 700;
   color: var(--ink);
