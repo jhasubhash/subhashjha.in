@@ -834,6 +834,101 @@ body {
 
 .giscus-placeholder a { color: var(--accent); }
 
+/* ─── Apps Page ─── */
+.apps-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 64px 32px 80px;
+}
+
+.apps-header {
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--paper-rule);
+  margin-bottom: 48px;
+}
+
+.apps-header-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.apps-header-title {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.apps-header-desc {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 540px;
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.app-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border: 1px solid var(--paper-rule);
+  border-radius: 8px;
+  background: white;
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.app-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(26, 23, 20, 0.06);
+}
+
+.app-card-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.app-card-name {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.app-card-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.app-card-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 640px) {
   .site-nav { padding: 0 20px; }
@@ -855,4 +950,7 @@ body {
 
   .comments-section { padding: 40px 20px 48px; }
   .post-back { padding: 16px 20px 0; }
+
+  .apps-page { padding: 40px 20px 60px; }
+  .apps-grid { grid-template-columns: 1fr; }
 }
