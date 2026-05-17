@@ -138,12 +138,6 @@ body {
   gap: 16px;
 }
 
-.home-section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--paper-rule);
-}
 
 /* ─── Post Card ─── */
 .post-card {
