@@ -4,11 +4,11 @@
     "title": "What's Actually in a C++ Object: vtables, vptrs, and the Cost of Inheritance",
     "htmlTitle": "What's actually inside a C++ object? <em style=\"color:#2d5c8a\">The vtable tour.</em>",
     "description": "The moment you write the word virtual, the compiler quietly adds an invisible pointer to every instance of your class. Here's what it looks like, why it's there, and how the bill grows when inheritance gets complicated.",
-    "date": "",
+    "date": "2026-05-19",
     "readTime": "~9 min read",
     "category": "Notes",
     "eyebrow": "Notes · C++ · Memory Layout",
-    "status": "draft"
+    "status": "published"
   },
   {
     "slug": "gaussian-diffusion",
