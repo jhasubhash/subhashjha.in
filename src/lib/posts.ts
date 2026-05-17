@@ -8,6 +8,7 @@ export type Post = {
   title: string;
   htmlTitle?: string;
   description: string;
+  htmlDescription?: string;
   date: string;
   readTime: string;
   category: string;

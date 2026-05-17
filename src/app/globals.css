@@ -475,7 +475,7 @@ body {
   font-family: var(--font-serif), 'Fraunces', Georgia, serif;
   font-size: clamp(32px, 5vw, 54px);
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.025em;
   margin-bottom: 28px;
   color: var(--ink);
@@ -493,6 +493,17 @@ body {
   color: var(--ink-muted);
   font-weight: 300;
   max-width: 640px;
+}
+
+.hero-dek code {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  background: var(--paper-warm);
+  color: var(--ink);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--paper-rule);
+  font-weight: 400;
 }
 
 .byline {

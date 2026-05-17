@@ -52,7 +52,10 @@ export default async function BlogPost({ params }: Props) {
         ) : (
           <h1>{post.title}</h1>
         )}
-        <p className="hero-dek">{post.description}</p>
+        {post.htmlDescription
+          ? <p className="hero-dek" dangerouslySetInnerHTML={{ __html: post.htmlDescription }} />
+          : <p className="hero-dek">{post.description}</p>
+        }
         <div className="byline">
           <span>
             <strong>Subhash Jha</strong> &nbsp;·&nbsp; {formatDate(post.date)}
