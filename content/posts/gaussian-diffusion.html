@@ -1,0 +1,398 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.gd-root {
+  --gd-accent: #6b3a8a;
+  --gd-accent-soft: #ece2f0;
+  --gd-fail: #a83820;
+  --gd-fail-soft: #f3e0d8;
+  --gd-success: #2d6b4d;
+  --gd-success-soft: #dde9e2;
+  --gd-ink: #1a1815;
+  --gd-ink-mid: #5a5347;
+  --gd-ink-faint: #948c7d;
+  --gd-bg-warm: #ede8d8;
+  --gd-bg-code: #1c1a17;
+  --gd-rule: #ddd6c2;
+  --gd-math-bg: #f0ece0;
+}
+
+.gd-root .article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
+.gd-root p { margin-bottom: 22px; color: var(--gd-ink); }
+.gd-root p:last-child { margin-bottom: 0; }
+.gd-root strong { font-weight: 600; }
+.gd-root em { font-style: italic; color: var(--gd-ink-mid); }
+
+.gd-root code.inline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+  background: var(--gd-bg-warm);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--gd-accent);
+  border: 1px solid var(--gd-rule);
+}
+
+.gd-root .lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--gd-ink);
+  margin-bottom: 36px;
+}
+
+.gd-root h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 64px 0 22px;
+  color: var(--gd-ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--gd-rule);
+}
+
+.gd-root h2:first-of-type { border-top: none; padding-top: 0; }
+
+.gd-root h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--gd-ink);
+  margin: 36px 0 14px;
+}
+
+.gd-root .math {
+  margin: 20px 0;
+  padding: 16px 24px;
+  background: var(--gd-math-bg);
+  border-left: 3px solid var(--gd-accent);
+  border-radius: 0 6px 6px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--gd-ink);
+  overflow-x: auto;
+}
+
+.gd-root .figure {
+  margin: 36px -32px;
+}
+
+.gd-root .figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid var(--gd-rule);
+}
+
+.gd-root .figure figcaption {
+  margin-top: 14px;
+  padding: 0 32px;
+  font-size: 14px;
+  color: var(--gd-ink-mid);
+  font-style: italic;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.gd-root .question-card {
+  margin: 32px 0;
+  padding: 28px 32px;
+  background: white;
+  border: 1px solid var(--gd-rule);
+  border-radius: 10px;
+  border-left: 4px solid var(--gd-accent);
+}
+
+.gd-root .question-card .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gd-accent);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.gd-root .question-card p {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--gd-ink);
+  margin: 0;
+}
+
+.gd-root .callout {
+  margin: 32px 0;
+  padding: 24px 28px;
+  background: var(--gd-bg-warm);
+  border-left: 3px solid var(--gd-accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.gd-root .callout p {
+  font-size: 15.5px;
+  color: var(--gd-ink);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.gd-root .callout p strong { color: var(--gd-accent); }
+
+.gd-root .callout .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gd-accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.gd-root .comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 36px 0;
+  background: var(--gd-rule);
+  border: 1px solid var(--gd-rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gd-root .comparison .col {
+  background: white;
+  padding: 28px 26px;
+}
+
+.gd-root .comparison .col.fail {
+  background: linear-gradient(180deg, var(--gd-fail-soft) 0%, white 60%);
+}
+
+.gd-root .comparison .col.success {
+  background: linear-gradient(180deg, var(--gd-success-soft) 0%, white 60%);
+}
+
+.gd-root .comparison .col-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.gd-root .comparison .col.fail .col-tag { color: var(--gd-fail); }
+.gd-root .comparison .col.success .col-tag { color: var(--gd-success); }
+
+.gd-root .comparison .col h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  color: var(--gd-ink);
+}
+
+.gd-root .comparison .col p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--gd-ink-mid);
+  margin: 0;
+}
+
+.gd-root .pullquote {
+  margin: 48px 0;
+  padding: 32px 36px;
+  text-align: center;
+  border-top: 1px solid var(--gd-rule);
+  border-bottom: 1px solid var(--gd-rule);
+}
+
+.gd-root .pullquote q {
+  font-family: 'Fraunces', serif;
+  font-size: 23px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--gd-ink);
+  quotes: '\201C' '\201D';
+  display: block;
+}
+
+.gd-root .pullquote q::before,
+.gd-root .pullquote q::after {
+  color: var(--gd-accent);
+  font-size: 28px;
+  line-height: 0;
+  vertical-align: -8px;
+}
+
+.gd-root .closing {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--gd-rule);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--gd-ink-mid);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.gd-root .signoff {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--gd-ink-faint);
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .gd-root .figure { margin-left: -22px; margin-right: -22px; }
+  .gd-root .figure figcaption { padding: 0 22px; }
+  .gd-root .pullquote q { font-size: 19px; }
+  .gd-root .comparison { grid-template-columns: 1fr; }
+  .gd-root h2 { font-size: 26px; }
+  .gd-root .lead { font-size: 19px; }
+  .gd-root .question-card p { font-size: 17px; }
+  .gd-root .math { font-size: 13.5px; }
+}
+</style>
+
+<div class="gd-root">
+<article class="article">
+
+  <p class="lead">If you've spent any time around generative models, you've probably hit the same confusion I did. People say "a Gaussian can't model the distribution of face images." Then a few pages later, the same people are excitedly describing diffusion models that are built entirely on Gaussians. Which is it?</p>
+
+  <p>Both, as it turns out. The trick is that they're talking about Gaussians doing two completely different jobs. Once you see the distinction, a lot of the magic of diffusion stops feeling like magic.</p>
+
+  <h2>What a Gaussian is actually being asked to do</h2>
+
+  <p>When someone says "a Gaussian can't model face images," they mean something specific. They mean: if you try to write down</p>
+
+  <div class="math">p(image) = 𝒩(μ, Σ)</div>
+
+  <p>then that single distribution has to cover the entire space of every possible combination of pixels that could form a face. Every lighting condition. Every angle. Every face. A Gaussian is just a bell curve in high dimensions. It has a center and a shape, and that shape is round and convex. It has no way to encode the nonlinear, intricate structure of what makes pixels look like a face versus look like static.</p>
+
+  <p>Diffusion never asks a Gaussian to do that. It asks something much, much easier at each step:</p>
+
+  <div class="question-card">
+    <div class="label">→ The question diffusion actually asks</div>
+    <p>"Given that I'm already at a slightly noisy version of this image, what does one tiny step noisier look like?"</p>
+  </div>
+
+  <p>That transition, from <code class="inline">x<sub>t</sub></code> to <code class="inline">x<sub>t+1</sub></code>, <em>is</em> Gaussian. Not approximately. Not "we'll force it to be." Genuinely, exactly Gaussian by construction. The difference between two images that differ by a tiny sprinkle of independent noise really is normally distributed. The Gaussian is being used to model a small local perturbation, not the global structure of face-space.</p>
+
+  <figure class="figure">
+    <img src="/images/posts/diffusion-1-comparison.png" alt="Comparison: Gaussian on raw images doesn't fit, Gaussian on each step fits exactly">
+    <figcaption>Left: trying to fit a Gaussian to the whole face distribution. Right: the local Gaussian at each diffusion step.</figcaption>
+  </figure>
+
+  <h2>The manifold problem</h2>
+
+  <p>Here's the geometric intuition for why the global approach fails. Real face images don't fill the space of all possible pixel arrays. They cluster on a thin, curved <em>manifold</em>: a low-dimensional surface twisting through a very high-dimensional pixel space. Most points in pixel space are static, noise, garbage. Only a tiny, oddly-shaped sliver contains real faces.</p>
+
+  <p>A Gaussian, geometrically, is an ellipsoid. It's round. It's convex. It has no choice but to put probability mass uniformly throughout some symmetric region around its center. If you ask it to "cover" the face manifold, it has to inflate enough to contain that curved ribbon, which means it also has to contain a vast region <em>off</em> the manifold, where no real faces exist at all.</p>
+
+  <figure class="figure">
+    <img src="/images/posts/diffusion-2-manifold.png" alt="Real face images cluster on a thin curved manifold while a Gaussian wastes probability mass everywhere else">
+    <figcaption>The face manifold is the thin green ribbon. The Gaussian's probability mass is the gray ellipse around it. Almost all of that ellipse is wasted.</figcaption>
+  </figure>
+
+  <p>So the Gaussian "fits" only in the loosest sense. It assigns roughly equal probability to real faces and to the void around them. Sample from it and you'll almost certainly get something that isn't a face. That's the failure mode, and it's structural, not a question of training harder.</p>
+
+  <h2>Why local steps work</h2>
+
+  <p>Now zoom into a single diffusion step and something genuinely different happens.</p>
+
+  <figure class="figure">
+    <img src="/images/posts/diffusion-3-zoom.png" alt="Zooming in on one diffusion step shows that locally, the manifold is nearly flat and a small isotropic Gaussian fits perfectly">
+    <figcaption>Zoom in far enough and any smooth manifold looks locally flat. The local one-step Gaussian fits exactly.</figcaption>
+  </figure>
+
+  <p>At a single point on the manifold, the question is no longer "where do all faces live?" It's "given you're at <code class="inline">x<sub>t-1</sub></code>, where does <code class="inline">x<sub>t</sub></code> land after one tiny nudge of independent noise?"</p>
+
+  <p>That really is a small, round, symmetric cloud. A Gaussian. The model doesn't need to know the global shape of the manifold at all. It needs to know "a tiny bit of isotropic noise was added." That's a fact about the <em>forward process</em>, which is defined by the math:</p>
+
+  <div class="math">q(x<sub>t</sub> | x<sub>t-1</sub>) = 𝒩(√(1−β) · x<sub>t-1</sub>, β·I)</div>
+
+  <p>You chose β to be small. You chose the noise to be isotropic. There's nothing to approximate. The Gaussian isn't being forced to describe something complicated; it's describing something that is, by construction, exactly Gaussian.</p>
+
+  <div class="callout">
+    <div class="label">→ The key distinction</div>
+    <p><strong>Global Gaussian:</strong> "Describe where all faces live in pixel space" — fails, too rigid. <strong>Local step Gaussian:</strong> "Describe where this one point lands after a tiny nudge of noise" — trivially exact, always true.</p>
+  </div>
+
+  <p>The complexity of face-space doesn't get baked into any single distribution. It emerges from chaining thousands of these tiny exact steps together. That's the whole insight.</p>
+
+  <h2>But wait — doesn't a VAE also use a Gaussian?</h2>
+
+  <p>This is the question that always comes up next, and it's a sharp one. A variational autoencoder also models things with a Gaussian, in a single step, and people don't usually accuse VAEs of being "trivially exact." So what's going on?</p>
+
+  <p>The answer is that a VAE and a diffusion model are using Gaussians for different jobs, and only one of them is using the Gaussian honestly.</p>
+
+  <figure class="figure">
+    <img src="/images/posts/diffusion-4-vae-vs-diffusion.png" alt="VAE forces a Gaussian onto the latent posterior, which is an approximation. Diffusion uses a Gaussian for a process that is exactly Gaussian.">
+    <figcaption>Both use Gaussians, but the VAE forces one onto a non-Gaussian posterior, while diffusion uses a Gaussian to describe a process that is Gaussian by construction.</figcaption>
+  </figure>
+
+  <h3>The VAE's Gaussian is an approximation</h3>
+
+  <p>A VAE's encoder takes a face image <code class="inline">x</code> and maps it to a distribution in latent space, <code class="inline">q(z|x)</code>. The true posterior over latents given the image is almost certainly not Gaussian. It's some complicated, curved shape determined by the geometry of the latent space and the decoder. But the VAE <em>forces</em> it to be Gaussian anyway, because that's what makes the math tractable. That's the "variational" part of "variational autoencoder": you're optimizing a lower bound precisely because the true posterior is intractable.</p>
+
+  <p>This is a convenient lie. The model says "I'll pretend the posterior is Gaussian and accept the quality penalty." That's where the famous VAE blurriness comes from. You're approximating a thing that is intrinsically not Gaussian with the closest Gaussian you can find, and the gap between them shows up as fuzziness in the samples.</p>
+
+  <h3>The diffusion Gaussian is exact</h3>
+
+  <p>Diffusion's Gaussian is doing the opposite thing. It's not being forced onto an intractable posterior. It's describing a forward process that <em>you designed</em> to be Gaussian. Adding a tiny bit of isotropic Gaussian noise to an image is, by definition, a Gaussian perturbation. There's no approximation. The model isn't pretending. The process really is Gaussian, and the math really does work out exactly.</p>
+
+  <div class="comparison">
+    <div class="col fail">
+      <div class="col-tag">↓ VAE</div>
+      <h4>"The posterior is complicated, but let's pretend it's Gaussian so we can compute."</h4>
+      <p>Approximate. The quality cost shows up as blurry samples.</p>
+    </div>
+    <div class="col success">
+      <div class="col-tag">↑ Diffusion</div>
+      <h4>"Each small noise step is Gaussian by construction."</h4>
+      <p>Exact. No quality penalty from this part of the model.</p>
+    </div>
+  </div>
+
+  <p>The VAE trades quality for tractability. Diffusion gets both, by being clever about <em>what</em> it asks the Gaussian to describe. Both models are doing variational inference in some sense, but diffusion sets things up so the variational gap collapses to zero at each step.</p>
+
+  <div class="pullquote">
+    <q>The same tool can be a poor fit for one job and a perfect fit for another. The question to ask isn't "is a Gaussian rich enough?" but "what exactly are you asking the Gaussian to describe?"</q>
+  </div>
+
+  <h2>The takeaway</h2>
+
+  <p>The confusion around "Gaussians can't model faces, but diffusion uses Gaussians" dissolves once you separate two questions that look the same on the surface but are completely different underneath.</p>
+
+  <p>"What's the probability of this image being a face?" requires modeling the global face manifold. A Gaussian is hopelessly inadequate for this. The manifold is curved, sparse, and lives in a tiny corner of pixel space; the Gaussian is round and fat and bleeds probability mass everywhere.</p>
+
+  <p>"What's the probability that this slightly noisier image came from this slightly less noisy image, given that I added Gaussian noise?" is a different question entirely. It has a clean closed-form answer. The Gaussian isn't approximating anything; it's just describing the noise you added.</p>
+
+  <p>Diffusion's whole trick is to never ask the hard question directly. It decomposes "generate a face" into thousands of "denoise this slightly" steps. Each step is so simple that a Gaussian models it exactly. The hard structure of face-space emerges from the composition, not from any single distribution.</p>
+
+  <p class="closing">
+    The Gaussian was never the problem. The problem was asking it to describe something it couldn't possibly describe. Once we let it describe only the thing it was always good at — small, local, isotropic perturbations — everything else falls into place.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>

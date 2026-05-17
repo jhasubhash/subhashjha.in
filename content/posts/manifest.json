@@ -1,5 +1,16 @@
 [
   {
+    "slug": "gaussian-diffusion",
+    "title": "Why a Gaussian Can't Model Faces, But Can Model Diffusion",
+    "htmlTitle": "Why a Gaussian can't model faces, but <em style=\"color:#6b3a8a\">can model diffusion.</em>",
+    "description": "It seems like a contradiction. The same distribution that's hopelessly inadequate for generating images is at the heart of the most powerful image generators we have. The resolution is in what we're asking it to do.",
+    "date": "2026-05-18",
+    "readTime": "~7 min read",
+    "category": "Notes",
+    "eyebrow": "Notes · ML · Diffusion Models",
+    "status": "published"
+  },
+  {
     "slug": "type-erasure-cpp",
     "title": "Type Erasure in C++: Polymorphism Without the Inheritance Tax",
     "htmlTitle": "Type erasure in C++: polymorphism <em style=\"color:#8c4424\">without the inheritance tax.</em>",
