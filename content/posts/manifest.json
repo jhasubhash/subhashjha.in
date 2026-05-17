@@ -8,7 +8,8 @@
     "date": "2026-05-17",
     "readTime": "~8 min read",
     "category": "Notes",
-    "eyebrow": "Notes · C++ · Design Patterns"
+    "eyebrow": "Notes · C++ · Design Patterns",
+    "status": "published"
   },
   {
     "slug": "copy-on-write-undo-stack",
@@ -18,7 +19,8 @@
     "date": "2026-05-16",
     "readTime": "~6 min read",
     "category": "Notes",
-    "eyebrow": "Notes · C++ · Design Patterns"
+    "eyebrow": "Notes · C++ · Design Patterns",
+    "status": "published"
   },
   {
     "slug": "creative-software-distribution",
@@ -28,7 +30,8 @@
     "date": "2026-05-16",
     "readTime": "~10 min read",
     "category": "Essay",
-    "eyebrow": "Essay · Strategy · The AI Shakeout"
+    "eyebrow": "Essay · Strategy · The AI Shakeout",
+    "status": "published"
   },
   {
     "slug": "quiet-coder-disappearing",
@@ -38,7 +41,8 @@
     "date": "2026-05-15",
     "readTime": "~9 min read",
     "category": "Essay",
-    "eyebrow": "Essay · AI · The Changing Developer"
+    "eyebrow": "Essay · AI · The Changing Developer",
+    "status": "published"
   },
   {
     "slug": "tool-tax",
@@ -48,7 +52,8 @@
     "date": "2026-05-14",
     "readTime": "~10 min read",
     "category": "Essay",
-    "eyebrow": "Essay · Tools · Creativity"
+    "eyebrow": "Essay · Tools · Creativity",
+    "status": "published"
   },
   {
     "slug": "bettertouchtool-launcher",
@@ -56,6 +61,7 @@
     "description": "I've been a Raycast loyalist for years. Then BetterTouchTool 6.493 shipped a full SwiftUI launcher, and in one weekend I rebuilt three plugins that outperformed what I had in Raycast.",
     "date": "2026-05-11",
     "readTime": "~9 min read",
-    "category": "macOS Tools"
+    "category": "macOS Tools",
+    "status": "published"
   }
 ]
