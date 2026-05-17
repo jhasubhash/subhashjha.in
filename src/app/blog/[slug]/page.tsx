@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function formatDate(dateStr: string) {
+  if (!dateStr) return "Draft";
   return new Date(dateStr).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",

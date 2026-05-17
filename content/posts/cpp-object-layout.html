@@ -1,0 +1,828 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.vtl-root {
+  --vtl-bg: #faf8f3;
+  --vtl-bg-warm: #ede8d8;
+  --vtl-bg-code: #1c1a17;
+  --vtl-ink: #1a1815;
+  --vtl-ink-mid: #5a5347;
+  --vtl-ink-faint: #948c7d;
+  --vtl-rule: #ddd6c2;
+  --vtl-accent: #2d5c8a;
+  --vtl-accent-bright: #3a76b0;
+  --vtl-accent-soft: #dde6ef;
+  --vtl-vptr: #8a3a2e;
+  --vtl-vptr-soft: #f0e0db;
+  --vtl-vtable: #3a6850;
+  --vtl-vtable-soft: #dde9e2;
+  --vtl-member: #8a6a30;
+  --vtl-member-soft: #ede2c8;
+  --vtl-padding: #948c7d;
+  --vtl-padding-soft: #e8e4dc;
+  --vtl-syntax-kw: #d4886a;
+  --vtl-syntax-ty: #c3a868;
+  --vtl-syntax-st: #8aaa7a;
+  --vtl-syntax-cm: #6b6258;
+  --vtl-syntax-fn: #c8a878;
+  --vtl-syntax-num: #b88a48;
+}
+
+.vtl-root .article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
+.vtl-root p { margin-bottom: 22px; color: var(--vtl-ink); }
+.vtl-root p:last-child { margin-bottom: 0; }
+.vtl-root strong { font-weight: 600; }
+.vtl-root em { font-style: italic; color: var(--vtl-ink-mid); }
+
+.vtl-root code.inline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+  background: var(--vtl-bg-warm);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--vtl-accent);
+  border: 1px solid var(--vtl-rule);
+}
+
+.vtl-root .lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--vtl-ink);
+  margin-bottom: 36px;
+}
+
+.vtl-root h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 64px 0 22px;
+  color: var(--vtl-ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--vtl-rule);
+}
+
+.vtl-root h2:first-of-type { border-top: none; padding-top: 0; }
+
+.vtl-root h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--vtl-ink);
+  margin: 36px 0 14px;
+}
+
+/* Code block */
+.vtl-root .code-block {
+  margin: 28px 0;
+  background: var(--vtl-bg-code);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.vtl-root .code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #2a2724;
+  border-bottom: 1px solid #333028;
+}
+
+.vtl-root .code-header .file { color: #c4b8a8; font-size: 12px; }
+.vtl-root .code-header .lang { font-size: 10px; color: var(--vtl-accent-bright); letter-spacing: 0.15em; text-transform: uppercase; }
+
+.vtl-root .code-block pre {
+  padding: 20px 22px;
+  overflow-x: auto;
+  color: #d8d2c2;
+}
+
+.vtl-root .code-block code { font-family: inherit; }
+.vtl-root .kw { color: var(--vtl-syntax-kw); }
+.vtl-root .ty { color: var(--vtl-syntax-ty); }
+.vtl-root .st { color: var(--vtl-syntax-st); }
+.vtl-root .cm { color: var(--vtl-syntax-cm); font-style: italic; }
+.vtl-root .fn { color: var(--vtl-syntax-fn); }
+.vtl-root .num { color: var(--vtl-syntax-num); }
+
+/* Memory layout */
+.vtl-root .layout {
+  margin: 32px 0;
+  padding: 28px 32px;
+  background: white;
+  border: 1px solid var(--vtl-rule);
+  border-radius: 10px;
+}
+
+.vtl-root .layout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vtl-accent);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.vtl-root .mem-stack { display: grid; gap: 4px; }
+
+.vtl-root .mem-cell {
+  display: grid;
+  grid-template-columns: 60px 1fr 120px;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--vtl-rule);
+  background: white;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.vtl-root .mem-cell.vptr { background: var(--vtl-vptr-soft); border-color: var(--vtl-vptr); }
+.vtl-root .mem-cell.vptr .name { color: var(--vtl-vptr); font-weight: 600; }
+.vtl-root .mem-cell.member { background: var(--vtl-member-soft); border-color: var(--vtl-member); }
+.vtl-root .mem-cell.member .name { color: var(--vtl-member); font-weight: 500; }
+.vtl-root .mem-cell.padding { background: var(--vtl-padding-soft); border-color: var(--vtl-padding); opacity: 0.7; }
+.vtl-root .mem-cell.padding .name { color: var(--vtl-padding); font-style: italic; }
+.vtl-root .mem-cell.subobj-header {
+  background: var(--vtl-bg-warm);
+  border: none;
+  border-bottom: 1px dashed var(--vtl-rule);
+  padding: 12px 16px 8px;
+  border-radius: 4px;
+  grid-template-columns: 1fr;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--vtl-ink-mid);
+  margin-top: 8px;
+}
+
+.vtl-root .mem-cell .offset { color: var(--vtl-ink-faint); font-size: 11px; letter-spacing: 0.05em; }
+.vtl-root .mem-cell .size { color: var(--vtl-ink-faint); font-size: 11px; text-align: right; letter-spacing: 0.05em; }
+.vtl-root .mem-cell .arrow { display: inline-block; margin-left: 8px; color: var(--vtl-accent); font-size: 14px; }
+
+/* vtable card */
+.vtl-root .with-vtable {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.vtl-root .vtable-card {
+  background: var(--vtl-vtable-soft);
+  border: 1px solid var(--vtl-vtable);
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+}
+
+.vtl-root .vtable-card .vtable-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--vtl-vtable);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(58, 104, 80, 0.2);
+}
+
+.vtl-root .vtable-card .vt-slot {
+  padding: 4px 0;
+  color: var(--vtl-ink);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.vtl-root .vtable-card .vt-slot .note {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--vtl-ink-faint);
+}
+
+/* Pullquote */
+.vtl-root .pullquote {
+  margin: 48px 0;
+  padding: 32px 36px;
+  text-align: center;
+  border-top: 1px solid var(--vtl-rule);
+  border-bottom: 1px solid var(--vtl-rule);
+}
+
+.vtl-root .pullquote q {
+  font-family: 'Fraunces', serif;
+  font-size: 23px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--vtl-ink);
+  quotes: '\201C' '\201D';
+  display: block;
+}
+
+.vtl-root .pullquote q::before,
+.vtl-root .pullquote q::after {
+  color: var(--vtl-accent);
+  font-size: 28px;
+  line-height: 0;
+  vertical-align: -8px;
+}
+
+/* Callout */
+.vtl-root .callout {
+  margin: 32px 0;
+  padding: 24px 28px;
+  background: var(--vtl-bg-warm);
+  border-left: 3px solid var(--vtl-accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.vtl-root .callout p { font-size: 15.5px; color: var(--vtl-ink); margin: 0; line-height: 1.65; }
+.vtl-root .callout p strong { color: var(--vtl-accent); }
+.vtl-root .callout .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vtl-accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Dispatch steps */
+.vtl-root .dispatch-steps {
+  margin: 28px 0;
+  padding: 28px 32px;
+  background: white;
+  border: 1px solid var(--vtl-rule);
+  border-radius: 10px;
+}
+
+.vtl-root .dispatch-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vtl-accent);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.vtl-root .dispatch-step {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid var(--vtl-rule);
+}
+
+.vtl-root .dispatch-step:first-of-type { border-top: none; padding-top: 0; }
+
+.vtl-root .dispatch-step .num {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--vtl-accent);
+  line-height: 1;
+}
+
+.vtl-root .dispatch-step .body p {
+  font-size: 15px;
+  color: var(--vtl-ink-mid);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.vtl-root .dispatch-step .body p strong { color: var(--vtl-ink); }
+
+/* Cost table */
+.vtl-root .cost-table {
+  margin: 36px 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  background: white;
+  border: 1px solid var(--vtl-rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vtl-root .cost-table th {
+  text-align: left;
+  padding: 14px 18px;
+  background: var(--vtl-bg-warm);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vtl-ink-mid);
+  font-weight: 500;
+  border-bottom: 1px solid var(--vtl-rule);
+}
+
+.vtl-root .cost-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--vtl-rule);
+  vertical-align: top;
+  color: var(--vtl-ink-mid);
+  line-height: 1.55;
+}
+
+.vtl-root .cost-table td:first-child { font-weight: 500; color: var(--vtl-ink); width: 32%; }
+.vtl-root .cost-table tr:last-child td { border-bottom: none; }
+
+/* Closing */
+.vtl-root .closing {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--vtl-rule);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--vtl-ink-mid);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.vtl-root .signoff {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--vtl-ink-faint);
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.vtl-root a { color: var(--vtl-accent); text-decoration: none; }
+.vtl-root a:hover { text-decoration: underline; }
+
+@media (max-width: 720px) {
+  .vtl-root .with-vtable { grid-template-columns: 1fr; }
+  .vtl-root .mem-cell { grid-template-columns: 50px 1fr 80px; font-size: 12px; padding: 12px; gap: 8px; }
+  .vtl-root .mem-cell .offset, .vtl-root .mem-cell .size { font-size: 10px; }
+  .vtl-root .cost-table { font-size: 13px; }
+  .vtl-root .cost-table td:first-child { width: 38%; }
+  .vtl-root .cost-table th, .vtl-root .cost-table td { padding: 12px; }
+  .vtl-root .pullquote q { font-size: 19px; }
+  .vtl-root h2 { font-size: 26px; }
+  .vtl-root .lead { font-size: 19px; }
+  .vtl-root .layout { padding: 22px 18px; }
+  .vtl-root .code-block pre { padding: 16px; font-size: 12.5px; }
+}
+</style>
+
+<div class="vtl-root">
+<article class="article">
+
+  <p class="lead">Most C++ developers can describe what virtual functions <em>do</em>. Far fewer can describe what they actually <em>are</em>, in memory, at the bit level. The mechanism is simple once you see it, and seeing it changes how you think about inheritance, polymorphism, and the hidden costs of both.</p>
+
+  <p>This is a tour of the layout. We'll start with a plain struct, add a virtual function, derive from it, then break things with multiple inheritance and put them back together with virtual inheritance. By the end you'll have a clear mental model of what your objects look like when the compiler is done with them.</p>
+
+  <h2>The simple case: no virtuals, no surprises</h2>
+
+  <p>A struct with no virtual functions has the layout you'd expect from reading the source. Members are placed sequentially in memory, with padding inserted to satisfy alignment requirements.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">simple.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">struct</span> <span class="ty">Simple</span> {
+    <span class="ty">int</span> x;      <span class="cm">// offset 0</span>
+    <span class="ty">double</span> y;   <span class="cm">// offset 8 (padded for alignment)</span>
+};
+<span class="cm">// sizeof(Simple) == 16 on a typical 64-bit system</span></code></pre>
+  </div>
+
+  <div class="layout">
+    <div class="layout-label">Memory layout: Simple</div>
+    <div class="mem-stack">
+      <div class="mem-cell member">
+        <span class="offset">+0</span>
+        <span class="name">int x</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell padding">
+        <span class="offset">+4</span>
+        <span class="name">padding</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+8</span>
+        <span class="name">double y</span>
+        <span class="size">8 bytes</span>
+      </div>
+    </div>
+  </div>
+
+  <p>No hidden fields. What you declared is what you got, plus a bit of padding. This is how every non-polymorphic class behaves in C++. It's also the layout you'd get in C.</p>
+
+  <h2>What changes the moment you add <code class="inline">virtual</code></h2>
+
+  <p>Add a single virtual function to a class and the compiler injects a hidden pointer into every instance. That pointer is called the <strong>vptr</strong>, and it points to a per-class table of function pointers called the <strong>vtable</strong>.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">base.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">class</span> <span class="ty">Base</span> {
+<span class="kw">public</span>:
+    <span class="ty">int</span> x;
+    <span class="kw">virtual</span> <span class="kw">void</span> <span class="fn">foo</span>();
+    <span class="kw">virtual</span> <span class="kw">void</span> <span class="fn">bar</span>();
+};</code></pre>
+  </div>
+
+  <div class="layout">
+    <div class="layout-label">Memory layout: Base</div>
+    <div class="with-vtable">
+      <div class="mem-stack">
+        <div class="mem-cell vptr">
+          <span class="offset">+0</span>
+          <span class="name">vptr<span class="arrow">→</span></span>
+          <span class="size">8 bytes</span>
+        </div>
+        <div class="mem-cell member">
+          <span class="offset">+8</span>
+          <span class="name">int x</span>
+          <span class="size">4 bytes</span>
+        </div>
+        <div class="mem-cell padding">
+          <span class="offset">+12</span>
+          <span class="name">padding</span>
+          <span class="size">4 bytes</span>
+        </div>
+      </div>
+      <div class="vtable-card">
+        <div class="vtable-title">Base's vtable (static)</div>
+        <div class="vt-slot"><span>&amp;Base::foo</span><span class="note">slot 0</span></div>
+        <div class="vt-slot"><span>&amp;Base::bar</span><span class="note">slot 1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p>Two things to internalize from this picture. First, the vptr is typically placed <em>first</em>, before your declared members. Second, there's exactly <strong>one vtable per class</strong>, not per object. The vtable is a static thing the compiler generates at compile time. Every instance of <code class="inline">Base</code> just stores a pointer to the same shared table.</p>
+
+  <p>So the per-object overhead is just one pointer: 8 bytes on a 64-bit system. The vtable itself doesn't grow with the number of instances. Make a million <code class="inline">Base</code>s and you have a million vptrs all pointing to the same place.</p>
+
+  <h2>Inheritance: a new vtable, mostly the same shape</h2>
+
+  <p>When you derive from a polymorphic class and override some functions, the derived class gets its own vtable. Overridden slots point to the new implementations. Inherited-but-not-overridden slots still point to the base's implementations.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">derived.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">class</span> <span class="ty">Derived</span> : <span class="kw">public</span> <span class="ty">Base</span> {
+<span class="kw">public</span>:
+    <span class="ty">int</span> y;
+    <span class="kw">void</span> <span class="fn">foo</span>() <span class="kw">override</span>;   <span class="cm">// overrides Base::foo</span>
+    <span class="kw">virtual</span> <span class="kw">void</span> <span class="fn">baz</span>();      <span class="cm">// new virtual, appended</span>
+};</code></pre>
+  </div>
+
+  <div class="layout">
+    <div class="layout-label">Memory layout: Derived</div>
+    <div class="with-vtable">
+      <div class="mem-stack">
+        <div class="mem-cell vptr">
+          <span class="offset">+0</span>
+          <span class="name">vptr<span class="arrow">→</span></span>
+          <span class="size">8 bytes</span>
+        </div>
+        <div class="mem-cell member">
+          <span class="offset">+8</span>
+          <span class="name">int x  <em style="color: var(--vtl-ink-faint); font-size: 11px;">(from Base)</em></span>
+          <span class="size">4 bytes</span>
+        </div>
+        <div class="mem-cell member">
+          <span class="offset">+12</span>
+          <span class="name">int y</span>
+          <span class="size">4 bytes</span>
+        </div>
+      </div>
+      <div class="vtable-card">
+        <div class="vtable-title">Derived's vtable</div>
+        <div class="vt-slot"><span>&amp;Derived::foo</span><span class="note">overridden</span></div>
+        <div class="vt-slot"><span>&amp;Base::bar</span><span class="note">inherited</span></div>
+        <div class="vt-slot"><span>&amp;Derived::baz</span><span class="note">new</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p>When you call <code class="inline">basePtr-&gt;foo()</code>, the runtime does exactly three things:</p>
+
+  <div class="dispatch-steps">
+    <div class="dispatch-label">→ The actual dispatch mechanism</div>
+    <div class="dispatch-step">
+      <div class="num">1</div>
+      <div class="body">
+        <p><strong>Read the vptr.</strong> Load the hidden first field at <code class="inline">basePtr + 0</code>. This is one memory access.</p>
+      </div>
+    </div>
+    <div class="dispatch-step">
+      <div class="num">2</div>
+      <div class="body">
+        <p><strong>Index into the vtable.</strong> Slot 0 holds <code class="inline">foo</code>. Load the function pointer at <code class="inline">vptr + slot * 8</code>.</p>
+      </div>
+    </div>
+    <div class="dispatch-step">
+      <div class="num">3</div>
+      <div class="body">
+        <p><strong>Call it.</strong> An indirect call through the function pointer just loaded.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>If the actual object is a <code class="inline">Derived</code>, the vptr points to <code class="inline">Derived</code>'s vtable, so slot 0 resolves to <code class="inline">&amp;Derived::foo</code>. That's it. That's the entire mechanism of runtime polymorphism in C++. There's no magic — it's just one extra load and one indirect call compared to a direct function call.</p>
+
+  <div class="callout">
+    <div class="label">→ Why this is fast</div>
+    <p>The vtable lookup itself is two pointer dereferences and a call. Modern CPUs predict indirect branches well when the call site is monomorphic (always hitting the same target). The actual cost of a virtual call in tight code is often <strong>indistinguishable from a direct call</strong> until you start mixing types in a way that defeats branch prediction.</p>
+  </div>
+
+  <h2>Multiple inheritance: now you have two vptrs</h2>
+
+  <p>When a class inherits from two unrelated polymorphic bases, each base gets its own subobject inside the derived class, and each subobject has its own vptr.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">multiple_inheritance.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">class</span> <span class="ty">A</span> {
+<span class="kw">public</span>:
+    <span class="ty">int</span> a;
+    <span class="kw">virtual</span> <span class="kw">void</span> <span class="fn">fa</span>();
+};
+
+<span class="kw">class</span> <span class="ty">B</span> {
+<span class="kw">public</span>:
+    <span class="ty">int</span> b;
+    <span class="kw">virtual</span> <span class="kw">void</span> <span class="fn">fb</span>();
+};
+
+<span class="kw">class</span> <span class="ty">C</span> : <span class="kw">public</span> <span class="ty">A</span>, <span class="kw">public</span> <span class="ty">B</span> {
+<span class="kw">public</span>:
+    <span class="ty">int</span> c;
+    <span class="kw">void</span> <span class="fn">fa</span>() <span class="kw">override</span>;
+    <span class="kw">void</span> <span class="fn">fb</span>() <span class="kw">override</span>;
+    <span class="kw">virtual</span> <span class="kw">void</span> <span class="fn">fc</span>();
+};</code></pre>
+  </div>
+
+  <div class="layout">
+    <div class="layout-label">Memory layout: C (multiple inheritance)</div>
+    <div class="mem-stack">
+      <div class="mem-cell subobj-header">A subobject</div>
+      <div class="mem-cell vptr">
+        <span class="offset">+0</span>
+        <span class="name">vptr_A<span class="arrow">→</span></span>
+        <span class="size">8 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+8</span>
+        <span class="name">int a</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell padding">
+        <span class="offset">+12</span>
+        <span class="name">padding</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell subobj-header">B subobject</div>
+      <div class="mem-cell vptr">
+        <span class="offset">+16</span>
+        <span class="name">vptr_B<span class="arrow">→</span></span>
+        <span class="size">8 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+24</span>
+        <span class="name">int b</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+28</span>
+        <span class="name">int c</span>
+        <span class="size">4 bytes</span>
+      </div>
+    </div>
+  </div>
+
+  <p>Now things get interesting. When you hold a <code class="inline">B*</code> that actually points to a <code class="inline">C</code> object, that pointer does <em>not</em> point to offset 0 of the <code class="inline">C</code>. It points to <strong>offset 16</strong>, which is the start of the <code class="inline">B</code> subobject. The compiler adjusts the pointer value during the cast.</p>
+
+  <p>This is why casting between base classes in multiple inheritance isn't always a no-op. Going from <code class="inline">C*</code> to <code class="inline">B*</code> is an addition. Going from <code class="inline">B*</code> back to <code class="inline">C*</code> is a subtraction. The compiler tracks the offsets and inserts the arithmetic for you.</p>
+
+  <h3>The thunk problem</h3>
+
+  <p>Here's where it gets subtle. When someone calls <code class="inline">fb()</code> through a <code class="inline">B*</code>, the runtime reads <code class="inline">vptr_B</code>, looks up <code class="inline">fb</code>'s slot, and finds <code class="inline">&amp;C::fb</code>. But <code class="inline">C::fb</code> is a member function of <code class="inline">C</code>. It expects <code class="inline">this</code> to point to the full <code class="inline">C</code> object at offset 0, not the <code class="inline">B</code> subobject at offset 16.</p>
+
+  <p>The vtable entry doesn't actually point directly to <code class="inline">C::fb</code>. It points to a small compiler-generated stub called a <strong>thunk</strong>, which subtracts 16 from <code class="inline">this</code>, then jumps to the real <code class="inline">C::fb</code>. The cost is a few extra instructions, invisible at the source level, but real in the generated code.</p>
+
+  <div class="pullquote">
+    <q>Multiple inheritance gives you two vptrs, pointer arithmetic on every cast, and thunks on virtual calls. It works, but it's not free. This is one reason it has a reputation.</q>
+  </div>
+
+  <h2>The diamond problem</h2>
+
+  <p>Things get worse when the inheritance graph forms a diamond. Suppose you have an <code class="inline">Animal</code> base and two intermediate classes, <code class="inline">Mammal</code> and <code class="inline">WingedAnimal</code>, that both inherit from <code class="inline">Animal</code>. Now you want a <code class="inline">Bat</code> that inherits from both.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">diamond.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">class</span> <span class="ty">Animal</span> {
+<span class="kw">public</span>:
+    <span class="ty">int</span> weight;
+    <span class="kw">virtual</span> <span class="kw">void</span> <span class="fn">speak</span>();
+};
+
+<span class="kw">class</span> <span class="ty">Mammal</span> : <span class="kw">public</span> <span class="ty">Animal</span> { <span class="ty">int</span> fur_length; };
+<span class="kw">class</span> <span class="ty">WingedAnimal</span> : <span class="kw">public</span> <span class="ty">Animal</span> { <span class="ty">int</span> wingspan; };
+
+<span class="kw">class</span> <span class="ty">Bat</span> : <span class="kw">public</span> <span class="ty">Mammal</span>, <span class="kw">public</span> <span class="ty">WingedAnimal</span> {
+    <span class="kw">void</span> <span class="fn">speak</span>() <span class="kw">override</span>;
+};</code></pre>
+  </div>
+
+  <p>Without doing anything special, a <code class="inline">Bat</code> contains <em>two separate copies</em> of <code class="inline">Animal</code>: one inside <code class="inline">Mammal</code>, one inside <code class="inline">WingedAnimal</code>. Each has its own <code class="inline">weight</code> field at a different memory location.</p>
+
+  <div class="layout">
+    <div class="layout-label">Bat layout (non-virtual inheritance)</div>
+    <div class="mem-stack">
+      <div class="mem-cell subobj-header">Mammal subobject (contains its own Animal)</div>
+      <div class="mem-cell vptr">
+        <span class="offset">+0</span>
+        <span class="name">vptr (Animal #1)</span>
+        <span class="size">8 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+8</span>
+        <span class="name">weight #1</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+12</span>
+        <span class="name">fur_length</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell subobj-header">WingedAnimal subobject (contains its own Animal)</div>
+      <div class="mem-cell vptr">
+        <span class="offset">+16</span>
+        <span class="name">vptr (Animal #2)</span>
+        <span class="size">8 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+24</span>
+        <span class="name">weight #2</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+28</span>
+        <span class="name">wingspan</span>
+        <span class="size">4 bytes</span>
+      </div>
+    </div>
+  </div>
+
+  <p>Now <code class="inline">bat.weight</code> is <strong>ambiguous</strong>. Which weight? The one inside <code class="inline">Mammal</code> or the one inside <code class="inline">WingedAnimal</code>? You have to write <code class="inline">bat.Mammal::weight</code> or <code class="inline">bat.WingedAnimal::weight</code>, and they refer to different memory locations holding different values. This is the diamond problem.</p>
+
+  <h3>Virtual inheritance, and what it costs</h3>
+
+  <p>The fix is to mark the inheritance as <code class="inline">virtual</code>, which tells the compiler "no matter how many paths reach <code class="inline">Animal</code>, only one copy should exist."</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="file">virtual_inheritance.cpp</span>
+      <span class="lang">C++</span>
+    </div>
+<pre><code><span class="kw">class</span> <span class="ty">Mammal</span> : <span class="kw">virtual</span> <span class="kw">public</span> <span class="ty">Animal</span> { <span class="cm">/* ... */</span> };
+<span class="kw">class</span> <span class="ty">WingedAnimal</span> : <span class="kw">virtual</span> <span class="kw">public</span> <span class="ty">Animal</span> { <span class="cm">/* ... */</span> };
+<span class="kw">class</span> <span class="ty">Bat</span> : <span class="kw">public</span> <span class="ty">Mammal</span>, <span class="kw">public</span> <span class="ty">WingedAnimal</span> { <span class="cm">/* ... */</span> };</code></pre>
+  </div>
+
+  <p>Now there's one shared <code class="inline">Animal</code> subobject. But this completely changes the memory layout. <code class="inline">Mammal</code> and <code class="inline">WingedAnimal</code> can no longer assume where the <code class="inline">Animal</code> subobject lives relative to themselves, because that offset depends on the most-derived type.</p>
+
+  <div class="layout">
+    <div class="layout-label">Bat layout (virtual inheritance)</div>
+    <div class="mem-stack">
+      <div class="mem-cell subobj-header">Mammal subobject (no Animal inside it)</div>
+      <div class="mem-cell vptr">
+        <span class="offset">+0</span>
+        <span class="name">vptr_Mammal<span class="arrow">→</span></span>
+        <span class="size">8 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+8</span>
+        <span class="name">fur_length</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell subobj-header">WingedAnimal subobject (no Animal inside it)</div>
+      <div class="mem-cell vptr">
+        <span class="offset">+16</span>
+        <span class="name">vptr_Winged<span class="arrow">→</span></span>
+        <span class="size">8 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+24</span>
+        <span class="name">wingspan</span>
+        <span class="size">4 bytes</span>
+      </div>
+      <div class="mem-cell subobj-header">Shared Animal subobject (one copy, at the end)</div>
+      <div class="mem-cell vptr">
+        <span class="offset">+32</span>
+        <span class="name">vptr_Animal<span class="arrow">→</span></span>
+        <span class="size">8 bytes</span>
+      </div>
+      <div class="mem-cell member">
+        <span class="offset">+40</span>
+        <span class="name">weight (shared)</span>
+        <span class="size">4 bytes</span>
+      </div>
+    </div>
+  </div>
+
+  <p>The critical mechanism is that each vtable now stores a <strong>virtual base offset</strong> (sometimes called <code class="inline">vbase_offset</code>). When code inside <code class="inline">Mammal</code> needs to access the <code class="inline">Animal</code> subobject, it can't just walk to a known offset. It reads the offset from its vtable, then uses that to find <code class="inline">Animal</code>.</p>
+
+  <p>In a standalone <code class="inline">Mammal</code>, the <code class="inline">Animal</code> subobject might be at offset 16. In a <code class="inline">Bat</code>, the same <code class="inline">Mammal</code> code needs to find <code class="inline">Animal</code> at offset 32. The offset in the vtable adapts per most-derived class. This is an <em>extra indirection</em> on every access to the virtual base, on top of the normal virtual function dispatch.</p>
+
+  <h3>And constructors get weird too</h3>
+
+  <p>Virtual bases are constructed first, by the most-derived class. So <code class="inline">Bat</code>'s constructor calls <code class="inline">Animal</code>'s constructor <em>directly</em>. <code class="inline">Mammal</code>'s and <code class="inline">WingedAnimal</code>'s constructors skip the <code class="inline">Animal</code> initialization when they're being constructed as part of a <code class="inline">Bat</code>, because <code class="inline">Bat</code> already handled it. This is why virtual base constructors must be explicitly invoked in the most-derived class's initializer list if they take arguments.</p>
+
+  <h2>The cost summary</h2>
+
+  <p>It's worth laying out the costs explicitly, because the difference between the simple case and the complicated cases is dramatic.</p>
+
+  <table class="cost-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Memory per object</th>
+        <th>Cost per virtual call</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Plain struct (no virtuals)</td>
+        <td>Just the declared members</td>
+        <td>N/A (direct calls only)</td>
+      </tr>
+      <tr>
+        <td>Single inheritance, virtual functions</td>
+        <td>+1 pointer (the vptr)</td>
+        <td>One indirect call through vtable</td>
+      </tr>
+      <tr>
+        <td>Multiple inheritance (N polymorphic bases)</td>
+        <td>+N pointers (one vptr per base subobject)</td>
+        <td>Indirect call, plus a thunk if <code class="inline">this</code> needs adjustment</td>
+      </tr>
+      <tr>
+        <td>Virtual inheritance</td>
+        <td>+N pointers, virtual base at variable offset</td>
+        <td>Indirect call, plus vbase offset lookup for base access</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>This is also why "always prefer composition over inheritance" advice exists. Composition costs nothing structural. Inheritance, especially when it gets exotic, costs real bytes per object and real cycles per call.</p>
+
+  <h2>Why this matters for type erasure</h2>
+
+  <p>This connects directly to <a href="/blog/type-erasure-cpp">the type erasure pattern</a>. When you build a type-erased wrapper around a polymorphic <code class="inline">Concept</code> base class, the <code class="inline">std::unique_ptr&lt;Concept&gt;</code> inside your wrapper is leveraging exactly this vtable machinery. The <code class="inline">Concept</code> base class has virtual functions. The templated <code class="inline">Model&lt;T&gt;</code> overrides them. The vptr inside the heap-allocated <code class="inline">Model&lt;T&gt;</code> is what makes the indirect call dispatch to the right implementation at runtime.</p>
+
+  <p>Type erasure with value semantics is essentially a clever wrapper around the same vptr-and-vtable dance you've been looking at here. The "manual vtable" form of type erasure <a href="/blog/type-erasure-cpp">I wrote about previously</a> is even more direct — instead of relying on the compiler to build the vtable for you, you build it by hand with function pointers stored as members. Same mechanism, different presentation.</p>
+
+  <p class="closing">
+    Everything about C++ polymorphism that feels mysterious resolves into a pointer, a table, and an indirect call. The compiler is doing the work. Once you can see the layout, you can predict the cost — and that's most of what separates "uses inheritance" from "uses inheritance well."
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>

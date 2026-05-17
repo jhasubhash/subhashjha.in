@@ -26,7 +26,10 @@ export function getAllPosts(): Post[] {
 }
 
 export function getPost(slug: string): Post | undefined {
-  return getAllPosts().find((p) => p.slug === slug);
+  const manifest = JSON.parse(
+    fs.readFileSync(path.join(POSTS_DIR, "manifest.json"), "utf-8")
+  ) as Post[];
+  return manifest.find((p) => p.slug === slug);
 }
 
 export function getPostContent(slug: string): string {
