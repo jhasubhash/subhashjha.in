@@ -1,5 +1,16 @@
 [
   {
+    "slug": "engineers-marathon",
+    "title": "The Engineer's Marathon: How to Stay Sharp When the Job Wants You to Sprint Forever",
+    "htmlTitle": "The engineer's marathon: how to stay sharp <em style=\"color:#b85528\">when the job wants you to sprint forever.</em>",
+    "description": "A career in software is long, but every individual quarter wants to feel like a startup. Here's how I think about saying no, splitting time, owning a calendar, and protecting the version of yourself that has to keep doing this for thirty more years.",
+    "date": "2026-05-20",
+    "readTime": "~10 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · Career · Engineering Life",
+    "status": "draft"
+  },
+  {
     "slug": "cpp-object-layout",
     "title": "What's Actually in a C++ Object: vtables, vptrs, and the Cost of Inheritance",
     "htmlTitle": "What's actually inside a C++ object? <em style=\"color:#2d5c8a\">The vtable tour.</em>",

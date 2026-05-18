@@ -1,0 +1,640 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.em-root {
+  --em-bg: #f7f4ed;
+  --em-bg-warm: #ebe5d5;
+  --em-bg-deep: #1a1814;
+  --em-ink: #1a1714;
+  --em-ink-mid: #5a5345;
+  --em-ink-faint: #948b7a;
+  --em-rule: #d8d0bd;
+  --em-accent: #b85528;
+  --em-accent-bright: #d96838;
+  --em-accent-soft: #f5e3d5;
+  --em-growth: #3a7050;
+  --em-growth-soft: #dde8e0;
+  --em-debt: #7a5a20;
+  --em-debt-soft: #ede2c0;
+  --em-team: #4a608a;
+  --em-team-soft: #dde3ee;
+  --em-build: #8a3a5a;
+  --em-build-soft: #efd8de;
+}
+
+.em-root .article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
+.em-root p { margin-bottom: 22px; color: var(--em-ink); }
+.em-root p:last-child { margin-bottom: 0; }
+.em-root strong { font-weight: 600; }
+.em-root em { font-style: italic; color: var(--em-ink-mid); }
+
+.em-root .lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--em-ink);
+  margin-bottom: 36px;
+}
+
+.em-root h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 72px 0 22px;
+  color: var(--em-ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--em-rule);
+}
+
+.em-root h2:first-of-type { border-top: none; padding-top: 0; }
+
+.em-root h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--em-ink);
+  margin: 36px 0 14px;
+}
+
+/* Pullquote */
+.em-root .pullquote {
+  margin: 48px 0;
+  padding: 32px 36px;
+  text-align: center;
+  border-top: 1px solid var(--em-rule);
+  border-bottom: 1px solid var(--em-rule);
+}
+
+.em-root .pullquote q {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--em-ink);
+  quotes: '\201C' '\201D';
+  display: block;
+}
+
+.em-root .pullquote q::before,
+.em-root .pullquote q::after {
+  color: var(--em-accent);
+  font-size: 32px;
+  line-height: 0;
+  vertical-align: -10px;
+}
+
+/* Callout */
+.em-root .callout {
+  margin: 32px 0;
+  padding: 24px 28px;
+  background: var(--em-bg-warm);
+  border-left: 3px solid var(--em-accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.em-root .callout p { font-size: 15.5px; color: var(--em-ink); margin: 0; line-height: 1.65; }
+.em-root .callout p strong { color: var(--em-accent); }
+
+.em-root .callout .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--em-accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Time chart */
+.em-root .time-chart {
+  margin: 36px 0;
+  padding: 32px 36px;
+  background: white;
+  border: 1px solid var(--em-rule);
+  border-radius: 12px;
+}
+
+.em-root .time-chart-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--em-accent);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.em-root .time-chart h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  line-height: 1.25;
+}
+
+.em-root .bar {
+  display: flex;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid var(--em-rule);
+}
+
+.em-root .bar-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.em-root .bar-seg.growth { background: var(--em-growth); width: 20%; }
+.em-root .bar-seg.debt   { background: var(--em-debt);   width: 20%; }
+.em-root .bar-seg.team   { background: var(--em-team);   width: 20%; }
+.em-root .bar-seg.build  { background: var(--em-build);  width: 40%; }
+
+.em-root .time-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.em-root .legend-item {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0;
+}
+
+.em-root .legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.em-root .legend-swatch.growth { background: var(--em-growth); }
+.em-root .legend-swatch.debt   { background: var(--em-debt); }
+.em-root .legend-swatch.team   { background: var(--em-team); }
+.em-root .legend-swatch.build  { background: var(--em-build); }
+
+.em-root .legend-item .body h5 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.em-root .legend-item .body p {
+  font-size: 13.5px;
+  color: var(--em-ink-mid);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.em-root .pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.em-root .pct.growth { color: var(--em-growth); }
+.em-root .pct.debt   { color: var(--em-debt); }
+.em-root .pct.team   { color: var(--em-team); }
+.em-root .pct.build  { color: var(--em-build); }
+
+/* Calendar */
+.em-root .calendar {
+  margin: 36px 0;
+  padding: 32px 36px;
+  background: white;
+  border: 1px solid var(--em-rule);
+  border-radius: 12px;
+}
+
+.em-root .calendar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--em-accent);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.em-root .calendar h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+
+.em-root .day {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid var(--em-rule);
+}
+
+.em-root .day:first-of-type { border-top: none; }
+
+.em-root .day-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--em-ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.em-root .day-block {
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.em-root .day-block .role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.em-root .day-block.standup     { background: var(--em-team-soft);   border-left: 3px solid var(--em-team);   color: var(--em-team);   font-weight: 500; }
+.em-root .day-block.focus       { background: var(--em-growth-soft); border-left: 3px solid var(--em-growth); color: var(--em-growth); font-weight: 500; }
+.em-root .day-block.office-hours{ background: var(--em-accent-soft); border-left: 3px solid var(--em-accent); color: var(--em-accent); font-weight: 500; }
+.em-root .day-block.meetings    { background: var(--em-bg-warm);     border-left: 3px solid var(--em-ink-mid); color: var(--em-ink); }
+.em-root .day-block.flex        { background: white; border: 1px dashed var(--em-rule); color: var(--em-ink-mid); font-style: italic; }
+
+.em-root .calendar-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--em-rule);
+  font-size: 13px;
+  color: var(--em-ink-faint);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* Observations */
+.em-root .observation {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 20px;
+  margin: 28px 0;
+  padding: 22px 0;
+  border-top: 1px solid var(--em-rule);
+}
+
+.em-root .observation .num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--em-accent);
+  line-height: 1;
+}
+
+.em-root .observation h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.em-root .observation p {
+  font-size: 15.5px;
+  color: var(--em-ink-mid);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* Rules box */
+.em-root .rules {
+  margin: 36px 0;
+  padding: 32px 36px;
+  background: var(--em-bg-deep);
+  color: var(--em-bg);
+  border-radius: 12px;
+}
+
+.em-root .rules-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--em-accent-bright);
+  margin-bottom: 14px;
+}
+
+.em-root .rules h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  color: var(--em-bg);
+  line-height: 1.3;
+}
+
+.em-root .rule-item {
+  padding: 14px 0;
+  border-top: 1px solid rgba(247, 244, 237, 0.1);
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.em-root .rule-item:first-of-type { border-top: none; padding-top: 0; }
+
+.em-root .rule-item .mark {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--em-accent-bright);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.em-root .rule-item .body {
+  color: #c8c1ad;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.em-root .rule-item .body strong { color: var(--em-bg); font-weight: 500; }
+
+/* Closing */
+.em-root .closing {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--em-rule);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--em-ink-mid);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.em-root .signoff {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--em-ink-faint);
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .em-root .pullquote q { font-size: 20px; }
+  .em-root .time-chart, .em-root .calendar, .em-root .rules { padding: 24px 22px; }
+  .em-root .time-legend { grid-template-columns: 1fr; gap: 0; }
+  .em-root .bar { height: 44px; }
+  .em-root .bar-seg { font-size: 12px; }
+  .em-root .day { grid-template-columns: 50px 1fr; gap: 10px; }
+  .em-root .day-time { font-size: 10px; }
+  .em-root .day-block { padding: 8px 12px; font-size: 13px; }
+  .em-root .observation { grid-template-columns: 44px 1fr; gap: 14px; }
+  .em-root .observation .num { font-size: 28px; }
+  .em-root h2 { font-size: 26px; }
+  .em-root .lead { font-size: 19px; }
+}
+</style>
+
+<div class="em-root">
+<article class="article">
+
+  <p class="lead">There's a quiet trap in software engineering careers. The job is built around continuous output — features, tickets, releases — and the cadence rewards engineers who say yes, ship fast, and don't push back. In the short term that looks like high performance. Stretch it out over five or ten years and it looks like burnout, shallow expertise, and a strange feeling that you've been very busy without ever getting much better at your craft.</p>
+
+  <p>I've watched this play out in myself and in colleagues, and I've spent the last few years deliberately rearranging how I work to avoid it. This is a collection of the things that have actually helped. Some of it is about boundaries with management, some about time, some about calendars, some about the messy reality of doing knowledge work in a personal life. None of it is revolutionary. All of it is the kind of thing that's easy to know and hard to do.</p>
+
+  <h2>Learn to say no</h2>
+
+  <p>The single most important professional skill I've developed in the last decade is the willingness to argue with my manager. Not constantly, not aggressively, not on small things. But on the things that matter, where I think the team is making a mistake, I push back. And I keep pushing back until either I'm convinced I was wrong or my concerns are genuinely engaged with.</p>
+
+  <p>This is harder than it sounds, and it's especially hard if you come from a culture where deference to seniors is the default. I grew up in India, where respecting elders and authority figures is taught from childhood: at home, at school, at college. That's a beautiful value in many contexts. In a corporate environment, when it crosses over unexamined, it becomes a career-limiting habit.</p>
+
+  <div class="callout">
+    <div class="label">→ The cultural footnote</div>
+    <p>Respecting someone and agreeing with them are <strong>different things</strong>. You can respect your manager deeply and still tell them, in clear professional language, that the decision they're proposing is wrong. The two are not in conflict. Treating them as if they were is what produces the engineer who quietly executes bad ideas for years.</p>
+  </div>
+
+  <p>The mechanics of saying no well are worth thinking about. It's not "no, that's a bad idea." It's "I'm not sure that's the right approach, and here's why. Can we talk it through?" It opens a conversation rather than closing one. It assumes your manager is reasonable and acting in good faith, which is usually true. And critically, it makes it possible for them to update without losing face, which is what most people actually need in order to change their mind.</p>
+
+  <p>Engineers who never push back end up with two career problems. They build a reputation for shipping things even when the strategy is wrong, which gets them associated with the failure when it lands. And they slowly lose the muscle for independent technical judgment, because the muscle atrophies when you stop using it. The senior engineers I respect most are the ones who, kindly but firmly, say no when no is the right answer.</p>
+
+  <h2>The time math nobody teaches you</h2>
+
+  <p>The other shift that mattered for me was getting more deliberate about how I split my working hours. Management wants new features shipped 100% of the time. That's not malicious — it's just what their incentives reward. But humans aren't built to operate at 100% feature delivery, and engineers who try to do so end up shallow, burned out, and slowly less useful over time.</p>
+
+  <p>Ironically, AI <em>is</em> built to operate that way. Constant output, no learning curve, no fatigue. Management has noticed, which is part of why AI is being pushed into every workflow. But the lesson I draw from that isn't "engineers should become AI agents." It's the opposite: we should lean into the things AI can't do, and we should grow ourselves in ways that compound over a career rather than burn ourselves out delivering one feature at a time.</p>
+
+  <p>Here's the split I've landed on. Adjust the percentages to your context, but think of it as a starting point rather than a prescription.</p>
+
+  <div class="time-chart">
+    <div class="time-chart-label">How I divide my working hours</div>
+    <h4>The 20 / 20 / 20 / 40 split</h4>
+
+    <div class="bar">
+      <div class="bar-seg growth">20%</div>
+      <div class="bar-seg debt">20%</div>
+      <div class="bar-seg team">20%</div>
+      <div class="bar-seg build">40%</div>
+    </div>
+
+    <div class="time-legend">
+      <div class="legend-item">
+        <div class="legend-swatch growth"></div>
+        <div class="body">
+          <h5>Self-growth <span class="pct growth">20%</span></h5>
+          <p>Learning new things, reading papers, exploring tools, side experiments. Curiosity is what turns a naive engineer into an informed one.</p>
+        </div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch debt"></div>
+        <div class="body">
+          <h5>Technical debt <span class="pct debt">20%</span></h5>
+          <p>The refactor you never got to. The flaky test. The crash repro ticket gathering dust. The TODO you wrote six months ago.</p>
+        </div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch team"></div>
+        <div class="body">
+          <h5>Team multiplier <span class="pct team">20%</span></h5>
+          <p>KT sessions, unblocking teammates, improving processes, mentoring. Force-multiplies everyone else's 40%.</p>
+        </div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch build"></div>
+        <div class="body">
+          <h5>Shipping <span class="pct build">40%</span></h5>
+          <p>Actual feature work and product delivery. With AI, writing code is fast — reviewing it carefully is the real cognitive load.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>The reaction I usually get to this chart is some variant of "there's no way I can spend 60% of my time on things other than shipping." I'd gently push back on that. The 40% I spend shipping is meaningfully more productive than it would be if I were grinding at 100%, because the other 60% feeds into it. Cleaning technical debt makes future shipping faster. Mentoring teammates raises the floor for everyone. Personal growth means I'm bringing better ideas to the table.</p>
+
+  <p>Spending 100% of your time shipping isn't a productivity strategy. It's a depreciation schedule. You're consuming a skill set you're not replenishing, and eventually the bill comes due.</p>
+
+  <div class="pullquote">
+    <q>Spending 100% of your time shipping isn't a productivity strategy. It's a depreciation schedule.</q>
+  </div>
+
+  <h2>Calendar management is career management</h2>
+
+  <p>The time math only works if you protect it on your calendar, and most engineers I know don't. Their calendars are reactive: meetings get added by other people, focus time gets fragmented, the few hours of deep work that actually move a project forward get pushed to the evenings or to weekends. That's not sustainable.</p>
+
+  <p>Four practical rules I've come to swear by:</p>
+
+  <div class="observation">
+    <div class="num">i</div>
+    <div>
+      <h4>Block a focus slot every day and mark it busy.</h4>
+      <p>Two hours minimum, ideally in the part of your day where you actually think clearly. Not "open to interruption." Not "happy to be pulled into a quick sync." Genuinely blocked, on the calendar, marked busy, with the same authority any other meeting would have.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">ii</div>
+    <div>
+      <h4>Reserve office hours so people can find you.</h4>
+      <p>A predictable 1–2 hour slot where teammates know they can drop in. This isn't optional, because if you're invisible all day people will book meetings instead. Office hours are how you give availability without sacrificing focus.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">iii</div>
+    <div>
+      <h4>15–20 minute standups are enough.</h4>
+      <p>Daily standups exist to surface blockers, not to give status reports. If someone needs deeper unblocking, that's an office hours conversation, not a meeting that should be expanding from 20 minutes to 45.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">iv</div>
+    <div>
+      <h4>Make tea breaks intentional.</h4>
+      <p>Breaks are essential. They restore focus and they build relationships. But unstructured chit-chat sessions silently eat into focus time, and "let me get coffee with so-and-so" can quietly consume an hour you needed. Take breaks deliberately. Make them count.</p>
+    </div>
+  </div>
+
+  <p>Here's roughly what a good day looks like for me:</p>
+
+  <div class="calendar">
+    <div class="calendar-label">A representative day</div>
+    <h4>Calendar shape, not calendar content</h4>
+
+    <div class="day">
+      <div class="day-time">9:30</div>
+      <div class="day-block standup"><span>Daily standup</span><span class="role">20 min</span></div>
+    </div>
+    <div class="day">
+      <div class="day-time">10:00</div>
+      <div class="day-block focus"><span>Focus block — deep work, marked busy</span><span class="role">2 hours</span></div>
+    </div>
+    <div class="day">
+      <div class="day-time">12:00</div>
+      <div class="day-block flex"><span>Lunch, intentional break, walk</span><span class="role">60 min</span></div>
+    </div>
+    <div class="day">
+      <div class="day-time">13:00</div>
+      <div class="day-block office-hours"><span>Office hours — open for teammates</span><span class="role">90 min</span></div>
+    </div>
+    <div class="day">
+      <div class="day-time">14:30</div>
+      <div class="day-block meetings"><span>Scheduled meetings / 1:1s / reviews</span><span class="role">2 hours</span></div>
+    </div>
+    <div class="day">
+      <div class="day-time">16:30</div>
+      <div class="day-block focus"><span>Second focus block — or growth / debt time</span><span class="role">90 min</span></div>
+    </div>
+
+    <p class="calendar-note">The shape matters more than the exact times. Two real focus blocks. One predictable availability slot. Meetings clustered, not scattered. Breaks that I actually take.</p>
+  </div>
+
+  <p>The thing nobody tells you about calendar discipline: <em>nobody else will protect your time.</em> Your manager won't. Your teammates won't. The Jira board definitely won't. If you don't draw the lines, the lines don't exist, and your week becomes whatever other people decided your week should be.</p>
+
+  <h2>Work-life balance, honestly</h2>
+
+  <p>This is the part I find hardest to write about, because the honest answer is messy. I don't have clean 9-to-5 work hours, and I don't think most knowledge workers actually do.</p>
+
+  <p>The reality of software engineering is that the work doesn't always cooperate with office hours. I'll be stuck on a bug all afternoon. I'll go to bed. The solution will pop into my head while I'm brushing my teeth, and the urge to just <em>test it real quick</em> is so strong that I'll end up at my computer for 90 minutes at 11pm. That happens. It's part of doing creative technical work. Pretending it doesn't, or being precious about strict hours, isn't going to make me a better engineer.</p>
+
+  <p>What I do believe in are a small number of non-negotiable rules that keep the flexibility from turning into "always working." These have stood up across years of my career:</p>
+
+  <div class="rules">
+    <div class="rules-label">→ The non-negotiable rules</div>
+    <h4>Flexible hours, fixed boundaries.</h4>
+
+    <div class="rule-item">
+      <div class="mark">i.</div>
+      <div class="body"><strong>Never take meetings at odd hours.</strong> If someone wants a 9pm sync, the answer is no. Late-night code is sometimes okay; late-night meetings are how you end up working two jobs without realizing it.</div>
+    </div>
+
+    <div class="rule-item">
+      <div class="mark">ii.</div>
+      <div class="body"><strong>Have a fixed office-hours window every day.</strong> One to two hours when colleagues can reliably reach you. Outside that, you don't owe anyone instant availability. The predictability makes you <em>more</em> useful, not less.</div>
+    </div>
+
+    <div class="rule-item">
+      <div class="mark">iii.</div>
+      <div class="body"><strong>Working late is a choice, not an expectation.</strong> If you pop back to your computer at 11pm to test an idea, that's yours. The moment someone else expects it, you've quietly created an obligation that will compound until it crushes you.</div>
+    </div>
+
+    <div class="rule-item">
+      <div class="mark">iv.</div>
+      <div class="body"><strong>Protect the recovery time.</strong> If you worked late on Tuesday, take Wednesday morning slowly. The energy budget has to balance over weeks, not over days.</div>
+    </div>
+
+    <div class="rule-item">
+      <div class="mark">v.</div>
+      <div class="body"><strong>Personal life always wins ties.</strong> When a work thing and a personal thing both want the same hour, the personal one wins unless the work thing is genuinely a fire. Most "fires" can wait until tomorrow.</div>
+    </div>
+  </div>
+
+  <p>The version of work-life balance that gets sold to engineers is rigid: clock in, clock out, no exceptions. The version I actually believe in is fluid hours bounded by hard rules. The flexibility is what lets you do good creative work. The rules are what stops the work from eating everything else.</p>
+
+  <h2>The long view</h2>
+
+  <p>The connective thread through all of this is that a software engineering career is a marathon. Most career advice optimizes for the next year, the next promotion, the next perf cycle. Those things matter, but the engineers I've watched do this well — the ones who are still curious, still sharp, still excited about the work after twenty or thirty years — optimize for something different. They optimize for being someone who can keep doing this indefinitely.</p>
+
+  <p>That means saying no when no is right. It means refusing to spend 100% of your time shipping. It means treating your calendar like a deliberate artifact, not an inbox. And it means having boundaries strong enough that the flexibility of the work doesn't quietly consume the rest of your life.</p>
+
+  <p>None of this is anti-management. Good managers want their engineers to grow, to push back when it matters, to invest in technical debt, to mentor others. The problem is that most management systems incentivize shorter time horizons than is healthy for the people inside them. Your job, as the engineer, is to push the time horizon back out. That's not insubordination — that's the longest-running form of professional self-respect there is.</p>
+
+  <p class="closing">
+    You're going to be an engineer for thirty more years. Maybe more. Spend at least a little of every week investing in the version of yourself who has to do it.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>
