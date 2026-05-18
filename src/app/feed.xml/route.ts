@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { getAllPosts, getPostContent } from "@/lib/posts";
 
 const SITE_URL = "https://subhashjha.in";
