@@ -24,6 +24,16 @@ The manifest drives everything: home page listing, RSS feed, and post page rende
 ### 3. Add any images
 Place post images in `public/images/posts/`. Reference them in the HTML as `/images/posts/filename.png`.
 
+#### OG / meta images — always compress before adding
+When adding an `image` field to the manifest for social share previews, **always compress the image first**:
+```bash
+sips -s format jpeg -s formatOptions 85 -Z 1200 input.png --out output.jpg
+```
+- Target format: **JPEG**, quality **85**, max dimension **1200px**
+- Target size: under **400 KB** (original photos are often 2–5 MB — always check with `ls -lh`)
+- Use the `.jpg` extension in the manifest `image` field
+- Delete the original uncompressed file after converting
+
 ### 4. Commit and push
 Push to `main` on the personal GitHub remote:
 ```bash
