@@ -391,6 +391,131 @@
   .vtl-root .layout { padding: 22px 18px; }
   .vtl-root .code-block pre { padding: 16px; font-size: 12.5px; }
 }
+
+/* === Interactive vptr hover overlays === */
+.vtl-root .mem-cell.vtable-interactive {
+  position: relative;
+}
+
+.vtl-root .mem-cell.vtable-interactive .name {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-decoration-color: rgba(138, 58, 46, 0.45);
+  text-underline-offset: 3px;
+}
+
+.vtl-root .mem-cell.vtable-interactive:hover {
+  background: var(--vtl-accent-soft);
+  border-color: var(--vtl-accent);
+}
+
+.vtl-root .mem-cell.vtable-interactive:hover .name {
+  color: var(--vtl-accent);
+  text-decoration-color: var(--vtl-accent);
+}
+
+.vtl-root .vptr-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 48px;
+  transform: translateY(-6px);
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  background: #ffffff;
+  border: 1.5px solid var(--vtl-vtable);
+  border-radius: 8px;
+  padding: 13px 15px;
+  min-width: 230px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+}
+
+/* Arrow pointing down toward the cell */
+.vtl-root .vptr-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 18px;
+  border: 7px solid transparent;
+  border-top-color: var(--vtl-vtable);
+}
+
+.vtl-root .vptr-tooltip::after {
+  content: '';
+  position: absolute;
+  top: calc(100% - 1.5px);
+  left: 19px;
+  border: 6px solid transparent;
+  border-top-color: #ffffff;
+}
+
+.vtl-root .mem-cell.vtable-interactive:hover .vptr-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vtl-root .vptr-tooltip .tt-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--vtl-vtable);
+  margin-bottom: 9px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(58, 104, 80, 0.2);
+}
+
+.vtl-root .vptr-tooltip .tt-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-style: italic;
+  color: var(--vtl-ink-mid);
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  background: var(--vtl-vtable-soft);
+  border-radius: 4px;
+}
+
+.vtl-root .vptr-tooltip .tt-slot {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 3px 0;
+  color: var(--vtl-ink);
+}
+
+.vtl-root .vptr-tooltip .tt-slot-note {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 10px;
+  color: var(--vtl-ink-faint);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .vtl-root .vptr-tooltip {
+    left: 0;
+    bottom: auto;
+    top: calc(100% + 8px);
+    transform: translateY(4px);
+    min-width: 0;
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .vtl-root .mem-cell.vtable-interactive:hover .vptr-tooltip {
+    transform: translateY(0);
+  }
+
+  .vtl-root .vptr-tooltip::before,
+  .vtl-root .vptr-tooltip::after { display: none; }
+}
 </style>
 
 <div class="vtl-root">
@@ -599,10 +724,15 @@
     <div class="layout-label">Memory layout: C (multiple inheritance)</div>
     <div class="mem-stack">
       <div class="mem-cell subobj-header">A subobject</div>
-      <div class="mem-cell vptr">
+      <div class="mem-cell vptr vtable-interactive">
         <span class="offset">+0</span>
         <span class="name">vptr_A<span class="arrow">→</span></span>
         <span class="size">8 bytes</span>
+        <div class="vptr-tooltip">
+          <div class="tt-title">C's vtable — A interface</div>
+          <div class="tt-slot"><span>&amp;C::fa</span><span class="tt-slot-note">slot 0 · overrides A::fa</span></div>
+          <div class="tt-slot"><span>&amp;C::fc</span><span class="tt-slot-note">slot 1 · new virtual</span></div>
+        </div>
       </div>
       <div class="mem-cell member">
         <span class="offset">+8</span>
@@ -615,10 +745,15 @@
         <span class="size">4 bytes</span>
       </div>
       <div class="mem-cell subobj-header">B subobject</div>
-      <div class="mem-cell vptr">
+      <div class="mem-cell vptr vtable-interactive">
         <span class="offset">+16</span>
         <span class="name">vptr_B<span class="arrow">→</span></span>
         <span class="size">8 bytes</span>
+        <div class="vptr-tooltip">
+          <div class="tt-title">C's vtable — B interface</div>
+          <div class="tt-meta">this adjusted by −16 before dispatch</div>
+          <div class="tt-slot"><span>thunk→C::fb</span><span class="tt-slot-note">slot 0 · adjusts this</span></div>
+        </div>
       </div>
       <div class="mem-cell member">
         <span class="offset">+24</span>
@@ -676,10 +811,14 @@
     <div class="layout-label">Bat layout (non-virtual inheritance)</div>
     <div class="mem-stack">
       <div class="mem-cell subobj-header">Mammal subobject (contains its own Animal)</div>
-      <div class="mem-cell vptr">
+      <div class="mem-cell vptr vtable-interactive">
         <span class="offset">+0</span>
-        <span class="name">vptr (Animal #1)</span>
+        <span class="name">vptr (Animal #1)<span class="arrow">→</span></span>
         <span class="size">8 bytes</span>
+        <div class="vptr-tooltip">
+          <div class="tt-title">Bat's vtable — Mammal-side</div>
+          <div class="tt-slot"><span>&amp;Bat::speak</span><span class="tt-slot-note">slot 0 · overrides Animal::speak</span></div>
+        </div>
       </div>
       <div class="mem-cell member">
         <span class="offset">+8</span>
@@ -692,10 +831,15 @@
         <span class="size">4 bytes</span>
       </div>
       <div class="mem-cell subobj-header">WingedAnimal subobject (contains its own Animal)</div>
-      <div class="mem-cell vptr">
+      <div class="mem-cell vptr vtable-interactive">
         <span class="offset">+16</span>
-        <span class="name">vptr (Animal #2)</span>
+        <span class="name">vptr (Animal #2)<span class="arrow">→</span></span>
         <span class="size">8 bytes</span>
+        <div class="vptr-tooltip">
+          <div class="tt-title">Bat's vtable — WingedAnimal-side</div>
+          <div class="tt-meta">this adjusted by −16 before dispatch</div>
+          <div class="tt-slot"><span>thunk→Bat::speak</span><span class="tt-slot-note">slot 0 · adjusts this by −16</span></div>
+        </div>
       </div>
       <div class="mem-cell member">
         <span class="offset">+24</span>
@@ -732,10 +876,15 @@
     <div class="layout-label">Bat layout (virtual inheritance)</div>
     <div class="mem-stack">
       <div class="mem-cell subobj-header">Mammal subobject (no Animal inside it)</div>
-      <div class="mem-cell vptr">
+      <div class="mem-cell vptr vtable-interactive">
         <span class="offset">+0</span>
         <span class="name">vptr_Mammal<span class="arrow">→</span></span>
         <span class="size">8 bytes</span>
+        <div class="vptr-tooltip">
+          <div class="tt-title">Bat's vtable — Mammal-side</div>
+          <div class="tt-meta">vbase_offset: +32 — Animal lives at +32 in Bat</div>
+          <div class="tt-slot"><span>thunk→Bat::speak</span><span class="tt-slot-note">slot 0 · adjust + dispatch</span></div>
+        </div>
       </div>
       <div class="mem-cell member">
         <span class="offset">+8</span>
@@ -743,10 +892,15 @@
         <span class="size">4 bytes</span>
       </div>
       <div class="mem-cell subobj-header">WingedAnimal subobject (no Animal inside it)</div>
-      <div class="mem-cell vptr">
+      <div class="mem-cell vptr vtable-interactive">
         <span class="offset">+16</span>
         <span class="name">vptr_Winged<span class="arrow">→</span></span>
         <span class="size">8 bytes</span>
+        <div class="vptr-tooltip">
+          <div class="tt-title">Bat's vtable — WingedAnimal-side</div>
+          <div class="tt-meta">vbase_offset: +16 — Animal is +16 from this subobj</div>
+          <div class="tt-slot"><span>thunk→Bat::speak</span><span class="tt-slot-note">slot 0 · adjust + dispatch</span></div>
+        </div>
       </div>
       <div class="mem-cell member">
         <span class="offset">+24</span>
@@ -754,10 +908,14 @@
         <span class="size">4 bytes</span>
       </div>
       <div class="mem-cell subobj-header">Shared Animal subobject (one copy, at the end)</div>
-      <div class="mem-cell vptr">
+      <div class="mem-cell vptr vtable-interactive">
         <span class="offset">+32</span>
         <span class="name">vptr_Animal<span class="arrow">→</span></span>
         <span class="size">8 bytes</span>
+        <div class="vptr-tooltip">
+          <div class="tt-title">Bat's shared Animal vtable</div>
+          <div class="tt-slot"><span>&amp;Bat::speak</span><span class="tt-slot-note">slot 0 · real implementation</span></div>
+        </div>
       </div>
       <div class="mem-cell member">
         <span class="offset">+40</span>
