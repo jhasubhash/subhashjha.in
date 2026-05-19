@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -51,6 +52,7 @@ export default function RootLayout({
         <footer className="site-footer">
           <p>© 2026 Subhash Jha</p>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
