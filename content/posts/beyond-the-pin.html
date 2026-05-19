@@ -1,0 +1,770 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.btp-root {
+  --bg: #f8f6f1;
+  --bg-warm: #ece6d6;
+  --bg-deep: #181612;
+  --ink: #1a1815;
+  --ink-mid: #5a5347;
+  --ink-faint: #948c7d;
+  --rule: #ddd6c2;
+  --accent: #c25530;
+  --accent-bright: #d96838;
+  --accent-soft: #f3e0d6;
+  --pin: #b03d28;
+  --pin-soft: #f3d8d0;
+  --semantic: #3a6580;
+  --semantic-soft: #dde5ec;
+  --success: #2d6b4d;
+  --success-soft: #dde9e2;
+}
+
+.btp-root .article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
+.btp-root p { margin-bottom: 22px; color: var(--ink); }
+.btp-root p:last-child { margin-bottom: 0; }
+.btp-root strong { font-weight: 600; }
+.btp-root em { font-style: italic; color: var(--ink-mid); }
+
+.btp-root code.inline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+  background: var(--bg-warm);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--rule);
+}
+
+.btp-root .lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 36px;
+}
+
+.btp-root h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 72px 0 22px;
+  color: var(--ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+
+.btp-root h2:first-of-type { border-top: none; padding-top: 0; }
+
+.btp-root h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 36px 0 14px;
+}
+
+/* Pullquote */
+.btp-root .pullquote {
+  margin: 48px -16px;
+  padding: 32px 36px;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.btp-root .pullquote q {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--ink);
+  quotes: '\201C' '\201D';
+  display: block;
+}
+
+.btp-root .pullquote q::before,
+.btp-root .pullquote q::after {
+  color: var(--accent);
+  font-size: 32px;
+  line-height: 0;
+  vertical-align: -10px;
+}
+
+/* Scene comparison */
+.btp-root .scene-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 36px -16px;
+}
+
+.btp-root .scene {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.btp-root .scene-tag {
+  padding: 10px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule);
+}
+
+.btp-root .scene.pin-mess .scene-tag { color: var(--pin); background: var(--pin-soft); }
+.btp-root .scene.semantic .scene-tag { color: var(--success); background: var(--success-soft); }
+
+.btp-root .scene-canvas {
+  height: 200px;
+  position: relative;
+  background: linear-gradient(180deg, #f5f1e6 0%, #ede7d5 100%);
+  overflow: hidden;
+}
+
+.btp-root .car {
+  position: absolute;
+  width: 90px;
+  height: 36px;
+  background: var(--ink-mid);
+  border-radius: 14px 18px 6px 6px;
+}
+
+.btp-root .car::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 14px;
+  width: 60px;
+  height: 22px;
+  background: var(--ink-mid);
+  border-radius: 12px 14px 4px 4px;
+}
+
+.btp-root .car .wheel {
+  position: absolute;
+  bottom: -7px;
+  width: 14px;
+  height: 14px;
+  background: #1a1815;
+  border-radius: 50%;
+  border: 2px solid #6b6258;
+}
+
+.btp-root .car .wheel.front { right: 10px; }
+.btp-root .car .wheel.back { left: 10px; }
+.btp-root .car-1 { top: 60px; left: 24px; }
+.btp-root .car-2 { top: 130px; left: 80px; background: #6a4a30; }
+.btp-root .car-2::before { background: #6a4a30; }
+.btp-root .car-3 { top: 70px; left: 150px; background: #3a5a4a; }
+.btp-root .car-3::before { background: #3a5a4a; }
+
+.btp-root .pin-marker {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pin);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.btp-root .semantic-outline {
+  position: absolute;
+  border: 2px dashed var(--success);
+  border-radius: 4px;
+  box-shadow: 0 0 0 3px rgba(45, 107, 77, 0.15);
+}
+
+.btp-root .semantic-tag {
+  position: absolute;
+  background: var(--bg-deep);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.btp-root .scene-caption {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.btp-root .scene-caption strong { color: var(--ink); }
+
+/* Comment mock */
+.btp-root .comment-mock {
+  margin: 32px -16px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.btp-root .comment-header {
+  padding: 14px 18px;
+  background: var(--bg-warm);
+  border-bottom: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  font-weight: 500;
+}
+
+.btp-root .comment-body {
+  padding: 18px 22px;
+  display: flex;
+  gap: 14px;
+}
+
+.btp-root .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.btp-root .comment-content { flex: 1; }
+
+.btp-root .comment-author {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.btp-root .comment-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.btp-root .comment-text {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.btp-root .semantic-ref {
+  display: inline-block;
+  background: var(--semantic-soft);
+  color: var(--semantic);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(58, 101, 128, 0.2);
+}
+
+/* Hierarchy tree */
+.btp-root .hierarchy {
+  margin: 36px -16px;
+  padding: 32px 36px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+}
+
+.btp-root .hierarchy-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.btp-root .hierarchy h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+
+.btp-root .tree-node {
+  padding: 10px 14px;
+  margin: 4px 0;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.btp-root .tree-node.level-1 {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  border-left: 3px solid var(--accent);
+}
+
+.btp-root .tree-node.level-2 {
+  background: var(--semantic-soft);
+  color: var(--semantic);
+  margin-left: 24px;
+  border-left: 3px solid var(--semantic);
+}
+
+.btp-root .tree-node.level-3 {
+  background: var(--success-soft);
+  color: var(--success);
+  margin-left: 48px;
+  border-left: 3px solid var(--success);
+}
+
+.btp-root .tree-node .label {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+/* Algorithm steps */
+.btp-root .algo-step {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 22px;
+  margin: 28px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.btp-root .algo-step:first-of-type { border-top: none; padding-top: 8px; }
+
+.btp-root .algo-step .num {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.btp-root .algo-step h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.btp-root .algo-step p {
+  font-size: 15px;
+  color: var(--ink-mid);
+  margin-bottom: 10px;
+  line-height: 1.65;
+}
+
+.btp-root .algo-step p:last-child { margin-bottom: 0; }
+.btp-root .algo-step p strong { color: var(--ink); }
+
+/* Callout */
+.btp-root .callout {
+  margin: 32px -16px;
+  padding: 24px 28px;
+  background: var(--bg-warm);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.btp-root .callout p { font-size: 15.5px; color: var(--ink); margin: 0; line-height: 1.65; }
+.btp-root .callout p strong { color: var(--accent); }
+
+.btp-root .callout .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Comparison table */
+.btp-root .comparison-table {
+  margin: 36px -16px;
+  width: calc(100% + 32px);
+  border-collapse: collapse;
+  font-size: 14.5px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.btp-root .comparison-table th {
+  text-align: left;
+  padding: 14px 18px;
+  background: var(--bg-warm);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule);
+}
+
+.btp-root .comparison-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+.btp-root .comparison-table td:first-child { font-weight: 500; color: var(--ink); width: 28%; }
+.btp-root .comparison-table tr:last-child td { border-bottom: none; }
+
+/* Closing */
+.btp-root .closing {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-mid);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.btp-root .signoff {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .btp-root .pullquote,
+  .btp-root .callout,
+  .btp-root .scene-comparison,
+  .btp-root .comment-mock,
+  .btp-root .hierarchy,
+  .btp-root .comparison-table { margin-left: -22px; margin-right: -22px; }
+  .btp-root .pullquote q { font-size: 20px; }
+  .btp-root .scene-comparison { grid-template-columns: 1fr; gap: 12px; }
+  .btp-root .hierarchy { padding: 24px 22px; }
+  .btp-root .comparison-table { width: calc(100% + 44px); font-size: 13px; }
+  .btp-root .comparison-table th,
+  .btp-root .comparison-table td { padding: 12px; }
+  .btp-root .comparison-table td:first-child { width: 34%; }
+  .btp-root .algo-step { grid-template-columns: 44px 1fr; gap: 14px; }
+  .btp-root .algo-step .num { font-size: 32px; }
+  .btp-root h2 { font-size: 26px; }
+  .btp-root .lead { font-size: 19px; }
+}
+</style>
+
+<div class="btp-root">
+<article class="article">
+
+  <p class="lead">Every design tool, image editor, and document review platform handles collaborative feedback the same way: you click somewhere on the canvas, a little pin appears, and you type your comment. The pin remembers where you clicked. That's it. That's the whole mechanism. It has been for so long that we've stopped noticing how badly it fits the work it's supposed to support.</p>
+
+  <p>The fundamental problem is that pins anchor to <em>coordinates</em> when reviewers really want to anchor to <em>things</em>. "Adjust the contrast on this wheel" is a comment about a wheel, not about pixel <code class="inline">(427, 318)</code>. The wheel might move. It might get cropped. It might get nested inside a new group. The intent of the comment stays the same; the coordinates do not. And so the pin drifts off, the comment loses context, and the reviewer's careful thinking turns into a question mark next to whatever happens to be at position <code class="inline">(427, 318)</code> after the layout changed.</p>
+
+  <p>This isn't a small UX gripe. It's a structural failure that compounds across every collaborative document, and it's worth thinking carefully about what a better model looks like.</p>
+
+  <h2>Why pins were good enough for so long</h2>
+
+  <p>It's worth being fair to the pin. When collaborative review tools first emerged, coordinate-anchored comments were the only thing that worked. The tools didn't understand the contents of the canvas. To them, a design file was a flat image. The only thing the system could reliably reference was the position you clicked. Pins were the highest-resolution interaction the underlying systems could support.</p>
+
+  <p>And for simple documents, pins worked fine. A single image, a single round of feedback, no major edits between drafts. The reviewer pinned, the designer responded, the pin stayed roughly where it should. Everyone moved on.</p>
+
+  <p>But documents got more complex. Reviewers got more demanding. Iteration cycles got faster. Cropping, reordering, regrouping, and reflowing became normal mid-review activities. And the gap between what pins could do and what reviewers needed got wider every year.</p>
+
+  <h2>The actual failure mode</h2>
+
+  <p>Here's a concrete example. A designer shares a canvas with three cars. A reviewer wants to leave specific feedback on the front wheel of the second car.</p>
+
+  <div class="scene-comparison">
+    <div class="scene pin-mess">
+      <div class="scene-tag">→ The pin version</div>
+      <div class="scene-canvas">
+        <div class="car car-1"><div class="wheel back"></div><div class="wheel front"></div></div>
+        <div class="car car-2"><div class="wheel back"></div><div class="wheel front"></div></div>
+        <div class="car car-3"><div class="wheel back"></div><div class="wheel front"></div></div>
+        <div class="pin-marker" style="top: 162px; left: 158px;">1</div>
+        <div class="pin-marker" style="top: 88px; left: 100px;">2</div>
+        <div class="pin-marker" style="top: 165px; left: 180px;">3</div>
+      </div>
+      <div class="scene-caption">
+        Three pins. Pin 1 is near a wheel. Which car's wheel? <strong>Whichever was at those coordinates when the pin was placed.</strong>
+      </div>
+    </div>
+    <div class="scene semantic">
+      <div class="scene-tag">→ The semantic version</div>
+      <div class="scene-canvas">
+        <div class="car car-1"><div class="wheel back"></div><div class="wheel front"></div></div>
+        <div class="car car-2"><div class="wheel back"></div><div class="wheel front"></div></div>
+        <div class="car car-3"><div class="wheel back"></div><div class="wheel front"></div></div>
+        <div class="semantic-outline" style="top: 132px; left: 78px; width: 96px; height: 60px;"></div>
+        <div class="semantic-tag" style="top: 122px; left: 78px;">@car_2</div>
+      </div>
+      <div class="scene-caption">
+        The reviewer mentioned <code class="inline" style="font-size: 11px;">@car_2.front_wheel</code>. <strong>The reference points to a thing, not a place.</strong>
+      </div>
+    </div>
+  </div>
+
+  <p>Now imagine the designer edits the file. They reorder the cars. They crop the canvas to focus on one of them. They move the second car to a different position. With pins, the reviewer's comments are now stranded at coordinates that no longer mean anything. The pin near "the wheel" might now be next to empty space, or hovering over a completely different car.</p>
+
+  <p>The pin failed because it never actually understood what the reviewer was talking about. It only ever knew <em>where</em> they clicked, not <em>what</em> they were looking at.</p>
+
+  <div class="pullquote">
+    <q>Pins anchor to coordinates. Reviewers think in objects. The whole problem is in that gap.</q>
+  </div>
+
+  <h2>What it would mean to anchor to things instead</h2>
+
+  <p>The alternative is straightforward to describe and harder to build: instead of letting reviewers click on coordinates, give them a way to reference the actual visual elements they're talking about. Not pixels, just objects. Not regions, but semantically identified things with stable identities that survive editing.</p>
+
+  <p>The reviewer's comment shouldn't be "place this pin at <code class="inline">(427, 318)</code>." It should be something more like:</p>
+
+  <div class="comment-mock">
+    <div class="comment-header">→ A comment, semantically anchored</div>
+    <div class="comment-body">
+      <div class="avatar">A</div>
+      <div class="comment-content">
+        <div class="comment-author">Reviewer</div>
+        <div class="comment-time">2 minutes ago</div>
+        <div class="comment-text">
+          Can we adjust the contrast on <span class="semantic-ref">@car_2.front_wheel</span>? It's getting lost against the road. Same goes for <span class="semantic-ref">@car_2.back_wheel</span>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>Now the comment references <em>the wheel</em>, not <em>that spot</em>. The system knows which wheel because it has a stable identifier for it. Hovering the reference in the comment highlights the wheel on the canvas. Editing the document, even significantly, doesn't break the reference, because the reference was never about coordinates in the first place.</p>
+
+  <p>This isn't a UI tweak. It's a completely different model of what an annotation <em>is</em>.</p>
+
+  <h2>Building it: the four problems to solve</h2>
+
+  <p>Making this real requires solving four distinct problems, each interesting in its own right.</p>
+
+  <div class="algo-step">
+    <div class="num">i</div>
+    <div>
+      <h4>Segment the canvas into elements</h4>
+      <p>The system needs to know that there are three cars, not just a soup of pixels. This is a classic computer vision problem, and modern segmentation models (the SAM family, anything that produces high-quality masks) handle it remarkably well. Run the model over the canvas, get back a set of masks, and you have your initial vocabulary of "things on the page."</p>
+      <p>The interesting twist is that you don't want one flat list of segments. You want a hierarchy.</p>
+    </div>
+  </div>
+
+  <div class="algo-step">
+    <div class="num">ii</div>
+    <div>
+      <h4>Build a hierarchy of compositional relationships</h4>
+      <p>A car contains wheels. A wheel contains a hubcap. The reviewer might want to comment on any level of this hierarchy: the car, the wheel, or the hubcap. The system needs to know all three exist and how they relate.</p>
+      <p>The approach: <strong>segment recursively</strong>. Run the segmentation model on the full canvas to find top-level elements. For each one, run it again on just that region to find sub-elements. Repeat until nothing useful comes back. Parent–child relationships fall out naturally from spatial containment plus visual similarity within the same semantic family.</p>
+    </div>
+  </div>
+
+  <div class="algo-step">
+    <div class="num">iii</div>
+    <div>
+      <h4>Give every element a stable identity</h4>
+      <p>This is the hardest part. The reviewer's comment is going to live for weeks. The document is going to change. The system needs to identify "car 2" as <em>the same car 2</em> even after it's moved, resized, or partially re-rendered.</p>
+      <p>The technique is <strong>content fingerprinting</strong>: combine perceptual hashes, shape features, and semantic class outputs into a fingerprint that describes <em>what the element is</em> rather than <em>where it is</em>. When the document changes, run segmentation again and match new elements to old fingerprints with a similarity score. High match: it's the same car, just somewhere else now. The identifier sticks.</p>
+    </div>
+  </div>
+
+  <div class="algo-step">
+    <div class="num">iv</div>
+    <div>
+      <h4>Expose the elements through hierarchical references</h4>
+      <p>Once the system has a stable, hierarchical vocabulary of things, the UI side is almost trivial. Comments support hierarchical references like <code class="inline">@car_2.front_wheel</code>. Autocomplete suggests elements as the reviewer types. Hovering a reference highlights the element on the canvas. References can be nested arbitrarily deep.</p>
+    </div>
+  </div>
+
+  <h2>What the hierarchy actually looks like</h2>
+
+  <p>The end result is a tree (or really, a graph) of named elements that the reviewer can reference at any granularity:</p>
+
+  <div class="hierarchy">
+    <div class="hierarchy-label">→ A canvas, semantically described</div>
+    <h4>The element graph behind the comment</h4>
+
+    <div class="tree-node level-1">
+      <span>@scene</span>
+      <span class="label">root</span>
+    </div>
+    <div class="tree-node level-2">
+      <span>@car_1</span>
+      <span class="label">car, ordinal=1</span>
+    </div>
+    <div class="tree-node level-3">
+      <span>@car_1.front_wheel</span>
+      <span class="label">wheel, position=front</span>
+    </div>
+    <div class="tree-node level-3">
+      <span>@car_1.back_wheel</span>
+      <span class="label">wheel, position=back</span>
+    </div>
+    <div class="tree-node level-2">
+      <span>@car_2</span>
+      <span class="label">car, ordinal=2</span>
+    </div>
+    <div class="tree-node level-3">
+      <span>@car_2.front_wheel</span>
+      <span class="label">wheel, position=front</span>
+    </div>
+    <div class="tree-node level-3">
+      <span>@car_2.back_wheel</span>
+      <span class="label">wheel, position=back</span>
+    </div>
+    <div class="tree-node level-2">
+      <span>@car_3</span>
+      <span class="label">car, ordinal=3</span>
+    </div>
+  </div>
+
+  <p>The path through the hierarchy becomes the identifier. <code class="inline">car:2:wheel:front</code> is a stable handle that survives most reasonable edits, because none of those edits change the underlying content fingerprint of the front wheel of the second car.</p>
+
+  <div class="callout">
+    <div class="label">→ Why this generalizes</div>
+    <p>The same model applies far beyond cars. A web design has <strong>section → component → button → label</strong>. A photograph has <strong>scene → person → face → eye</strong>. A medical image has <strong>region → organ → lesion</strong>. Any visual document with compositional structure benefits from the same hierarchical, content-addressable approach.</p>
+  </div>
+
+  <h2>Surviving change</h2>
+
+  <p>The whole point of this model is that comments stay anchored to the right things even when the document changes. Let's be specific about what "change" means and why each kind is handled gracefully:</p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Edit type</th>
+        <th>What happens with pins</th>
+        <th>What happens with semantic references</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Element repositioned</td>
+        <td>Pin stays at old coordinates, becomes orphaned</td>
+        <td>Fingerprint matches; identifier follows the element</td>
+      </tr>
+      <tr>
+        <td>Element resized</td>
+        <td>Pin no longer aligns with intended target</td>
+        <td>Shape and semantic features still match the fingerprint</td>
+      </tr>
+      <tr>
+        <td>Canvas cropped</td>
+        <td>Pins outside the crop disappear; pins inside drift</td>
+        <td>Visible elements keep their identifiers; cropped elements are flagged but not lost</td>
+      </tr>
+      <tr>
+        <td>Element regrouped</td>
+        <td>No effect — pins don't understand grouping</td>
+        <td>Hierarchy updates; references follow into the new group</td>
+      </tr>
+      <tr>
+        <td>Layout reflowed</td>
+        <td>Most pins end up in the wrong place</td>
+        <td>Identifiers stable; references resolve correctly</td>
+      </tr>
+      <tr>
+        <td>Similar new element added</td>
+        <td>No effect, but adjacent pins become confusing</td>
+        <td>Disambiguation through ordinals or context; new element gets its own identifier</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The mechanism that makes all of this work is the fingerprint matching. When the document is edited, segmentation runs again and produces a fresh hierarchy. Each new element gets matched to the closest fingerprint from the previous version, using a similarity score that combines visual descriptors with semantic class. If the match is above threshold, the identifier is preserved. If not, it's a new element.</p>
+
+  <p>This is fundamentally the same idea behind content-addressable storage in version control. Git doesn't care where a file lives in your repository tree; it cares about the hash of its contents. Move the file, rename it, restructure the project. Git still knows what changed and what didn't. The proposal here is essentially Git's model applied to visual documents: address things by what they are, not by where they sit.</p>
+
+  <h2>Where this gets interesting</h2>
+
+  <p>Once you have a stable, hierarchical vocabulary of things in a document, a lot of features become natural that were previously hard:</p>
+
+  <p><strong>Cross-document references.</strong> "Match the styling of <code class="inline">@design_v2.hero.cta_button</code>." If both documents share semantic vocabulary, you can reference elements across them.</p>
+
+  <p><strong>Versioned comments.</strong> Because identifiers are stable, you can see the full history of comments on a single element across all versions of the document. "Everything that was ever said about <code class="inline">@car_2.front_wheel</code>" becomes a coherent thread.</p>
+
+  <p><strong>Bulk operations.</strong> "Apply this change to all <code class="inline">@*.front_wheel</code>." Pattern-matching against the hierarchy lets reviewers and designers work with classes of elements, not just instances.</p>
+
+  <p><strong>Better AI assistance.</strong> If an LLM-based assistant is helping with design review, it can understand and produce comments grounded in semantic references rather than pixel coordinates. The whole conversation becomes more precise.</p>
+
+  <p><strong>Accessibility.</strong> A semantic vocabulary of canvas elements is, almost for free, a better screen reader experience. Visually-impaired reviewers can navigate the hierarchy rather than guessing at pin positions.</p>
+
+  <h2>The tradeoffs to be honest about</h2>
+
+  <p>This isn't a free win. There are real costs:</p>
+
+  <p><strong>Segmentation quality is everything.</strong> If the model can't reliably identify the elements in your document, the whole system falls apart. For domains where segmentation is well-solved (natural images, common UI patterns), this works. For domains where it isn't (highly abstract art, unusual schematics, novel illustrations), the approach has to fall back gracefully.</p>
+
+  <p><strong>Hierarchy disagreements are real.</strong> Reviewers and the system may disagree about what counts as an element. Is a button's label a separate element, or part of the button? Different domains want different answers, and the system needs to be tolerant enough to handle either.</p>
+
+  <p><strong>Compute cost.</strong> Recursive segmentation and fingerprint matching aren't free, especially on large canvases. The user-perceived experience needs to feel instant, which means careful work on incremental updates rather than full recomputes.</p>
+
+  <p><strong>Identifier stability under aggressive edits.</strong> If you redraw the entire scene from scratch, the system has no way to know that the new car is "the same" car as the old one, and probably shouldn't pretend it does. There's a graceful-degradation story to design around: when the fingerprint match falls below confidence, flag the comment as needing reassociation rather than silently breaking.</p>
+
+  <p>None of these are dealbreakers. They're the engineering challenges that make the difference between a demo and a product.</p>
+
+  <h2>The bigger pattern</h2>
+
+  <p>Step back from the specifics and there's a broader principle worth naming. We've spent decades building collaborative tools that anchor information to <em>positions</em>: pixel coordinates, file paths, line numbers, page numbers. Every one of these breaks when the underlying thing being referenced changes location.</p>
+
+  <p>The systems that survive change well are the ones that anchor to <em>content</em>. Git uses content hashes. Modern databases use logical IDs that survive physical reorganization. Hypermedia survives URL changes through redirects and canonical references. Each of these solved the "anchor to a thing, not a place" problem in its own domain.</p>
+
+  <p>Visual collaboration tools are overdue for the same shift. Pins were the temporary solution we built when the systems couldn't see what they were holding. The systems can see now. The annotations should be able to point at what they actually mean.</p>
+
+  <p class="closing">
+    The pin worked because it was the best we could do at the time. The best we can do now is better. Anchoring to things instead of places isn't a feature — it's the right model finally catching up with the work.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>

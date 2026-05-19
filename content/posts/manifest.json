@@ -1,5 +1,16 @@
 [
   {
+    "slug": "beyond-the-pin",
+    "title": "Beyond the Pin: Rethinking How We Annotate Visual Documents",
+    "htmlTitle": "Beyond <span style=\"text-decoration:line-through;text-decoration-color:#c25530;color:#948c7d;\">the pin</span>: rethinking how we annotate visual documents.",
+    "description": "Pin-based commenting has been the default for collaborative review for over a decade. It has a structural problem: pins anchor to coordinates, not to the things people actually care about. Here's what a better model could look like.",
+    "date": "2026-05-21",
+    "readTime": "~10 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · Product · Collaboration",
+    "status": "draft"
+  },
+  {
     "slug": "engineers-marathon",
     "title": "The Engineer's Marathon: How to Stay Sharp When the Job Wants You to Sprint Forever",
     "htmlTitle": "The engineer's marathon: how to stay sharp <em style=\"color:#b85528\">when the job wants you to sprint forever.</em>",
