@@ -14,6 +14,7 @@ export type Post = {
   category: string;
   eyebrow?: string;
   status?: "draft" | "published";
+  image?: string;
 };
 
 export function getAllPosts(): Post[] {

@@ -11,11 +11,31 @@ export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
+const SITE_URL = "https://subhashjha.in";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return { title: post.title, description: post.description };
+
+  const imageUrl = post.image ? `${SITE_URL}${post.image}` : undefined;
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: `${SITE_URL}/blog/${slug}`,
+      ...(imageUrl && { images: [{ url: imageUrl, width: 1200, height: 630 }] }),
+    },
+    twitter: {
+      card: imageUrl ? "summary_large_image" : "summary",
+      title: post.title,
+      description: post.description,
+      ...(imageUrl && { images: [imageUrl] }),
+    },
+  };
 }
 
 function formatDate(dateStr: string) {
