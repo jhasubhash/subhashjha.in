@@ -11,7 +11,7 @@ export default function Nav() {
           <Link href="/">Blog</Link>
         </li>
         <li>
-          <Link href="/apps">Apps</Link>
+          <Link href="/projects">Projects</Link>
         </li>
         <li>
           <Link href="/about">About</Link>
