@@ -1,5 +1,16 @@
 [
   {
+    "slug": "still-not-laid-off",
+    "title": "I Am Still Not Laid Off",
+    "htmlTitle": "I am <em style=\"color:#4a4434\">still not laid off.</em>",
+    "description": "A quiet account of what it feels like to keep your job in an industry that's letting people go in waves. Notes from a tired engineer, written late at night.",
+    "date": "2026-05-26",
+    "readTime": "~7 min read",
+    "category": "Personal",
+    "eyebrow": "Personal · A Note from the Industry",
+    "status": "published"
+  },
+  {
     "slug": "productivity-illusion",
     "title": "The Productivity Illusion: When Shipping Speed Becomes the Enemy of Software Quality",
     "htmlTitle": "The productivity illusion: when shipping speed <em style=\"color:#b03a20\">becomes the enemy of quality.</em>",
