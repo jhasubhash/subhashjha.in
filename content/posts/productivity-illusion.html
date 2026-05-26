@@ -1,0 +1,609 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.tpi-root {
+  --bg: #f5f2eb;
+  --bg-warm: #e8e1cf;
+  --bg-deep: #18160f;
+  --ink: #1a1812;
+  --ink-mid: #56503f;
+  --ink-faint: #908872;
+  --rule: #d6cdb6;
+  --accent: #b03a20;
+  --accent-bright: #d04825;
+  --accent-soft: #f3dcd2;
+  --warn: #9c5018;
+  --warn-soft: #f0d8b8;
+  --damage: #8a2820;
+  --damage-soft: #ebd0cc;
+}
+
+.tpi-root .article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+.tpi-root p { margin-bottom: 22px; color: var(--ink); line-height: 1.75; font-size: 17px; }
+.tpi-root p:last-child { margin-bottom: 0; }
+.tpi-root strong { font-weight: 600; }
+.tpi-root em { font-style: italic; color: var(--ink-mid); }
+.tpi-root code.inline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+  background: var(--bg-warm);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--rule);
+}
+.tpi-root .lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 23px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+.tpi-root .lead::first-letter {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 76px;
+  font-weight: 600;
+  float: left;
+  line-height: 0.85;
+  margin: 8px 12px 0 -2px;
+  color: var(--accent);
+}
+.tpi-root h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 72px 0 22px;
+  color: var(--ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+.tpi-root h2:first-of-type { border-top: none; padding-top: 0; }
+.tpi-root h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 36px 0 14px;
+}
+
+.tpi-root .pullquote {
+  margin: 48px -16px;
+  padding: 36px 36px;
+  text-align: center;
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+.tpi-root .pullquote q {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--ink);
+  quotes: '"' '"';
+  display: block;
+}
+.tpi-root .pullquote q::before, .tpi-root .pullquote q::after {
+  color: var(--accent);
+  font-size: 32px;
+  line-height: 0;
+  vertical-align: -10px;
+}
+
+.tpi-root .callout {
+  margin: 32px -16px;
+  padding: 24px 28px;
+  background: var(--bg-warm);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+.tpi-root .callout p { font-size: 15.5px; color: var(--ink); margin: 0; line-height: 1.65; }
+.tpi-root .callout p strong { color: var(--accent); }
+.tpi-root .callout .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.tpi-root .symptom-card {
+  margin: 32px -16px;
+  padding: 32px 36px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  position: relative;
+}
+.tpi-root .symptom-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent);
+  border-radius: 12px 0 0 12px;
+}
+.tpi-root .symptom-num {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.tpi-root .symptom-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+.tpi-root .symptom-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: 14px;
+}
+.tpi-root .symptom-card p:last-child { margin-bottom: 0; }
+.tpi-root .symptom-card p strong { color: var(--ink); }
+
+.tpi-root .stakeholders {
+  margin: 36px -16px;
+  padding: 36px 36px;
+  background: var(--bg-deep);
+  color: var(--bg);
+  border-radius: 12px;
+}
+.tpi-root .stakeholders-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  margin-bottom: 14px;
+}
+.tpi-root .stakeholders h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 26px;
+  color: var(--bg);
+  line-height: 1.3;
+}
+.tpi-root .stakeholder-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 18px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(245, 242, 235, 0.1);
+  align-items: start;
+}
+.tpi-root .stakeholder-row:first-of-type { border-top: none; padding-top: 4px; }
+.tpi-root .stakeholder-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--accent-bright);
+  font-weight: 500;
+}
+.tpi-root .stakeholder-pain {
+  color: #c4bda7;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.tpi-root .stakeholder-pain strong { color: var(--bg); font-weight: 500; }
+
+.tpi-root .pr-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 36px -16px;
+}
+.tpi-root .pr-panel {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px 26px;
+  position: relative;
+  overflow: hidden;
+}
+.tpi-root .pr-panel.before { background: linear-gradient(180deg, var(--bg-warm) 0%, white 70%); }
+.tpi-root .pr-panel.after { background: linear-gradient(180deg, var(--accent-soft) 0%, white 70%); }
+.tpi-root .pr-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.tpi-root .pr-panel.before .pr-tag { color: var(--ink-mid); }
+.tpi-root .pr-panel.after .pr-tag { color: var(--accent); }
+.tpi-root .pr-panel h5 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.tpi-root .pr-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+}
+.tpi-root .pr-stat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+.tpi-root .pr-stat .num {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.tpi-root .pr-stat .label {
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+.tpi-root .pr-panel p {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tpi-root .priorities {
+  margin: 36px -16px;
+  padding: 32px 36px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+}
+.tpi-root .priorities-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.tpi-root .priorities h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+.tpi-root .priority-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+}
+.tpi-root .priority-row:first-of-type { border-top: none; padding-top: 0; }
+.tpi-root .priority-item {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.tpi-root .priority-item.shipped {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+}
+.tpi-root .priority-item.deprioritized {
+  background: var(--bg-warm);
+  color: var(--ink-mid);
+  border-left: 3px solid var(--rule);
+  opacity: 0.75;
+}
+.tpi-root .priority-item .what {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.tpi-root .priority-item .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.tpi-root .quote-box {
+  margin: 36px -16px;
+  padding: 36px 36px;
+  background: var(--damage-soft);
+  border: 1px solid var(--damage);
+  border-radius: 12px;
+  border-left: 4px solid var(--damage);
+}
+.tpi-root .quote-box .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--damage);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.tpi-root .quote-box p {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0;
+}
+
+.tpi-root .closing {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-mid);
+  text-align: center;
+  line-height: 1.5;
+}
+.tpi-root .signoff {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .tpi-root .pullquote,
+  .tpi-root .callout,
+  .tpi-root .symptom-card,
+  .tpi-root .stakeholders,
+  .tpi-root .pr-comparison,
+  .tpi-root .priorities,
+  .tpi-root .quote-box { margin-left: -22px; margin-right: -22px; }
+  .tpi-root .pullquote q { font-size: 22px; }
+  .tpi-root .symptom-card,
+  .tpi-root .stakeholders,
+  .tpi-root .priorities,
+  .tpi-root .quote-box { padding: 26px 24px; }
+  .tpi-root .symptom-card h4 { font-size: 20px; }
+  .tpi-root .pr-comparison { grid-template-columns: 1fr; gap: 12px; }
+  .tpi-root .priority-row { grid-template-columns: 1fr; gap: 10px; }
+  .tpi-root .stakeholder-row { grid-template-columns: 110px 1fr; gap: 14px; }
+  .tpi-root .stakeholder-name { font-size: 15px; }
+  .tpi-root .stakeholder-pain { font-size: 14px; }
+  .tpi-root .quote-box p { font-size: 18px; }
+  .tpi-root h2 { font-size: 26px; }
+  .tpi-root .lead { font-size: 19px; }
+  .tpi-root .lead::first-letter { font-size: 58px; }
+}
+</style>
+
+<div class="tpi-root">
+<article class="article">
+
+  <p class="lead">Something is going wrong in software teams right now, and most of the people inside them can feel it without being able to name it. The PR throughput is up. The feature shipping cadence is up. The release notes are full of new things. By every metric the leadership tracks, the team is more productive than ever. And yet the product is somehow getting worse, the engineers are exhausted, and the customers are starting to notice. This is the shape of the problem I want to talk about.</p>
+
+  <p>The forces creating it aren't mysterious. They're mostly downstream of two simultaneous shifts: AI made writing code dramatically cheaper, and a wave of small AI-native apps started eating the low end of every SaaS market. The combination put established software companies into a defensive crouch they don't quite know how to escape, and the way they're trying to escape it is making everything worse.</p>
+
+  <h2>The market backdrop, briefly</h2>
+
+  <p>Most software gets used the way most gym memberships get used. 90% of the users spend most of their time on 20% of the features. Everyone in product knows this. It's been the boring truth of the industry for as long as I've been in it.</p>
+
+  <p>What's changed is that small AI-native apps can now replicate that critical 20% in a weekend, ship it at $5/month or for free, and pull in the long tail of new users who would otherwise have started their journey with the incumbent. In creative software especially, across photography, image editing, and design, the AI shortcuts have collapsed entire complex workflows into single prompts. The value proposition of "spend six months learning a sophisticated tool" is decreasing every quarter that an AI can do the same job in one click.</p>
+
+  <p>The incumbents are not crazy to feel threatened. Their moat was the depth of their tooling and the size of their distribution. AI is hollowing out the first, and the second isn't going to hold forever on its own. So they do what any threatened incumbent does: they speed up. They use the same AI tools to ship features at the same pace as the upstarts. They release small free apps to feed users into their bigger ecosystem. They make sure there's always buzz in the market about something new.</p>
+
+  <p>I get it. The strategy is rational, even necessary. But the way it's actually being executed, on the ground, in real engineering teams, is corroding the thing the strategy was supposed to protect.</p>
+
+  <div class="pullquote">
+    <q>AI didn't just make building software faster. It made building bad software faster. We've been measuring the first while quietly accumulating the cost of the second.</q>
+  </div>
+
+  <h2>Four things I've watched happen</h2>
+
+  <p>Here's what the productivity illusion looks like inside an engineering team. None of these are hypothetical. All of them are patterns I've watched up close in the last twelve months.</p>
+
+  <div class="symptom-card">
+    <div class="symptom-num">→ Symptom 01</div>
+    <h4>The 50-file pull request</h4>
+    <p>The PR touches 40 to 60 files. It's accompanied by a 30-page AI-generated design doc explaining the changes. The author has, charitably, skimmed the diff. Reviewers do their best, but the volume is so large that subtle bugs hide easily in code that everyone treats as boilerplate.</p>
+    <p>My team used to mandate that PRs touch a bounded number of files, with larger changes split into a series of focused, reviewable diffs. <strong>That practice has quietly evaporated.</strong> Nobody decided to abandon it. It just stopped being enforced once AI made the cost of generating a large change trivial, while the cost of reviewing one stayed exactly what it always was.</p>
+  </div>
+
+  <div class="pr-comparison">
+    <div class="pr-panel before">
+      <div class="pr-tag">Before · careful diffs</div>
+      <h5>Bounded PRs, focused review</h5>
+      <p>Changes split across multiple small PRs. Each one tells a single story. Reviewers can actually hold the change in their head.</p>
+      <div class="pr-stats">
+        <div class="pr-stat">
+          <span class="num">~5</span>
+          <span class="label">files touched</span>
+        </div>
+        <div class="pr-stat">
+          <span class="num">100%</span>
+          <span class="label">lines reviewed</span>
+        </div>
+      </div>
+    </div>
+    <div class="pr-panel after">
+      <div class="pr-tag">After · AI-scale diffs</div>
+      <h5>Mega PRs, performative review</h5>
+      <p>One sprawling change touching everything. Reviewers approve based on the description, not the code. Bugs land hidden among "boilerplate."</p>
+      <div class="pr-stats">
+        <div class="pr-stat">
+          <span class="num">40+</span>
+          <span class="label">files touched</span>
+        </div>
+        <div class="pr-stat">
+          <span class="num">~20%</span>
+          <span class="label">lines actually read</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="symptom-card">
+    <div class="symptom-num">→ Symptom 02</div>
+    <h4>Refactor-by-prompt</h4>
+    <p>Refactoring legacy code used to be a careful, deliberate activity. You'd identify the scope, build a test harness, make the change in small reversible steps, and validate the behavior was preserved at every checkpoint. Now people fire off "modernize this module" prompts to Claude Code, get back a working-looking diff, and ship it.</p>
+    <p>The dangerous shift is that LLM hallucinations <em>are still there</em>, but the model's confidence has gone way up. The output reads as authoritative even when it's quietly wrong. <strong>Code review can't catch this kind of error.</strong> The code looks fine and the explanation sounds reasonable. Only automated tests and careful manual validation surface the regressions, and the QE teams running those have been overwhelmed by the sheer volume of changes flooding the pipeline.</p>
+  </div>
+
+  <div class="quote-box">
+    <div class="label">→ The new failure mode</div>
+    <p>In some cases, our pre-release customers have become our QA team. They don't know it. They give us vocal feedback when workflows break. But it's not working in our favor: every broken workflow is a small subtraction from the credibility we spent years building.</p>
+  </div>
+
+  <div class="symptom-card">
+    <div class="symptom-num">→ Symptom 03</div>
+    <h4>The backlog as a graveyard</h4>
+    <p>The engineering backlog of small quality of life bugs, performance improvements, cleanup tickets, that one rare crash report, used to get dedicated cycles. Now it doesn't. The focus has shifted entirely to "how many new features can we deliver this quarter?" and anything that doesn't look like a feature falls off the priority list.</p>
+    <p>What gets really strange is what counts as a "feature." A fancy new submit button is a feature. <strong>Making a slider 10x faster by tweaking the underlying algorithm isn't.</strong> One shows up on a launch slide. The other doesn't. Guess which one gets the engineering time.</p>
+  </div>
+
+  <div class="priorities">
+    <div class="priorities-label">→ The new prioritization logic</div>
+    <h4>What gets shipped vs. what gets shelved</h4>
+
+    <div class="priority-row">
+      <div class="priority-item shipped">
+        <div class="what">New AI-assisted submit button with shimmer effect</div>
+        <div class="tag">Shippable · launch slide-worthy</div>
+      </div>
+      <div class="priority-item deprioritized">
+        <div class="what">Slider performance optimization, 3x faster</div>
+        <div class="tag">Backlog · invisible win</div>
+      </div>
+    </div>
+
+    <div class="priority-row">
+      <div class="priority-item shipped">
+        <div class="what">Onboarding flow redesign #4 this year</div>
+        <div class="tag">Shippable · measurable engagement</div>
+      </div>
+      <div class="priority-item deprioritized">
+        <div class="what">Rare crash that affects 0.3% of pro users</div>
+        <div class="tag">Backlog · low impact</div>
+      </div>
+    </div>
+
+    <div class="priority-row">
+      <div class="priority-item shipped">
+        <div class="what">"AI-powered" badge on existing feature</div>
+        <div class="tag">Shippable · marketing-friendly</div>
+      </div>
+      <div class="priority-item deprioritized">
+        <div class="what">Memory leak in long-running session</div>
+        <div class="tag">Backlog · hard to reproduce</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="symptom-card">
+    <div class="symptom-num">→ Symptom 04</div>
+    <h4>"Let the agent handle it"</h4>
+    <p>There's a paradigm emerging that I find genuinely troubling. Let the agent write the code. Let the agent review the code. Let the agent run the tests. Let the agent fix the bugs. And when something fails in production, let the agent take the blame. It's childish, and it doesn't survive contact with reality.</p>
+    <p>Accountability should always lie with the human developer or orchestrator. Pushing it onto the tool is a category error. Tools don't have careers, don't get fired, don't have skin in the game. <strong>Every time we outsource the thinking, we lose a little of the muscle that did it.</strong> The ability to identify bugs through pattern recognition, to feel the wrongness of a solution before you can articulate it, to hold the complexity of a system in your head: these are cognitive skills that atrophy when an agent does the work.</p>
+  </div>
+
+  <h2>The cost is real, and falling on everyone</h2>
+
+  <p>The strange thing about the productivity illusion is that it isn't making anyone happy. It looks like a winner-take-all situation where someone is gaining at someone else's expense, but if you actually look around the room, every stakeholder is losing in their own way.</p>
+
+  <div class="stakeholders">
+    <div class="stakeholders-label">→ The pain, distributed</div>
+    <h4>Everyone is running, nobody is happy</h4>
+
+    <div class="stakeholder-row">
+      <div class="stakeholder-name">Customers</div>
+      <div class="stakeholder-pain">Receive half-baked features that look new but ship buggy. Spend hours filing bug reports for things they paid to use. <strong>Lose trust in the product line they once loved.</strong></div>
+    </div>
+    <div class="stakeholder-row">
+      <div class="stakeholder-name">Engineers</div>
+      <div class="stakeholder-pain">Ship code they're not proud of. Watch their craft be measured in PRs per week. Feel the burnout building. <strong>Lose the sense of ownership that made the job feel meaningful.</strong></div>
+    </div>
+    <div class="stakeholder-row">
+      <div class="stakeholder-name">QE teams</div>
+      <div class="stakeholder-pain">Drowning in a volume of changes they cannot possibly validate. Discover regressions days after they shipped. <strong>Watch test coverage and confidence both quietly decay.</strong></div>
+    </div>
+    <div class="stakeholder-row">
+      <div class="stakeholder-name">PMs &amp; EMs</div>
+      <div class="stakeholder-pain">Caught between the leadership's "ship more" message and the team's "we're burning out" reality. Forced to deliver bad news in both directions. <strong>No good choice available.</strong></div>
+    </div>
+    <div class="stakeholder-row">
+      <div class="stakeholder-name">Management</div>
+      <div class="stakeholder-pain">Watching the stock price reflect the market's growing skepticism about long-term strategy. <strong>The output metrics look great. The outcome metrics don't.</strong></div>
+    </div>
+    <div class="stakeholder-row">
+      <div class="stakeholder-name">Investors</div>
+      <div class="stakeholder-pain">Looking at ARR growth that doesn't match the velocity story being told to them. <strong>Wondering when the bill comes due.</strong></div>
+    </div>
+  </div>
+
+  <p>This is what makes the situation so strange. There's no villain in this story. The market pressure is real. The strategic response is rational. The individual engineers are doing their best inside the constraints they're given. The PMs are responding to the same incentives the executives are responding to. Everyone is being reasonable, locally, and the aggregate result is a slow-motion erosion of the thing that made the company worth working at in the first place.</p>
+
+  <h2>What we're actually losing</h2>
+
+  <p>I want to be specific about the cost, because "quality" is a fuzzy word that lets executives shrug off the conversation.</p>
+
+  <p>We're losing <strong>institutional craft</strong>. The unwritten standards that experienced engineers held, like small PRs, careful review, deliberate refactoring, validated changes, were never in a document. They lived in the culture, transmitted from senior to junior, reinforced by what got praised and what didn't. When the culture stops reinforcing them, they evaporate within a couple of quarters. Getting them back is much harder than losing them.</p>
+
+  <p>We're losing <strong>customer trust</strong>. Not all at once. Just one frustrated bug report at a time. A pro user who hits three broken workflows in a month doesn't write an angry blog post. They just quietly start using a competitor for the part of their workflow that's most broken. Eventually they stop showing up. By the time it's visible in the churn metrics, the damage is years deep.</p>
+
+  <p>We're losing <strong>engineering judgment</strong>. The instinct to push back on a bad spec. The pattern recognition that says "this refactor is going to bite us." The careful reading that catches a subtle bug. These are muscles, and they only stay strong if you use them. An entire generation of engineers who learned the job in an AI-pair-programmed world might never develop them fully, and that's a structural loss for the industry.</p>
+
+  <p>We're losing <strong>accountability</strong>. When code is generated by an agent, reviewed by another agent, and shipped by a third, the question "who is responsible for this?" becomes harder to answer. And in software, an unanswered question of responsibility eventually becomes an actual problem that bites real users.</p>
+
+  <div class="callout">
+    <div class="label">→ The honest part</div>
+    <p>I want to be careful not to sound like a complete reactionary. <strong>AI tools are genuinely transformative.</strong> Used carefully, they make engineers significantly better: faster on boilerplate, broader in their reach, more willing to attempt ambitious refactors. The problem isn't the tools. The problem is the management theory and team culture that's grown up around the tools, and the assumption that more output equals more value.</p>
+  </div>
+
+  <h2>What would actually help</h2>
+
+  <p>I don't have a clean five-bullet fix for this. But here are the things I've started doing on my own team, and that I'd suggest to anyone watching the same patterns unfold:</p>
+
+  <p><strong>Re-enforce the PR size limit, with teeth.</strong> A 40-file AI-generated PR isn't a productivity win. It's a review failure waiting to happen. Treat large changes the way you'd treat large transactions in a database: break them up, validate each one, ensure rollback is possible.</p>
+
+  <p><strong>Make engineering quality a measured outcome, not a vibe.</strong> Bug counts in the first 30 days post-release. Time to fix incoming critical bugs. Performance regression rates. These are tractable metrics that resist the productivity illusion because they measure what actually shipped, not what was shipped.</p>
+
+  <p><strong>Reserve cycles for non-feature work explicitly.</strong> A standing 20% of engineering time for performance, cleanup, debt, and infrastructure. Not "if we have time." Reserved. The teams that survive long-term are the ones that protect this; the teams that don't are the ones whose codebase becomes unmaintainable by year three.</p>
+
+  <p><strong>Use AI as an accelerator, not an autopilot.</strong> The right model for AI in engineering is "you still drive, the AI just makes the car faster." Not "the AI drives, you nap in the back seat." The former produces leverage. The latter produces accidents.</p>
+
+  <p><strong>Speak up.</strong> If you're an engineer watching this happen, name it. If you're a manager seeing the cost build, surface it. The productivity illusion only persists as long as everyone agrees to pretend the dashboard is the truth. Once enough people inside the org start saying out loud that the dashboard is lying, the conversation has to start.</p>
+
+  <p class="closing">
+    There's a bright light at the end of this tunnel only if we choose to find it. The tools aren't the problem. The story we're telling ourselves about what the tools mean, that's the problem. And stories can be rewritten, once enough people inside them start telling a different one.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>

@@ -1,5 +1,17 @@
 [
   {
+    "slug": "productivity-illusion",
+    "title": "The Productivity Illusion: When Shipping Speed Becomes the Enemy of Software Quality",
+    "htmlTitle": "The productivity illusion: when shipping speed <em style=\"color:#b03a20\">becomes the enemy of quality.</em>",
+    "description": "AI made building software faster than it has ever been. It also made building bad software faster than it has ever been. Teams are confusing the two, and the cost is showing up everywhere except the dashboards that matter.",
+    "date": "2026-05-25",
+    "readTime": "~10 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · Engineering · The AI Rush",
+    "image": "/images/posts/productivity-illusion-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "beyond-the-pin",
     "title": "Beyond the Pin: Rethinking How We Annotate Visual Documents",
     "htmlTitle": "Beyond <span style=\"text-decoration:line-through;text-decoration-color:#c25530;color:#948c7d;\">the pin</span>: rethinking how we annotate visual documents.",
@@ -32,7 +44,7 @@
     "readTime": "~9 min read",
     "category": "Notes",
     "eyebrow": "Notes · C++ · Memory Layout",
-    "image": "/images/posts/cpp-object-layout-og.png",
+    "image": "/images/posts/cpp-object-layout-og.jpg",
     "status": "published"
   },
   {
