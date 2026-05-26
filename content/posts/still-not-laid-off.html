@@ -8,32 +8,65 @@
 ----------------------------------------------------------- */
 
 body:has(.insl-root) {
-  background: #e8dfc8;
+  background-color: #d4b485;
+  background-image:
+    /* paper fiber grain — small tile, scrolls with content */
+    url("data:image/svg+xml;utf8,<svg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.32 0 0 0 0 0.2 0 0 0 0 0.08 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+    /* SEPIA DISCOLORATION PATCHES — soft, large, never directly over text columns */
+    radial-gradient(ellipse 480px 360px at 96% 16%, rgba(120, 70, 25, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 560px 400px at 0% 42%, rgba(100, 60, 20, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 360px 460px at 100% 68%, rgba(140, 90, 40, 0.2) 0%, transparent 70%),
+    radial-gradient(ellipse 380px 320px at 4% 88%, rgba(120, 70, 25, 0.18) 0%, transparent 70%),
+    /* FOXING SPOTS — only in side margins so they don't sit on top of words */
+    radial-gradient(circle 4px at 6% 14%, rgba(85, 45, 18, 0.55), transparent 70%),
+    radial-gradient(circle 6px at 94% 22%, rgba(95, 55, 22, 0.5), transparent 70%),
+    radial-gradient(circle 3px at 96% 52%, rgba(85, 45, 18, 0.6), transparent 70%),
+    radial-gradient(circle 5px at 4% 58%, rgba(95, 55, 22, 0.55), transparent 70%),
+    radial-gradient(circle 4px at 3% 33%, rgba(85, 45, 18, 0.5), transparent 70%),
+    radial-gradient(circle 3px at 97% 74%, rgba(95, 55, 22, 0.6), transparent 70%),
+    radial-gradient(circle 5px at 5% 80%, rgba(85, 45, 18, 0.55), transparent 70%),
+    radial-gradient(circle 4px at 95% 92%, rgba(95, 55, 22, 0.5), transparent 70%);
+  background-size:
+    140px 140px,
+    auto, auto, auto, auto,
+    auto, auto, auto, auto, auto, auto, auto, auto;
+  background-repeat:
+    repeat,
+    no-repeat, no-repeat, no-repeat, no-repeat,
+    no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-attachment:
+    scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll;
+  background-blend-mode:
+    multiply,
+    normal, normal, normal, normal,
+    normal, normal, normal, normal, normal, normal, normal, normal;
   position: relative;
+  color: #2a1d10;
 }
 
-/* Paper grain across the whole page, so the post body and the hero/comments
-   share the same aged surface and there is no visible contrast band. */
+/* Soft edge vignette, viewport-fixed */
 body:has(.insl-root)::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.55;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.08 0 0 0 0.25 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  mix-blend-mode: multiply;
+  background:
+    radial-gradient(ellipse 130% 110% at 50% 50%, transparent 50%, rgba(50, 25, 5, 0.22) 100%);
 }
-body:has(.insl-root)::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    radial-gradient(ellipse 30vw 25vh at 88% 30%, rgba(140, 100, 50, 0.14) 0%, transparent 70%),
-    radial-gradient(ellipse 35vw 28vh at 6% 70%, rgba(120, 85, 40, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 22vw 30vh at 95% 55%, rgba(160, 130, 80, 0.1) 0%, transparent 70%);
+body:has(.insl-root)::after { content: none; }
+
+/* Site top nav — blend it into the aged paper, no white bar */
+body:has(.insl-root) .site-nav {
+  background: transparent !important;
+  border-bottom: none !important;
+  backdrop-filter: none;
+}
+body:has(.insl-root) .site-nav-brand,
+body:has(.insl-root) .site-nav-links a {
+  color: #3a2410 !important;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  letter-spacing: 0.08em;
 }
 
 /* Keep page content above the texture layers */
@@ -115,9 +148,9 @@ body:has(.insl-root) .byline strong {
   --paper: #e8dfc8;
   --paper-dark: #d4c8a8;
   --paper-shadow: #c0b48f;
-  --ink: #1c1a14;
-  --ink-mid: #4a4434;
-  --ink-faint: #756a52;
+  --ink: #2a1d10;
+  --ink-mid: #5a3e22;
+  --ink-faint: #7a5530;
   --rule: #a89878;
   --stain: rgba(120, 95, 50, 0.15);
   --darker: #2a2418;
@@ -266,12 +299,32 @@ body:has(.insl-root) .byline strong {
 .insl-root .insl-pullquote q::before,
 .insl-root .insl-pullquote q::after { display: none; }
 .insl-root .insl-pullquote::before {
-  content: '*';
+  content: '❦';
   display: block;
-  font-size: 24px;
+  font-size: 22px;
   color: var(--ink-faint);
   margin-bottom: 20px;
   font-style: normal;
+  letter-spacing: 0;
+}
+
+/* Watermark date stamp tucked into the bottom-left of the article */
+.insl-root .article {
+  position: relative;
+}
+.insl-root .article::after {
+  content: 'MAY · 26 · 2026';
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: rgba(110, 70, 25, 0.5);
+  border: 1px solid rgba(110, 70, 25, 0.45);
+  padding: 4px 10px;
+  transform: rotate(-4deg);
+  pointer-events: none;
 }
 
 .insl-root .ledger {
@@ -379,7 +432,7 @@ body:has(.insl-root) .byline strong {
 
   <p>I am in my mid-thirties. I have been a software engineer for over eleven years. I have, by any reasonable measure, done everything you're supposed to do. I learned the craft. I shipped real things. I stayed late when projects needed it. I cared about my work in a way I'm not sure I'd repeat if I had the choice over again. None of it has stopped me from waking up at three in the morning thinking about the home loan EMI.</p>
 
-  <div class="break">· · · · · ·</div>
+  <div class="break">❦ · ❦ · ❦</div>
 
   <div class="ledger">
     <div class="ledger-title">A partial accounting of the month</div>
@@ -409,7 +462,7 @@ body:has(.insl-root) .byline strong {
 
   <p>And the survivors carry something almost as heavy as the people who were let go. We carry the survivor's anxiety. We watch our friends pack up their lives in a single afternoon and wonder how long until our turn. We do our jobs with one eye on the door. We become less creative, more cautious, less willing to take the kinds of risks the company needs us to take. Nobody talks about it, but the productivity of a frightened team is not the productivity of a confident one. The numbers tell the leadership everything is fine until, suddenly, they don't.</p>
 
-  <div class="break">· · · · · ·</div>
+  <div class="break">❦ · ❦ · ❦</div>
 
   <h2>Eleven years, and a strange feeling</h2>
 
