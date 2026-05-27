@@ -1,5 +1,16 @@
 [
   {
+    "slug": "launcher-wars",
+    "title": "Everyone Is Building a Launcher. Almost None of Them Get the Point.",
+    "htmlTitle": "Everyone is building a launcher. Almost none of them <em style=\"color:#d96838;font-style:italic;font-weight:400\">get the point.</em>",
+    "description": "A new Raycast clone ships every week now that AI has collapsed the cost of building one. Most of them are solving the wrong problem. The actual moat was never the launcher, it was what users could build on top of it.",
+    "date": "2026-05-27",
+    "readTime": "~8 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · macOS · Launcher Wars",
+    "status": "published"
+  },
+  {
     "slug": "becoming-a-profile",
     "title": "Becoming a Profile: How the Algorithm Quietly Took Over Our Attention",
     "htmlTitle": "Becoming a <em style=\"color:#8a3a2e\">profile</em>: how the algorithm quietly took over our attention.",
