@@ -51,22 +51,46 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        <div className="apps-grid">
-          {published.map((project) => (
-            <a
-              key={project.url}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="app-card"
-            >
-              <div className="app-card-tag">{project.tag}</div>
-              <div className="app-card-name">{project.name}</div>
-              <p className="app-card-desc">{project.description}</p>
-              <span className="app-card-link">Visit ↗</span>
-            </a>
-          ))}
-        </div>
+        {published.length === 0 ? (
+          <div className="apps-empty-card">
+            <div className="apps-empty-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2v4" />
+                <path d="M12 18v4" />
+                <path d="m4.93 4.93 2.83 2.83" />
+                <path d="m16.24 16.24 2.83 2.83" />
+                <path d="M2 12h4" />
+                <path d="M18 12h4" />
+                <path d="m4.93 19.07 2.83-2.83" />
+                <path d="m16.24 7.76 2.83-2.83" />
+              </svg>
+            </div>
+            <div className="apps-empty-label">Workshop in progress</div>
+            <p className="apps-empty-text">
+              I&apos;ve built a handful of small utility apps that solve very specific problems of mine, but nothing polished enough to share publicly yet.{" "}
+              <em className="apps-empty-em">Keep watching this space</em>{" "}
+              for something cool.
+            </p>
+            <div className="apps-empty-rule" aria-hidden="true">❖</div>
+          </div>
+        ) : (
+          <div className="apps-grid">
+            {published.map((project) => (
+              <a
+                key={project.url}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="app-card"
+              >
+                <div className="app-card-tag">{project.tag}</div>
+                <div className="app-card-name">{project.name}</div>
+                <p className="app-card-desc">{project.description}</p>
+                <span className="app-card-link">Visit ↗</span>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

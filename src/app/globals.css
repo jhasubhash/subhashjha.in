@@ -873,6 +873,94 @@ body {
   gap: 24px;
 }
 
+.apps-empty-card {
+  position: relative;
+  max-width: 560px;
+  margin: 8px auto 0;
+  padding: 56px 40px 48px;
+  background:
+    radial-gradient(ellipse at top, rgba(196, 98, 45, 0.06) 0%, transparent 65%),
+    var(--paper-warm);
+  border: 1px solid var(--paper-rule);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 0 rgba(26, 23, 20, 0.02);
+  overflow: hidden;
+}
+
+.apps-empty-card::before,
+.apps-empty-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 1px;
+  background: var(--paper-rule);
+}
+.apps-empty-card::before { top: 0; }
+.apps-empty-card::after { bottom: 0; }
+
+.apps-empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--paper-rule);
+  color: var(--accent);
+  animation: apps-empty-spin 14s linear infinite;
+}
+
+@keyframes apps-empty-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.apps-empty-label {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.apps-empty-text {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 auto;
+  max-width: 440px;
+}
+
+.apps-empty-em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.apps-empty-rule {
+  margin-top: 24px;
+  color: var(--accent);
+  font-size: 14px;
+  opacity: 0.6;
+  letter-spacing: 0.4em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apps-empty-icon { animation: none; }
+}
+
+@media (max-width: 600px) {
+  .apps-empty-card { padding: 44px 24px 36px; }
+  .apps-empty-text { font-size: 17px; }
+}
+
 .app-card {
   display: flex;
   flex-direction: column;
