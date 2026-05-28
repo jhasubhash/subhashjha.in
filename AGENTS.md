@@ -7,6 +7,15 @@ When the user asks to publish or add a new blog post, complete **all** of the fo
 ### 1. Create the post HTML file
 Add the post content to `content/posts/{slug}.html` as an HTML fragment (no `<html>` or `<body>` tags — just the article body starting with `<div class="article-body">`).
 
+#### Punctuation style — avoid em-dashes
+When writing prose for posts, **do not default to em-dashes (`—`)**. They read as AI-generated and clutter the rhythm. Prefer, in this order:
+- **Commas** for light pauses and asides (`The algorithm was weak, and you'd stop after ten minutes.`)
+- **Parentheses** for genuine asides or clarifications (`The replacements (thinner, flatter) don't quite nourish.`)
+- **Periods** — just split the sentence in two.
+- **Conjunctions** (`and`, `but`, `so`, `because`) to connect clauses naturally.
+
+Em-dashes are fine sparingly (roughly one per post, max) for a deliberate dramatic break. If a draft has more than one or two, rewrite them.
+
 ### 2. Update the manifest
 Add a new entry to `content/posts/manifest.json`:
 ```json
