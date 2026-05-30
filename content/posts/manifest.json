@@ -1,5 +1,17 @@
 [
   {
+    "slug": "human-in-the-loop-bottleneck",
+    "title": "The Human in the Loop Is Still the Bottleneck. And That's the Point.",
+    "htmlTitle": "The human in the loop is still the bottleneck. <em style=\"color:#a83820;font-style:italic;font-weight:400\">And that's the point.</em>",
+    "description": "A year of aggressive AI adoption has taught me something the productivity dashboards don't show. The machine got faster. The humans didn't. And the gap between them is where most of the new chaos is coming from.",
+    "date": "2026-05-30",
+    "readTime": "~10 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · AI · Team Productivity",
+    "image": "/images/posts/human-in-the-loop-bottleneck-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "launcher-wars",
     "title": "Everyone Is Building a Launcher. Almost None of Them Get the Point.",
     "htmlTitle": "Everyone is building a launcher. Almost none of them <em style=\"color:#d96838;font-style:italic;font-weight:400\">get the point.</em>",

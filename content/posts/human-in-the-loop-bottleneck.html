@@ -1,0 +1,606 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.hitl-root {
+  --bg: #f6f3ec;
+  --bg-warm: #ebe5d3;
+  --bg-deep: #181612;
+  --ink: #1a1815;
+  --ink-mid: #56503f;
+  --ink-faint: #908872;
+  --rule: #d4cbb4;
+  --accent: #a83820;
+  --accent-bright: #c54a30;
+  --accent-soft: #f0d8cc;
+  --human: #3a5a80;
+  --human-soft: #dde4ee;
+  --machine: #6a4080;
+  --machine-soft: #e5dceb;
+  --warn: #9c5018;
+  --warn-soft: #f0d8b8;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hitl-root *, .hitl-root *::before, .hitl-root *::after { box-sizing: border-box; }
+
+.hitl-root .article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 32px 60px;
+}
+.hitl-root p { margin-bottom: 22px; color: var(--ink); }
+.hitl-root p:last-child { margin-bottom: 0; }
+.hitl-root strong { font-weight: 600; }
+.hitl-root em { font-style: italic; color: var(--ink-mid); }
+.hitl-root code.inline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+  background: var(--bg-warm);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--rule);
+}
+.hitl-root .lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 23px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+.hitl-root .lead::first-letter {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 72px;
+  font-weight: 600;
+  float: left;
+  line-height: 0.85;
+  margin: 8px 12px 0 -2px;
+  color: var(--accent);
+}
+.hitl-root h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 72px 0 22px;
+  color: var(--ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+.hitl-root h2:first-of-type { border-top: none; padding-top: 0; }
+.hitl-root h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 36px 0 14px;
+}
+
+.hitl-root .pullquote {
+  margin: 48px -16px;
+  padding: 32px 36px;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.hitl-root .pullquote q {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--ink);
+  quotes: '"' '"';
+  display: block;
+}
+.hitl-root .pullquote q::before, .hitl-root .pullquote q::after {
+  color: var(--accent);
+  font-size: 32px;
+  line-height: 0;
+  vertical-align: -10px;
+}
+
+.hitl-root .callout {
+  margin: 32px -16px;
+  padding: 24px 28px;
+  background: var(--bg-warm);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+.hitl-root .callout p { font-size: 15.5px; color: var(--ink); margin: 0; line-height: 1.65; }
+.hitl-root .callout p strong { color: var(--accent); }
+.hitl-root .callout .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.hitl-root .pr-compare {
+  margin: 36px -16px;
+  padding: 32px 36px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+}
+.hitl-root .pr-compare-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.hitl-root .pr-compare h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+.hitl-root .pr-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.hitl-root .pr-side {
+  padding: 22px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+}
+.hitl-root .pr-side.naive { background: var(--bg); }
+.hitl-root .pr-side.smart { background: var(--human-soft); border-color: var(--human); }
+.hitl-root .pr-side .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.hitl-root .pr-side.naive .label { color: var(--ink-mid); }
+.hitl-root .pr-side.smart .label { color: var(--human); }
+.hitl-root .pr-side .quantity {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.hitl-root .pr-side .quantity .unit {
+  font-size: 13px;
+  color: var(--ink-faint);
+  font-style: italic;
+  font-weight: 400;
+  margin-left: 4px;
+}
+.hitl-root .pr-side p {
+  font-size: 14px;
+  color: var(--ink-mid);
+  margin: 8px 0 0;
+  line-height: 1.55;
+}
+.hitl-root .pr-compare-note {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 14.5px;
+  color: var(--ink-mid);
+  font-style: italic;
+  line-height: 1.6;
+}
+.hitl-root .pr-compare-note strong { color: var(--accent); font-style: normal; }
+
+.hitl-root .flow {
+  margin: 36px -16px;
+  padding: 32px 36px;
+  background: var(--bg-deep);
+  color: var(--bg);
+  border-radius: 12px;
+}
+.hitl-root .flow-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent-bright);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hitl-root .flow h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  color: var(--bg);
+  line-height: 1.3;
+}
+.hitl-root .flow-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid rgba(246, 243, 236, 0.08);
+}
+.hitl-root .flow-row:first-of-type { border-top: none; }
+.hitl-root .flow-stage {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hitl-root .flow-bar {
+  height: 14px;
+  border-radius: 7px;
+  background: rgba(246, 243, 236, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.hitl-root .flow-fill {
+  height: 100%;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.hitl-root .flow-fill.machine { background: var(--machine); width: 95%; }
+.hitl-root .flow-fill.fast { background: var(--machine); width: 85%; }
+.hitl-root .flow-fill.medium { background: var(--accent); width: 35%; }
+.hitl-root .flow-fill.slow { background: var(--accent); width: 22%; }
+.hitl-root .flow-fill.slowest { background: var(--warn); width: 18%; }
+.hitl-root .flow-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--bg);
+  text-align: right;
+  font-weight: 500;
+}
+.hitl-root .flow-time.bottleneck { color: var(--accent-bright); }
+.hitl-root .flow-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(246, 243, 236, 0.1);
+  font-size: 14px;
+  color: #c4bda7;
+  line-height: 1.6;
+  font-style: italic;
+}
+.hitl-root .flow-note strong { color: var(--bg); font-style: normal; }
+
+.hitl-root .regression-card {
+  margin: 32px -16px;
+  padding: 28px 32px;
+  background: var(--warn-soft);
+  border: 1px solid var(--warn);
+  border-left: 4px solid var(--warn);
+  border-radius: 8px;
+}
+.hitl-root .regression-card .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--warn);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.hitl-root .regression-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.hitl-root .regression-card p {
+  font-size: 15.5px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.hitl-root .regression-card p:last-child { margin-bottom: 0; }
+.hitl-root .regression-card p strong { color: var(--ink); }
+
+.hitl-root .observation {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 22px;
+  margin: 28px 0;
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+}
+.hitl-root .observation:first-of-type { border-top: none; padding-top: 8px; }
+.hitl-root .observation .num {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1;
+}
+.hitl-root .observation h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.hitl-root .observation p {
+  font-size: 15.5px;
+  color: var(--ink-mid);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.hitl-root .thesis {
+  margin: 48px -16px;
+  padding: 40px 40px;
+  background: var(--bg-deep);
+  color: var(--bg);
+  border-radius: 12px;
+  border-left: 4px solid var(--accent-bright);
+}
+.hitl-root .thesis .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent-bright);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hitl-root .thesis p {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bg);
+  margin: 0;
+  font-style: italic;
+}
+.hitl-root .thesis p strong {
+  font-style: normal;
+  color: var(--accent-bright);
+  font-weight: 500;
+}
+
+.hitl-root .closing {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-mid);
+  text-align: center;
+  line-height: 1.5;
+}
+.hitl-root .signoff {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .hitl-root .article { padding: 48px 22px 40px; }
+  .hitl-root .pullquote,
+  .hitl-root .callout,
+  .hitl-root .pr-compare,
+  .hitl-root .flow,
+  .hitl-root .regression-card,
+  .hitl-root .thesis { margin-left: -22px; margin-right: -22px; }
+  .hitl-root .pullquote q { font-size: 20px; }
+  .hitl-root .pr-compare,
+  .hitl-root .flow,
+  .hitl-root .regression-card,
+  .hitl-root .thesis { padding: 26px 22px; }
+  .hitl-root .pr-row { grid-template-columns: 1fr; gap: 10px; }
+  .hitl-root .flow-row { grid-template-columns: 70px 1fr 60px; gap: 10px; }
+  .hitl-root .flow-stage { font-size: 10px; }
+  .hitl-root .thesis p { font-size: 18px; }
+  .hitl-root .observation { grid-template-columns: 44px 1fr; gap: 14px; }
+  .hitl-root .observation .num { font-size: 32px; }
+  .hitl-root h2 { font-size: 26px; }
+  .hitl-root .lead { font-size: 19px; }
+  .hitl-root .lead::first-letter { font-size: 56px; }
+}
+</style>
+
+<div class="hitl-root">
+<article class="article">
+
+  <p class="lead">It's been more than a year since my team started using AI aggressively in our software development. I want to share something uncomfortable that I haven't been able to shake. Honestly, I haven't seen any real increase in our overall productivity. We are producing more half-baked proofs of concept at ten times the speed we used to. But the actual bottlenecks of building good software, the things that were slow before AI, are still slow now. Some of them are slower.</p>
+
+  <p>The marketing narrative around AI in engineering tends to focus on the parts the machine has obviously accelerated. Writing code. Generating tests. Drafting documentation. These are real wins, and I don't want to pretend they aren't. But the parts that haven't gotten faster, and there are a lot of them, are quietly becoming the bottlenecks that determine whether all of that machine speed actually turns into shipped value. Most of the time, it doesn't.</p>
+
+  <h2>Context corruption is a human problem too</h2>
+
+  <p>One of the more interesting things I've learned about LLMs over the last year is the concept of context corruption. As you keep adding more context to a model's window, the quality of its reasoning degrades. The information is technically all there, but the model can no longer hold it cleanly in mind. Important details get lost in the noise. The output becomes less reliable, even though the input got more comprehensive.</p>
+
+  <p>It took me a while to realize that this is exactly what happens to human reviewers too. A reviewer staring at a 15,000-line change isn't reviewing more carefully than they would on a 3,000-line change. They're reviewing less carefully. The volume exceeds their working memory. They start pattern-matching instead of reading. They approve large sections as "looks like boilerplate." They miss things that, in a smaller diff, they would have caught immediately.</p>
+
+  <div class="pr-compare">
+    <div class="pr-compare-label">→ The same total volume, very different outcomes</div>
+    <h4>15,000 lines, one PR vs. five PRs of 3,000 lines</h4>
+    <div class="pr-row">
+      <div class="pr-side naive">
+        <div class="label">One mega PR</div>
+        <div class="quantity">15,000 <span class="unit">lines</span></div>
+        <p>Reviewer skims. Approves based on the description. Bugs hide in sections that get categorized as boilerplate.</p>
+      </div>
+      <div class="pr-side smart">
+        <div class="label">Five focused PRs</div>
+        <div class="quantity">5 × 3,000 <span class="unit">lines</span></div>
+        <p>Each review fits in the reviewer's head. Bugs surface. The change tells a story the reviewer can actually follow.</p>
+      </div>
+    </div>
+    <p class="pr-compare-note">Counterintuitively, <strong>five separate reviews are often faster in total than one massive review</strong>, because each one fits in working memory and gets done properly. Context corruption is real for humans, and AI-generated PRs are pushing right past the limit of what a human can hold.</p>
+  </div>
+
+  <p>The AI didn't invent the problem of large changes. Large changes were always hard to review. What AI changed is that the cost of producing a large change collapsed to nearly zero, while the cost of reviewing one stayed exactly what it was. The pre-AI culture had implicit conventions that kept changes small because making them small took less effort than making them large. That asymmetry has reversed. Now making them large is the cheap path, and the review process is paying the cost.</p>
+
+  <h2>The pipeline is only as fast as its slowest stage</h2>
+
+  <p>Software development isn't just coding. It's a sequence of stages, each with its own time cost. AI has dramatically sped up some stages and barely touched others. The result is the kind of pipeline imbalance any engineer should recognize: the overall throughput is set by the slowest stage, not the fastest one.</p>
+
+  <div class="flow">
+    <div class="flow-label">→ Where AI helps, and where it doesn't</div>
+    <h4>Time spent at each stage of the workflow</h4>
+
+    <div class="flow-row">
+      <div class="flow-stage">Code gen</div>
+      <div class="flow-bar"><div class="flow-fill machine">10× faster</div></div>
+      <div class="flow-time">Fast</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-stage">Doc draft</div>
+      <div class="flow-bar"><div class="flow-fill fast">8× faster</div></div>
+      <div class="flow-time">Fast</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-stage">Design</div>
+      <div class="flow-bar"><div class="flow-fill medium">~ same</div></div>
+      <div class="flow-time bottleneck">Slow</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-stage">User research</div>
+      <div class="flow-bar"><div class="flow-fill slow">~ same or slower</div></div>
+      <div class="flow-time bottleneck">Slower</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-stage">Prioritization</div>
+      <div class="flow-bar"><div class="flow-fill slow">~ same</div></div>
+      <div class="flow-time bottleneck">Slow</div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-stage">Code review</div>
+      <div class="flow-bar"><div class="flow-fill slowest">slower per LOC</div></div>
+      <div class="flow-time bottleneck">Bottleneck</div>
+    </div>
+
+    <p class="flow-note">The machine accelerated the parts that were already fast. The slow parts are still slow. <strong>The pipeline runs at the speed of the slowest human stage, which is exactly where the work piles up.</strong></p>
+  </div>
+
+  <p>You can prompt an AI to give you five design alternatives in one shot. Getting actual user feedback on those five designs is still slow, and arguably even slower than before because users are now seeing more proposals than they can meaningfully evaluate. Product managers are drowning in features that need prioritization. Engineers are building things left and right, but the question of <em>which features are actually useful</em> versus <em>which are eye candy with no value</em> still requires a human coordinating with another human to understand workflows, use cases, and priorities. That coordination takes its own time, and no amount of LLM speed accelerates it.</p>
+
+  <div class="pullquote">
+    <q>The machine got ten times faster. The humans around it stayed the same speed. The pipeline runs at the speed of the slowest part, and the slowest part is now everywhere except the machine.</q>
+  </div>
+
+  <h2>The accountability question nobody wants to answer</h2>
+
+  <p>The fashionable solution to the human-as-bottleneck problem is to remove the human. Let the agent write the code. Let the agent review the code. Let the agent ship the code. The full end-to-end autonomous workflow, with a human "expert" only stepping in to guide direction at a high level. On paper this sounds wonderful. In practice it runs into a question nobody seems to want to answer clearly.</p>
+
+  <p>If you remove the human checkpoint, who takes accountability when something breaks?</p>
+
+  <p>The agent? The LLM provider? The platform that orchestrated the agents? I haven't seen anyone in the industry seriously volunteer to take legal, reputational, or financial responsibility for what their AI produces. The terms of service of every major LLM provider explicitly disclaim it. Accountability is being quietly held by the human developer, who is increasingly removed from the loop while still being expected to own the outcome.</p>
+
+  <p>This is not a sustainable position. Either humans stay in the loop with real authority and real time to do the review properly, or someone else has to start taking the bill for the failures. So far, neither has happened.</p>
+
+  <h2>What I've actually watched happen</h2>
+
+  <div class="regression-card">
+    <div class="label">→ Case study from the trenches</div>
+    <h4>A legacy codebase, ten times the velocity, and the regression wave that followed</h4>
+    <p>I watched a team start using AI aggressively to add features to a large legacy codebase. Within a few months the velocity numbers looked spectacular. Features were shipping at roughly 10x the prior pace. Leadership was happy. Stakeholders were happy. The release notes were full of new things.</p>
+    <p>Then the regressions started. Bugs popped up in areas the changes touched <em>and</em> in areas they didn't touch. Subtle interactions between modules that the AI had refactored without fully understanding. Edge cases that disappeared because the tests covering them had been "modernized" away. <strong>The same team is now spending two or three sprints just fixing the regressions they introduced during the velocity spike.</strong></p>
+    <p>We'll stabilize eventually. But the side effects have outlasted the velocity gains. Pre-release customers are furious. The quality gates that used to be enforced before merging to mainline have visibly weakened. Manual QE engineers are demoralized, drowning in regression reports they can't keep up with. And a few engineers have already started blaming Claude for all of it, which is its own kind of unhealthy.</p>
+  </div>
+
+  <p>The net velocity, when you account for the rework, is roughly what it was before AI. Possibly worse. The team is more exhausted than they were a year ago. The product is less stable than it was a year ago. And the dashboard still says we're more productive than ever.</p>
+
+  <h2>The "fail fast" trap</h2>
+
+  <p>One of the things AI has genuinely enabled is the "fail fast" philosophy that startup culture has been preaching for a decade. You can spin up a POC in an afternoon, throw it at users, and kill it the next morning if it doesn't land. Cycle time has collapsed. That part is real.</p>
+
+  <p>What the philosophy doesn't tell you is the hidden cost of failure at high frequency. Too many failures, no matter how fast they happen, slowly degrade the mental health of the people doing the failing. "Hard reset and start from scratch" sounds great in a leadership all-hands. It feels different in week six of yet another deprecated initiative, when you've poured your attention into three half-built things and watched all of them get shelved.</p>
+
+  <p>We are not hardware. Our memory doesn't get wiped clean when a project ends. Every failure leaves a mark. Sometimes positive, in the form of real learning. More often negative: exhaustion, loss of confidence, self-doubt, and the slow erosion of the willingness to invest fully in the next thing, because the next thing might get killed too.</p>
+
+  <div class="callout">
+    <div class="label">→ The pattern leaders need to see</div>
+    <p>Engineers who have been through too many cycles of "ship fast, fail fast, pivot fast" don't get faster at coping with it. <strong>They get more cynical, more cautious, and more checked out.</strong> The output looks the same on the dashboard, right up until it doesn't.</p>
+  </div>
+
+  <h2>What I actually think is happening</h2>
+
+  <p>After a year of watching this play out, my honest read of the situation is a few specific things, none of which are popular to say out loud:</p>
+
+  <div class="observation">
+    <div class="num">i</div>
+    <div>
+      <h4>AI made code generation faster, not software development faster.</h4>
+      <p>These are different activities. The code is a tiny fraction of the actual work. Speeding up the code is a real win, but it doesn't speed up the parts that were always the bottleneck: figuring out what to build, deciding if it's worth building, validating it with users, integrating it cleanly, and keeping the system healthy over time.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">ii</div>
+    <div>
+      <h4>The human review bandwidth is the new constraint.</h4>
+      <p>The team can produce more output than it can carefully review. So the careful review stops happening. The output ships anyway. The cost shows up as regressions, customer escalations, and a long tail of cleanup work that erases the velocity gain. The dashboards capture the gain. They don't capture the cleanup.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">iii</div>
+    <div>
+      <h4>End-to-end AI workflows have an accountability hole.</h4>
+      <p>The further you remove humans from the loop, the more important the question of "who is responsible when this breaks?" becomes. Right now, nobody at the AI provider level wants to answer it. Until someone does, full autonomy is a fantasy.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">iv</div>
+    <div>
+      <h4>The human cost of "fail fast" at high frequency is real and underpriced.</h4>
+      <p>Repeated failures don't bounce off engineers cleanly the way they do off a process diagram. The compounding emotional cost shows up in attrition, in cynicism, and in the quiet decision to stop bringing your best ideas to the table because the previous ones got killed.</p>
+    </div>
+  </div>
+
+  <h2>Where this leaves us</h2>
+
+  <p>I don't think engineers, designers, or any creative profession can be fully replaced by AI, unless the end consumer of the product is also a machine. If you are building for human users, you will need human builders. The shape of the work might change, but it doesn't disappear. The taste, the judgment, the contextual understanding that only comes from actually living among other humans, these are not optional inputs to building software that humans will use.</p>
+
+  <p>Can efficiency improve? Yes, absolutely. But the model for how it improves matters. Industrialization improved manufacturing efficiency by orders of magnitude, but it didn't do it by removing humans from the loop overnight. It did it by carefully redesigning the work around the new capabilities, with safeguards, with explicit accountability, with regulated checkpoints, and with attention to the human cost when things went wrong. The factories that ignored that, that just scaled output without thinking about consequences, are the ones we now remember as cautionary tales.</p>
+
+  <div class="thesis">
+    <div class="label">→ The thesis, plainly</div>
+    <p>AI in software is going to make us much more productive, eventually. But it's going to be <strong>systematic productivity</strong>, not the haphazard kind we're chasing now. The teams that figure out where the human checkpoints should actually live, what they should actually be responsible for, and how to design the workflow around the new constraints will compound real gains. The teams treating AI as a velocity multiplier on the existing process will keep producing the regression waves we're seeing now.</p>
+  </div>
+
+  <p>The human in the loop isn't a bug to be eliminated. It's the part of the system that has the context, the accountability, and the taste. The job of leadership over the next few years isn't to remove that human. It's to figure out how to design a workflow where the human is doing the right work, at the right pace, with the right level of authority, while the machine does the parts it's genuinely better at.</p>
+
+  <p>We're not there yet. Most teams I see, including mine, are still in the messy middle, with all the speed of the new tools and none of the discipline to use them well. That's fine for a while. It's the natural shape of any technological transition. But the teams that stay in the messy middle too long are the ones that end up exhausted, burned out, and quietly losing ground to the teams that figured out the system.</p>
+
+  <p class="closing">
+    The machine is faster than us. It will keep getting faster. The question that matters isn't how to make the human keep up. It's how to design a workflow where the human doesn't have to.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>
