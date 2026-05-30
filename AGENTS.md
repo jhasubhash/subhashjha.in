@@ -1,5 +1,19 @@
 # subhashjha.in — Project Guide for Claude
 
+## ⚠️ Never push without explicit permission
+
+**This rule overrides every other instruction in this file, including the numbered checklists below.**
+
+- **Never run `git push` (or any command that pushes to a remote) unless the user has explicitly asked for it in the current request.**
+- Phrases like "publish a new post", "add this post", "create an app", or "ship X" do **not** authorize a push. They authorize creating files and (at most) a local commit.
+- The numbered "Commit and push" steps in the checklists below describe the *full* publishing flow for reference. They are **not** standing authorization to push. Stop after staging (or committing locally, if asked) and wait.
+- If you are unsure whether a push is wanted, **ask first**. Default: don't push.
+- The same rule applies to any other irreversible or remote-affecting action: force-pushes, tag pushes, branch deletions on the remote, deploys triggered manually, etc.
+
+When the user is ready, they will say something explicit like "push it", "push to main", or "go ahead and push". Only then run the push command.
+
+---
+
 ## Publishing a New Post
 
 When the user asks to publish or add a new blog post, complete **all** of the following steps:
@@ -43,13 +57,21 @@ sips -s format jpeg -s formatOptions 85 -Z 1200 input.png --out output.jpg
 - Use the `.jpg` extension in the manifest `image` field
 - Delete the original uncompressed file after converting
 
-### 4. Commit and push
-Push to `main` on the personal GitHub remote:
+### 4. Commit locally — do NOT push
+Stage and commit the new files locally:
+```bash
+git add content/posts/{slug}.html content/posts/manifest.json public/images/posts/{slug}-og.jpg
+git commit -m "Add post: {title}"
+```
+**Stop here.** Do not push. Report the commit to the user and wait for explicit instruction to push.
+
+### 5. Push (only when the user explicitly asks)
+When, and only when, the user explicitly says to push, run:
 ```bash
 git push git@github-personal:jhasubhash/subhashjha.in.git main
 ```
 
-### 5. What happens automatically after push
+### 6. What happens automatically after push
 - **Vercel** picks up the push and deploys the site
 
 ---
@@ -82,8 +104,8 @@ import AppEmbed from "@/components/AppEmbed";
 <AppEmbed appName="app-name" title="Title" height={500} />
 ```
 
-### 4. Commit and push
-Include the new `public/apps/{app-name}/` folder in the commit and push to main.
+### 4. Commit locally — do NOT push
+Stage and commit the new `public/apps/{app-name}/` folder (plus any post HTML changes) locally. **Stop there and wait for the user to explicitly ask for a push.** See the global "Never push without explicit permission" rule at the top of this file.
 
 ---
 
