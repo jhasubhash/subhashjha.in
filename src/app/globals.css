@@ -268,27 +268,30 @@ body {
 
 /* ─── About Page ─── */
 .about-page {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 64px 32px 80px;
 }
 
-.about-header {
+.about-hero {
   display: flex;
   align-items: center;
-  gap: 28px;
-  margin-bottom: 48px;
-  padding-bottom: 40px;
+  gap: 36px;
+  margin-bottom: 56px;
+  padding-bottom: 48px;
   border-bottom: 1px solid var(--paper-rule);
 }
 
+.about-hero-text { min-width: 0; }
+
 .about-avatar {
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
   border-radius: 14px;
   overflow: hidden;
   flex-shrink: 0;
   border: 1px solid var(--paper-rule);
+  box-shadow: 0 12px 32px -16px rgba(26, 23, 20, 0.25);
 }
 
 .about-avatar img {
@@ -299,19 +302,34 @@ body {
   display: block;
 }
 
+/* Timeline (Work) */
+
 .about-name {
-  font-family: var(--font-sans), 'Inter', sans-serif;
-  font-size: 28px;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-size: 44px;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--ink);
-  margin-bottom: 6px;
+  margin: 0 0 12px;
 }
 
 .about-tagline {
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.55;
   color: var(--ink-muted);
+  margin: 0 0 18px;
 }
+
+.about-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  font-size: 14px;
+}
+
+.about-link-sep { color: var(--ink-faint); }
 
 .about-section {
   margin-bottom: 48px;
@@ -385,6 +403,142 @@ body {
   border: 1px solid var(--paper-rule);
   border-radius: 20px;
   color: var(--ink-muted);
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--paper-rule);
+}
+.timeline-item {
+  position: relative;
+  padding-left: 32px;
+  padding-bottom: 32px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--ink-muted);
+}
+.timeline-period {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+.timeline-role {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.timeline-company {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+}
+.timeline-bullets {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+}
+.timeline-bullets li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+.timeline-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 11px;
+  width: 6px;
+  height: 1px;
+  background: var(--ink-faint);
+}
+.timeline-stack {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Patents */
+.about-patent {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--paper-rule);
+}
+.about-patent:last-child { border-bottom: none; }
+.about-patent-title {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.about-patent-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+}
+
+/* Skills (grouped) */
+.about-skill-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.about-skill-group {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.about-skill-group-label {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 6px;
+}
+
+/* Education */
+.about-edu-degree {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.about-edu-meta {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+.about-edu-note {
+  font-size: 14px;
+  color: var(--ink-faint);
 }
 
 .about-links {
@@ -1028,7 +1182,10 @@ body {
   .comparison-table td, .comparison-table th { padding: 10px 8px; }
 
   .about-page { padding: 40px 20px 60px; }
-  .about-header { flex-direction: column; gap: 16px; }
+  .about-hero { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .about-avatar { width: 160px; height: 160px; }
+  .about-name { font-size: 34px; }
+  .about-skill-group { grid-template-columns: 1fr; gap: 8px; }
 
   .comments-section { padding: 40px 20px 48px; }
   .post-back { padding: 16px 20px 0; }
