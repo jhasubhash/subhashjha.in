@@ -35,7 +35,7 @@ export default async function HomePage({
       <div className="home-header">
         <div className="home-header-avatar">
           <Image
-            src="/images/profile.png"
+            src="/images/profile.jpg"
             alt="Subhash Jha"
             width={72}
             height={72}

@@ -22,10 +22,10 @@ export default function AboutPage() {
         <div className="about-header">
           <div className="about-avatar">
             <Image
-              src="/images/profile.png"
+              src="/images/profile.jpg"
               alt="Subhash Jha"
-              width={88}
-              height={88}
+              width={240}
+              height={240}
               priority
             />
           </div>

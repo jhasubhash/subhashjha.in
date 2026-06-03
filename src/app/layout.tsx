@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   description:
     "Software Developer at Adobe building Photoshop. Writing about macOS tools, systems programming, and creative software.",
-  icons: { icon: "/images/profile.png" },
+  icons: { icon: "/images/profile.jpg" },
   alternates: {
     types: {
       "application/rss+xml": "https://subhashjha.in/feed.xml",
