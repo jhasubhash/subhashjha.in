@@ -1,5 +1,17 @@
 [
   {
+    "slug": "slack-avatar-roulette",
+    "title": "My Slack Profile Picture Changes Itself Every Day (and I Love It)",
+    "htmlTitle": "My Slack profile picture changes itself every day <em style=\"color:#c4622d;font-style:italic;font-weight:400\">(and I love it).</em>",
+    "description": "A Raycast extension, a folder full of selfies, and a midnight scheduled job that quietly rotates my Slack avatar. Friday gets the most photos. This was not an accident.",
+    "date": "2026-06-07",
+    "readTime": "~5 min read",
+    "category": "Build",
+    "eyebrow": "Build · Raycast · Automation",
+    "image": "/images/posts/slack-avatar-roulette-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "human-in-the-loop-bottleneck",
     "title": "The Human in the Loop Is Still the Bottleneck. And That's the Point.",
     "htmlTitle": "The human in the loop is still the bottleneck. <em style=\"color:#a83820;font-style:italic;font-weight:400\">And that's the point.</em>",

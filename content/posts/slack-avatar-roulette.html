@@ -1,0 +1,491 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  .sav-article {
+    --ink: #1a1714;
+    --ink-mid: #6b6560;
+    --ink-faint: #9e9890;
+    --paper: #faf8f4;
+    --paper-warm: #f2ede4;
+    --paper-rule: #e8e2d8;
+    --accent: #c4622d;
+    --accent-soft: #f5ede6;
+    --green: #3a6b3a;
+    --green-soft: #e8f0e8;
+    --blue: #2d5c8a;
+
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .sav-article p { margin: 0 0 22px; }
+  .sav-article p:last-child { margin-bottom: 0; }
+  .sav-article strong { color: var(--ink); }
+  .sav-article em { font-style: italic; }
+
+  .sav-article code.inline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.86em;
+    background: var(--paper-warm);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--accent);
+    border: 1px solid var(--paper-rule);
+  }
+
+  .sav-article .lead {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 23px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+
+  .sav-article h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 56px 0 20px;
+    color: var(--ink);
+    padding-top: 8px;
+  }
+  .sav-article h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 32px 0 12px;
+  }
+
+  .sav-article .pullquote {
+    margin: 36px 0;
+    padding: 4px 0 4px 22px;
+    border-left: 3px solid var(--accent);
+  }
+  .sav-article .pullquote q {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.45;
+    font-style: italic;
+    color: var(--ink);
+    quotes: '"' '"';
+    display: block;
+  }
+
+  .sav-article .callout {
+    margin: 28px -8px;
+    padding: 20px 24px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .sav-article .callout p {
+    font-size: 15.5px;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+  .sav-article .callout .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  /* Polaroid gallery */
+  .sav-article .polaroid-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 10px;
+    margin: 36px -16px;
+    padding: 26px 12px 30px;
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-rule);
+    border-radius: 8px;
+  }
+  .sav-article .polaroid {
+    background: #fffdf7;
+    border: 1px solid var(--paper-rule);
+    padding: 8px 8px 8px;
+    box-shadow: 0 6px 14px -8px rgba(26, 23, 20, 0.35);
+    text-align: center;
+    width: 132px;
+  }
+  .sav-article .polaroid:nth-child(odd)  { transform: rotate(-2deg); }
+  .sav-article .polaroid:nth-child(even) { transform: rotate(2deg); }
+  .sav-article .polaroid:nth-child(3n)   { transform: rotate(-1deg); }
+  .sav-article .polaroid img {
+    display: block;
+    width: 116px;
+    height: 116px;
+    object-fit: cover;
+    border: 1px solid #1a1714;
+  }
+  .sav-article .polaroid .cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--ink-mid);
+    margin-top: 8px;
+    padding-bottom: 2px;
+  }
+
+  /* Routing table */
+  .sav-article .routing {
+    margin: 28px -8px;
+    border: 1px solid var(--paper-rule);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .sav-article .routing-row {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr 1.2fr;
+    gap: 0;
+    border-top: 1px solid var(--paper-rule);
+    align-items: center;
+  }
+  .sav-article .routing-row:first-child { border-top: none; background: var(--paper-warm); }
+  .sav-article .routing-row > div {
+    padding: 14px 16px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .sav-article .routing-row > div + div { border-left: 1px solid var(--paper-rule); }
+  .sav-article .routing-row .head {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+  }
+  .sav-article .routing-row .emoji { font-size: 20px; text-align: center; }
+  .sav-article .routing-row code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--accent);
+  }
+
+  /* Distribution bars */
+  .sav-article .distribution {
+    margin: 28px -8px;
+    padding: 24px 26px;
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-rule);
+    border-radius: 8px;
+  }
+  .sav-article .distribution-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .sav-article .dist-row {
+    display: grid;
+    grid-template-columns: 96px 1fr 36px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .sav-article .dist-row:last-child { margin-bottom: 0; }
+  .sav-article .dist-day {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-mid);
+  }
+  .sav-article .dist-bar {
+    height: 14px;
+    background: var(--paper);
+    border-radius: 3px;
+    border: 1px solid var(--paper-rule);
+    overflow: hidden;
+  }
+  .sav-article .dist-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #c4622d, #d4884e);
+  }
+  .sav-article .dist-row .dist-fill.peak { background: linear-gradient(90deg, #3a6b3a, #6fa86c); }
+  .sav-article .dist-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    text-align: right;
+    font-weight: 600;
+  }
+
+  /* File tree */
+  .sav-article .file-tree {
+    margin: 28px -8px;
+    background: #15130f;
+    border: 1px solid #2a2620;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 6px 18px rgba(26, 23, 20, 0.12);
+  }
+  .sav-article .file-tree-header {
+    padding: 9px 14px;
+    background: #1d1a15;
+    border-bottom: 1px solid #2a2620;
+    font-size: 11px;
+    color: #8a857a;
+    letter-spacing: 0.05em;
+  }
+  .sav-article .file-tree pre {
+    margin: 0;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #c0bbad;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .sav-article .file-tree .dir { color: #6fa86c; font-weight: 500; }
+  .sav-article .file-tree .file { color: #c0bbad; }
+  .sav-article .file-tree .comment { color: #8a857a; font-style: italic; }
+
+  /* Sequence timeline */
+  .sav-article .sequence {
+    margin: 28px -8px;
+    padding: 28px 30px;
+    background: var(--green-soft);
+    border: 1px solid #cbdccb;
+    border-radius: 8px;
+  }
+  .sav-article .sequence-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .sav-article .seq-step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid #cbdccb;
+    align-items: start;
+  }
+  .sav-article .seq-step:first-of-type { border-top: none; padding-top: 4px; }
+  .sav-article .seq-step .ms {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--green);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: right;
+  }
+  .sav-article .seq-step h5 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .sav-article .seq-step p {
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .sav-article .closing {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--paper-rule);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-mid);
+    text-align: center;
+    line-height: 1.55;
+  }
+  .sav-article .signoff {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    margin-top: 20px;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  @media (max-width: 720px) {
+    .sav-article { padding: 40px 22px 30px; }
+    .sav-article .callout,
+    .sav-article .routing,
+    .sav-article .distribution,
+    .sav-article .sequence,
+    .sav-article .file-tree,
+    .sav-article .polaroid-row { margin-left: -14px; margin-right: -14px; }
+    .sav-article .pullquote q { font-size: 19px; }
+    .sav-article .lead { font-size: 18px; }
+    .sav-article h2 { font-size: 26px; }
+    .sav-article .routing-row { grid-template-columns: 1.5fr 0.5fr 1fr; }
+    .sav-article .routing-row > div { padding: 12px 12px; font-size: 13.5px; }
+    .sav-article .dist-row { grid-template-columns: 80px 1fr 32px; }
+    .sav-article .polaroid { width: 108px; }
+    .sav-article .polaroid img { width: 92px; height: 92px; }
+    .sav-article .seq-step { grid-template-columns: 56px 1fr; }
+  }
+</style>
+
+<div class="article-body sav-article">
+
+  <p class="lead">A few months ago I got tired of my static Slack avatar staring back at everyone. Same face, every day, every context. Monday energy, Friday energy, doesn't matter, one photo. I decided to fix that with a small Raycast extension and a folder full of selfies.</p>
+
+  <p>The result is a Slack profile picture that quietly rotates throughout the week, picks up on what I'm doing, and never demands more than a launcher keystroke from me. It's silly. It also turned out to be one of my favorite quality-of-life automations.</p>
+
+  <h2>What it does</h2>
+
+  <p>Two triggers cause my Slack profile photo to change:</p>
+
+  <p><strong>1. Setting a status.</strong> Any time I mark myself as AFK, going to lunch, out sick, or on PTO, the photo updates to match the context. Lunch status gets a lunch photo. Sick status gets a sick photo. The mood is set without me thinking about it.</p>
+
+  <p><strong>2. Midnight rollover.</strong> A scheduled job fires every night at 12:00 AM and swaps in a fresh photo for the new day, so my avatar is always contextually current even if I haven't touched a status.</p>
+
+  <p>Here's the routing logic in full:</p>
+
+  <div class="routing">
+    <div class="routing-row">
+      <div class="head">Status</div>
+      <div class="head">Emoji</div>
+      <div class="head">Photo pool</div>
+    </div>
+    <div class="routing-row">
+      <div>Lunch</div>
+      <div class="emoji">🍔</div>
+      <div><code>assets/lunch/</code> (9)</div>
+    </div>
+    <div class="routing-row">
+      <div>PTO / Out of office</div>
+      <div class="emoji">🔴</div>
+      <div><code>assets/pto/</code> (4)</div>
+    </div>
+    <div class="routing-row">
+      <div>Out sick</div>
+      <div class="emoji">🤒</div>
+      <div><code>assets/sick/</code> (4)</div>
+    </div>
+    <div class="routing-row">
+      <div>Away from keyboard</div>
+      <div class="emoji">🍵</div>
+      <div><code>assets/afk/</code></div>
+    </div>
+    <div class="routing-row">
+      <div>Everything else</div>
+      <div class="emoji">·</div>
+      <div>today's weekday pool</div>
+    </div>
+  </div>
+
+  <p>The weekday pools are where the personality lives:</p>
+
+  <div class="distribution">
+    <div class="distribution-label">→ Photos per weekday pool</div>
+    <div class="dist-row"><div class="dist-day">Monday</div><div class="dist-bar"><div class="dist-fill" style="width: 90.5%"></div></div><div class="dist-num">19</div></div>
+    <div class="dist-row"><div class="dist-day">Tuesday</div><div class="dist-bar"><div class="dist-fill" style="width: 95.2%"></div></div><div class="dist-num">20</div></div>
+    <div class="dist-row"><div class="dist-day">Wednesday</div><div class="dist-bar"><div class="dist-fill" style="width: 90.5%"></div></div><div class="dist-num">19</div></div>
+    <div class="dist-row"><div class="dist-day">Thursday</div><div class="dist-bar"><div class="dist-fill" style="width: 95.2%"></div></div><div class="dist-num">20</div></div>
+    <div class="dist-row"><div class="dist-day">Friday</div><div class="dist-bar"><div class="dist-fill peak" style="width: 100%"></div></div><div class="dist-num">21</div></div>
+    <div class="dist-row"><div class="dist-day">Saturday</div><div class="dist-bar"><div class="dist-fill" style="width: 47.6%"></div></div><div class="dist-num">10</div></div>
+    <div class="dist-row"><div class="dist-day">Sunday</div><div class="dist-bar"><div class="dist-fill" style="width: 52.4%"></div></div><div class="dist-num">11</div></div>
+  </div>
+
+  <p>Friday has the most photos. This was not an accident.</p>
+
+  <div class="polaroid-row">
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/monday-0.jpg" alt="Monday"><div class="cap">MON</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/tuesday-0.jpg" alt="Tuesday"><div class="cap">TUE</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/wednesday-0.jpg" alt="Wednesday"><div class="cap">WED</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/thursday-0.jpg" alt="Thursday"><div class="cap">THU</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/friday-0.jpg" alt="Friday"><div class="cap">FRI</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/saturday-0.jpg" alt="Saturday"><div class="cap">SAT</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/sunday-0.jpg" alt="Sunday"><div class="cap">SUN</div></div>
+  </div>
+
+  <h2>The tech stack</h2>
+
+  <p>It's a Raycast extension, invoked from the launcher like any other command. No background daemon, no menu bar app, no extra process to babysit. Raycast is already my daily driver for launching apps and running quick actions, so it was the natural home for this.</p>
+
+  <p>The extension talks to the Slack API using a personal user token. Two API calls do everything:</p>
+
+  <p><code class="inline">users.profile.set</code> sets the status emoji, status text, and an auto-clear timestamp so the status quietly vanishes when my lunch (or PTO) is over. <code class="inline">users.setPhoto</code> uploads the chosen image as multipart form data and Slack handles the rest.</p>
+
+  <p>The midnight automation uses Raycast's built-in scheduled commands feature. You point it at any extension command and give it a cron-style schedule. No <code class="inline">crontab</code> editing, no <code class="inline">launchd</code> plist wrangling, no extra tooling. Raycast wakes the command up at the right time and goes back to sleep.</p>
+
+  <div class="pullquote">
+    <q>The whole automation budget is one Raycast extension, one scheduled job, and however many selfies you're willing to take.</q>
+  </div>
+
+  <h2>The photo resolution logic</h2>
+
+  <p>Photos live in organized asset folders and follow a dead-simple naming convention. The day name (or status name), a dash, and an index. That's it.</p>
+
+  <div class="file-tree">
+    <div class="file-tree-header">slack-status/assets</div>
+<pre><span class="dir">assets/</span>
+├── <span class="dir">days/</span>
+│   ├── <span class="file">Monday-0.png</span>
+│   ├── <span class="file">Monday-1.png</span>
+│   ├── <span class="comment">… 17 more …</span>
+│   ├── <span class="file">Friday-0.png</span> → <span class="file">Friday-20.png</span>
+│   └── <span class="comment">…</span>
+├── <span class="dir">lunch/</span>
+│   └── <span class="file">lunch-0.png</span> → <span class="file">lunch-8.png</span>
+├── <span class="dir">pto/</span>
+│   └── <span class="file">pto-0.png</span> → <span class="file">pto-3.png</span>
+└── <span class="dir">sick/</span>
+    └── <span class="file">sick-0.png</span> → <span class="file">sick-3.png</span></pre>
+  </div>
+
+  <p>When the extension needs a photo, it asks a tiny question: <em>which folder, which prefix?</em> Then it scans that folder, filters by the prefix, and picks one entry uniformly at random. For the weekday pool the prefix is whatever today is. For statuses, it's <code class="inline">lunch</code> or <code class="inline">pto</code> or <code class="inline">sick</code>.</p>
+
+  <p>Adding a new photo to any pool is just dropping a file in with the next number in the name. Zero config edits, zero code changes, zero deploy step. The folder <em>is</em> the config.</p>
+
+  <h2>The status photos</h2>
+
+  <p>The fun thing about routing photos to statuses is that the photos themselves can be a bit. Lunch is a noodle slurp. Sick is a "leave me alone" face. PTO is sunglasses and an excuse not to type a real status message.</p>
+
+  <div class="polaroid-row">
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/lunch.jpg" alt="Lunch"><div class="cap">LUNCH 🍔</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/sick.jpg" alt="Sick"><div class="cap">SICK 🤒</div></div>
+    <div class="polaroid"><img src="/images/posts/slack-avatar-roulette/pto.jpg" alt="PTO"><div class="cap">PTO 🔴</div></div>
+  </div>
+
+  <div class="callout">
+    <div class="label">→ A note on the Slack API</div>
+    <p>You need a Slack user token (the kind that starts with <strong>xoxp-</strong>) with <code class="inline">users.profile:write</code> and <code class="inline">users:write</code> scopes. Bot tokens won't work, because the bot doesn't own your photo. The whole setup takes about ten minutes from "create a Slack app" to "first selfie uploaded."</p>
+  </div>
+
+  <h2>Is it worth it?</h2>
+
+  <p>Objectively, no. Practically, it's one of my favorite quality-of-life automations. My teammates occasionally notice the photo changed. I get to curate a little photo library for each day of the week. Friday is well-represented.</p>
+
+  <p>The whole thing is maybe two hundred lines of code, a Raycast scheduled job, and however many selfies you're willing to take. The barrier to entry is low. The return on vibes is high. And every time someone messages me right after midnight on a Sunday and sees a fresh Monday face, I'm a little delighted, even if they aren't.</p>
+
+  <p class="closing">
+    Software doesn't have to be useful to be worth building. Sometimes the right project is the one that makes you smile every time you go to lunch.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</div>
