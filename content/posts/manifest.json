@@ -1,5 +1,17 @@
 [
   {
+    "slug": "machine-native-code",
+    "title": "The Language AI Will Actually Write Code In",
+    "htmlTitle": "The code AI writes won't be <em style=\"color:#a83820;font-style:italic;font-weight:400\">for you.</em>",
+    "description": "Clean code, design patterns, readable names. Those are ergonomics for a human brain with seven slots of working memory. The AI doesn't have that brain. So why is it still writing code for it?",
+    "date": "2026-06-08",
+    "readTime": "~6 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · AI · Programming",
+    "image": "/images/posts/machine-native-code-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "slack-avatar-roulette",
     "title": "My Slack Profile Picture Changes Itself Every Day (and I Love It)",
     "htmlTitle": "My Slack profile picture changes itself every day <em style=\"color:#c4622d;font-style:italic;font-weight:400\">(and I love it).</em>",

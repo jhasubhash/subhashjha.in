@@ -1,0 +1,364 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  .mnc-article {
+    --ink: #1a1714;
+    --ink-mid: #6b6560;
+    --ink-faint: #9e9890;
+    --paper: #faf8f4;
+    --paper-warm: #f2ede4;
+    --paper-rule: #e8e2d8;
+    --accent: #a83820;
+    --accent-soft: #f5ede6;
+    --green: #3a6b3a;
+    --green-soft: #e8f0e8;
+    --blue: #2d5c8a;
+
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .mnc-article p { margin: 0 0 22px; }
+  .mnc-article p:last-child { margin-bottom: 0; }
+  .mnc-article strong { color: var(--ink); font-weight: 600; }
+  .mnc-article em { font-style: italic; color: var(--ink-mid); }
+
+  .mnc-article .lead {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 23px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .mnc-article .lead::first-letter {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 72px;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 8px 12px 0 -2px;
+    color: var(--accent);
+  }
+
+  .mnc-article h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 64px 0 22px;
+    color: var(--ink);
+    padding-top: 8px;
+    border-top: 1px solid var(--paper-rule);
+  }
+  .mnc-article h2:first-of-type { border-top: none; padding-top: 0; }
+
+  .mnc-article h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+
+  .mnc-article .hl {
+    background: #fdecd8;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .mnc-article .pointers {
+    list-style: none;
+    margin: 26px 0;
+    padding: 0;
+  }
+  .mnc-article .pointers li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 12px 0 12px 28px;
+    border-top: 1px dashed var(--paper-rule);
+    position: relative;
+    color: var(--ink-mid);
+  }
+  .mnc-article .pointers li:last-child { border-bottom: 1px dashed var(--paper-rule); }
+  .mnc-article .pointers li::before {
+    content: "▸";
+    color: var(--accent);
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    font-size: 13px;
+  }
+
+  /* Code battle cards */
+  .mnc-article .battle { margin: 36px 0; }
+  .mnc-article .battle-head {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .mnc-article .card {
+    background: #fff;
+    border: 1px solid var(--paper-rule);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .mnc-article .card:hover { border-color: #ccc; }
+  .mnc-article .card.winner {
+    border-color: var(--accent);
+    box-shadow: 0 2px 16px rgba(168, 56, 32, 0.08);
+  }
+  .mnc-article .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--paper-rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .mnc-article .lang { font-weight: 600; letter-spacing: 0.5px; color: var(--ink); }
+  .mnc-article .lang.win { color: var(--accent); }
+  .mnc-article .tok { color: var(--ink-faint); }
+  .mnc-article .tok b { color: var(--ink); font-weight: 600; }
+  .mnc-article .card.winner .tok b { color: var(--accent); }
+
+  .mnc-article pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.55;
+    padding: 14px 16px;
+    overflow-x: auto;
+    color: var(--ink-mid);
+    white-space: pre;
+    background: var(--paper-warm);
+    margin: 0;
+  }
+  .mnc-article pre .c { color: var(--ink-faint); }
+  .mnc-article pre .k { color: var(--accent); }
+  .mnc-article pre .s { color: var(--green); }
+
+  /* Bar chart */
+  .mnc-article .bars { margin: 30px 0 10px; }
+  .mnc-article .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .mnc-article .bar-label {
+    width: 110px;
+    flex-shrink: 0;
+    text-align: right;
+    color: var(--ink-faint);
+  }
+  .mnc-article .bar-track {
+    flex: 1;
+    background: var(--paper-warm);
+    border-radius: 4px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--paper-rule);
+  }
+  .mnc-article .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    transition: width 1.2s cubic-bezier(.2,.8,.2,1);
+  }
+  .mnc-article .bar-fill.lo { background: var(--green-soft); border: 1px solid var(--green); color: var(--green); }
+  .mnc-article .bar-fill.mid { background: #f0ead8; border: 1px solid #b8a050; color: #7a6830; }
+  .mnc-article .bar-fill.hi { background: #f5dcd8; border: 1px solid var(--accent); color: var(--accent); }
+
+  .mnc-article .pull {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--accent);
+    margin: 36px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .mnc-article .danger-box {
+    background: #fdf6f4;
+    border: 1px solid rgba(168, 56, 32, 0.2);
+    border-radius: 8px;
+    padding: 24px 26px;
+    margin: 30px 0;
+  }
+  .mnc-article .danger-box .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .mnc-article .danger-box p { font-size: 16px; }
+</style>
+
+<div class="mnc-article">
+
+  <p class="lead">Every coding convention we cherish is a workaround for a human limitation.</p>
+
+  <p>Descriptive variable names exist because you can't hold <span class="hl">r12</span> and <span class="hl">customerLifetimeValue</span> in your head with equal ease. Comments exist because re-deriving intent is expensive for a tired person at 2 AM. Design patterns exist so a stranger can recognize the shape of a solution without reading every line. Indentation, modularity, single-responsibility: all of it is bandwidth management for wetware.</p>
+
+  <p>An AI that writes and maintains its own code has none of those constraints. It reads the whole file in one shot. It re-derives intent instantly. It doesn't get tired, doesn't onboard, doesn't forget. <span class="hl">So the moment we stop asking it to write code for humans, it will optimize for something else entirely.</span></p>
+
+  <ul class="pointers">
+    <li>Humans optimize for: readability, maintainability, onboarding speed</li>
+    <li>AI optimizes for: tokens, latency, raw performance, self-consistency</li>
+    <li>These two objective functions do not point in the same direction</li>
+  </ul>
+
+  <h2>Binary search, five ways</h2>
+  <h3>Exhibit A</h3>
+
+  <p>Same problem, same correctness guarantee. The only thing that changes is how many tokens the model has to emit and re-ingest to keep working with it. Watch what "wins" when the audience is a machine.</p>
+
+  <div class="battle">
+    <div class="battle-head">// approx. tokens to generate + the cost to re-read on every edit ↓</div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="lang">Rust · idiomatic</span>
+        <span class="tok"><b>~96</b> tokens</span>
+      </div>
+<pre><span class="k">pub fn</span> binary_search(arr: &[i32], target: i32) -> Option&lt;usize&gt; {
+    <span class="k">let mut</span> low = 0usize;
+    <span class="k">let mut</span> high = arr.len();
+    <span class="k">while</span> low &lt; high {
+        <span class="k">let</span> mid = low + (high - low) / 2;
+        <span class="k">match</span> arr[mid].cmp(&target) {
+            Ordering::Equal   => <span class="k">return</span> Some(mid),
+            Ordering::Less    => low  = mid + 1,
+            Ordering::Greater => high = mid,
+        }
+    }
+    None
+}</pre>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="lang">JavaScript · readable</span>
+        <span class="tok"><b>~78</b> tokens</span>
+      </div>
+<pre><span class="k">function</span> binarySearch(arr, target) {
+  <span class="k">let</span> low = 0, high = arr.length - 1;
+  <span class="k">while</span> (low &lt;= high) {
+    <span class="k">const</span> mid = (low + high) &gt;&gt; 1;
+    <span class="k">if</span> (arr[mid] === target) <span class="k">return</span> mid;
+    <span class="k">if</span> (arr[mid] &lt; target) low = mid + 1;
+    <span class="k">else</span> high = mid - 1;
+  }
+  <span class="k">return</span> -1;
+}</pre>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="lang">C · terse</span>
+        <span class="tok"><b>~58</b> tokens</span>
+      </div>
+<pre><span class="k">int</span> bs(<span class="k">int</span>*a,<span class="k">int</span> n,<span class="k">int</span> t){<span class="k">int</span> l=0,h=n-1;
+<span class="k">while</span>(l&lt;=h){<span class="k">int</span> m=(l+h)/2;
+<span class="k">if</span>(a[m]==t)<span class="k">return</span> m;
+a[m]&lt;t?(l=m+1):(h=m-1);}<span class="k">return</span> -1;}</pre>
+    </div>
+
+    <div class="card winner">
+      <div class="card-top">
+        <span class="lang win">★ "Machine dialect" · golfed C</span>
+        <span class="tok"><b>~34</b> tokens</span>
+      </div>
+<pre><span class="c">/* no names, no spaces, no mercy */</span>
+<span class="k">int</span> f(<span class="k">int</span>*a,<span class="k">int</span> n,<span class="k">int</span> t){<span class="k">int</span> l=0,h=n-1,m;<span class="k">while</span>(l&lt;=h)(a[m=l+h&gt;&gt;1]==t)?<span class="k">return</span> m:a[m]&lt;t?l=m+1:(h=m-1);<span class="k">return</span>-1;}</pre>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="lang">x86-64 assembly</span>
+        <span class="tok"><b>~140</b> tokens</span>
+      </div>
+<pre><span class="c">; fastest at runtime, expensive to emit/maintain</span>
+bs: xor   eax, eax        <span class="c">; low = 0</span>
+    lea   ecx, [rsi-1]    <span class="c">; high = n-1</span>
+.L: cmp   eax, ecx
+    jg    .none
+    lea   edx, [rax+rcx]
+    sar   edx, 1          <span class="c">; mid</span>
+    ... <span class="c">; (full listing omitted)</span></pre>
+    </div>
+  </div>
+
+  <p class="pull">The least-token version wins. It is also the one no human will ever willingly read.</p>
+
+  <h2>Tokens are the new lines of code</h2>
+  <h3>Exhibit B</h3>
+
+  <p>For an AI, every token is real cost: money to generate, latency to produce, and (critically) context budget to <em>re-read</em> on every future edit. Optimize that objective and the leaderboard inverts everything we teach junior engineers.</p>
+
+  <div class="bars">
+    <div class="bar-row"><div class="bar-label">Golfed C</div><div class="bar-track"><div class="bar-fill lo" style="width:24%">34</div></div></div>
+    <div class="bar-row"><div class="bar-label">Terse C</div><div class="bar-track"><div class="bar-fill lo" style="width:41%">58</div></div></div>
+    <div class="bar-row"><div class="bar-label">JS readable</div><div class="bar-track"><div class="bar-fill mid" style="width:56%">78</div></div></div>
+    <div class="bar-row"><div class="bar-label">Rust idiomatic</div><div class="bar-track"><div class="bar-fill mid" style="width:69%">96</div></div></div>
+    <div class="bar-row"><div class="bar-label">x86-64 asm</div><div class="bar-track"><div class="bar-fill hi" style="width:100%">140</div></div></div>
+  </div>
+
+  <p>Notice the trap: <span class="hl">assembly is fastest at runtime but most expensive in tokens</span>, so a token-minimizing AI won't reach for it either. It lands somewhere genuinely alien. A dense, abbreviated, comment-free dialect that's near-optimal on <em>its</em> cost function and illegible on ours. Not C, not Rust, not assembly. A pidgin optimized for one reader: itself.</p>
+
+  <ul class="pointers">
+    <li>FEWER TOKENS → cheaper generation, lower latency</li>
+    <li>FEWER TOKENS → smaller context footprint on every re-read</li>
+    <li>SELF-CONSISTENT → the model only needs <em>it</em> to be parseable, not you</li>
+    <li>RUNTIME PERF → it'll still profile and specialize hot paths, just not for legibility</li>
+  </ul>
+
+  <h2>The downside nobody prices in</h2>
+  <h3>Exhibit C</h3>
+
+  <p>Offload enough of the writing and the code in your product becomes a thing only the AI can read, edit, and reason about. That's fine right up until the moment it isn't.</p>
+
+  <div class="danger-box">
+    <div class="tag">▲ failure modes</div>
+    <p style="margin-bottom:14px"><strong>Auditing dies.</strong> A security reviewer, a regulator, or a new hire opens the file and finds <span class="hl">f(int*a,int n,int t)</span>. Good luck certifying that for medical, aviation, or financial use.</p>
+    <p style="margin-bottom:14px"><strong>Debugging becomes interrogation.</strong> When the model is down or wrong, no human can drop into the stack and reason about it. You can only ask the oracle and hope.</p>
+    <p style="margin-bottom:0"><strong>Lock-in goes total.</strong> Code that only one model lineage can comfortably maintain is code you can't migrate, fork, or escape. The "maintainer" is now a vendor.</p>
+  </div>
+
+  <p>We've seen this movie in miniature: minified JS, obfuscated binaries, write-only Perl. The difference is scale and intent. This time the <em>entire codebase</em> trends toward write-only, and it's the default output, not an edge case.</p>
+
+  <h2>Readability was never free</h2>
+
+  <p>We just stopped seeing the bill. Clean code is a tax we pay so humans can stay in the loop. An AI optimizing purely for tokens and performance will quietly stop paying that tax, and the savings look great on a dashboard right up until you need a human to understand what shipped.</p>
+
+  <p>The fix isn't nostalgia. It's making <span class="hl">human-legibility an explicit objective</span>, not a side effect we assume we'll get for free. If we want code we can investigate, we have to ask for it (and probably pay the tokens to keep it). Otherwise the most efficient language in the world will also be the one none of us can speak.</p>
+
+  <p class="pull">Efficient. Performant. Readable. Pick two. The AI already picked the first two for you.</p>
+
+</div>
