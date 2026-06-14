@@ -17,7 +17,7 @@ export default async function GalleryPage() {
         return {
           shareId: config.shareId,
           title: config.title || meta.name,
-          description: config.description || null,
+          description: config.description || meta.description,
           cover,
         };
       } catch {

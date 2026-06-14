@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AlbumPage({ params }: Props) {
   const { shareId } = await params;
-  const { name, photos } = await fetchAlbumPhotos(shareId);
+  const { name, description, photos } = await fetchAlbumPhotos(shareId);
 
   return (
     <>
@@ -35,6 +35,9 @@ export default async function AlbumPage({ params }: Props) {
 
         <div className="gallery-album-header">
           <h1 className="gallery-album-page-title">{name}</h1>
+          {description && (
+            <p className="gallery-album-desc">{description}</p>
+          )}
           <p className="gallery-album-count">{photos.length} photos</p>
         </div>
 

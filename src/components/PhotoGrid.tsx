@@ -1,22 +1,56 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type { LightroomPhoto } from "@/lib/lightroom";
 
 export default function PhotoGrid({ photos }: { photos: LightroomPhoto[] }) {
   const [selected, setSelected] = useState<number | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [currentLoaded, setCurrentLoaded] = useState(false);
 
   const close = useCallback(() => setSelected(null), []);
 
   const next = useCallback(() => {
     if (selected === null) return;
+    setCurrentLoaded(false);
     setSelected((selected + 1) % photos.length);
   }, [selected, photos.length]);
 
   const prev = useCallback(() => {
     if (selected === null) return;
+    setCurrentLoaded(false);
     setSelected((selected - 1 + photos.length) % photos.length);
   }, [selected, photos.length]);
+
+  // Prefetch adjacent images
+  useEffect(() => {
+    if (selected === null) return;
+    const toPreload = [
+      (selected + 1) % photos.length,
+      (selected - 1 + photos.length) % photos.length,
+    ];
+    toPreload.forEach((idx) => {
+      const src = photos[idx].full;
+      if (!loadedImages.has(src)) {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          setLoadedImages((prev) => new Set(prev).add(src));
+        };
+      }
+    });
+  }, [selected, photos, loadedImages]);
+
+  // Check if current image is already cached
+  useEffect(() => {
+    if (selected === null) return;
+    const src = photos[selected].full;
+    if (loadedImages.has(src)) {
+      setCurrentLoaded(true);
+    } else {
+      setCurrentLoaded(false);
+    }
+  }, [selected, photos, loadedImages]);
 
   useEffect(() => {
     if (selected === null) return;
@@ -40,14 +74,17 @@ export default function PhotoGrid({ photos }: { photos: LightroomPhoto[] }) {
           <button
             key={photo.id}
             className="photo-grid-item"
-            onClick={() => setSelected(i)}
+            onClick={() => {
+              setCurrentLoaded(loadedImages.has(photo.full));
+              setSelected(i);
+            }}
             style={{
               aspectRatio: `${photo.width} / ${photo.height}`,
             }}
           >
             <img
               src={photo.thumbnail}
-              alt={photo.fileName || `Photo ${i + 1}`}
+              alt={photo.title || photo.fileName || `Photo ${i + 1}`}
               loading="lazy"
             />
           </button>
@@ -69,10 +106,31 @@ export default function PhotoGrid({ photos }: { photos: LightroomPhoto[] }) {
           </button>
 
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            {!currentLoaded && (
+              <div className="lightbox-loading">
+                <div className="lightbox-spinner" />
+              </div>
+            )}
             <img
+              key={photos[selected].id}
               src={photos[selected].full}
-              alt={photos[selected].fileName || `Photo ${selected + 1}`}
+              alt={photos[selected].title || photos[selected].fileName || `Photo ${selected + 1}`}
+              style={{ display: currentLoaded ? "block" : "none" }}
+              onLoad={() => {
+                setCurrentLoaded(true);
+                setLoadedImages((prev) => new Set(prev).add(photos[selected].full));
+              }}
             />
+            {currentLoaded && (photos[selected].title || photos[selected].caption) && (
+              <div className="lightbox-info">
+                {photos[selected].title && (
+                  <div className="lightbox-title">{photos[selected].title}</div>
+                )}
+                {photos[selected].caption && (
+                  <div className="lightbox-caption">{photos[selected].caption}</div>
+                )}
+              </div>
+            )}
           </div>
 
           <button

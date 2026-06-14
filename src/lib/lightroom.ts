@@ -17,6 +17,8 @@ export type LightroomPhoto = {
   height: number;
   captureDate: string | null;
   fileName: string | null;
+  title: string | null;
+  caption: string | null;
 };
 
 type AlbumConfig = {
@@ -42,6 +44,8 @@ const API_KEY = "LightroomMobileWeb1";
 export async function fetchAlbumMetadata(shareId: string): Promise<{
   albumId: string;
   name: string;
+  description: string | null;
+  coverId: string | null;
   assetsHref: string;
   base: string;
 }> {
@@ -60,17 +64,20 @@ export async function fetchAlbumMetadata(shareId: string): Promise<{
   const base = albumAttrs.base || `${PHOTOS_BASE}/v2/`;
   const albumId = albumAttrs.id;
   const name = albumAttrs.payload?.name || "Untitled";
+  const description = albumAttrs.payload?.description || null;
+  const coverId = albumAttrs.payload?.cover?.id || null;
   const assetsHref = albumAttrs.links?.["/rels/space_album_images_videos"]?.href
     || `spaces/${shareId}/albums/${albumId}/assets?embed=asset&subtype=image%3Bvideo`;
 
-  return { albumId, name, assetsHref, base };
+  return { albumId, name, description, coverId, assetsHref, base };
 }
 
 export async function fetchAlbumPhotos(shareId: string): Promise<{
   name: string;
+  description: string | null;
   photos: LightroomPhoto[];
 }> {
-  const { albumId, name, base } = await fetchAlbumMetadata(shareId);
+  const { albumId, name, description, base } = await fetchAlbumMetadata(shareId);
 
   const assetsUrl = `${LR_BASE}/v2/spaces/${shareId}/albums/${albumId}/assets?embed=asset&subtype=image%3Bvideo&limit=500&order_after=-&exclude=incomplete`;
 
@@ -88,6 +95,7 @@ export async function fetchAlbumPhotos(shareId: string): Promise<{
     const asset = r.asset;
     const links = asset.links;
     const payload = asset.payload;
+    const dc = payload?.xmp?.dc || {};
 
     const thumbHref = links["/rels/rendition_type/thumbnail2x"]?.href || "";
     const mediumHref = links["/rels/rendition_type/1280"]?.href || links["/rels/rendition_type/640"]?.href || "";
@@ -102,16 +110,18 @@ export async function fetchAlbumPhotos(shareId: string): Promise<{
       height: payload?.develop?.croppedHeight || 0,
       captureDate: payload?.captureDate || null,
       fileName: payload?.importSource?.fileName || null,
+      title: dc.title || null,
+      caption: dc.description || null,
     };
   });
 
-  return { name, photos };
+  return { name, description, photos };
 }
 
 export async function fetchAlbumCover(shareId: string): Promise<string | null> {
-  const { albumId } = await fetchAlbumMetadata(shareId);
+  const { albumId, coverId } = await fetchAlbumMetadata(shareId);
 
-  const assetsUrl = `${LR_BASE}/v2/spaces/${shareId}/albums/${albumId}/assets?embed=asset&subtype=image%3Bvideo&limit=1&order_after=-&exclude=incomplete`;
+  const assetsUrl = `${LR_BASE}/v2/spaces/${shareId}/albums/${albumId}/assets?embed=asset&subtype=image%3Bvideo&limit=500&order_after=-&exclude=incomplete`;
 
   const res = await fetch(assetsUrl, {
     next: { revalidate: 86400 },
@@ -121,12 +131,19 @@ export async function fetchAlbumCover(shareId: string): Promise<string | null> {
   const data = JSON.parse(json);
 
   const spaceBase = data.base || `${PHOTOS_BASE}/v2/spaces/${shareId}/`;
-  const first = data.resources?.[0];
-  if (!first) return null;
 
-  const href = first.asset?.links?.["/rels/rendition_type/1280"]?.href
-    || first.asset?.links?.["/rels/rendition_type/640"]?.href
-    || first.asset?.links?.["/rels/rendition_type/thumbnail2x"]?.href;
+  // Use designated cover asset if available, otherwise first image
+  let target = data.resources?.[0];
+  if (coverId && data.resources) {
+    const coverAsset = data.resources.find((r: any) => r.asset?.id === coverId);
+    if (coverAsset) target = coverAsset;
+  }
+
+  if (!target) return null;
+
+  const href = target.asset?.links?.["/rels/rendition_type/1280"]?.href
+    || target.asset?.links?.["/rels/rendition_type/640"]?.href
+    || target.asset?.links?.["/rels/rendition_type/thumbnail2x"]?.href;
 
   return href ? `${spaceBase}${href}?api_key=${API_KEY}` : null;
 }
