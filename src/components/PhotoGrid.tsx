@@ -11,13 +11,13 @@ export default function PhotoGrid({ photos }: { photos: LightroomPhoto[] }) {
   const close = useCallback(() => setSelected(null), []);
 
   const next = useCallback(() => {
-    if (selected === null) return;
+    if (selected === null || photos.length <= 1) return;
     setCurrentLoaded(false);
     setSelected((selected + 1) % photos.length);
   }, [selected, photos.length]);
 
   const prev = useCallback(() => {
-    if (selected === null) return;
+    if (selected === null || photos.length <= 1) return;
     setCurrentLoaded(false);
     setSelected((selected - 1 + photos.length) % photos.length);
   }, [selected, photos.length]);
