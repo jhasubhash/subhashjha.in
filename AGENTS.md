@@ -21,6 +21,14 @@ When the user asks to publish or add a new blog post, complete **all** of the fo
 ### 1. Create the post HTML file
 Add the post content to `content/posts/{slug}.html` as an HTML fragment (no `<html>` or `<body>` tags — just the article body starting with `<div class="article-body">`).
 
+#### Dark theme compatibility
+The site supports light and dark themes. When writing post CSS (especially posts with custom `<style>` blocks), follow these rules:
+
+- **Use CSS variables from the global theme** (`--ink`, `--ink-muted`, `--paper`, `--paper-warm`, `--paper-rule`, `--accent`) whenever possible. These auto-adapt to dark mode.
+- **If you define custom scoped variables** (e.g. `--mypost-ink`, `--mypost-bg`), add corresponding dark-mode overrides in `src/app/globals.css` under the `[data-theme="dark"]` section.
+- **Never use `--bg` or `--paper` as a text color** on dark/inverted cards. These variables get overridden to dark values in dark mode. If you need light text on a dark card, use a hardcoded light color like `#f0ebe0` or a dedicated variable (e.g. `--mypost-card-text`).
+- **Avoid hardcoded `background: white` or `background: #fff`**. Use `var(--paper)` or `var(--paper-warm)` instead.
+- **Test in both themes** before committing: toggle the theme via the nav button and visually verify text contrast, card backgrounds, code blocks, and inverted sections in dark mode.
 #### Punctuation style — avoid em-dashes
 When writing prose for posts, **do not default to em-dashes (`—`)**. They read as AI-generated and clutter the rhythm. Prefer, in this order:
 - **Commas** for light pauses and asides (`The algorithm was weak, and you'd stop after ten minutes.`)
@@ -113,6 +121,7 @@ Stage and commit the new `public/apps/{app-name}/` folder (plus any post HTML ch
 
 - **Framework**: Next.js 16 (App Router), React 19, TypeScript
 - **Styling**: Tailwind v4 + custom CSS in `src/app/globals.css`
+- **Dark theme**: Toggle via `data-theme="dark"` on `<html>`. Persisted in `localStorage`, respects `prefers-color-scheme`. Toggle component: `src/components/ThemeToggle.tsx`. Dark overrides in `globals.css` under `[data-theme="dark"]` selectors.
 - **Fonts**: Playfair Display (serif headings) + DM Sans (body)
 - **Comments**: Giscus (GitHub Discussions) — theme follows `document.documentElement.dataset.theme`
 - **Newsletter**: None currently — RSS feed at `/feed.xml` is ready for a future newsletter service
@@ -131,6 +140,7 @@ Stage and commit the new `public/apps/{app-name}/` folder (plus any post HTML ch
 | `src/app/page.tsx` | Home page with post listing and pagination (10/page) |
 | `src/app/blog/[slug]/page.tsx` | Individual post page |
 | `src/app/feed.xml/route.ts` | RSS feed route |
+| `src/components/ThemeToggle.tsx` | Dark/light theme toggle button |
 | `src/components/GiscusComments.tsx` | Comments widget |
 | `public/apps/{app-name}/` | Self-contained HTML/CSS/JS apps, served at `/apps/{app-name}/` |
 | `src/components/AppEmbed.tsx` | Iframe embed component for apps inside blog posts |

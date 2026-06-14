@@ -44,7 +44,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.dataset.theme='dark'}else{document.documentElement.dataset.theme='light'}}catch(e){document.documentElement.dataset.theme='light'}})()`,
+          }}
+        />
+      </head>
       <body className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
         <div className="site-wrapper">
           {children}
