@@ -40,7 +40,7 @@ export default async function GalleryPage() {
           <div className="gallery-header-label">Gallery</div>
           <h1 className="gallery-header-title">Photos</h1>
           <p className="gallery-header-desc">
-            Moments captured through the lens. Albums synced from Lightroom.
+            Moments captured through the lens.
           </p>
         </div>
 
