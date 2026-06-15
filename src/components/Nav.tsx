@@ -9,9 +9,6 @@ export default function Nav() {
       </Link>
       <ul className="site-nav-links">
         <li>
-          <Link href="/">Blog</Link>
-        </li>
-        <li>
           <Link href="/projects">Projects</Link>
         </li>
         <li>
