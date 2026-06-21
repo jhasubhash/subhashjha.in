@@ -1223,6 +1223,7 @@ body:has(.insl-root) .site-footer {
 
 /* Override post-scoped CSS variables in dark mode (double specificity to beat inline <style> tags) */
 [data-theme="dark"][data-theme="dark"] .mnc-article,
+[data-theme="dark"][data-theme="dark"] .aibi-article,
 [data-theme="dark"][data-theme="dark"] .cow-article,
 [data-theme="dark"][data-theme="dark"] .csd-article,
 [data-theme="dark"][data-theme="dark"] .lw-article,

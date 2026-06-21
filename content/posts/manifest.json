@@ -1,5 +1,17 @@
 [
   {
+    "slug": "ai-vs-bi",
+    "title": "Artificial Intelligence vs Biological Intelligence: The Mind We're Trying to Replace",
+    "htmlTitle": "Artificial Intelligence vs Biological Intelligence: the mind we're <em style=\"color:#2d5c8a;font-style:italic;font-weight:400\">trying to replace.</em>",
+    "description": "CEOs are declaring AGI and pricing in a workforce of models. But the thing they're racing to replace runs on twenty watts, adapts to every moment, and never collapses when it thinks about itself. A working engineer's case for biological intelligence.",
+    "date": "2026-06-21",
+    "readTime": "~7 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · AI · Intelligence",
+    "image": "/images/posts/ai-vs-bi-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "machine-native-code",
     "title": "The Language AI Will Actually Write Code In",
     "htmlTitle": "The code AI writes won't be <em style=\"color:#a83820;font-style:italic;font-weight:400\">for you.</em>",

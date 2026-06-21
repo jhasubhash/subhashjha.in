@@ -1,0 +1,316 @@
+<style>
+  .aibi-article {
+    --ink: #1a1714;
+    --ink-mid: #6b6560;
+    --ink-faint: #9e9890;
+    --paper: #faf8f4;
+    --paper-warm: #f2ede4;
+    --paper-rule: #e8e2d8;
+    --accent: #a83820;
+    --accent-soft: #f5ede6;
+    --green: #3a6b3a;
+    --green-soft: #e8f0e8;
+    --blue: #2d5c8a;
+    --blue-soft: #e8eef5;
+
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .aibi-article p { margin: 0 0 22px; }
+  .aibi-article p:last-child { margin-bottom: 0; }
+  .aibi-article strong { color: var(--ink); font-weight: 600; }
+  .aibi-article em { font-style: italic; color: var(--ink-mid); }
+
+  .aibi-article .lead {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 23px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .aibi-article .lead::first-letter {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 72px;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 8px 12px 0 -2px;
+    color: var(--accent);
+  }
+
+  .aibi-article h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 64px 0 22px;
+    color: var(--ink);
+    padding-top: 8px;
+    border-top: 1px solid var(--paper-rule);
+  }
+  .aibi-article h2:first-of-type { border-top: none; padding-top: 0; }
+
+  .aibi-article h3 {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+
+  .aibi-article .hl {
+    background: #fdecd8;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .aibi-article .pointers {
+    list-style: none;
+    margin: 26px 0;
+    padding: 0;
+  }
+  .aibi-article .pointers li {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 12px 0 12px 28px;
+    border-top: 1px dashed var(--paper-rule);
+    position: relative;
+    color: var(--ink-mid);
+  }
+  .aibi-article .pointers li:last-child { border-bottom: 1px dashed var(--paper-rule); }
+  .aibi-article .pointers li::before {
+    content: "\25B8";
+    color: var(--accent);
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    font-size: 13px;
+  }
+
+  /* Two-up comparison */
+  .aibi-article .vs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 36px 0;
+  }
+  @media (max-width: 560px) { .aibi-article .vs { grid-template-columns: 1fr; } }
+  .aibi-article .card {
+    background: #fff;
+    border: 1px solid var(--paper-rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .aibi-article .card-top {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--paper-rule);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .aibi-article .card.ai .card-top { color: var(--blue); }
+  .aibi-article .card.bi .card-top { color: var(--green); }
+  .aibi-article .card ul {
+    list-style: none;
+    margin: 0;
+    padding: 14px 18px 16px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-mid);
+  }
+  .aibi-article .card li { padding: 7px 0; border-top: 1px solid var(--paper-rule); }
+  .aibi-article .card li:first-child { border-top: none; }
+  .aibi-article .card li b { color: var(--ink); font-weight: 600; }
+
+  /* Token cost bars */
+  .aibi-article .bars { margin: 30px 0 10px; }
+  .aibi-article .bar-cap {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+  }
+  .aibi-article .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+  }
+  .aibi-article .bar-label {
+    width: 200px;
+    flex-shrink: 0;
+    text-align: right;
+    color: var(--ink-faint);
+    line-height: 1.35;
+  }
+  .aibi-article .bar-track {
+    flex: 1;
+    background: var(--paper-warm);
+    border-radius: 4px;
+    height: 26px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--paper-rule);
+  }
+  .aibi-article .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .aibi-article .bar-fill.lo { background: var(--green-soft); border: 1px solid var(--green); color: var(--green); }
+  .aibi-article .bar-fill.hi { background: #f5dcd8; border: 1px solid var(--accent); color: var(--accent); }
+
+  .aibi-article .pull {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--accent);
+    margin: 36px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .aibi-article .danger-box {
+    background: #fdf6f4;
+    border: 1px solid rgba(168, 56, 32, 0.2);
+    border-radius: 8px;
+    padding: 24px 26px;
+    margin: 30px 0;
+  }
+  .aibi-article .danger-box .tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .aibi-article .danger-box p { font-size: 16px; }
+
+  .aibi-article .note { color: var(--ink-faint); font-size: 14px; font-style: italic; }
+</style>
+
+<div class="aibi-article">
+
+  <p class="lead">There is a quiet war being fought over the word <em>intelligence</em>, and most of the people declaring victory have only met one side of it.</p>
+
+  <p>On one side is artificial intelligence. On the other is biological intelligence, the kind that runs on roughly twenty watts and has been refined over a few hundred million years. Right now the contest between them is being framed as a foregone conclusion. Top CEOs talk openly about replacing people on their teams with models, and you can see why the pitch lands. Who wouldn't want a worker that runs 24x7, never gets tired, never complains, and never asks for an appraisal?</p>
+
+  <p>I work with these models. I build with them. And the closer you look, the less the replacement story holds up.</p>
+
+  <h2>The thing AI still can't do is adapt</h2>
+  <h3>Rigidity</h3>
+
+  <p>A human adapts. So does any biological intelligence, right down to animals reading their surroundings and adjusting in real time. We scale our effort to the situation. A hard problem gets the full machinery; an easy one gets a shrug and a reflex. We spend energy in proportion to what the moment demands.</p>
+
+  <p>A large model does not do this. Ask Opus 4.8 <span class="hl">"How are you?"</span> and ask it to <span class="hl">explain how the DDPM diffusion process works</span>, and the difficulty gap between those two requests means almost nothing to the machine. What it actually charges you for is tokens. Complexity is nearly free; length is the bill.</p>
+
+  <div class="bars">
+    <div class="bar-cap">// what the model actually charges you for &#8595; &nbsp;(it's length, not difficulty)</div>
+    <div class="bar-row">
+      <div class="bar-label">hard: a 50-word<br>DDPM derivation</div>
+      <div class="bar-track"><div class="bar-fill lo" style="width:16%">~65</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">easy: a 400-word<br>birthday message</div>
+      <div class="bar-track"><div class="bar-fill hi" style="width:100%">~520</div></div>
+    </div>
+  </div>
+
+  <p class="note">Token counts are illustrative, but the direction is real: the trivial-but-long task costs far more to compute than the difficult-but-short one.</p>
+
+  <p>Sit with how strange that is. The genuinely hard piece of reasoning is the cheap one. A breezy essay a child could write is the expensive one. The model has no internal dial that says <em>this one's easy, I'll coast.</em> It pays the same per token whether it's deriving a theorem or padding out small talk. That is not intelligence scaling to a problem. That is a meter running at a flat rate.</p>
+
+  <p class="pull">A mind that can't tell a hard question from an easy one isn't going to replace the minds that can.</p>
+
+  <p>And yet a lot of CEOs and market gurus have already declared AGI, already decided that humans in these jobs have numbered days. They are pricing in a capability that the architecture, as it stands, does not have.</p>
+
+  <h2>AI vs BI, honestly</h2>
+  <h3>The actual scoreboard</h3>
+
+  <p>When I compare these two, I'm not talking about raw throughput. On pure processing, AI is miles ahead: it ingests terabytes a second and never blinks. That was never the interesting axis. The interesting axes are the ones the replacement story conveniently skips.</p>
+
+  <div class="vs">
+    <div class="card ai">
+      <div class="card-top">Artificial intelligence</div>
+      <ul>
+        <li><b>Throughput:</b> staggering, terabytes per second</li>
+        <li><b>Energy:</b> enormous cost per unit of thought</li>
+        <li><b>Adaptability:</b> rigid, one flat cost function</li>
+        <li><b>Learning:</b> better probabilities from finite data</li>
+        <li><b>Emotion:</b> none, only the shape of it</li>
+      </ul>
+    </div>
+    <div class="card bi">
+      <div class="card-top">Biological intelligence</div>
+      <ul>
+        <li><b>Throughput:</b> modest, slow, easily distracted</li>
+        <li><b>Energy:</b> about twenty watts, all day</li>
+        <li><b>Adaptability:</b> dials effort to the moment</li>
+        <li><b>Learning:</b> creates ideas that never existed</li>
+        <li><b>Emotion:</b> compassion, the thing that lets us work together</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>Efficiency is the first gap. The energy cost per thought, for a biological brain, is almost embarrassingly low. The second is adaptability, including the underrated ability to <em>dumb itself down</em>, to refuse to spin up heavy machinery for a problem that doesn't deserve it, precisely so it doesn't waste energy. The third is emotion and compassion, which sounds soft until you remember that working together is mostly an emotional act, not an intellectual one. Intellect alone has never been the thing that made teams work.</p>
+
+  <h2>It's probabilities all the way down</h2>
+  <h3>Not organic learning</h3>
+
+  <p>I'm not writing this as someone who skimmed a launch announcement. I've read the papers, I've worked with the models, I know what reinforcement learning is and what diffusion-based learning looks like. Strip away the branding and the heart of all of it is the same: learning probabilities, then better probabilities, from a lot of data.</p>
+
+  <p>That is not organic learning in any honest sense. Artificial learning is bounded by the amount of data that exists, and that amount is finite. The clearest tell is what happens when you try to escape that limit by feeding a model its own output.</p>
+
+  <div class="danger-box">
+    <div class="tag">&#9650; model collapse</div>
+    <p style="margin-bottom:0">Train a model on data it generated itself, and it degrades. The distribution narrows, the tails vanish, and the thing quietly forgets the variety it started with. Researchers have shown this repeatedly. Biological intelligence has no such failure mode. We don't collapse when we think about our own thoughts. We compound.</p>
+  </div>
+
+  <p>This is the part the hype skips. A model that has consumed the internet has, in a real sense, hit a ceiling. It can interpolate beautifully inside what it has seen and it cannot manufacture genuinely new ground to stand on. We can. We have limited processing power and we are <span class="hl">creative</span>: we produce ideas, new data points, that did not exist before anyone thought them.</p>
+
+  <h2>Billions of tiny minds</h2>
+  <h3>The distributed advantage</h3>
+
+  <p>Here's the asymmetry that I think actually matters. We are not one big brain. We are billions of small ones, each running cheap, each adapting locally, all learning from each other's experience. That network keeps generating new data, new ideas, new corrections to old ideas, and it never runs out of itself the way a single trained model does.</p>
+
+  <p>A huge LLM that has reached its training limit is, for all its scale, a single frozen snapshot of what was already known. Billions of tiny minds gossiping and arguing and inventing are a living thing. I'll take the living thing.</p>
+
+  <ul class="pointers">
+    <li>one frozen model = the past, compressed and interpolated</li>
+    <li>billions of small minds = the present, still writing new data</li>
+    <li>collapse on self-generated data vs. compounding on it</li>
+  </ul>
+
+  <h2>And then there's the energy bill</h2>
+
+  <p>So what's the way forward? Not pretending the gap isn't there. The honest path is to evolve AI using the collective biological intelligence we already have, rather than trying to declare it obsolete. I don't think we will ever make AI operate at the level of our minds, and I don't mean that as a slogan.</p>
+
+  <p>Suppose we tried to close the gap by brute structure: not one giant model but billions of small, dedicated ones, with better and more diverse architectures, distributed the way human minds are. Maybe, eventually, that could approach our level of intelligence. But then you have to pay the other bill. The energy needed to run billions of those systems would dwarf what all of humanity consumes to think, together, right now.</p>
+
+  <p>That's the trade nobody puts on the keynote slide. You can have something that approaches biological intelligence, or you can have something efficient. You don't yet get both. We already are the thing the labs are trying to build, and we run on a sandwich.</p>
+
+  <p class="pull">Twenty watts, billions of us, still inventing. That's the benchmark. It hasn't been beaten.</p>
+
+</div>
