@@ -1,5 +1,17 @@
 [
   {
+    "slug": "visibility-game",
+    "title": "The Bitter Truth: The Visibility Game",
+    "htmlTitle": "The bitter truth: the <em style=\"color:#a83820;font-style:italic;font-weight:400\">visibility game.</em>",
+    "description": "In a large company you are not a person, you are an employee ID. A working engineer's honest take on golden handcuffs, ego-driven features, and why your loyalty belongs to your health and your team, not the org chart.",
+    "date": "2026-06-22",
+    "readTime": "~7 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · Work · Honesty",
+    "image": "/images/posts/visibility-game-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "ai-vs-bi",
     "title": "Artificial Intelligence vs Biological Intelligence: The Mind We're Trying to Replace",
     "htmlTitle": "Artificial Intelligence vs Biological Intelligence: the mind we're <em style=\"color:#2d5c8a;font-style:italic;font-weight:400\">trying to replace.</em>",

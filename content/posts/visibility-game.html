@@ -1,0 +1,342 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  .vg-article .article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 60px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  .vg-article .lead {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+  .vg-article .lead::first-letter {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 78px;
+    font-weight: 700;
+    float: left;
+    line-height: 0.85;
+    margin: 8px 12px 0 -2px;
+    color: var(--accent);
+  }
+
+  .vg-article .article p { margin-bottom: 26px; }
+  .vg-article .article p:last-child { margin-bottom: 0; }
+  .vg-article .article strong { font-weight: 600; color: var(--ink); }
+  .vg-article .article em { font-style: italic; }
+
+  .vg-article .article h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 72px 0 24px;
+    color: var(--ink);
+  }
+  .vg-article .article h2 .num {
+    display: block;
+    font-size: 13px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .vg-article .article a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .vg-article .article a:hover { text-decoration-thickness: 2px; }
+
+  /* Pullquote */
+  .vg-article .pullquote {
+    margin: 56px -32px;
+    padding: 40px 48px;
+    border-top: 1px solid var(--paper-rule);
+    border-bottom: 1px solid var(--paper-rule);
+    text-align: center;
+  }
+  .vg-article .pullquote q {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 27px;
+    line-height: 1.38;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    quotes: '\201C' '\201D';
+  }
+  .vg-article .pullquote q::before {
+    color: var(--accent);
+    font-size: 38px;
+    line-height: 0;
+    vertical-align: -10px;
+    margin-right: 10px;
+  }
+  .vg-article .pullquote q::after {
+    color: var(--accent);
+    font-size: 38px;
+    line-height: 0;
+    vertical-align: -10px;
+    margin-left: 6px;
+  }
+
+  /* Numbered observations */
+  .vg-article .observation {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--paper-rule);
+  }
+  .vg-article .observation .num {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .vg-article .observation h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .vg-article .observation p {
+    font-size: 16px;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* The rules of the game — dark card, intentionally dark in both themes */
+  .vg-article .rules {
+    background: #1f1c17;
+    color: #f0ebe0;
+    margin: 64px -32px 0;
+    padding: 48px 40px;
+    border-radius: 12px;
+  }
+  .vg-article .rules h3 {
+    color: #e8b84b;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0 0 16px;
+    font-family: 'Inter Tight', sans-serif;
+  }
+  .vg-article .rules h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    color: #f0ebe0;
+    line-height: 1.2;
+  }
+  .vg-article .rule-item {
+    padding: 16px 0;
+    border-top: 1px solid rgba(240, 235, 224, 0.1);
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .vg-article .rule-item:first-of-type { border-top: none; padding-top: 0; }
+  .vg-article .rule-item .mark {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #e8b84b;
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .vg-article .rule-item .body {
+    color: #c4b8a8;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .vg-article .rule-item .body strong { color: #f0ebe0; font-weight: 500; }
+
+  /* Disclaimer */
+  .vg-article .disclaimer {
+    margin-top: 48px;
+    padding: 20px 24px;
+    border-left: 3px solid var(--accent);
+    background: var(--paper-warm);
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+  .vg-article .disclaimer strong { color: var(--ink); font-weight: 600; }
+
+  /* Closing */
+  .vg-article .closing {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--paper-rule);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .vg-article .closing .signoff {
+    font-family: 'Inter Tight', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    margin-top: 24px;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  @media (max-width: 720px) {
+    .vg-article .article { padding: 56px 24px 40px; }
+    .vg-article .pullquote { margin: 40px -24px; padding: 32px 28px; }
+    .vg-article .pullquote q { font-size: 22px; }
+    .vg-article .rules { margin-left: -24px; margin-right: -24px; }
+    .vg-article .observation { grid-template-columns: 56px 1fr; gap: 16px; }
+    .vg-article .observation .num { font-size: 34px; }
+    .vg-article .lead { font-size: 20px; }
+    .vg-article .article h2 { font-size: 28px; }
+  }
+</style>
+
+<div class="vg-article">
+<article class="article">
+
+  <p class="lead">Be loyal to your teammates. Be loyal to the manager who actually has your back. But never confuse that with loyalty to the company, or to the people three levels above it. To them you are not a person. You are an employee ID, a row in a headcount spreadsheet. And the bigger the organization gets, the less that row is worth.</p>
+
+  <p>This is the part nobody tells you when you join. The larger the company, the more diluted your visibility becomes, until your work is just one indistinguishable contribution in a sea of thousands. You can pour yourself into a problem, solve it cleanly, ship it, and watch it vanish into the org without anyone above your manager ever knowing your name. That is not a bug in how these places run. It is the design.</p>
+
+  <h2><span class="num">Part One</span>The golden handcuff</h2>
+
+  <p>I love software development. I love writing code and solving real, messy, complex problems. But somewhere along the way I made a quietly disastrous decision: I chose to enjoy life by compromising on the work. I settled into the comfort zone and stayed there far too long.</p>
+
+  <p>By the time I understood my mistake, it was almost too late. Enjoying my life actually required that I enjoy my work too. The two were never separable. I had become complacent. I had stopped being curious, stopped learning new things, stopped challenging myself, and I told myself this was balance.</p>
+
+  <p>In a large corporation, you are paid <em>just</em> enough that you never quite feel the need to look elsewhere. Not so little that you leave, not so much that you stop being hungry for the next bump. The entire compensation structure (the salary bands, the vesting schedules, the annual refreshers) is engineered to keep you exactly there. An invisible pair of golden handcuffs, fitted so carefully you mistake them for a reward.</p>
+
+  <div class="pullquote">
+    <q>You are paid enough to stop looking, and never quite enough to stop needing. That gap is where a career quietly goes to sleep.</q>
+  </div>
+
+  <h2><span class="num">Part Two</span>Features built for the boardroom</h2>
+
+  <p>Watch how features actually get born and you start to understand who the product is really for. A feature gets developed and shipped not because users asked for it, but because someone wanted to impress the CEO and the CTO with a demo. It goes out. Professional users tear it apart on public forums, left, right, and centre. So the team comes back and ships <em>another</em> feature, this one to disable the first.</p>
+
+  <p>And the product manager calls this a win. Two features delivered. The dashboard says throughput is up. Nobody asks whether either feature should have existed.</p>
+
+  <p>That is how rotten the incentive can get. No user research that anyone acts on, no real feedback loop, just motion that looks like progress from above. This is not the behaviour of a company that loves its product. It is the behaviour of a company optimizing for hype: shipping superficial features nobody asked for, so the next earnings narrative has something to point at.</p>
+
+  <h2><span class="num">Part Three</span>Maintenance, not development</h2>
+
+  <p>There is a particular version of this I have watched play out again and again in India. Our focus often isn't software development at all. It is software maintenance, and beneath that, keeping the US executives comfortable. A great deal of energy goes into ego-stroking dressed up as alignment: PowerPoint decks, status theatre, all-hands meetings that exist to be attended. Mediocrity gets rewarded as long as it is visible and agreeable. It is no accident that India is still seen primarily as a cost-effective place to do work, rather than a place where the important work is decided.</p>
+
+  <p>Do not misread this as ingratitude toward the employer. These multinationals pay far better than almost any other industry in the country. You can earn upward of ₹50 lakh a year for work that involves surprisingly little actual development and plenty of mundane upkeep. That is the irony at the centre of it: the higher you climb, the less genuine innovation your success seems to require.</p>
+
+  <p>I have watched brilliant people get quietly trapped by their own RSUs and ESPP, then spend the rest of their careers doing menial tasks under the comfortable banner of work-life balance. You go to an IIT, you build real engineering skill, and the job turns out to be fixing review comments and correcting indentation in legacy code somebody else abandoned.</p>
+
+  <div class="pullquote">
+    <q>You can't have imposter syndrome when the role itself is the imposter. Much of what gets called development here is just keeping someone else's end-of-life software breathing.</q>
+  </div>
+
+  <p>People talk a lot about imposter syndrome among engineers. But there is an uncomfortable version of the question worth sitting with: how much of that feeling is syndrome, and how much is an honest read of the actual work? A large share of what happens in these so-called development centres adds little to the broader engineering ecosystem. We keep outdated software alive after it has been handed down to us. Calling these places development centres can feel generous. Sometimes they are closer to scrap yards, where end-of-life products are sent to be maintained until they are finally switched off.</p>
+
+  <p>AI sharpens all of this into focus. With ChatGPT, Copilot, and the rest, it is becoming obvious how much of this work was never adding much value to begin with. The roles that mostly shuffle and maintain are exactly the ones most exposed. What they did reliably produce was a layer of management: a few well-positioned people growing headcount and titling themselves leaders on LinkedIn. Managing 500 people sounds impressive right up until you notice the job is overseeing five obsolete products.</p>
+
+  <h2><span class="num">Part Four</span>The visibility game</h2>
+
+  <p>Here is what I learned the hard way. No matter how honestly or how hard you work, getting rewarded for it depends on a chain of other people being honest too: your teammates, your manager, and the management above them. If even one link in that chain is not, your work does not reach the people who decide your worth. And then you are left with a choice.</p>
+
+  <p>You can keep your head down and let good work speak for itself, which in a large org it frequently does not. Or you can play the visibility game. I have watched plenty of people choose the game, and I understand exactly why.</p>
+
+  <div class="observation">
+    <div class="num">i</div>
+    <div>
+      <h4>Massage the right egos.</h4>
+      <p>Direction of effort matters more than amount. The hours go upward, toward the people who write your review, not outward toward the work.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">ii</div>
+    <div>
+      <h4>Own the narrative, even other people's work.</h4>
+      <p>Whoever tells the story in the room gets the credit. The person who quietly did the thing is often not in the room at all.</p>
+    </div>
+  </div>
+
+  <div class="observation">
+    <div class="num">iii</div>
+    <div>
+      <h4>Speak fluent buzzword, and agree.</h4>
+      <p>Fill the meeting with the right vocabulary, align with management, and let the user sentiment slide. For a big enterprise it is all licensing deals anyway, and those are not moved by what retail users feel.</p>
+    </div>
+  </div>
+
+  <p>None of this is advice. It is a description of the board you are actually playing on. You can refuse to play, and I respect that, but you should at least know the rules are real and that pretending they aren't has a cost.</p>
+
+  <h2><span class="num">Part Five</span>What actually deserves your loyalty</h2>
+
+  <p>So if not the company, then what? After watching this from the inside, here is where I think the loyalty actually belongs.</p>
+
+  <div class="rules">
+    <h3>The bitter truth</h3>
+    <h4>Hold these closer than any org chart.</h4>
+
+    <div class="rule-item">
+      <div class="mark">i.</div>
+      <div class="body"><strong>Your health, first and without negotiation.</strong> The company will not give back the years you burn for it. Nobody on the leadership floor is tracking what it cost you.</div>
+    </div>
+
+    <div class="rule-item">
+      <div class="mark">ii.</div>
+      <div class="body"><strong>Your family.</strong> They are still there on the day you are laid off in a single morning so management can please an investor. The org is not, and was never going to be.</div>
+    </div>
+
+    <div class="rule-item">
+      <div class="mark">iii.</div>
+      <div class="body"><strong>Your own curiosity.</strong> The skills you keep sharp are the only thing that travels with you when the badge stops working. Comfort is the slow way to lose them.</div>
+    </div>
+
+    <div class="rule-item">
+      <div class="mark">iv.</div>
+      <div class="body"><strong>The people beside you, not above you.</strong> Loyalty down and sideways is real and it is repaid. Loyalty upward, to the company itself, is a one-way contract you are the only one signing.</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>A note before you take this personally.</strong> This is not a description of my own employer or a single experience. It is a pattern I have watched repeat across many organizations and companies over the years. If it sounds like your workplace, that is the point, and it is worth sitting with rather than dismissing.
+  </div>
+
+  <p class="closing">
+    Work hard. Be honest. But keep your eyes open about who that honesty actually reaches, and never mistake an employee ID for an identity.
+    <span class="signoff">— Thanks for reading ✦</span>
+  </p>
+
+</article>
+</div>
