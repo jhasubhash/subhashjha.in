@@ -14,7 +14,15 @@
   --green-soft: #e8f0e8;
   --blue: #2d5c8a;
   --blue-soft: #e6eef6;
+
+  /* Reading width for blog-post pages, set by the width toggle. Default = medium. */
+  --post-width: 900px;
 }
+
+/* Reading-width toggle: resolve --post-width from the choice on <html>. */
+:root[data-post-width="small"] { --post-width: 720px; }
+:root[data-post-width="medium"] { --post-width: 900px; }
+:root[data-post-width="full"] { --post-width: 1120px; }
 
 [data-theme="dark"] {
   --ink: #e8e2d8;
@@ -581,9 +589,13 @@ body {
 
 /* ─── Post / Article Page ─── */
 .post-back {
-  max-width: 780px;
+  max-width: var(--post-width);
   margin: 0 auto;
   padding: 20px 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .post-back a {
@@ -595,6 +607,53 @@ body {
 }
 
 .post-back a:hover { color: var(--ink); }
+
+/* The width control has no effect below the smallest column width, so hide
+   it on narrow viewports; the back link stays visible. */
+@media (max-width: 760px) {
+  .post-back-width { display: none; }
+}
+
+/* Segmented reading-width control. */
+.width-toggle {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--paper-rule);
+  border-radius: 999px;
+}
+
+.width-toggle button {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 1.7rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink-faint);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.width-toggle button:hover { color: var(--accent); }
+
+.width-toggle svg { width: 20px; height: 13px; }
+
+.width-toggle .frame {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  opacity: 0.5;
+}
+
+.width-toggle .fill { fill: currentColor; }
+
+.width-toggle button[data-active="true"] {
+  color: var(--accent);
+  background: var(--paper-warm);
+}
 
 /* ─── Article Components (identical to first post) ─── */
 .masthead {
@@ -609,10 +668,18 @@ body {
 }
 
 .hero {
-  max-width: 780px;
+  max-width: var(--post-width);
   margin: 0 auto;
   padding: 80px 32px 56px;
   border-bottom: 1px solid var(--paper-rule);
+}
+
+/* Each post ships its own root wrapper with a hardcoded max-width in an inline
+   <style>. Override that so the body column follows the reading-width toggle.
+   The :root prefix outranks the post's single-class rule, so no !important. */
+:root .post-content > * {
+  max-width: var(--post-width);
+  margin-inline: auto;
 }
 
 .hero-kicker {
@@ -655,7 +722,6 @@ body {
   line-height: 1.6;
   color: var(--ink-muted);
   font-weight: 300;
-  max-width: 640px;
 }
 
 .hero-dek code {

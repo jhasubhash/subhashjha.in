@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import GiscusComments from "@/components/GiscusComments";
+import WidthToggle from "@/components/WidthToggle";
 import { getAllPosts, getPost, getPostContent } from "@/lib/posts";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -60,6 +61,9 @@ export default async function BlogPost({ params }: Props) {
 
       <div className="post-back">
         <Link href="/">← All posts</Link>
+        <div className="post-back-width">
+          <WidthToggle />
+        </div>
       </div>
 
       <div className="masthead">
@@ -85,7 +89,10 @@ export default async function BlogPost({ params }: Props) {
         </div>
       </div>
 
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div
+        className="post-content"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
 
       <div className="comments-section">
         <h2 className="comments-heading">Comments</h2>
