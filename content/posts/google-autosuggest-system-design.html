@@ -1,0 +1,846 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.gas-root {
+  --gas-ink: #1a1815;
+  --gas-ink-mid: #5a5347;
+  --gas-ink-faint: #948c7d;
+  --gas-bg: #faf8f3;
+  --gas-panel: #ffffff;
+  --gas-bg-warm: #ede8d8;
+  --gas-bg-code: #1c1a17;
+  --gas-rule: #ddd6c2;
+  --gas-accent: #2d5c8a;
+  --gas-accent-bright: #3a76b0;
+  --gas-accent-soft: #dde6ef;
+  --gas-client: #2d5c8a;
+  --gas-client-soft: #dde6ef;
+  --gas-edge: #3a6850;
+  --gas-edge-soft: #dde9e2;
+  --gas-serve: #6b3a8a;
+  --gas-serve-soft: #e7ddf0;
+  --gas-offline: #8a6a30;
+  --gas-offline-soft: #ede2c8;
+  --gas-warn: #a83820;
+  --gas-warn-soft: #f0e0db;
+  --gas-syntax-kw: #d4886a;
+  --gas-syntax-ty: #c3a868;
+  --gas-syntax-st: #8aaa7a;
+  --gas-syntax-cm: #6b6258;
+  --gas-syntax-fn: #c8a878;
+  --gas-syntax-num: #b88a48;
+}
+
+.gas-root .article { max-width: 760px; margin: 0 auto; padding: 0 0 60px; }
+.gas-root p { margin-bottom: 22px; color: var(--gas-ink); line-height: 1.7; }
+.gas-root p:last-child { margin-bottom: 0; }
+.gas-root strong { font-weight: 600; }
+.gas-root em { font-style: italic; color: var(--gas-ink-mid); }
+.gas-root ul, .gas-root ol { margin: 0 0 22px; padding-left: 24px; color: var(--gas-ink); line-height: 1.7; }
+.gas-root li { margin-bottom: 10px; }
+
+.gas-root code.inline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.86em;
+  background: var(--gas-bg-warm);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--gas-accent);
+  border: 1px solid var(--gas-rule);
+}
+
+.gas-root .lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--gas-ink);
+  margin-bottom: 36px;
+}
+
+.gas-root h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 64px 0 22px;
+  color: var(--gas-ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--gas-rule);
+}
+.gas-root h2:first-of-type { border-top: none; padding-top: 0; }
+.gas-root h2 .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--gas-accent);
+  font-weight: 500;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.gas-root h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--gas-ink);
+  margin: 36px 0 14px;
+}
+
+/* Code blocks */
+.gas-root .code-block {
+  margin: 28px 0;
+  background: var(--gas-bg-code);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.gas-root .code-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; background: #2a2724; border-bottom: 1px solid #333028;
+}
+.gas-root .code-header .file { color: #c4b8a8; font-size: 12px; font-family: 'JetBrains Mono', monospace; }
+.gas-root .code-header .lang { font-size: 10px; color: var(--gas-accent-bright); letter-spacing: 0.15em; text-transform: uppercase; }
+.gas-root .code-block pre { padding: 18px 20px; overflow-x: auto; color: #d8d2c2; margin: 0; }
+.gas-root .code-block code { font-family: inherit; }
+.gas-root .kw { color: var(--gas-syntax-kw); }
+.gas-root .ty { color: var(--gas-syntax-ty); }
+.gas-root .st { color: var(--gas-syntax-st); }
+.gas-root .cm { color: var(--gas-syntax-cm); font-style: italic; }
+.gas-root .fn { color: var(--gas-syntax-fn); }
+.gas-root .num { color: var(--gas-syntax-num); }
+
+/* Figure / diagram wrapper */
+.gas-root .diagram {
+  margin: 36px 0;
+  padding: 26px 24px;
+  background: var(--gas-panel);
+  border: 1px solid var(--gas-rule);
+  border-radius: 12px;
+}
+.gas-root .diagram.flush { padding: 20px; }
+.gas-root .diagram svg { display: block; width: 100%; height: auto; }
+.gas-root .diagram-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gas-accent); margin-bottom: 18px; font-weight: 500;
+}
+.gas-root .diagram-caption {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-style: italic;
+  color: var(--gas-ink-faint); margin-top: 16px; text-align: center; line-height: 1.5;
+}
+
+/* Callout */
+.gas-root .callout {
+  margin: 32px 0; padding: 22px 26px;
+  background: var(--gas-bg-warm);
+  border-left: 3px solid var(--gas-accent);
+  border-radius: 0 8px 8px 0;
+}
+.gas-root .callout p { font-size: 15.5px; color: var(--gas-ink); margin: 0; line-height: 1.65; }
+.gas-root .callout p + p { margin-top: 12px; }
+.gas-root .callout .label {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gas-accent); margin-bottom: 10px; font-weight: 500;
+}
+.gas-root .callout.warn { border-left-color: var(--gas-warn); }
+.gas-root .callout.warn .label { color: var(--gas-warn); }
+
+/* Numbered steps */
+.gas-root .steps { margin: 28px 0; padding: 26px 30px; background: var(--gas-panel); border: 1px solid var(--gas-rule); border-radius: 12px; }
+.gas-root .step { display: grid; grid-template-columns: 34px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--gas-rule); }
+.gas-root .step:first-of-type { border-top: none; padding-top: 0; }
+.gas-root .step .num { font-family: 'Fraunces', serif; font-size: 24px; font-style: italic; font-weight: 500; color: var(--gas-accent); line-height: 1; }
+.gas-root .step .body p { font-size: 15px; color: var(--gas-ink-mid); margin: 0; line-height: 1.6; }
+.gas-root .step .body p strong { color: var(--gas-ink); }
+
+/* Trie boxes */
+.gas-root .trie-walk { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; font-family: 'JetBrains Mono', monospace; }
+.gas-root .tnode {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px; font-size: 15px; font-weight: 600;
+  background: var(--gas-accent-soft); border: 1px solid var(--gas-accent); color: var(--gas-accent);
+}
+.gas-root .tnode.dead { background: var(--gas-warn-soft); border-color: var(--gas-warn); color: var(--gas-warn); }
+.gas-root .tarrow { color: var(--gas-ink-faint); font-size: 16px; }
+
+/* Delete-set match table */
+.gas-root .delset { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0; }
+.gas-root .delset .col { background: var(--gas-panel); border: 1px solid var(--gas-rule); border-radius: 10px; padding: 16px 18px; }
+.gas-root .delset .col-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gas-ink-faint); margin-bottom: 12px; }
+.gas-root .delset .row { font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 3px 0; color: var(--gas-ink-mid); }
+.gas-root .delset .row.hit { color: var(--gas-edge); font-weight: 600; }
+.gas-root .delset .row .del { color: var(--gas-ink-faint); }
+
+/* Stat / budget bars */
+.gas-root .budget { margin: 28px 0; padding: 24px 26px; background: var(--gas-panel); border: 1px solid var(--gas-rule); border-radius: 12px; }
+.gas-root .budget-row { display: grid; grid-template-columns: 160px 1fr 64px; gap: 14px; align-items: center; padding: 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; }
+.gas-root .budget-row .lbl { color: var(--gas-ink-mid); }
+.gas-root .budget-row .track { height: 14px; background: var(--gas-bg-warm); border-radius: 7px; overflow: hidden; }
+.gas-root .budget-row .fill { height: 100%; border-radius: 7px; }
+.gas-root .budget-row .ms { text-align: right; color: var(--gas-ink-faint); }
+
+/* Comparison table */
+.gas-root table.gtable { margin: 30px 0; width: 100%; border-collapse: collapse; font-size: 14px; background: var(--gas-panel); border: 1px solid var(--gas-rule); border-radius: 8px; overflow: hidden; }
+.gas-root table.gtable th { text-align: left; padding: 13px 16px; background: var(--gas-bg-warm); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gas-ink-mid); font-weight: 500; border-bottom: 1px solid var(--gas-rule); }
+.gas-root table.gtable td { padding: 13px 16px; border-bottom: 1px solid var(--gas-rule); vertical-align: top; color: var(--gas-ink-mid); line-height: 1.55; }
+.gas-root table.gtable td:first-child { font-weight: 500; color: var(--gas-ink); white-space: nowrap; }
+.gas-root table.gtable tr:last-child td { border-bottom: none; }
+
+/* Pullquote */
+.gas-root .pullquote { margin: 48px 0; padding: 30px 34px; text-align: center; border-top: 1px solid var(--gas-rule); border-bottom: 1px solid var(--gas-rule); }
+.gas-root .pullquote q { font-family: 'Fraunces', serif; font-size: 23px; line-height: 1.4; font-style: italic; color: var(--gas-ink); quotes: '\201C' '\201D'; display: block; }
+.gas-root .pullquote q::before, .gas-root .pullquote q::after { color: var(--gas-accent); font-size: 28px; line-height: 0; vertical-align: -8px; }
+
+/* Legend */
+.gas-root .legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 6px 0 20px; font-family: 'Inter', sans-serif; font-size: 12px; color: var(--gas-ink-mid); }
+.gas-root .legend span { display: inline-flex; align-items: center; gap: 7px; }
+.gas-root .legend i { width: 13px; height: 13px; border-radius: 3px; display: inline-block; }
+
+.gas-root .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--gas-rule); font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; color: var(--gas-ink-mid); text-align: center; line-height: 1.5; }
+.gas-root .signoff { font-family: 'JetBrains Mono', monospace; font-style: normal; font-size: 11px; color: var(--gas-ink-faint); letter-spacing: 0.1em; margin-top: 20px; text-transform: uppercase; display: block; }
+
+.gas-root a { color: var(--gas-accent); text-decoration: none; }
+.gas-root a:hover { text-decoration: underline; }
+
+/* SVG helper text classes */
+.gas-root svg .s-ink { fill: var(--gas-ink); }
+.gas-root svg .s-mid { fill: var(--gas-ink-mid); }
+.gas-root svg .s-faint { fill: var(--gas-ink-faint); }
+.gas-root svg .s-title { font-family: 'Inter', sans-serif; font-weight: 600; }
+.gas-root svg .s-mono { font-family: 'JetBrains Mono', monospace; }
+.gas-root svg .s-label { font-family: 'Inter', sans-serif; }
+
+@media (max-width: 760px) {
+  .gas-root h2 { font-size: 25px; }
+  .gas-root .lead { font-size: 19px; }
+  .gas-root .delset { grid-template-columns: 1fr; }
+  .gas-root .budget-row { grid-template-columns: 110px 1fr 52px; font-size: 11px; gap: 8px; }
+  .gas-root .diagram { padding: 18px 14px; }
+  .gas-root .code-block pre { font-size: 12px; padding: 14px; }
+  .gas-root table.gtable { font-size: 12.5px; }
+  .gas-root table.gtable th, .gas-root table.gtable td { padding: 10px; }
+}
+</style>
+
+<div class="gas-root">
+<article class="article">
+
+<p class="lead">You type one letter into Google's search box, and before your finger has left the key, ten suggestions appear. Do it a hundred times and it feels free, instant, obvious. It is none of those things. Behind that dropdown sits one of the tightest latency budgets in consumer software, a data structure held in memory across thousands of machines, and an offline pipeline chewing through a firehose of query logs to keep it all fresh. This is a walk through the whole thing, from the keystroke to the machines and back, with the parts that usually get hand-waved drawn out in full.</p>
+
+<p>The mental model to hold the entire time: the fast <em>online</em> path only ever <strong>reads</strong> precomputed structures, and it does so on a budget measured in single-digit milliseconds. Everything expensive (counting, ranking, model training, index building) happens on a slow <em>offline</em> path and gets shipped to the serving fleet on a schedule. Almost every design decision below falls out of that one split.</p>
+
+<div class="diagram">
+  <div class="diagram-label">The whole system, one picture</div>
+  <div class="legend">
+    <span><i style="background:var(--gas-client)"></i>Client / edge</span>
+    <span><i style="background:var(--gas-edge)"></i>Online serving</span>
+    <span><i style="background:var(--gas-serve)"></i>Candidate + rank</span>
+    <span><i style="background:var(--gas-offline)"></i>Offline pipeline</span>
+  </div>
+  <svg viewBox="0 0 760 470" role="img" aria-label="End to end architecture of Google autosuggest, online read path on top and offline build path on the bottom">
+    <defs>
+      <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--gas-ink-faint)"/></marker>
+    </defs>
+    <!-- online path -->
+    <text x="12" y="24" class="s-mono s-faint" font-size="11" letter-spacing="1.5">ONLINE READ PATH  ·  latency budget ~50-100ms round trip</text>
+
+    <rect x="12" y="40" width="120" height="60" rx="9" fill="var(--gas-client-soft)" stroke="var(--gas-client)"/>
+    <text x="72" y="66" text-anchor="middle" class="s-title s-ink" font-size="13">Browser</text>
+    <text x="72" y="84" text-anchor="middle" class="s-label s-mid" font-size="10.5">debounce · cancel · cache</text>
+
+    <rect x="160" y="40" width="120" height="60" rx="9" fill="var(--gas-client-soft)" stroke="var(--gas-client)"/>
+    <text x="220" y="62" text-anchor="middle" class="s-title s-ink" font-size="13">Edge / GFE</text>
+    <text x="220" y="79" text-anchor="middle" class="s-label s-mid" font-size="10.5">anycast · TLS</text>
+    <text x="220" y="92" text-anchor="middle" class="s-label s-mid" font-size="10.5">hot-prefix cache</text>
+
+    <rect x="308" y="40" width="130" height="60" rx="9" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="373" y="62" text-anchor="middle" class="s-title s-ink" font-size="13">Suggest service</text>
+    <text x="373" y="79" text-anchor="middle" class="s-label s-mid" font-size="10.5">normalize · route</text>
+    <text x="373" y="92" text-anchor="middle" class="s-label s-mid" font-size="10.5">fuzzy fallback</text>
+
+    <rect x="466" y="30" width="130" height="38" rx="8" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="531" y="53" text-anchor="middle" class="s-label s-ink" font-size="11">Global trie shards</text>
+    <rect x="466" y="72" width="130" height="34" rx="8" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="531" y="93" text-anchor="middle" class="s-label s-ink" font-size="11">Trending index</text>
+    <rect x="466" y="110" width="130" height="34" rx="8" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="531" y="131" text-anchor="middle" class="s-label s-ink" font-size="11">Personal / geo</text>
+
+    <rect x="624" y="60" width="124" height="60" rx="9" fill="var(--gas-serve-soft)" stroke="var(--gas-serve)"/>
+    <text x="686" y="82" text-anchor="middle" class="s-title s-ink" font-size="13">Rank + filter</text>
+    <text x="686" y="99" text-anchor="middle" class="s-label s-mid" font-size="10.5">re-score · dedup</text>
+    <text x="686" y="112" text-anchor="middle" class="s-label s-mid" font-size="10.5">safety gate</text>
+
+    <line x1="132" y1="70" x2="158" y2="70" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="280" y1="70" x2="306" y2="70" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="438" y1="70" x2="462" y2="49" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="438" y1="72" x2="462" y2="89" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="438" y1="82" x2="462" y2="127" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="596" y1="70" x2="622" y2="86" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <!-- return arrow -->
+    <path d="M686,120 C686,150 72,150 72,102" fill="none" stroke="var(--gas-client)" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+    <text x="379" y="146" text-anchor="middle" class="s-label" fill="var(--gas-client)" font-size="10.5">top-k JSON back to the dropdown</text>
+
+    <!-- divider -->
+    <line x1="12" y1="182" x2="748" y2="182" stroke="var(--gas-rule)"/>
+
+    <!-- offline path -->
+    <text x="12" y="212" class="s-mono s-faint" font-size="11" letter-spacing="1.5">OFFLINE BUILD PATH  ·  batch every few hours, streaming every few minutes</text>
+
+    <rect x="12" y="230" width="120" height="150" rx="9" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="72" y="256" text-anchor="middle" class="s-title s-ink" font-size="13">Query logs</text>
+    <text x="72" y="276" text-anchor="middle" class="s-label s-mid" font-size="10.5">sampled</text>
+    <text x="72" y="292" text-anchor="middle" class="s-label s-mid" font-size="10.5">privacy-scrubbed</text>
+    <text x="72" y="308" text-anchor="middle" class="s-label s-mid" font-size="10.5">k-anonymized</text>
+
+    <!-- batch branch -->
+    <rect x="176" y="222" width="150" height="52" rx="9" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="251" y="244" text-anchor="middle" class="s-title s-ink" font-size="12.5">Batch aggregate</text>
+    <text x="251" y="261" text-anchor="middle" class="s-label s-mid" font-size="10.5">count + time-decay</text>
+
+    <rect x="176" y="336" width="150" height="52" rx="9" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="251" y="358" text-anchor="middle" class="s-title s-ink" font-size="12.5">Streaming detect</text>
+    <text x="251" y="375" text-anchor="middle" class="s-label s-mid" font-size="10.5">spike vs baseline</text>
+
+    <rect x="370" y="222" width="150" height="52" rx="9" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="445" y="244" text-anchor="middle" class="s-title s-ink" font-size="12.5">Build sharded trie</text>
+    <text x="445" y="261" text-anchor="middle" class="s-label s-mid" font-size="10.5">top-k per node</text>
+
+    <rect x="370" y="288" width="150" height="46" rx="9" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="445" y="308" text-anchor="middle" class="s-title s-ink" font-size="12.5">Train ranker</text>
+    <text x="445" y="324" text-anchor="middle" class="s-label s-mid" font-size="10.5">CTR model + bias fix</text>
+
+    <rect x="564" y="250" width="150" height="86" rx="9" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="639" y="288" text-anchor="middle" class="s-title s-ink" font-size="12.5">Blue/green</text>
+    <text x="639" y="306" text-anchor="middle" class="s-title s-ink" font-size="12.5">deploy</text>
+    <text x="639" y="324" text-anchor="middle" class="s-label s-mid" font-size="10.5">to serving fleet ↑</text>
+
+    <line x1="132" y1="260" x2="174" y2="252" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="132" y1="350" x2="174" y2="358" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="326" y1="248" x2="368" y2="248" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="326" y1="255" x2="368" y2="305" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="520" y1="248" x2="562" y2="278" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <line x1="520" y1="310" x2="562" y2="300" stroke="var(--gas-ink-faint)" marker-end="url(#ah)"/>
+    <path d="M326,362 C440,362 440,336 562,320" fill="none" stroke="var(--gas-ink-faint)" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+  </svg>
+  <div class="diagram-caption">The top half runs on every keystroke. The bottom half runs on a clock. They meet only at the blue/green deploy, where fresh indexes replace the ones the serving fleet is reading.</div>
+</div>
+
+<h2><span class="num">01</span>The client is doing more than you think</h2>
+
+<p>The suggestion box is not a dumb text field that forwards keystrokes. It is a small state machine optimizing for one thing: <strong>perceived</strong> latency. Three tricks carry most of the weight.</p>
+
+<p><strong>Firing and cancelling.</strong> A naive implementation fires one request per keystroke and renders whatever comes back. That breaks the moment responses arrive out of order: you type <code class="inline">sea</code> then <code class="inline">seat</code>, but the slower response for <code class="inline">sea</code> lands last and clobbers the dropdown with stale content. The fix is to tie every request to a monotonic sequence number, or better, to actively cancel the in-flight request when a newer keystroke supersedes it.</p>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">autosuggest.js</span><span class="lang">javascript</span></div>
+<pre><code><span class="kw">let</span> controller = <span class="kw">null</span>;
+
+<span class="kw">async function</span> <span class="fn">onKeystroke</span>(prefix) {
+  controller?.<span class="fn">abort</span>();                     <span class="cm">// cancel the previous in-flight request</span>
+  controller = <span class="kw">new</span> <span class="ty">AbortController</span>();
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="st">`/complete/search?q=${encodeURIComponent(prefix)}`</span>,
+                            { signal: controller.signal });
+    <span class="fn">render</span>(<span class="kw">await</span> res.<span class="fn">json</span>());
+  } <span class="kw">catch</span> (err) {
+    <span class="kw">if</span> (err.name === <span class="st">'AbortError'</span>) <span class="kw">return</span>;  <span class="cm">// expected: a newer keystroke won</span>
+    <span class="kw">throw</span> err;
+  }
+}</code></pre>
+</div>
+
+<p>The decision to cancel and the act of cancelling both live in your JavaScript. The browser does not infer that request #2 supersedes request #1, it has no concept of that relationship. What the browser <em>does</em> handle is translating <code class="inline">.abort()</code> into the right wire behavior, and that behavior is worth understanding because it explains why cancelling is cheap.</p>
+
+<p><strong>Connection reuse.</strong> Every request goes to the same origin over a connection that was opened once, at page load, and kept alive. The expensive parts of setting up a secure connection (the TCP handshake, then the TLS handshake) are a one-time cost, not a per-keystroke cost.</p>
+
+<div class="diagram">
+  <div class="diagram-label">One connection, many requests</div>
+  <svg viewBox="0 0 760 250" role="img" aria-label="HTTP/2 multiplexing: one TCP+TLS connection carries many independent streams">
+    <defs>
+      <marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--gas-ink-faint)"/></marker>
+    </defs>
+    <text x="12" y="20" class="s-mono s-faint" font-size="11">NAÏVE: new handshake per keystroke</text>
+    <g>
+      <rect x="12" y="34" width="120" height="30" rx="6" fill="var(--gas-warn-soft)" stroke="var(--gas-warn)"/>
+      <text x="72" y="53" text-anchor="middle" class="s-mono" fill="var(--gas-warn)" font-size="10.5">TCP+TLS · "s"</text>
+      <rect x="146" y="34" width="120" height="30" rx="6" fill="var(--gas-warn-soft)" stroke="var(--gas-warn)"/>
+      <text x="206" y="53" text-anchor="middle" class="s-mono" fill="var(--gas-warn)" font-size="10.5">TCP+TLS · "se"</text>
+      <rect x="280" y="34" width="120" height="30" rx="6" fill="var(--gas-warn-soft)" stroke="var(--gas-warn)"/>
+      <text x="340" y="53" text-anchor="middle" class="s-mono" fill="var(--gas-warn)" font-size="10.5">TCP+TLS · "sea"</text>
+      <text x="420" y="53" class="s-label s-faint" font-size="11">+50-150ms each · unusable</text>
+    </g>
+
+    <text x="12" y="104" class="s-mono s-faint" font-size="11">REAL: one connection, HTTP/2 streams</text>
+    <rect x="12" y="118" width="150" height="112" rx="9" fill="var(--gas-client-soft)" stroke="var(--gas-client)"/>
+    <text x="87" y="140" text-anchor="middle" class="s-title s-ink" font-size="12">TCP + TLS</text>
+    <text x="87" y="156" text-anchor="middle" class="s-label s-mid" font-size="10">handshake ONCE</text>
+    <text x="87" y="172" text-anchor="middle" class="s-mono s-faint" font-size="9.5">(at page load)</text>
+    <text x="87" y="200" text-anchor="middle" class="s-label s-mid" font-size="10">ALPN picks</text>
+    <text x="87" y="214" text-anchor="middle" class="s-mono s-mid" font-size="10">h2 / h3</text>
+
+    <g class="s-mono">
+      <rect x="230" y="120" width="240" height="24" rx="5" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+      <text x="242" y="136" class="s-ink" font-size="10.5">stream 1 · GET ?q=s</text>
+      <rect x="230" y="150" width="240" height="24" rx="5" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+      <text x="242" y="166" class="s-ink" font-size="10.5">stream 3 · GET ?q=se</text>
+      <rect x="230" y="180" width="240" height="24" rx="5" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+      <text x="242" y="196" class="s-ink" font-size="10.5">stream 5 · GET ?q=sea</text>
+      <rect x="230" y="210" width="240" height="20" rx="5" fill="none" stroke="var(--gas-warn)" stroke-dasharray="3 3"/>
+      <text x="242" y="224" fill="var(--gas-warn)" font-size="10">stream 3 · RST_STREAM (cancelled)</text>
+    </g>
+    <line x1="162" y1="132" x2="228" y2="132" stroke="var(--gas-ink-faint)" marker-end="url(#ah2)"/>
+    <line x1="162" y1="162" x2="228" y2="162" stroke="var(--gas-ink-faint)" marker-end="url(#ah2)"/>
+    <line x1="162" y1="192" x2="228" y2="192" stroke="var(--gas-ink-faint)" marker-end="url(#ah2)"/>
+    <text x="486" y="150" class="s-label s-mid" font-size="11">Each keystroke is a new</text>
+    <text x="486" y="166" class="s-label s-mid" font-size="11"><tspan class="s-mono">stream id</tspan> on the same</text>
+    <text x="486" y="182" class="s-label s-mid" font-size="11">socket. Cancelling sends</text>
+    <text x="486" y="198" class="s-label s-mid" font-size="11">one <tspan class="s-mono">RST_STREAM</tspan>, the</text>
+    <text x="486" y="214" class="s-label s-mid" font-size="11">connection stays open.</text>
+  </svg>
+  <div class="diagram-caption">This is the mechanism behind "no new handshake per keystroke." Note: these are plain HTTP requests multiplexed over one connection, not a WebSocket. There is no <code>Upgrade</code> handshake and no persistent bidirectional message channel.</div>
+</div>
+
+<p><strong>Local caching.</strong> Backspacing from <code class="inline">seattle</code> to <code class="inline">seattl</code> is common (you are reconsidering), so the client keeps a small in-memory map of <code class="inline">prefix → last response</code> and serves the shorter prefix from cache instead of round-tripping. This cache is per page load, never persisted, because suggestions are time-sensitive.</p>
+
+<div class="callout">
+  <div class="label">The layer you don't control</div>
+  <p>You call <code class="inline">fetch()</code>. The browser's network stack keeps a connection pool keyed by <code class="inline">(scheme, host, port)</code> and silently reuses an existing HTTP/2 (or HTTP/3 / QUIC) connection for every same-origin call. You can verify it: in Chrome DevTools' Network tab, enable the "Connection ID" column and watch the same ID repeat across keystrokes.</p>
+</div>
+
+<h2><span class="num">02</span>Edge routing and the latency budget</h2>
+
+<p>The request leaves the browser and hits the nearest Google Front End through <strong>anycast</strong>: the same IP address is advertised from many locations, and the network delivers your packets to whichever one is closest. TLS terminates there, close to you, so the handshake round trips are short. Only then does the request travel (over Google's internal backbone, not the public internet) to a regional suggestion service.</p>
+
+<p>Why go to this trouble? Because autosuggest sits on the critical path of <em>typing</em>. The whole thing has to feel like it is keeping up with your fingers, which means the perceived round trip needs to stay under roughly 100ms. Subtract network time and you are left with a brutally small server-side budget.</p>
+
+<div class="budget">
+  <div class="diagram-label">Where ~100ms goes (illustrative)</div>
+  <div class="budget-row"><span class="lbl">Network RTT to edge</span><span class="track"><span class="fill" style="width:35%;background:var(--gas-client)"></span></span><span class="ms">~30ms</span></div>
+  <div class="budget-row"><span class="lbl">Edge → region</span><span class="track"><span class="fill" style="width:18%;background:var(--gas-client)"></span></span><span class="ms">~15ms</span></div>
+  <div class="budget-row"><span class="lbl">Normalize + route</span><span class="track"><span class="fill" style="width:6%;background:var(--gas-edge)"></span></span><span class="ms">~2ms</span></div>
+  <div class="budget-row"><span class="lbl">Candidate lookup</span><span class="track"><span class="fill" style="width:12%;background:var(--gas-edge)"></span></span><span class="ms">~5ms</span></div>
+  <div class="budget-row"><span class="lbl">Rank + filter</span><span class="track"><span class="fill" style="width:10%;background:var(--gas-serve)"></span></span><span class="ms">~4ms</span></div>
+  <div class="budget-row"><span class="lbl">Return + render</span><span class="track"><span class="fill" style="width:30%;background:var(--gas-client)"></span></span><span class="ms">~25ms</span></div>
+</div>
+
+<p>The lesson buried in those numbers: the server-side work (normalize, look up, rank, filter) has maybe <strong>10-15ms total</strong>. That single constraint is why the suggestion service can't run heavy NLP, can't call a large model per keystroke, and can't scan anything at request time. Everything it returns must already have been computed. It only reads.</p>
+
+<div class="callout">
+  <div class="label">Graceful degradation</div>
+  <p>Because suggestions are a convenience, not a correctness guarantee, the service is free to fail soft. If a shard is slow or a signal source times out, the response returns with whatever came back in time (or an empty list) rather than blocking. A missing dropdown is a non-event. A 400ms dropdown is a visible bug.</p>
+</div>
+
+<h2><span class="num">03</span>Query understanding, without the heavy machinery</h2>
+
+<p>Before any lookup, the raw prefix is normalized: lowercased, trimmed, accents folded (<code class="inline">café → cafe</code>), Unicode canonicalized, and language / script detected. This is deliberately cheap. There is no room in the budget for a real parser on a two-character prefix.</p>
+
+<p>One thing that gets deeper as you type more: understanding is <em>progressive</em>. A one-letter prefix gets almost no interpretation. A long, complete-looking query gets more (entity recognition, "did you mean" correction), because by then it looks finished and the extra work is justified.</p>
+
+<p>And a subtlety worth its own section: spelling.</p>
+
+<h2><span class="num">04</span>Typos: why "correct then look up" is the wrong model</h2>
+
+<p>The intuitive design is a pipeline: take the typed string, autocorrect it, feed the corrected string to the index. This breaks on the defining property of autosuggest: <strong>the input is incomplete by definition.</strong> Is <code class="inline">seattl</code> a typo of <code class="inline">seattle</code>, or a correct prefix of it that you haven't finished typing? They are identical. Aggressively "fixing" every prefix would mean constantly second-guessing a user mid-thought.</p>
+
+<p>So tolerance is not a separate stage. It is <em>fused into the matching itself</em>. Two mechanisms do the work.</p>
+
+<h3>Mechanism 1: fuzzy matching baked into retrieval</h3>
+
+<p>Start with what actually happens on a real typo. Suppose you type <code class="inline">explian</code>. A literal, character-by-character trie walk does not wander off to a wrong-but-complete word. Trie nodes only have children for letters that continue a real indexed word, so the walk simply <strong>dies at the first character with no matching child</strong>.</p>
+
+<div class="diagram">
+  <div class="diagram-label">Naïve walk on a typo → dead end</div>
+  <div class="trie-walk">
+    <span class="tnode">e</span><span class="tarrow">→</span>
+    <span class="tnode">x</span><span class="tarrow">→</span>
+    <span class="tnode">p</span><span class="tarrow">→</span>
+    <span class="tnode">l</span><span class="tarrow">→</span>
+    <span class="tnode dead">i</span>
+    <span style="font-family:'Inter';font-size:12.5px;color:var(--gas-warn);margin-left:10px;">✗ node "expl" has child <b>a</b> (explain), not <b>i</b> → no suggestions at all</span>
+  </div>
+  <div class="diagram-caption">The failure mode is "zero results," not "results for the wrong word." That is exactly the gap fuzzy matching fills.</div>
+</div>
+
+<p>The trick (the SymSpell approach) is to precompute, offline, every string reachable by <em>deleting</em> up to N characters from each dictionary word, and store a reverse index from those delete-variants back to the real words. At query time you generate the delete-variants of the <em>typed</em> string too, and look for overlap. Overlap means the two strings are a small edit apart.</p>
+
+<div class="delset">
+  <div class="col">
+    <div class="col-tag">deletes of dictionary word "explain"</div>
+    <div class="row"><span class="del">−e</span> xplain</div>
+    <div class="row"><span class="del">−x</span> eplain</div>
+    <div class="row"><span class="del">−p</span> exlain</div>
+    <div class="row"><span class="del">−l</span> expain</div>
+    <div class="row hit"><span class="del">−a</span> explin ●</div>
+    <div class="row hit"><span class="del">−i</span> explan ●</div>
+    <div class="row"><span class="del">−n</span> explai</div>
+  </div>
+  <div class="col">
+    <div class="col-tag">deletes of typed "explian"</div>
+    <div class="row"><span class="del">−e</span> xplian</div>
+    <div class="row"><span class="del">−x</span> eplian</div>
+    <div class="row"><span class="del">−p</span> exlian</div>
+    <div class="row"><span class="del">−l</span> expian</div>
+    <div class="row hit"><span class="del">−i</span> explan ●</div>
+    <div class="row hit"><span class="del">−a</span> explin ●</div>
+    <div class="row"><span class="del">−n</span> explia</div>
+  </div>
+</div>
+
+<p>Two variants (<code class="inline">explan</code> and <code class="inline">explin</code>) collide. That overlap flags <code class="inline">explain</code> as a candidate. A cheap verification step then runs real Damerau-Levenshtein distance only on this tiny shortlist, confirms the true edit is a single transposition of <code class="inline">a</code> and <code class="inline">i</code>, and pulls completions from <code class="inline">explain</code>'s subtree (<em>explain this</em>, <em>explain this to me</em>, and so on). No rewrite-and-rewalk, no separate correction service, no extra network hop.</p>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">symspell.py</span><span class="lang">python</span></div>
+<pre><code><span class="cm"># OFFLINE: build reverse index {delete_variant -> [(word, freq), ...]}</span>
+<span class="kw">def</span> <span class="fn">generate_deletes</span>(word, max_edits=<span class="num">2</span>):
+    seen, frontier = {word}, [word]
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(max_edits):
+        nxt = []
+        <span class="kw">for</span> w <span class="kw">in</span> frontier:
+            <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(w)):
+                v = w[:i] + w[i+<span class="num">1</span>:]
+                <span class="kw">if</span> v <span class="kw">not in</span> seen: seen.add(v); nxt.append(v)
+        frontier = nxt
+    <span class="kw">return</span> seen
+
+<span class="cm"># ONLINE (hot path): same deletes on the typo, then intersect + verify</span>
+<span class="kw">def</span> <span class="fn">fuzzy_candidates</span>(typed):
+    hits = []
+    <span class="kw">for</span> v <span class="kw">in</span> <span class="fn">generate_deletes</span>(typed, max_edits=<span class="num">1</span>):   <span class="cm"># tighter budget online</span>
+        hits += delete_index.get(v, [])
+    <span class="kw">return</span> <span class="fn">sorted</span>(<span class="fn">set</span>(hits), key=<span class="kw">lambda</span> x: -x[<span class="num">1</span>])   <span class="cm"># by frequency</span></code></pre>
+</div>
+
+<h3>Mechanism 2: correction that falls out of popularity</h3>
+
+<p>A lot of what looks like autocorrect is not explicit logic at all. Type <code class="inline">recieve email</code> and the index space around that prefix has vastly more historical traffic for the correctly-spelled <code class="inline">receive email…</code>, so the correct completions simply outrank the misspelled ones. It is fuzzy retrieval plus frequency ranking, not a "did you mean" rule.</p>
+
+<p>The genuine, heavier spell-correction model (a noisy-channel or small neural model) is reserved for <em>complete</em> queries, post-submit, where the budget is looser. All of it is trained on the single most valuable signal Google has here: <strong>query reformulation logs</strong>, the millions of sessions where someone typed <code class="inline">recieve</code>, paused, and retyped <code class="inline">receive</code>. That pairing captures phonetic and keyboard-adjacency errors that raw edit distance never could.</p>
+
+<h2><span class="num">05</span>Candidate generation: the trie, and why it must be sharded</h2>
+
+<p>Now the core data-structure problem: <strong>given a prefix, return the top-k completions, fast.</strong> The classic answer is a trie (prefix tree) where each node stores its own precomputed top-k completions. Walking to the node for a prefix is O(length of prefix), and the answer is sitting right there. No scan.</p>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">trie_node.h</span><span class="lang">c++</span></div>
+<pre><code><span class="kw">struct</span> <span class="ty">TrieNode</span> {
+  std::<span class="ty">unordered_map</span>&lt;<span class="ty">char</span>, <span class="ty">TrieNode</span>*&gt; children;
+  std::<span class="ty">vector</span>&lt;<span class="ty">Completion</span>&gt;             top_k;  <span class="cm">// precomputed OFFLINE, e.g. top 10</span>
+};
+
+std::<span class="ty">vector</span>&lt;<span class="ty">Completion</span>&gt; <span class="fn">Lookup</span>(<span class="ty">TrieNode</span>* root, <span class="kw">const</span> std::<span class="ty">string</span>&amp; prefix) {
+  <span class="ty">TrieNode</span>* node = root;
+  <span class="kw">for</span> (<span class="ty">char</span> c : prefix) {
+    <span class="kw">auto</span> it = node-&gt;children.find(c);
+    <span class="kw">if</span> (it == node-&gt;children.end()) <span class="kw">return</span> <span class="fn">FuzzyFallback</span>(prefix);
+    node = it-&gt;second;
+  }
+  <span class="kw">return</span> node-&gt;top_k;   <span class="cm">// O(prefix length), no runtime scan of the subtree</span>
+}</code></pre>
+</div>
+
+<p>That precomputed <code class="inline">top_k</code> is the whole game. It is what lets a lookup touch exactly one node and stop. Without it you would have to explore the entire subtree under a prefix at request time and merge, which no latency budget allows.</p>
+
+<p>The problem: this index (hundreds of millions of prefixes across every language, each node carrying its top-k) does not fit on one machine, and one machine could never serve global keystroke QPS anyway. So it has to be partitioned. The real design question is <em>how to split a tree without breaking the "one lookup touches one place" property.</em></p>
+
+<h3>Why the obvious split fails</h3>
+
+<p>Shard by first letter (a-m here, n-z there) and you get wildly uneven load. English query traffic is enormously skewed by starting letter: prefixes under <code class="inline">s</code>, <code class="inline">t</code>, <code class="inline">c</code>, <code class="inline">w</code> dwarf <code class="inline">x</code>, <code class="inline">q</code>, <code class="inline">z</code>. One shard melts while another idles.</p>
+
+<h3>Two-tier routing, balanced by measured traffic</h3>
+
+<p>The fix is a small, fully-replicated <strong>router</strong> holding just the first few characters of prefix space, with shard boundaries assigned by observed query <em>frequency</em> (a greedy bin-packing) rather than by the alphabet. A shard might own the unrelated set <code class="inline">{th, qz, vk}</code> purely because that combination balances load. This is much closer to weighted consistent hashing than to an alphabetical cut.</p>
+
+<div class="diagram">
+  <div class="diagram-label">Router → shard → replica set</div>
+  <svg viewBox="0 0 760 300" role="img" aria-label="Two tier routing: a replicated router maps shallow prefixes to shards, each shard is a set of identical replica machines">
+    <defs>
+      <marker id="ah3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--gas-ink-faint)"/></marker>
+    </defs>
+    <!-- router -->
+    <rect x="12" y="90" width="150" height="120" rx="10" fill="var(--gas-client-soft)" stroke="var(--gas-client)"/>
+    <text x="87" y="112" text-anchor="middle" class="s-title s-ink" font-size="12.5">Router (Tier 1)</text>
+    <text x="87" y="128" text-anchor="middle" class="s-label s-faint" font-size="9.5">replicated everywhere</text>
+    <g class="s-mono" font-size="11">
+      <text x="28" y="152" class="s-mid">"se" → shard 7</text>
+      <text x="28" y="170" class="s-mid">"th" → shard 3</text>
+      <text x="28" y="188" class="s-mid">"qz" → shard 3</text>
+      <text x="28" y="206" class="s-mid">"am" → shard 5</text>
+    </g>
+
+    <!-- shard 7 -->
+    <text x="330" y="30" class="s-mono s-faint" font-size="11">SHARD 7 · owns {se, …}</text>
+    <rect x="330" y="40" width="86" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="373" y="61" text-anchor="middle" class="s-mono s-ink" font-size="10.5">replica A</text>
+    <rect x="424" y="40" width="86" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="467" y="61" text-anchor="middle" class="s-mono s-ink" font-size="10.5">replica B</text>
+    <rect x="518" y="40" width="86" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="561" y="61" text-anchor="middle" class="s-mono s-ink" font-size="10.5">replica C</text>
+    <text x="620" y="61" class="s-label s-faint" font-size="10">identical copies</text>
+
+    <!-- shard 3 (hot -> more replicas) -->
+    <text x="330" y="110" class="s-mono s-faint" font-size="11">SHARD 3 · owns {th, qz, …} · HOT → more replicas</text>
+    <rect x="330" y="120" width="66" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="363" y="141" text-anchor="middle" class="s-mono s-ink" font-size="10">rep A</text>
+    <rect x="404" y="120" width="66" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="437" y="141" text-anchor="middle" class="s-mono s-ink" font-size="10">rep B</text>
+    <rect x="478" y="120" width="66" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="511" y="141" text-anchor="middle" class="s-mono s-ink" font-size="10">rep C</text>
+    <rect x="552" y="120" width="66" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="585" y="141" text-anchor="middle" class="s-mono s-ink" font-size="10">rep D</text>
+    <rect x="626" y="120" width="66" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="659" y="141" text-anchor="middle" class="s-mono s-ink" font-size="10">rep E</text>
+
+    <!-- shard 5 -->
+    <text x="330" y="188" class="s-mono s-faint" font-size="11">SHARD 5 · owns {am, …}</text>
+    <rect x="330" y="198" width="86" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="373" y="219" text-anchor="middle" class="s-mono s-ink" font-size="10.5">replica A</text>
+    <rect x="424" y="198" width="86" height="34" rx="7" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="467" y="219" text-anchor="middle" class="s-mono s-ink" font-size="10.5">replica B</text>
+
+    <line x1="162" y1="150" x2="326" y2="57" stroke="var(--gas-ink-faint)" marker-end="url(#ah3)"/>
+    <line x1="162" y1="160" x2="326" y2="137" stroke="var(--gas-ink-faint)" marker-end="url(#ah3)"/>
+    <line x1="162" y1="170" x2="326" y2="215" stroke="var(--gas-ink-faint)" marker-end="url(#ah3)"/>
+
+    <text x="12" y="262" class="s-label s-mid" font-size="12">Invariant: one keystroke → one shard → one replica. The router lookup is a hash-map hit on 2-3 chars;</text>
+    <text x="12" y="280" class="s-label s-mid" font-size="12">the deep trie walk happens entirely on that one machine. No cross-shard fan-out, ever.</text>
+  </svg>
+  <div class="diagram-caption">A "shard" is a logical partition. It lives on a replica set of several identical machines for fault tolerance and QPS. Hot shards simply get more replicas behind the load balancer.</div>
+</div>
+
+<p>Each shard's machines hold the <em>full deep subtree</em> for whatever shallow prefixes they own, with the precomputed top-k on every node. A request for <code class="inline">seattle</code> routes on <code class="inline">se</code> to shard 7, lands on any one of shard 7's replicas, walks the local trie, and returns. That the answer is pre-aggregated per node is what keeps this to a single hop.</p>
+
+<h3>When one prefix is too big: hierarchical routing</h3>
+
+<p>Sometimes a single shallow prefix (<code class="inline">th</code> for <em>the, this, that</em>; <code class="inline">ho</code> for <em>how to…</em>) is so large or so hot that its subtree alone won't fit on one machine. The fix is to make the routing key length <em>variable</em>: go deeper only where needed.</p>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">routing.cc</span><span class="lang">c++</span></div>
+<pre><code><span class="cm">// Most prefixes stop at 2 chars. Hot ones recurse to 3+.</span>
+routing_table[<span class="st">"qz"</span>] = <span class="num">3</span>;               <span class="cm">// small: bundled onto shard 3</span>
+routing_table[<span class="st">"th"</span>] = ROUTE_TO_SUBROUTER;   <span class="cm">// too hot: don't stop here</span>
+    subrouting_table[<span class="st">"the"</span>] = <span class="num">12</span>;
+    subrouting_table[<span class="st">"tha"</span>] = <span class="num">13</span>;
+    subrouting_table[<span class="st">"thi"</span>] = <span class="num">14</span>;</code></pre>
+</div>
+
+<p>The invariant survives (still one request, one shard). Only the cut depth adapts per branch.</p>
+
+<h3>Absorbing spikes and skew</h3>
+
+<ul>
+  <li><strong>Replica count tracks live QPS.</strong> A prefix that explodes on breaking news doesn't trigger a re-shard. The load balancer just spins up more replicas of that shard; the router still points at "shard 3."</li>
+  <li><strong>A separate, tiny, globally-replicated trending index</strong> sits alongside the main lookup to catch spikes that the multi-hour rebuild can't. It is small enough to copy everywhere because "what's trending right now" is a minuscule slice of all prefixes.</li>
+  <li><strong>Edge caching for the head of the distribution.</strong> Traffic is Zipfian: a handful of prefixes (<code class="inline">facebook</code>, <code class="inline">weather</code>, <code class="inline">youtube</code>) dominate. An LRU cache at the edge serves those without ever hitting a backend.</li>
+</ul>
+
+<h3>Merging multiple candidate sources</h3>
+
+<p>The global trie is only one source. The real response fans out to a small, <em>fixed</em> number of sources in parallel and merges them at ranking. Fixed matters: the fan-out scales with the number of signal types (about four), not with the size of the dictionary.</p>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">candidates.py</span><span class="lang">python</span></div>
+<pre><code><span class="kw">async def</span> <span class="fn">get_candidates</span>(prefix, ctx):
+    results = <span class="kw">await</span> asyncio.<span class="fn">gather</span>(
+        <span class="fn">global_trie_lookup</span>(prefix),                 <span class="cm"># sharded, as above</span>
+        <span class="fn">trending_lookup</span>(prefix),                    <span class="cm"># small, replicated everywhere</span>
+        <span class="fn">personalization_lookup</span>(ctx.user, prefix),  <span class="cm"># keyed by user</span>
+        <span class="fn">geo_lookup</span>(prefix, ctx.location),           <span class="cm"># local places / businesses</span>
+    )
+    <span class="kw">return</span> <span class="fn">rank_and_merge</span>(results)</code></pre>
+</div>
+
+<h2><span class="num">06</span>Ranking: the cheap first pass and the sharp second pass</h2>
+
+<p>The <code class="inline">top_k</code> stored in each trie node is really a <em>coarse first-pass ranking</em>, mostly raw frequency, frozen at index-build time. Once candidate generation has merged ~50-200 candidates from all four sources, a <em>second</em> pass re-scores them with richer signals that weren't available when the trie was built.</p>
+
+<table class="gtable">
+  <tr><th>Signal</th><th>What it captures</th></tr>
+  <tr><td>CTR given prefix</td><td>Not global popularity, but P(click | this candidate shown, <em>for this exact prefix</em>). <code class="inline">wea</code> → weather vs wear is decided by what people who typed <code class="inline">wea</code> actually pick. The single most important signal.</td></tr>
+  <tr><td>Global frequency</td><td>Log-scaled, time-decayed search volume. Cheap and stable, already baked into top-k.</td></tr>
+  <tr><td>Trending / recency</td><td>Z-score of recent volume vs a rolling baseline. Lets breaking news jump the ranking with a thin history.</td></tr>
+  <tr><td>Personalization</td><td>Match against the user's own recent / session searches. Lightly weighted, privacy-constrained.</td></tr>
+  <tr><td>Geo</td><td>Distance-decayed boost for local entities when a location signal exists.</td></tr>
+  <tr><td>Safety / policy</td><td>A hard gate, not a feature. Failing candidates are removed entirely, never merely down-weighted.</td></tr>
+</table>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">rank.cc</span><span class="lang">c++</span></div>
+<pre><code><span class="ty">double</span> <span class="fn">Score</span>(<span class="kw">const</span> <span class="ty">Candidate</span>&amp; c) {
+  <span class="kw">if</span> (!c.passes_safety) <span class="kw">return</span> -INFINITY;   <span class="cm">// hard exclude</span>
+  <span class="cm">// Illustrative blend. Production trains a small GBDT / LambdaMART over</span>
+  <span class="cm">// these features — affordable because the candidate set is already tiny.</span>
+  <span class="kw">return</span> <span class="num">0.35</span>*c.ctr_given_prefix + <span class="num">0.20</span>*c.global_freq
+       + <span class="num">0.15</span>*c.trending    + <span class="num">0.15</span>*c.personalization
+       + <span class="num">0.10</span>*c.geo         + <span class="num">0.05</span>*c.language_match;
+}
+
+std::<span class="ty">vector</span>&lt;<span class="ty">Candidate</span>&gt; <span class="fn">RankAndDiversify</span>(std::<span class="ty">vector</span>&lt;<span class="ty">Candidate</span>&gt; cands, <span class="ty">int</span> k) {
+  <span class="kw">for</span> (<span class="kw">auto</span>&amp; c : cands) c.score = <span class="fn">Score</span>(c);
+  std::<span class="fn">sort</span>(cands.begin(), cands.end(), <span class="fn">by_score_desc</span>);
+  std::<span class="ty">vector</span>&lt;<span class="ty">Candidate</span>&gt; out;
+  <span class="kw">for</span> (<span class="kw">auto</span>&amp; c : cands) {                     <span class="cm">// MMR-style dedup</span>
+    <span class="kw">if</span> (out.size() &gt;= k) <span class="kw">break</span>;
+    <span class="kw">if</span> (!<span class="fn">TooSimilarToAny</span>(c, out)) out.push_back(c);
+  }
+  <span class="kw">return</span> out;
+}</code></pre>
+</div>
+
+<p>That final diversity pass matters more than it looks. Without it, one hot entity crowds the list with near-duplicates (<em>weather, weather today, weather tomorrow, weather now</em>) and starves you of distinct options. A greedy maximal-marginal-relevance selection trades a little raw score for variety in what's actually shown.</p>
+
+<div class="callout warn">
+  <div class="label">The trap in the training data: position bias</div>
+  <p>CTR is learned from logged impressions, but a candidate shown in slot 1 gets clicked more just for being first, not for being better. Train on that naively and you learn "position 1 is good," which is circular. Two standard fixes: run a small slice of traffic with <strong>randomized order</strong> to collect unbiased labels, and apply <strong>inverse propensity weighting</strong> (reweight each logged click by 1 / P(examined | position)) so top-slot clicks stop dominating.</p>
+</div>
+
+<h2><span class="num">07</span>The filtering layer nobody sees</h2>
+
+<p>Before anything is returned, candidates pass a policy gate: safety classes (violence, self-harm, adult, harassment), spam and scraper-generated suggestion removal, legal takedowns (right-to-be-forgotten style suppression), and near-duplicate dedup. This is a real, heavily-staffed engineering surface. Autosuggest has been publicly criticized for surfacing offensive completions, so an entire moderation pipeline lives here, with both offline review and fast online suppression.</p>
+
+<h2><span class="num">08</span>The offline pipeline: a two-speed machine</h2>
+
+<p>Everything above only reads. Building what it reads is the larger system, and it runs at two speeds: a thorough <strong>batch</strong> pipeline that rebuilds the main index every few hours, and a fast, approximate <strong>streaming</strong> pipeline that exists solely to catch what batch is too slow for.</p>
+
+<div class="diagram">
+  <div class="diagram-label">Two speeds, two artifacts</div>
+  <svg viewBox="0 0 760 250" role="img" aria-label="Batch pipeline rebuilds the trie and ranker every few hours; streaming pipeline updates trending index every few minutes">
+    <defs>
+      <marker id="ah4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--gas-ink-faint)"/></marker>
+    </defs>
+    <rect x="12" y="96" width="120" height="58" rx="9" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="72" y="120" text-anchor="middle" class="s-title s-ink" font-size="12.5">Scrubbed logs</text>
+    <text x="72" y="137" text-anchor="middle" class="s-label s-mid" font-size="10">(prefix, completion)</text>
+
+    <!-- batch -->
+    <text x="170" y="26" class="s-mono s-faint" font-size="10.5">BATCH · hours</text>
+    <rect x="170" y="34" width="140" height="46" rx="8" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="240" y="53" text-anchor="middle" class="s-label s-ink" font-size="11">Aggregate + decay</text>
+    <text x="240" y="69" text-anchor="middle" class="s-label s-faint" font-size="9.5">counts, time-weighted</text>
+    <rect x="332" y="34" width="130" height="46" rx="8" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="397" y="53" text-anchor="middle" class="s-label s-ink" font-size="11">Safety filter</text>
+    <text x="397" y="69" text-anchor="middle" class="s-label s-faint" font-size="9.5">heavy review</text>
+    <rect x="484" y="34" width="130" height="46" rx="8" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="549" y="53" text-anchor="middle" class="s-label s-ink" font-size="11">Build top-k trie</text>
+    <text x="549" y="69" text-anchor="middle" class="s-label s-faint" font-size="9.5">+ train ranker</text>
+    <rect x="636" y="34" width="112" height="46" rx="8" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="692" y="53" text-anchor="middle" class="s-label s-ink" font-size="11">Blue/green</text>
+    <text x="692" y="69" text-anchor="middle" class="s-label s-faint" font-size="9.5">deploy shards</text>
+
+    <!-- streaming -->
+    <text x="170" y="180" class="s-mono s-faint" font-size="10.5">STREAMING · minutes</text>
+    <rect x="170" y="188" width="150" height="46" rx="8" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="245" y="207" text-anchor="middle" class="s-label s-ink" font-size="11">Rolling counters</text>
+    <text x="245" y="223" text-anchor="middle" class="s-label s-faint" font-size="9.5">vs seasonal baseline</text>
+    <rect x="342" y="188" width="150" height="46" rx="8" fill="var(--gas-offline-soft)" stroke="var(--gas-offline)"/>
+    <text x="417" y="207" text-anchor="middle" class="s-label s-ink" font-size="11">Fast classifier</text>
+    <text x="417" y="223" text-anchor="middle" class="s-label s-faint" font-size="9.5">lightweight safety</text>
+    <rect x="514" y="188" width="150" height="46" rx="8" fill="var(--gas-edge-soft)" stroke="var(--gas-edge)"/>
+    <text x="589" y="207" text-anchor="middle" class="s-label s-ink" font-size="11">Trending index</text>
+    <text x="589" y="223" text-anchor="middle" class="s-label s-faint" font-size="9.5">push everywhere</text>
+
+    <line x1="132" y1="112" x2="168" y2="60" stroke="var(--gas-ink-faint)" marker-end="url(#ah4)"/>
+    <line x1="132" y1="140" x2="168" y2="205" stroke="var(--gas-ink-faint)" marker-end="url(#ah4)"/>
+    <line x1="310" y1="57" x2="330" y2="57" stroke="var(--gas-ink-faint)" marker-end="url(#ah4)"/>
+    <line x1="462" y1="57" x2="482" y2="57" stroke="var(--gas-ink-faint)" marker-end="url(#ah4)"/>
+    <line x1="614" y1="57" x2="634" y2="57" stroke="var(--gas-ink-faint)" marker-end="url(#ah4)"/>
+    <line x1="320" y1="211" x2="340" y2="211" stroke="var(--gas-ink-faint)" marker-end="url(#ah4)"/>
+    <line x1="492" y1="211" x2="512" y2="211" stroke="var(--gas-ink-faint)" marker-end="url(#ah4)"/>
+  </svg>
+  <div class="diagram-caption">Batch produces two artifacts (the sharded trie and the retrained ranking model). Streaming produces one (the trending index). They serve different parts of the online path.</div>
+</div>
+
+<h3>The batch side: aggregate with decay</h3>
+
+<p>Count every <code class="inline">(prefix → completion)</code> occurrence, but weight recent activity more heavily so a completion that was hot six months ago doesn't outrank what's current. This is a distributed reduce over the full log corpus, sharded by prefix hash.</p>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">aggregate.cc</span><span class="lang">c++</span></div>
+<pre><code><span class="cm">// One pass over a window of scrubbed, sampled logs.</span>
+std::<span class="ty">unordered_map</span>&lt;<span class="ty">AggKey</span>, <span class="ty">double</span>&gt; <span class="fn">Aggregate</span>(<span class="kw">const</span> <span class="ty">Logs</span>&amp; logs, <span class="ty">Time</span> now) {
+  std::<span class="ty">unordered_map</span>&lt;<span class="ty">AggKey</span>, <span class="ty">double</span>&gt; score;
+  <span class="kw">for</span> (<span class="kw">const</span> <span class="kw">auto</span>&amp; e : logs) {
+    <span class="ty">double</span> age_days = <span class="fn">DaysBetween</span>(e.ts, now);
+    <span class="ty">double</span> decay = std::<span class="fn">exp</span>(-kDecayRate * age_days);  <span class="cm">// exponential time decay</span>
+    score[{e.prefix, e.completion}] += decay;
+  }
+  <span class="kw">return</span> score;   <span class="cm">// → feeds top-k selection per trie node</span>
+}</code></pre>
+</div>
+
+<h3>The streaming side: spikes against a seasonal baseline</h3>
+
+<p>The batch cadence is fundamentally too slow for a term that goes from zero to huge in twenty minutes. Streaming maintains a rolling count per candidate and compares it to an <em>expected</em> baseline. The critical detail: the baseline must be <strong>seasonality-aware</strong>. A flat average would constantly misfire, because <em>dinner recipes</em> spikes every evening and <em>nfl scores</em> spikes every Sunday. Those cycles are expected, not trends. So the baseline is learned per time-of-day / day-of-week bucket, and only deviation from <em>that</em> counts.</p>
+
+<div class="code-block">
+  <div class="code-header"><span class="file">trending.cc</span><span class="lang">c++</span></div>
+<pre><code><span class="kw">bool</span> <span class="fn">IsTrending</span>(<span class="kw">const</span> <span class="ty">TrendState</span>&amp; s) {
+  <span class="kw">if</span> (s.total_volume &lt; kMinVolume) <span class="kw">return</span> <span class="kw">false</span>;   <span class="cm">// 2→10 searches isn't a trend</span>
+  <span class="ty">double</span> z = (s.current - s.baseline) / std::<span class="fn">sqrt</span>(s.baseline + <span class="num">1.0</span>);
+  <span class="kw">return</span> z &gt; kZThreshold;
+}
+<span class="cm">// Baseline updates per time-of-day / day-of-week slot, so "Sunday 4pm"</span>
+<span class="cm">// is learned separately from "Tuesday 4pm".</span>
+<span class="kw">void</span> <span class="fn">UpdateBaseline</span>(<span class="ty">TrendState</span>&amp; s, <span class="ty">double</span> observed) {
+  s.baseline = kAlpha * observed + (<span class="num">1</span> - kAlpha) * s.baseline;   <span class="cm">// EWMA</span>
+}</code></pre>
+</div>
+
+<div class="callout warn">
+  <div class="label">Safety under time pressure</div>
+  <p>Batch has hours to run heavy moderation. Streaming has minutes. So trending candidates pass a cheap, fast classifier before entering the trending index, with the ability to suppress within seconds if something slips through. This is a genuine tradeoff: faster surfacing of useful breaking-news signal against a higher risk of a bad term appearing briefly before suppression catches it.</p>
+</div>
+
+<h2><span class="num">09</span>The parts that usually get skipped</h2>
+
+<p>The eight sections above are the spine. These are the pieces that separate a textbook answer from someone who has actually thought about running this.</p>
+
+<h3>Privacy is a first-class constraint, not an afterthought</h3>
+
+<p>Suggestions are built from other people's queries, which means a careless pipeline could surface someone's private search as a public suggestion. The guardrails: aggregate only, never raw logs; a <strong>k-anonymity threshold</strong> so a completion is only eligible if enough distinct users searched it (rare, potentially-identifying queries are dropped); and differential-privacy-style noise on the counts. This is also why you sometimes see <em>fewer</em> suggestions than you'd expect for an unusual prefix. The candidates existed but didn't clear the anonymity bar.</p>
+
+<h3>Zero-prefix suggestions</h3>
+
+<p>Before you type anything, the box often already shows suggestions: recent searches, trending topics, sometimes context from the page. This is a different code path (no prefix to match) driven almost entirely by personalization and trending, and it is a deliberate product surface, not a side effect.</p>
+
+<h3>Multi-language, IME, and transliteration</h3>
+
+<p>A huge share of the world types one language using another's alphabet: Hindi or Arabic or Japanese entered in Latin characters, then transliterated. Autosuggest has to complete <em>and</em> transliterate at once (<code class="inline">namas</code> → नमस्ते), which means script detection and a transliteration model sit in the query-understanding path for those locales, and the trie effectively indexes across scripts.</p>
+
+<h3>Entity awareness</h3>
+
+<p>Many suggestions aren't raw historical query strings, they are <em>entities</em> from the Knowledge Graph: people, places, movies, products. That is why suggestions can carry a little thumbnail or descriptor, and why a brand-new movie can be suggested well before enough people have searched its exact title, the entity exists in the graph even if the query log is thin.</p>
+
+<h3>Everything here is an experiment</h3>
+
+<p>Ranking weights, the diversity threshold, how aggressively to trend, how many suggestions to show, all of it is continuously A/B tested. The metrics are not "did they click a suggestion" in isolation but downstream: did using a suggestion lead to a successful search session, or did the user have to reformulate anyway? A suggestion that gets clicked but leads nowhere is a bad suggestion.</p>
+
+<h3>Compressing the index</h3>
+
+<p>A plain pointer-based trie is memory-hungry, and memory is the binding constraint on how much you can serve per machine. Production systems lean on succinct structures (FSTs / minimal-acyclic finite-state automata, LOUDS-encoded tries) that store the same prefix set in a fraction of the space by sharing suffixes and encoding structure as bit vectors. Less memory per machine means fewer machines, means lower latency and cost. It is not a detail. It is often the difference between fitting in RAM and not.</p>
+
+<h2><span class="num">10</span>The tensions, in one place</h2>
+
+<table class="gtable">
+  <tr><th>Tension</th><th>How autosuggest resolves it</th></tr>
+  <tr><td>Latency vs freshness</td><td>Precompute tries for O(prefix) reads, accept that freshness is bounded by rebuild cadence, and bolt on a separate real-time trending path for the cases that can't wait.</td></tr>
+  <tr><td>Memory vs coverage</td><td>Cap each node at top-N, use succinct encodings, and let long-tail prefixes fall back to fuzzy matching or simply return fewer results.</td></tr>
+  <tr><td>Personalization vs scale</td><td>Keep the global trie shared and stateless; merge per-user signals only at the ranking stage, never bake them into the shared index.</td></tr>
+  <tr><td>Consistency vs availability</td><td>Sharded replicas can be briefly stale right after a rebuild push. Fine here. Suggestions aren't safety-critical the way a payment is.</td></tr>
+  <tr><td>Useful vs safe</td><td>A hard safety gate on the online path, heavy moderation offline, and a fast classifier plus seconds-level suppression on the trending path.</td></tr>
+</table>
+
+<div class="pullquote">
+  <q>The dropdown feels free because someone spent enormous effort making sure the online path never does anything but read.</q>
+</div>
+
+<p class="closing">
+  That is the whole loop: a client optimizing perceived latency, an edge that terminates close to you, a suggestion service that only reads precomputed structures on a 10-millisecond budget, a sharded in-memory trie with fuzzy matching fused into it, a light second-pass ranker, a safety gate, and behind all of it a two-speed offline pipeline keeping the structures fresh without ever slowing down the read. Every choice traces back to one line drawn on day one: the fast path reads, the slow path writes, and the two only meet at deploy.
+  <span class="signoff">Thanks for reading ✦</span>
+</p>
+
+</article>
+</div>

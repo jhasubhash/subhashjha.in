@@ -1,5 +1,16 @@
 [
   {
+    "slug": "google-autosuggest-system-design",
+    "title": "How Google Autosuggest Works: From Keystroke to Trie to Serving Fleet",
+    "htmlTitle": "How Google autosuggest works: from keystroke to <em style=\"color:#2d5c8a;font-style:italic;font-weight:400\">trie to serving fleet.</em>",
+    "description": "You type one letter and ten suggestions appear before your finger leaves the key. Behind that dropdown is one of the tightest latency budgets in consumer software, an in-memory trie sharded across thousands of machines, and a two-speed offline pipeline. A full walk through the system, with the hand-waved parts drawn out.",
+    "date": "2026-07-29",
+    "readTime": "~22 min read",
+    "category": "Notes",
+    "eyebrow": "Notes · Systems · Search Infrastructure",
+    "status": "published"
+  },
+  {
     "slug": "visibility-game",
     "title": "The Bitter Truth: The Visibility Game",
     "htmlTitle": "The bitter truth: the <em style=\"color:#a83820;font-style:italic;font-weight:400\">visibility game.</em>",

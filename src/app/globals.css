@@ -1442,6 +1442,29 @@ body:has(.insl-root) .site-footer {
   --em-build: #d070a0;
   --em-build-soft: #2e1a2a;
 }
+[data-theme="dark"] .gas-root {
+  --gas-ink: #e8e2d8;
+  --gas-ink-mid: #a8a099;
+  --gas-ink-faint: #7a7470;
+  --gas-bg: #1a1714;
+  --gas-panel: #242018;
+  --gas-bg-warm: #2a2520;
+  --gas-bg-code: #0f0d0b;
+  --gas-rule: #3a3530;
+  --gas-accent: #5a9ed6;
+  --gas-accent-bright: #70b4e8;
+  --gas-accent-soft: #1a2a3a;
+  --gas-client: #5a9ed6;
+  --gas-client-soft: #1a2a3a;
+  --gas-edge: #6abf6a;
+  --gas-edge-soft: #1e2e1e;
+  --gas-serve: #c07ad0;
+  --gas-serve-soft: #2a1e3a;
+  --gas-offline: #d0a850;
+  --gas-offline-soft: #2e2a18;
+  --gas-warn: #e07060;
+  --gas-warn-soft: #2e1a18;
+}
 [data-theme="dark"] .gd-root {
   --gd-ink: #e8e2d8;
   --gd-ink-mid: #a8a099;
