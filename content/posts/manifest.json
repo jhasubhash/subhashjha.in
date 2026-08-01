@@ -1,5 +1,16 @@
 [
   {
+    "slug": "get-service-endpoint-skill",
+    "title": "I Stopped Hunting for Service Endpoints and Taught a Skill to Do It Instead",
+    "htmlTitle": "I stopped hunting for service endpoints, and taught a skill to <em style=\"color:#2d7d6b;font-style:italic;font-weight:400\">do it instead.</em>",
+    "description": "Three environments, more internal services than I can count, and endpoints scattered across a dozen repos, wikis, and old Slack threads. Here's the first Claude Code skill I built that actually stuck, a router that figures out where an endpoint lives instead of memorizing it.",
+    "date": "2026-08-01",
+    "readTime": "~7 min read",
+    "category": "Build",
+    "eyebrow": "Build · AI Tooling · Internal Services",
+    "status": "published"
+  },
+  {
     "slug": "google-autosuggest-system-design",
     "title": "How Google Autosuggest Works: From Keystroke to Trie to Serving Fleet",
     "htmlTitle": "How Google autosuggest works: from keystroke to <em style=\"color:#2d5c8a;font-style:italic;font-weight:400\">trie to serving fleet.</em>",

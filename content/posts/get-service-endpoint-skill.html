@@ -1,0 +1,384 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  .gse-article {
+    --gse-ink: var(--ink);
+    --gse-ink-mid: var(--ink-mid, var(--ink-muted));
+    --gse-paper: var(--paper);
+    --gse-paper-warm: var(--paper-warm);
+    --gse-rule: var(--paper-rule);
+    --gse-accent: #2d7d6b;
+    --gse-accent-soft: #e4f0ec;
+
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    line-height: 1.75;
+    color: var(--gse-ink);
+  }
+
+  .gse-article p { margin: 0 0 22px; }
+  .gse-article p:last-child { margin-bottom: 0; }
+  .gse-article strong { color: var(--gse-ink); }
+  .gse-article em { font-style: italic; }
+
+  .gse-article code.inline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.86em;
+    background: var(--gse-paper-warm);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--gse-accent);
+    border: 1px solid var(--gse-rule);
+  }
+
+  .gse-article .lead {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 23px;
+    line-height: 1.5;
+    color: var(--gse-ink);
+    margin-bottom: 36px;
+  }
+
+  .gse-article h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 56px 0 20px;
+    color: var(--gse-ink);
+    padding-top: 8px;
+  }
+  .gse-article h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--gse-ink);
+    margin: 32px 0 12px;
+  }
+
+  .gse-article .pullquote {
+    margin: 36px 0;
+    padding: 4px 0 4px 22px;
+    border-left: 3px solid var(--gse-accent);
+  }
+  .gse-article .pullquote q {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.45;
+    font-style: italic;
+    color: var(--gse-ink);
+    quotes: '"' '"';
+    display: block;
+  }
+
+  .gse-article .callout {
+    margin: 28px -8px;
+    padding: 20px 24px;
+    background: var(--gse-accent-soft);
+    border-left: 3px solid var(--gse-accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .gse-article .callout p {
+    font-size: 15.5px;
+    color: var(--gse-ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+  .gse-article .callout .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gse-accent);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  /* Scatter grid — where the answer might be hiding */
+  .gse-article .scatter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 28px -8px;
+  }
+  .gse-article .scatter-card {
+    background: var(--gse-paper-warm);
+    border: 1px solid var(--gse-rule);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .gse-article .scatter-card .emoji { font-size: 20px; margin-bottom: 8px; display: block; }
+  .gse-article .scatter-card h5 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--gse-ink);
+  }
+  .gse-article .scatter-card p {
+    font-size: 13.5px;
+    color: var(--gse-ink-mid);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Sequence: ask -> classify -> dispatch -> resolve -> answer */
+  .gse-article .sequence {
+    margin: 28px -8px;
+    padding: 28px 30px;
+    background: var(--gse-accent-soft);
+    border: 1px solid var(--gse-rule);
+    border-radius: 8px;
+  }
+  .gse-article .sequence-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gse-accent);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .gse-article .seq-step {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid var(--gse-rule);
+    align-items: start;
+  }
+  .gse-article .seq-step:first-of-type { border-top: none; padding-top: 4px; }
+  .gse-article .seq-step .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--gse-accent);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: right;
+  }
+  .gse-article .seq-step h5 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    color: var(--gse-ink);
+  }
+  .gse-article .seq-step p {
+    font-size: 14.5px;
+    color: var(--gse-ink);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .gse-article .closing {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gse-rule);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--gse-ink-mid);
+    text-align: center;
+    line-height: 1.55;
+  }
+  .gse-article .signoff {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--gse-ink-mid);
+    letter-spacing: 0.1em;
+    margin-top: 20px;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .gse-article pre.codeblock {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    background: var(--gse-paper-warm);
+    border: 1px solid var(--gse-rule);
+    border-left: 3px solid var(--gse-accent);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 20px;
+    margin: 26px -8px;
+    overflow-x: auto;
+    color: var(--gse-ink);
+    white-space: pre;
+    tab-size: 2;
+  }
+  .gse-article pre.codeblock .c { color: var(--gse-ink-mid); }
+
+  @media (max-width: 720px) {
+    .gse-article { padding: 40px 22px 30px; }
+    .gse-article .callout,
+    .gse-article .sequence,
+    .gse-article .scatter,
+    .gse-article pre.codeblock { margin-left: -14px; margin-right: -14px; }
+    .gse-article pre.codeblock { font-size: 12px; }
+    .gse-article .scatter { grid-template-columns: 1fr; }
+    .gse-article .pullquote q { font-size: 19px; }
+    .gse-article .lead { font-size: 18px; }
+    .gse-article h2 { font-size: 26px; }
+    .gse-article .seq-step { grid-template-columns: 56px 1fr; }
+  }
+</style>
+
+<div class="article-body gse-article">
+
+  <p class="lead">I moved to the services side of the org earlier this year, and the single most frustrating part of the job had nothing to do with code. It was endpoints. Three environments, more internal services than I can hold in my head, and every one of them scattered across its own repo. Finding the right URL, every single time, felt like the actual job some days.</p>
+
+  <p>So I built a skill for it. Not a wiki page, not a spreadsheet, an actual Claude Code skill that I can ask "what's the endpoint for this thing, in this environment" and it just figures it out. It's the first thing I've built with an agent that I reach for daily without thinking about it, so it felt worth writing up.</p>
+
+  <h2>The problem nobody warns you about</h2>
+
+  <p>Nobody tells you, when you move into a services-heavy role, that the hardest part isn't the services themselves. It's the bookkeeping. Every service exists in dev, stage, and prod. Every service lives in its own repo, sometimes several. And the actual answer to "what's the URL" is never in one consistent place.</p>
+
+  <div class="scatter">
+    <div class="scatter-card">
+      <span class="emoji">📄</span>
+      <h5>The wiki page</h5>
+      <p>Exists, technically. Last updated two reorgs ago.</p>
+    </div>
+    <div class="scatter-card">
+      <span class="emoji">💬</span>
+      <h5>The teammate who knows</h5>
+      <p>Correct answer, if they're online and remember which repo.</p>
+    </div>
+    <div class="scatter-card">
+      <span class="emoji">📁</span>
+      <h5>The README</h5>
+      <p>In a repo you haven't cloned, for a service you don't own.</p>
+    </div>
+    <div class="scatter-card">
+      <span class="emoji">🧵</span>
+      <h5>The old Slack thread</h5>
+      <p>Somewhere. You remember the gist, not the search terms.</p>
+    </div>
+  </div>
+
+  <p>None of these are wrong exactly. They're just slow, and none of them scale past a handful of services before you stop trusting your own notes.</p>
+
+  <h2>What I built instead</h2>
+
+  <p>The tempting shortcut is a big lookup table: service name in, URL out. I didn't do that, on purpose. A hardcoded table of URLs goes stale the moment someone reorganizes a repo or spins up a new environment, and then you've just built a second wiki page that lies to people, faster.</p>
+
+  <p>Instead the skill treats the git repo that owns a service's deployment config as the one source of truth, every single time, rather than caching an answer and trusting it later. It asks itself one question first: which internal platform does this service actually belong to? There happen to be a couple of different platform families internally, each with its own conventions for naming things per environment. Once it knows which family a service is in, it goes and reads that service's current configuration fresh, instead of recalling what the answer used to be.</p>
+
+  <div class="sequence">
+    <div class="sequence-label">→ What happens when I ask for an endpoint</div>
+    <div class="seq-step">
+      <div class="step-num">1</div>
+      <div>
+        <h5>Ask</h5>
+        <p>I name a service and, optionally, an environment. Most of the time I don't even specify the environment, it defaults to something sensible and I correct it if needed.</p>
+      </div>
+    </div>
+    <div class="seq-step">
+      <div class="step-num">2</div>
+      <div>
+        <h5>Classify</h5>
+        <p>The skill figures out which platform family the service belongs to. This is the part that used to live entirely in my head.</p>
+      </div>
+    </div>
+    <div class="seq-step">
+      <div class="step-num">3</div>
+      <div>
+        <h5>Read</h5>
+        <p>It pulls the current state of the repo that owns that service's deployment config, rather than trusting anything it (or I) looked up before. If the config changed yesterday, that's what it sees.</p>
+      </div>
+    </div>
+    <div class="seq-step">
+      <div class="step-num">4</div>
+      <div>
+        <h5>Resolve</h5>
+        <p>It parses the Helm chart and values for the environment I asked about to work out the actual host and path, plus anything useful nearby, like a health check or debug view.</p>
+      </div>
+    </div>
+    <div class="seq-step">
+      <div class="step-num">5</div>
+      <div>
+        <h5>Verify</h5>
+        <p>Before handing back an answer, it can check with <code class="inline">kubectl</code> that the resolved endpoint actually corresponds to something running in the cluster, not just what the config claims should be there.</p>
+      </div>
+    </div>
+    <div class="seq-step">
+      <div class="step-num">6</div>
+      <div>
+        <h5>Answer</h5>
+        <p>I get a URL back, not a shrug and a suggestion to "check with the team that owns it."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <q>The skill isn't smart because it remembers URLs. It's useful because it always goes back to the repo and the cluster instead of trusting what it answered last time.</q>
+  </div>
+
+  <h2>The part that mattered more than I expected</h2>
+
+  <p>Some of these services need a short-lived auth credential before you can actually call them. Early on I had the skill do the obvious thing: fetch a credential, then print the full curl command so I could see exactly what it was about to run. That's fine for reading, it's a bad habit for running.</p>
+
+  <p>So the skill draws a hard line between the two. If I want to see what a request would look like, it shows me the shape of it with the credential left as a placeholder, never the real value. If I actually want to run the request, it fetches the credential itself, uses it, and never prints it to the screen at all. Small distinction, but it's the difference between a tool I trust pasting output into a group chat and one I have to double-check first.</p>
+
+  <div class="callout">
+    <div class="label">→ A note on scope</div>
+    <p>Everything above is intentionally high level. No service names, no repo layouts, no internal URLs, no auth mechanics. Just the shape of the problem and the shape of the fix, because the specifics belong to the company, not a blog post.</p>
+  </div>
+
+  <h2>What running one actually looks like</h2>
+
+  <p>Finding the URL was only ever half of it. Most of these services don't answer a plain <code class="inline">GET</code>, calling one is a real request with a body, an input file or two, and a short-lived credential. So the skill goes the whole distance: from a casual service name to a request I can either read or actually run. Here's the shape of that, with every company-specific detail swapped for a placeholder, because the point is the flow around the request, not the request.</p>
+
+  <h3>It asks before it assumes</h3>
+
+  <p>A call like this needs three things only I can supply: the input file (or files) to send, somewhere to write whatever comes back, and any parameters that tune the run. So the skill asks for exactly those, in that order, and only falls back to a placeholder or a default when I stay quiet. It never quietly invents an input path or picks an output directory behind my back.</p>
+
+  <div class="callout">
+    <div class="label">→ What it collects from me</div>
+    <p><strong>Inputs</strong> — the real file path for each named input the service expects.<br>
+    <strong>Output directory</strong> — where the response gets written; it defaults to a per-service folder if I skip it.<br>
+    <strong>Parameters</strong> — any knobs the service takes; each one defaults to the exact value already baked into that service's own code when I leave it blank, not to a guess.</p>
+  </div>
+
+  <h3>The command it hands me to read</h3>
+
+  <p>If I just want to see what would go out, it prints the whole thing, but with the credential left as a live lookup instead of a value, and a request id wired in for later:</p>
+
+  <pre class="codeblock"><span class="c"># 1 · fetch a short-lived token into the shell — never printed as a value</span>
+export AUTH_TOKEN=$(fetch-service-token --env &lt;environment&gt;)
+REQ_ID=$(uuidgen)
+
+<span class="c"># 2 · one call, with inputs / params / output shape already filled in for me</span>
+curl -s https://&lt;service-gateway&gt;/&lt;endpoint&gt; \
+  -H "Authorization: Bearer $AUTH_TOKEN" \
+  -H "x-request-id: $REQ_ID" \
+  -F 'request={ …inputs, params, output shape… }' \
+  -F "file=@/path/to/input.jpg" \
+  -o out/response.multipart
+
+<span class="c"># 3 · surface the id I'll actually search the logs by</span>
+echo "x-request-id: $REQ_ID"</pre>
+
+  <p>Two small details there earn their place. The token is pulled into the shell by that first line and never rendered as text, so the command is safe to read aloud or paste into a review. And the request id is minted up front and echoed after the call, because <em>that</em> id, not my user id, is the key I'll actually search the logs by when something looks off.</p>
+
+  <h3>Running it, and reading the answer back</h3>
+
+  <p>When I ask it to actually run rather than print, it doesn't shell out to that command at all. It fetches the token itself, in process, for whichever environment I named, attaches my input files, sends the request, and then does the part I always used to do by hand: it takes the response apart. The reply comes back as one bundle with several pieces packed into it, so the skill splits them, pretty-prints the data pieces as readable files, writes any images out as real image files, and drops the whole set into the output directory I gave it. Then it prints the request id one last time. I go from a service name to a folder of results without ever assembling a request or unpacking a response myself, and without a real credential ever touching my clipboard.</p>
+
+  <h2>What actually changed</h2>
+
+  <p>I stopped pinging teammates to ask "what's the URL for this in stage again." I stopped keeping my own half-accurate scratch notes of endpoints I'd looked up before. And when a new environment or a new service shows up, I don't have to relearn anything, the skill's job was never to know every URL, just to know how to find one.</p>
+
+  <p>It's a small thing. It's also the first skill I've built that earned a permanent spot in my daily workflow instead of getting used once and forgotten. That distinction turned out to matter more to me than how clever any single piece of it is.</p>
+
+  <p class="closing">
+    The best internal tools aren't the ones that know everything. They're the ones that know what to ask, and where to look, so you don't have to remember either.
+    <span class="signoff">Thanks for reading ✦</span>
+  </p>
+
+</div>

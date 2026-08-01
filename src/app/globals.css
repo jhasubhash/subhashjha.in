@@ -1478,6 +1478,10 @@ body:has(.insl-root) .site-footer {
   --gd-fail: #e05040;
   --gd-fail-soft: #2e1a18;
 }
+[data-theme="dark"] .gse-article {
+  --gse-accent: #4fae98;
+  --gse-accent-soft: #16332c;
+}
 [data-theme="dark"] .csd-article {
   --csd-ink: #e8e2d8;
   --csd-ink-mid: #a8a099;
