@@ -1,0 +1,184 @@
+<style>
+/* Scoped layout for this post. All colors come from the global theme
+   variables so light and dark modes work with no extra overrides. */
+
+.two-indias { padding-top: 44px; }
+.two-indias p { margin-bottom: 18px; }
+
+/* Opening line, set as a statement rather than a paragraph */
+.two-indias .lead {
+  text-align: center;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(26px, 4.4vw, 38px);
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 auto 8px;
+  letter-spacing: -0.01em;
+}
+
+/* Drop cap on the first real paragraph */
+.two-indias > p:first-of-type::first-letter {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-size: 58px;
+  font-weight: 500;
+  float: left;
+  line-height: 0.82;
+  margin: 8px 12px 0 0;
+  color: var(--accent);
+}
+
+/* Numbered chapter dividers */
+.two-indias .chapter {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 52px 0 26px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--paper-rule);
+}
+.two-indias .chapter .num {
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--accent);
+}
+.two-indias .chapter .label {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.two-indias .chapter .sub {
+  margin-left: auto;
+  align-self: flex-end;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-faint);
+}
+
+/* The single pull line that carries the essay's turn */
+.two-indias .turn {
+  margin: 34px 0;
+  text-align: center;
+  font-family: var(--font-serif), 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(22px, 3.4vw, 30px);
+  line-height: 1.35;
+  color: var(--ink);
+}
+.two-indias .turn::before {
+  content: '';
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: var(--accent);
+  margin: 0 auto 20px;
+}
+
+/* Diptych figures with a split caption that mirrors the image seam */
+.two-indias figure.diptych { margin: 34px 0; }
+.two-indias figure.diptych img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 26px rgba(26, 23, 20, 0.14), 0 0 0 1px rgba(26, 23, 20, 0.06);
+}
+.two-indias figure.diptych figcaption {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 12px;
+}
+.two-indias figure.diptych figcaption span {
+  padding: 0 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+.two-indias figure.diptych figcaption span:first-child {
+  border-right: 1px solid var(--paper-rule);
+  text-align: right;
+}
+.two-indias figure.diptych figcaption b {
+  display: block;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 10.5px;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+}
+
+/* Closing coda */
+.two-indias .coda {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--paper-rule);
+}
+
+@media (max-width: 600px) {
+  .two-indias figure.diptych figcaption span { padding: 0 10px; font-size: 12px; }
+}
+</style>
+
+<div class="article-body two-indias">
+
+  <div class="lead">I have lived in two Indias.</div>
+
+  <div class="chapter">
+    <span class="num">01</span>
+    <span class="label">The First India</span>
+    <span class="sub">a village</span>
+  </div>
+
+  <p>The first is a village. I spent my childhood there, until the third grade. I don't remember much of it now, but I can still <em>feel</em> the freedom I had.</p>
+
+  <p>I remember the smell in the air when the first rain finally fell after a long, hot summer day. I remember climbing up to the roof on summer nights to sleep under the open sky, watching the stars and galaxies until we dozed off. I remember climbing the mango tree to pluck raw, green <em>kaccha</em> mangoes, then sitting on the same branch and eating them with a pinch of salt.</p>
+
+  <p>There was a serenity to all of it. Whether that came from the village itself, or simply from being a child with no responsibilities, I still can't say.</p>
+
+  <figure class="diptych">
+    <img src="/images/posts/two-indias-stars.jpg" alt="Split image: a boy watching a sky full of stars from a village rooftop on the left, a child in a city bedroom under a plastic star projector on the right">
+    <figcaption>
+      <span><b>The Village</b>A real galaxy over the roof where we slept.</span>
+      <span><b>The City</b>A plastic projector spinning stars on a ceiling.</span>
+    </figcaption>
+  </figure>
+
+  <div class="chapter">
+    <span class="num">02</span>
+    <span class="label">The Second India</span>
+    <span class="sub">where work began</span>
+  </div>
+
+  <p>The second India is where my professional life began. I became financially independent. For the first time I didn't have to ask my father for money, and that felt like freedom.</p>
+
+  <div class="turn">I had become independent, but I was not free.</div>
+
+  <p>The freedom didn't last. Instead of asking my father for money, I now ask clients for requirements. Instead of climbing trees, I climb stairs: to cross the road, to reach another floor, to get one more rung up the corporate ladder. It's a race, and there's no finish line.</p>
+
+  <figure class="diptych">
+    <img src="/images/posts/two-indias-climbing.jpg" alt="Split image: a boy climbing a mango tree in a village on the left, a man in a suit climbing city stairs with a briefcase on the right">
+    <figcaption>
+      <span><b>The Village</b>Climbing for mangoes, salt in one pocket.</span>
+      <span><b>The City</b>Climbing for the next floor, briefcase in hand.</span>
+    </figcaption>
+  </figure>
+
+  <p>It's been months since I last sat under an open sky and just looked at the stars for a while. And honestly, even if I tried, the pollution means most nights there's nothing left up there to see.</p>
+
+  <p>My wife was born and raised in a metro city. Her idea of a village comes from tourist places like Shimla, Manali, and Varkala. They're beautiful, but they aren't the real thing. That's a postcard. The village I grew up in doesn't fit on a postcard.</p>
+
+  <div class="coda">
+    <p>Sometimes I wonder which of these is the real India, and which one is the real me. Maybe both are. Maybe I'm still that boy on the mango tree, just wearing an ID card now and taking the stairs.</p>
+
+    <p>I don't have a neat ending for this. I only know that the first India gave me something the second one keeps promising but never quite delivers. And on the rare clear night, when I can actually make out a star or two, some part of me still wants to go up to the roof.</p>
+  </div>
+
+</div>

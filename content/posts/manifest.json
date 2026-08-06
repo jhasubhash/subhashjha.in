@@ -1,5 +1,17 @@
 [
   {
+    "slug": "two-indias",
+    "title": "My Two Indias",
+    "htmlTitle": "My two <em style=\"color:#c4622d;font-style:italic;font-weight:400\">Indias.</em>",
+    "description": "One India is a village I left after the third grade: mango trees, monsoon rain, and a rooftop full of stars. The other is where my professional life began, where I traded climbing trees for climbing stairs. A quiet essay on freedom, independence, and which of the two is the real me.",
+    "date": "2026-08-06",
+    "readTime": "~4 min read",
+    "category": "Essay",
+    "eyebrow": "Essay · Memory · Home",
+    "image": "/images/posts/two-indias-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "get-service-endpoint-skill",
     "title": "I Stopped Hunting for Service Endpoints and Taught a Skill to Do It Instead",
     "htmlTitle": "I stopped hunting for service endpoints, and taught a skill to <em style=\"color:#2d7d6b;font-style:italic;font-weight:400\">do it instead.</em>",
