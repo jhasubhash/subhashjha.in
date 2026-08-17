@@ -746,10 +746,18 @@ body {
   border-bottom: 1px solid var(--paper-rule);
 }
 
-/* Each post ships its own root wrapper with a hardcoded max-width in an inline
-   <style>. Override that so the body column follows the reading-width toggle.
-   The :root prefix outranks the post's single-class rule, so no !important. */
-:root .post-content > * {
+/* Each post ships its own content column in an inline <style> with a hardcoded
+   max-width. Some posts put that column at the fragment root (a direct child of
+   .post-content); others nest it one level down inside a themed wrapper as
+   .article / .article-body. Override all three so the body column always follows
+   the reading-width toggle, whatever the nesting.
+   `:root .post-content .article-body` is (0,3,0) — it outranks every post's own
+   `.wrapper .article-body` rule (0,2,0), so no !important is needed. Each post
+   has exactly one .article / .article-body element (the column), so this never
+   touches sub-elements. */
+:root .post-content > *,
+:root .post-content .article,
+:root .post-content .article-body {
   max-width: var(--post-width);
   margin-inline: auto;
 }
