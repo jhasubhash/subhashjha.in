@@ -8,6 +8,7 @@
     "readTime": "~4 min read",
     "category": "Essay",
     "eyebrow": "Essay · Memory · Home",
+    "tags": ["Work & Life"],
     "image": "/images/posts/two-indias-og.jpg",
     "status": "published"
   },
@@ -20,6 +21,7 @@
     "readTime": "~7 min read",
     "category": "Build",
     "eyebrow": "Build · AI Tooling · Internal Services",
+    "tags": ["Others"],
     "status": "published"
   },
   {
@@ -43,6 +45,7 @@
     "readTime": "~7 min read",
     "category": "Essay",
     "eyebrow": "Essay · Work · Honesty",
+    "tags": ["Work & Life"],
     "image": "/images/posts/visibility-game-og.jpg",
     "status": "published"
   },
@@ -55,6 +58,7 @@
     "readTime": "~7 min read",
     "category": "Essay",
     "eyebrow": "Essay · AI · Intelligence",
+    "tags": ["Others"],
     "image": "/images/posts/ai-vs-bi-og.jpg",
     "status": "published"
   },
@@ -67,6 +71,7 @@
     "readTime": "~6 min read",
     "category": "Essay",
     "eyebrow": "Essay · AI · Programming",
+    "tags": ["Others"],
     "image": "/images/posts/machine-native-code-og.jpg",
     "status": "published"
   },
@@ -79,6 +84,7 @@
     "readTime": "~5 min read",
     "category": "Build",
     "eyebrow": "Build · Raycast · Automation",
+    "tags": ["Others"],
     "image": "/images/posts/slack-avatar-roulette-og.jpg",
     "status": "published"
   },
@@ -91,6 +97,7 @@
     "readTime": "~10 min read",
     "category": "Essay",
     "eyebrow": "Essay · AI · Team Productivity",
+    "tags": ["Work & Life"],
     "image": "/images/posts/human-in-the-loop-bottleneck-og.jpg",
     "status": "published"
   },
@@ -103,6 +110,7 @@
     "readTime": "~8 min read",
     "category": "Essay",
     "eyebrow": "Essay · macOS · Launcher Wars",
+    "tags": ["Others"],
     "image": "/images/posts/launcher-wars-og.jpg",
     "status": "published"
   },
@@ -115,6 +123,7 @@
     "readTime": "~6 min read",
     "category": "Essay",
     "eyebrow": "Essay · Attention · Internet Life",
+    "tags": ["Work & Life"],
     "image": "/images/posts/becoming-a-profile-og.jpg",
     "status": "published"
   },
@@ -127,6 +136,7 @@
     "readTime": "~7 min read",
     "category": "Personal",
     "eyebrow": "Personal · A Note from the Industry",
+    "tags": ["Work & Life"],
     "image": "/images/posts/still-not-laid-off-og.jpg",
     "status": "published"
   },
@@ -139,6 +149,7 @@
     "readTime": "~10 min read",
     "category": "Essay",
     "eyebrow": "Essay · Engineering · The AI Rush",
+    "tags": ["Work & Life"],
     "image": "/images/posts/productivity-illusion-og.jpg",
     "status": "published"
   },
@@ -151,6 +162,7 @@
     "readTime": "~10 min read",
     "category": "Essay",
     "eyebrow": "Essay · Product · Collaboration",
+    "tags": ["System Design"],
     "image": "/images/posts/beyond-the-pin-og.jpg",
     "status": "published"
   },
@@ -163,6 +175,7 @@
     "readTime": "~10 min read",
     "category": "Essay",
     "eyebrow": "Essay · Career · Engineering Life",
+    "tags": ["Work & Life"],
     "image": "/images/posts/engineers-marathon-og.jpg",
     "status": "published"
   },
@@ -175,6 +188,7 @@
     "readTime": "~9 min read",
     "category": "Notes",
     "eyebrow": "Notes · C++ · Memory Layout",
+    "tags": ["Algorithms & DS"],
     "image": "/images/posts/cpp-object-layout-og.jpg",
     "status": "published"
   },
@@ -187,6 +201,7 @@
     "readTime": "~7 min read",
     "category": "Notes",
     "eyebrow": "Notes · ML · Diffusion Models",
+    "tags": ["Deep Learning & Maths"],
     "status": "published"
   },
   {
@@ -199,6 +214,7 @@
     "readTime": "~8 min read",
     "category": "Notes",
     "eyebrow": "Notes · C++ · Design Patterns",
+    "tags": ["Others"],
     "status": "published"
   },
   {
@@ -210,6 +226,7 @@
     "readTime": "~6 min read",
     "category": "Notes",
     "eyebrow": "Notes · C++ · Design Patterns",
+    "tags": ["Algorithms & DS"],
     "status": "published"
   },
   {
@@ -221,6 +238,7 @@
     "readTime": "~10 min read",
     "category": "Essay",
     "eyebrow": "Essay · Strategy · The AI Shakeout",
+    "tags": ["Others"],
     "status": "published"
   },
   {
@@ -232,6 +250,7 @@
     "readTime": "~9 min read",
     "category": "Essay",
     "eyebrow": "Essay · AI · The Changing Developer",
+    "tags": ["Work & Life"],
     "status": "published"
   },
   {
@@ -243,6 +262,7 @@
     "readTime": "~10 min read",
     "category": "Essay",
     "eyebrow": "Essay · Tools · Creativity",
+    "tags": ["Others"],
     "status": "published"
   },
   {
@@ -252,6 +272,7 @@
     "date": "2026-05-11",
     "readTime": "~9 min read",
     "category": "macOS Tools",
+    "tags": ["Others"],
     "status": "published"
   }
 ]

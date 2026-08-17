@@ -47,10 +47,28 @@ Add a new entry to `content/posts/manifest.json`:
   "description": "One or two sentence summary shown on the home page and in the RSS feed.",
   "date": "YYYY-MM-DD",
   "readTime": "~X min read",
-  "category": "Category Name"
+  "category": "Category Name",
+  "tags": ["Tag Name"]
 }
 ```
 The manifest drives everything: home page listing, RSS feed, and post page rendering.
+
+#### Tags — always assign one (auto-classify if the user didn't say)
+Tags power the tag-filter chips on the home page (`src/app/page.tsx` reads `getAllTags()` and filters on `?tag=`). The tag vocabulary is a **fixed, closed set** — do not invent new tags. Pick the single best-fitting one. The chip display order is defined by `TAG_ORDER` in `src/lib/posts.ts`; keep this table in sync with it:
+
+| Tag | Use for |
+|-----|---------|
+| `Algorithms & DS` | Data structures, algorithmic techniques, complexity, language/memory internals (e.g. copy-on-write, tries, C++ object layout). |
+| `System Design` | Distributed systems, architecture, scaling, serving infrastructure, data/product modelling (e.g. autosuggest, annotation models). |
+| `Deep Learning & Maths` | ML, neural nets, diffusion, probability, the math behind models. |
+| `Work & Life` | Career, engineering culture, productivity, personal essays, industry commentary. |
+| `Others` | Anything that doesn't clearly fit the above — tooling, macOS/Raycast, strategy, AI commentary, misc. |
+
+Rules:
+- **Every post gets exactly one tag** from this set. Use a single-element array (`"tags": ["Others"]`).
+- **If the user provides a tag, use it** — but if it isn't one of the five above, map it to the closest one (or `Others`) rather than adding a new tag to the vocabulary.
+- **If the user did NOT provide a tag, auto-assign one** by classifying the post's topic against the table above. When genuinely torn between two, prefer the more specific one; fall back to `Others` only when nothing else fits.
+- To add a brand-new tag to the vocabulary (rare), the user must ask explicitly. Adding a new tag makes a new filter chip appear automatically — no code change needed.
 
 ### 3. Add any images
 Place post images in `public/images/posts/`. Reference them in the HTML as `/images/posts/filename.png`.
