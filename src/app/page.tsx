@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, getAllTags } from "@/lib/posts";
 
 const POSTS_PER_PAGE = 10;
 
@@ -16,17 +16,29 @@ function formatDate(dateStr: string) {
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; tag?: string }>;
 }) {
-  const { page: pageParam } = await searchParams;
+  const { page: pageParam, tag: tagParam } = await searchParams;
   const page = Math.max(1, Number(pageParam ?? 1));
-  const allPosts = getAllPosts();
+
+  const allTags = getAllTags();
+  const activeTag =
+    tagParam && allTags.includes(tagParam) ? tagParam : undefined;
+
+  const allPosts = getAllPosts().filter(
+    (p) => !activeTag || (p.tags ?? []).includes(activeTag)
+  );
   const totalPages = Math.max(1, Math.ceil(allPosts.length / POSTS_PER_PAGE));
   const currentPage = Math.min(page, totalPages);
   const posts = allPosts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
   );
+
+  const pageHref = (n: number) =>
+    activeTag
+      ? `/?tag=${encodeURIComponent(activeTag)}&page=${n}`
+      : `/?page=${n}`;
 
   return (
     <>
@@ -52,7 +64,31 @@ export default async function HomePage({
       </div>
 
       <div className="home-section">
-        <div className="home-section-label">Latest Writing</div>
+        <div className="home-section-label">
+          {activeTag ? `Tagged “${activeTag}”` : "Latest Writing"}
+        </div>
+
+        {allTags.length > 0 && (
+          <nav className="tag-filter" aria-label="Filter posts by tag">
+            <Link
+              href="/"
+              className={`tag-chip${activeTag ? "" : " tag-chip-active"}`}
+            >
+              All
+            </Link>
+            {allTags.map((tag) => (
+              <Link
+                key={tag}
+                href={`/?tag=${encodeURIComponent(tag)}`}
+                className={`tag-chip${
+                  activeTag === tag ? " tag-chip-active" : ""
+                }`}
+              >
+                {tag}
+              </Link>
+            ))}
+          </nav>
+        )}
 
         {posts.map((post) => (
           <article key={post.slug} className="post-card">
@@ -67,16 +103,35 @@ export default async function HomePage({
               {post.title}
             </Link>
             <p className="post-card-desc">{post.description}</p>
-            <Link href={`/blog/${post.slug}`} className="read-more">
-              Read →
-            </Link>
+            <div className="post-card-footer">
+              <Link href={`/blog/${post.slug}`} className="read-more">
+                Read →
+              </Link>
+              {(post.tags ?? []).length > 0 && (
+                <span className="post-card-tags">
+                  {post.tags!.map((tag) => (
+                    <Link
+                      key={tag}
+                      href={`/?tag=${encodeURIComponent(tag)}`}
+                      className="post-card-tag"
+                    >
+                      {tag}
+                    </Link>
+                  ))}
+                </span>
+              )}
+            </div>
           </article>
         ))}
+
+        {posts.length === 0 && (
+          <p className="tag-empty">No posts tagged “{activeTag}” yet.</p>
+        )}
 
         {totalPages > 1 && (
           <nav className="pagination">
             {currentPage > 1 ? (
-              <Link href={`/?page=${currentPage - 1}`} className="pagination-link">
+              <Link href={pageHref(currentPage - 1)} className="pagination-link">
                 ← Newer
               </Link>
             ) : (
@@ -86,7 +141,7 @@ export default async function HomePage({
               {currentPage} / {totalPages}
             </span>
             {currentPage < totalPages ? (
-              <Link href={`/?page=${currentPage + 1}`} className="pagination-link">
+              <Link href={pageHref(currentPage + 1)} className="pagination-link">
                 Older →
               </Link>
             ) : (

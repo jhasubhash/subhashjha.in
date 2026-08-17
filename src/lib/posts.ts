@@ -13,6 +13,7 @@ export type Post = {
   readTime: string;
   category: string;
   eyebrow?: string;
+  tags?: string[];
   status?: "draft" | "published";
   image?: string;
 };
@@ -31,6 +32,16 @@ export function getPost(slug: string): Post | undefined {
     fs.readFileSync(path.join(POSTS_DIR, "manifest.json"), "utf-8")
   ) as Post[];
   return manifest.find((p) => p.slug === slug);
+}
+
+export function getAllTags(): string[] {
+  const counts = new Map<string, number>();
+  for (const post of getAllPosts()) {
+    for (const tag of post.tags ?? []) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+  }
+  return [...counts.keys()].sort((a, b) => a.localeCompare(b));
 }
 
 export function getPostContent(slug: string): string {
