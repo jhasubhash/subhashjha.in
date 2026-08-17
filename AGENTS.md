@@ -83,21 +83,32 @@ sips -s format jpeg -s formatOptions 85 -Z 1200 input.png --out output.jpg
 - Use the `.jpg` extension in the manifest `image` field
 - Delete the original uncompressed file after converting
 
-### 4. Commit locally — do NOT push
-Stage and commit the new files locally:
+### 4. Preview locally and let the user look — ALWAYS do this first
+**Before committing or pushing anything, start the local dev server and hand the user the URL to review.** This is mandatory for every new post (and any post/manifest change). Do not skip it, and do not commit "to be efficient" before the user has had a chance to look.
+
+```bash
+npm run dev   # http://localhost:3000
+```
+- Start it in the background so the session stays interactive, and confirm it reached "Ready".
+- Give the user the exact links to check: the home page (`http://localhost:3000/`) and the new post (`http://localhost:3000/blog/{slug}`).
+- **Then stop and wait.** Let the user review in their browser and tell you it looks good (or request changes). Do not move on to commit/push on your own.
+- Leave the server running while they review; only stop it (`lsof -ti:3000 | xargs kill`) when the user is done or asks you to.
+
+### 5. Commit locally — do NOT push
+Once the user has reviewed locally and is happy, stage and commit the new files locally:
 ```bash
 git add content/posts/{slug}.html content/posts/manifest.json public/images/posts/{slug}-og.jpg
 git commit -m "Add post: {title}"
 ```
 **Stop here.** Do not push. Report the commit to the user and wait for explicit instruction to push.
 
-### 5. Push (only when the user explicitly asks)
+### 6. Push (only when the user explicitly asks)
 When, and only when, the user explicitly says to push, run:
 ```bash
 git push git@github-personal:jhasubhash/subhashjha.in.git main
 ```
 
-### 6. What happens automatically after push
+### 7. What happens automatically after push
 - **Vercel** picks up the push and deploys the site
 
 ---
