@@ -1,5 +1,18 @@
 [
   {
+    "slug": "object-aware-inpainting",
+    "title": "The Backwards Rule: How Object-Aware Training Teaches an Inpainter to Remove Instead of Hallucinate",
+    "htmlTitle": "The backwards rule: how object-aware training teaches an inpainter to <em style=\"color:#6b3a8a;font-style:italic;font-weight:400\">remove, not hallucinate.</em>",
+    "description": "One line of the CM-GAN paper reads backwards: when a hole covers most of an object, they carve the object back out. Working out why unlocks a clean way to think about when a generative inpainter fills with background versus when it invents a new object, and why that matters for object removal and blemish retouching.",
+    "date": "2026-08-20",
+    "readTime": "~11 min read",
+    "category": "Notes",
+    "eyebrow": "Notes · Inpainting · Object-Aware Training",
+    "tags": ["Deep Learning & Maths"],
+    "image": "/images/posts/object-aware-inpainting-og.jpg",
+    "status": "published"
+  },
+  {
     "slug": "two-indias",
     "title": "My Two Indias",
     "htmlTitle": "My two <em style=\"color:#c4622d;font-style:italic;font-weight:400\">Indias.</em>",
