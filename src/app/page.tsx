@@ -107,19 +107,6 @@ export default async function HomePage({
               <Link href={`/blog/${post.slug}`} className="read-more">
                 Read →
               </Link>
-              {(post.tags ?? []).length > 0 && (
-                <span className="post-card-tags">
-                  {post.tags!.map((tag) => (
-                    <Link
-                      key={tag}
-                      href={`/?tag=${encodeURIComponent(tag)}`}
-                      className="post-card-tag"
-                    >
-                      {tag}
-                    </Link>
-                  ))}
-                </span>
-              )}
             </div>
           </article>
         ))}
