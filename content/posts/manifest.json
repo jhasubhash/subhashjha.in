@@ -1,5 +1,17 @@
 [
   {
+    "slug": "from-neuron-to-dit",
+    "title": "From a Single Neuron to DiT: How Image Model Architectures Evolved",
+    "htmlTitle": "From a single neuron to DiT: <em style=\"color:#4a56b8;font-style:italic;font-weight:400\">how image models learned to see, then to draw.</em>",
+    "description": "Every image model you have heard of is built from the same handful of ideas stacked in cleverer and cleverer ways. A walk up that staircase, one architecture at a time, from a single neuron to the MLP, the CNN, ResNet, the U-Net, attention, Stable Diffusion, SDXL, and finally the diffusion transformer. Nine hand-drawn diagrams, and by the end none of it looks like magic.",
+    "date": "2026-08-21",
+    "readTime": "~26 min read",
+    "category": "Notes",
+    "eyebrow": "Notes · Deep Learning · Architecture Evolution",
+    "tags": ["Deep Learning & Maths"],
+    "status": "published"
+  },
+  {
     "slug": "object-aware-inpainting",
     "title": "The Backwards Rule: How Object-Aware Training Teaches an Inpainter to Remove Instead of Hallucinate",
     "htmlTitle": "The backwards rule: how object-aware training teaches an inpainter to <em style=\"color:#6b3a8a;font-style:italic;font-weight:400\">remove, not hallucinate.</em>",

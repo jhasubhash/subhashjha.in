@@ -1,0 +1,850 @@
+<style>
+.igm-root {
+  --igm-ink: #1a1815;
+  --igm-ink-mid: #5a5347;
+  --igm-ink-faint: #948c7d;
+  --igm-panel: #ffffff;
+  --igm-bg-warm: #ede8d8;
+  --igm-bg-code: #1c1a17;
+  --igm-rule: #ddd6c2;
+  --igm-accent: #4a56b8;
+  --igm-accent-bright: #6570d8;
+  --igm-accent-soft: #e2e4f5;
+  --igm-in: #2d5c8a;
+  --igm-in-soft: #dde6ef;
+  --igm-comp: #3a6850;
+  --igm-comp-soft: #dde9e2;
+  --igm-attn: #6b3a8a;
+  --igm-attn-soft: #e7ddf0;
+  --igm-cond: #8a6a30;
+  --igm-cond-soft: #ede2c8;
+  --igm-out: #4a56b8;
+  --igm-out-soft: #e2e4f5;
+  --igm-warn: #a83820;
+  --igm-warn-soft: #f0e0db;
+}
+
+.igm-root .article { max-width: 760px; margin: 0 auto; padding: 0 0 60px; }
+.igm-root p { margin-bottom: 22px; color: var(--igm-ink); line-height: 1.75; }
+.igm-root p:last-child { margin-bottom: 0; }
+.igm-root strong { font-weight: 600; color: var(--igm-ink); }
+.igm-root em { font-style: italic; color: var(--igm-ink-mid); }
+.igm-root ul, .igm-root ol { margin: 0 0 22px; padding-left: 24px; color: var(--igm-ink); line-height: 1.7; }
+.igm-root li { margin-bottom: 10px; }
+
+.igm-root code.inline {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.86em;
+  background: var(--igm-bg-warm);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: var(--igm-accent);
+  border: 1px solid var(--igm-rule);
+}
+
+.igm-root .lead {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--igm-ink);
+  margin-bottom: 36px;
+}
+
+.igm-root h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 62px 0 22px;
+  color: var(--igm-ink);
+  padding-top: 8px;
+  border-top: 1px solid var(--igm-rule);
+}
+.igm-root h2:first-of-type { border-top: none; padding-top: 0; }
+.igm-root h2 .num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 14px;
+  color: var(--igm-accent);
+  font-weight: 500;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.igm-root h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--igm-ink);
+  margin: 36px 0 14px;
+}
+
+.igm-root .math {
+  margin: 24px 0;
+  padding: 18px 24px;
+  background: var(--igm-bg-warm);
+  border-left: 3px solid var(--igm-accent);
+  border-radius: 0 6px 6px 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--igm-ink);
+  overflow-x: auto;
+}
+
+/* Diagram wrapper */
+.igm-root .diagram {
+  margin: 38px 0;
+  padding: 26px 24px;
+  background: var(--igm-panel);
+  border: 1px solid var(--igm-rule);
+  border-radius: 12px;
+}
+.igm-root .diagram svg { display: block; width: 100%; height: auto; }
+.igm-root .diagram-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--igm-accent); margin-bottom: 16px; font-weight: 500;
+}
+.igm-root .diagram-caption {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-style: italic;
+  color: var(--igm-ink-faint); margin-top: 16px; text-align: center; line-height: 1.55;
+}
+.igm-root .legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 2px 0 18px; font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--igm-ink-mid); }
+.igm-root .legend span { display: inline-flex; align-items: center; gap: 7px; }
+.igm-root .legend i { width: 13px; height: 13px; border-radius: 3px; display: inline-block; }
+
+/* Callout */
+.igm-root .callout {
+  margin: 32px 0; padding: 22px 26px;
+  background: var(--igm-accent-soft);
+  border-left: 4px solid var(--igm-accent);
+  border-radius: 0 10px 10px 0;
+}
+.igm-root .callout p { font-size: 15.5px; color: var(--igm-ink); margin: 0; line-height: 1.7; }
+.igm-root .callout p + p { margin-top: 12px; }
+.igm-root .callout .label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--igm-accent); margin-bottom: 10px; font-weight: 500; display: block;
+}
+
+/* Two-card compare */
+.igm-root .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 30px 0; }
+.igm-root .pair .card { padding: 20px 22px; background: var(--igm-bg-warm); border: 1px solid var(--igm-rule); border-radius: 10px; }
+.igm-root .pair .card .tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--igm-accent); display: block; margin-bottom: 10px; }
+.igm-root .pair .card h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 500; color: var(--igm-ink); margin: 0 0 10px; }
+.igm-root .pair .card p { font-size: 14.5px; margin: 0; color: var(--igm-ink-mid); line-height: 1.6; }
+
+/* Comparison table */
+.igm-root table.itable { margin: 30px 0; width: 100%; border-collapse: collapse; font-size: 14px; background: var(--igm-panel); border: 1px solid var(--igm-rule); border-radius: 8px; overflow: hidden; }
+.igm-root table.itable th { text-align: left; padding: 13px 16px; background: var(--igm-bg-warm); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--igm-ink-mid); font-weight: 500; border-bottom: 1px solid var(--igm-rule); }
+.igm-root table.itable td { padding: 13px 16px; border-bottom: 1px solid var(--igm-rule); vertical-align: top; color: var(--igm-ink-mid); line-height: 1.55; }
+.igm-root table.itable td:first-child { font-weight: 500; color: var(--igm-ink); white-space: nowrap; }
+.igm-root table.itable tr:last-child td { border-bottom: none; }
+
+.igm-root .pullquote { margin: 48px 0; padding: 30px 34px; text-align: center; border-top: 1px solid var(--igm-rule); border-bottom: 1px solid var(--igm-rule); }
+.igm-root .pullquote q { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1.4; font-style: italic; color: var(--igm-ink); quotes: '\201C' '\201D'; display: block; }
+.igm-root .pullquote q::before, .igm-root .pullquote q::after { color: var(--igm-accent); font-size: 28px; line-height: 0; vertical-align: -8px; }
+
+.igm-root .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--igm-rule); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; color: var(--igm-ink-mid); text-align: center; line-height: 1.5; }
+.igm-root .signoff { font-family: 'JetBrains Mono', ui-monospace, monospace; font-style: normal; font-size: 11px; color: var(--igm-ink-faint); letter-spacing: 0.1em; margin-top: 20px; text-transform: uppercase; display: block; }
+
+.igm-root .footnote { font-size: 14px; color: var(--igm-ink-faint); border-top: 1px solid var(--igm-rule); margin-top: 48px; padding-top: 20px; }
+.igm-root a { color: var(--igm-accent); text-decoration: none; }
+.igm-root a:hover { text-decoration: underline; }
+
+/* SVG helper text classes */
+.igm-root svg .s-ink { fill: var(--igm-ink); }
+.igm-root svg .s-mid { fill: var(--igm-ink-mid); }
+.igm-root svg .s-faint { fill: var(--igm-ink-faint); }
+.igm-root svg .s-title { font-family: 'DM Sans', sans-serif; font-weight: 600; }
+.igm-root svg .s-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.igm-root svg .s-label { font-family: 'DM Sans', sans-serif; }
+
+@media (max-width: 760px) {
+  .igm-root h2 { font-size: 25px; }
+  .igm-root .lead { font-size: 19px; }
+  .igm-root .pair { grid-template-columns: 1fr; }
+  .igm-root .diagram { padding: 18px 14px; }
+  .igm-root table.itable { font-size: 12.5px; }
+  .igm-root table.itable th, .igm-root table.itable td { padding: 10px; }
+}
+</style>
+
+<div class="igm-root">
+<article class="article">
+
+<p class="lead">Every image model you have heard of, from the toy that recognises a handwritten 7 to the one that paints a photorealistic astronaut on a horse, is built from the same handful of ideas stacked in ever more clever ways. This is a walk up that staircase, one step at a time. We start with a single neuron, add layers, teach it to see with convolutions, let it go deep without falling over, then flip the whole thing around so it learns to draw instead of to label. By the end we arrive at the diffusion transformer, and it will not feel like magic. It will feel like the obvious next step.</p>
+
+<p>The thread running through all of it is one question that keeps getting reframed: <em>what shape should the computation take so that gradients can flow, information can travel, and structure can be learned?</em> Each architecture in this post is an answer to a specific failure of the one before it. Hold that framing and the whole history clicks into place.</p>
+
+<div class="diagram">
+  <div class="diagram-label">The staircase, at a glance</div>
+  <svg viewBox="0 0 760 210" role="img" aria-label="Timeline of architectures from a single neuron to the diffusion transformer">
+    <defs>
+      <marker id="tah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+    </defs>
+    <line x1="20" y1="150" x2="740" y2="150" stroke="var(--igm-rule)" stroke-width="2"/>
+    <g font-size="10.5">
+      <circle cx="40" cy="150" r="5" fill="var(--igm-in)"/>
+      <text x="40" y="175" text-anchor="middle" class="s-mono s-mid">neuron</text>
+      <text x="40" y="130" text-anchor="middle" class="s-label s-faint">1958</text>
+
+      <circle cx="150" cy="150" r="5" fill="var(--igm-in)"/>
+      <text x="150" y="175" text-anchor="middle" class="s-mono s-mid">MLP</text>
+      <text x="150" y="130" text-anchor="middle" class="s-label s-faint">1986</text>
+
+      <circle cx="270" cy="150" r="5" fill="var(--igm-comp)"/>
+      <text x="270" y="175" text-anchor="middle" class="s-mono s-mid">CNN</text>
+      <text x="270" y="130" text-anchor="middle" class="s-label s-faint">1998 / 2012</text>
+
+      <circle cx="390" cy="150" r="5" fill="var(--igm-comp)"/>
+      <text x="390" y="175" text-anchor="middle" class="s-mono s-mid">ResNet</text>
+      <text x="390" y="130" text-anchor="middle" class="s-label s-faint">2015</text>
+
+      <circle cx="500" cy="150" r="5" fill="var(--igm-attn)"/>
+      <text x="500" y="175" text-anchor="middle" class="s-mono s-mid">U-Net + attn</text>
+      <text x="500" y="130" text-anchor="middle" class="s-label s-faint">2015 / 2017</text>
+
+      <circle cx="610" cy="150" r="5" fill="var(--igm-out)"/>
+      <text x="610" y="175" text-anchor="middle" class="s-mono s-mid">SD / SDXL</text>
+      <text x="610" y="130" text-anchor="middle" class="s-label s-faint">2022</text>
+
+      <circle cx="720" cy="150" r="5" fill="var(--igm-out)"/>
+      <text x="720" y="175" text-anchor="middle" class="s-mono s-mid">DiT</text>
+      <text x="720" y="130" text-anchor="middle" class="s-label s-faint">2023</text>
+    </g>
+    <text x="20" y="40" class="s-title s-ink" font-size="14">Learning to see</text>
+    <text x="20" y="58" class="s-label s-mid" font-size="11">neuron → MLP → CNN → ResNet  (image in, label out)</text>
+    <text x="440" y="40" class="s-title s-ink" font-size="14">Learning to draw</text>
+    <text x="440" y="58" class="s-label s-mid" font-size="11">U-Net → diffusion → SDXL → DiT  (noise in, image out)</text>
+    <line x1="410" y1="70" x2="410" y2="140" stroke="var(--igm-rule)" stroke-dasharray="4 4"/>
+  </svg>
+  <div class="diagram-caption">The left half of the staircase learns to map an image to a label. The right half runs the arrow backwards: it learns to turn a description, or pure noise, into an image. The same building blocks appear on both sides.</div>
+</div>
+
+<h2><span class="num">01</span>The single neuron</h2>
+
+<p>Everything begins with one neuron, and a neuron is embarrassingly simple. It takes some numbers in, multiplies each by a weight, adds them up, adds one more number called a bias, and passes the total through a squashing function. That is the entire object.</p>
+
+<div class="math">z = w&#8321;x&#8321; + w&#8322;x&#8322; + &#8230; + w&#8345;x&#8345; + b<br>a = &#963;(z)</div>
+
+<p>The weights <code class="inline">w</code> say how much each input matters. The bias <code class="inline">b</code> shifts the threshold at which the neuron gets excited. The activation function <code class="inline">&#963;</code> is what makes it more than a spreadsheet formula: it bends the straight line into a curve, so the neuron can express something other than pure proportion. Without it, no matter how many neurons you stack, the whole network collapses back into a single linear equation. The non-linearity is the thing that lets depth mean something.</p>
+
+<div class="diagram">
+  <div class="diagram-label">One neuron</div>
+  <svg viewBox="0 0 760 280" role="img" aria-label="A single neuron: three weighted inputs plus a bias summed and passed through an activation function to produce an output">
+    <defs>
+      <marker id="nah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+    </defs>
+    <g>
+      <circle cx="70" cy="60" r="20" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+      <text x="70" y="65" text-anchor="middle" class="s-mono s-ink" font-size="13">x&#8321;</text>
+      <circle cx="70" cy="130" r="20" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+      <text x="70" y="135" text-anchor="middle" class="s-mono s-ink" font-size="13">x&#8322;</text>
+      <circle cx="70" cy="200" r="20" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+      <text x="70" y="205" text-anchor="middle" class="s-mono s-ink" font-size="13">x&#8323;</text>
+      <circle cx="70" cy="255" r="16" fill="var(--igm-bg-warm)" stroke="var(--igm-ink-faint)"/>
+      <text x="70" y="260" text-anchor="middle" class="s-mono s-mid" font-size="12">1</text>
+    </g>
+    <g>
+      <line x1="90" y1="60" x2="298" y2="145" stroke="var(--igm-ink-faint)" marker-end="url(#nah)"/>
+      <line x1="90" y1="130" x2="298" y2="150" stroke="var(--igm-ink-faint)" marker-end="url(#nah)"/>
+      <line x1="90" y1="200" x2="298" y2="160" stroke="var(--igm-ink-faint)" marker-end="url(#nah)"/>
+      <line x1="86" y1="252" x2="298" y2="168" stroke="var(--igm-ink-faint)" marker-end="url(#nah)"/>
+      <text x="180" y="92" class="s-mono s-mid" font-size="11">w&#8321;</text>
+      <text x="180" y="135" class="s-mono s-mid" font-size="11">w&#8322;</text>
+      <text x="180" y="185" class="s-mono s-mid" font-size="11">w&#8323;</text>
+      <text x="180" y="220" class="s-mono s-mid" font-size="11">b</text>
+    </g>
+    <circle cx="330" cy="155" r="34" fill="var(--igm-panel)" stroke="var(--igm-in)" stroke-width="1.5"/>
+    <text x="330" y="150" text-anchor="middle" class="s-mono s-ink" font-size="15">&#931;</text>
+    <text x="330" y="170" text-anchor="middle" class="s-label s-mid" font-size="9.5">weighted sum</text>
+    <line x1="364" y1="155" x2="440" y2="155" stroke="var(--igm-ink-faint)" marker-end="url(#nah)"/>
+    <text x="402" y="146" text-anchor="middle" class="s-mono s-mid" font-size="11">z</text>
+    <rect x="444" y="128" width="120" height="54" rx="9" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="504" y="152" text-anchor="middle" class="s-title s-ink" font-size="13">&#963; ( z )</text>
+    <text x="504" y="169" text-anchor="middle" class="s-label s-mid" font-size="10">activation</text>
+    <line x1="564" y1="155" x2="640" y2="155" stroke="var(--igm-ink-faint)" marker-end="url(#nah)"/>
+    <circle cx="672" cy="155" r="24" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+    <text x="672" y="160" text-anchor="middle" class="s-mono s-ink" font-size="14">&#375;</text>
+    <text x="672" y="200" text-anchor="middle" class="s-label s-mid" font-size="10.5">output</text>
+  </svg>
+  <div class="diagram-caption">Inputs are scaled by weights, summed with a bias, and squashed by an activation. A logistic-regression classifier is exactly this, with a sigmoid on the end. It draws one straight boundary through its input space, and that is its ceiling.</div>
+</div>
+
+<p>A single neuron with a sigmoid is logistic regression, and it can separate data with a single straight line. That is genuinely useful, and also a hard ceiling. Draw two classes that curl around each other, the classic XOR pattern, and one straight line can never split them. The fix is not a cleverer neuron. It is <em>more</em> neurons, arranged in layers.</p>
+
+<h2><span class="num">02</span>Stacking neurons: the MLP and MNIST</h2>
+
+<p>Put many neurons side by side and you get a <strong>layer</strong>. Stack layers and you get a <strong>multi-layer perceptron</strong>, the MLP. Each neuron in a layer looks at every output from the layer before it, which is why these are called <em>fully connected</em> or <em>dense</em> layers. The first hidden layer might learn to detect little strokes and curves; the next combines strokes into shapes; the last combines shapes into a decision.</p>
+
+<p>The canonical first problem is MNIST: 70,000 tiny 28&#215;28 greyscale images of handwritten digits, and the job is to name each one from 0 to 9. You flatten the 28&#215;28 grid into a flat vector of 784 numbers, feed it through a couple of hidden layers, and end with 10 output neurons, one per digit. A <strong>softmax</strong> on those ten turns raw scores into probabilities that sum to one, and you pick the largest.</p>
+
+<div class="diagram">
+  <div class="diagram-label">An MLP for MNIST digits</div>
+  <svg viewBox="0 0 760 300" role="img" aria-label="MNIST pipeline: a 28 by 28 image is flattened to 784 inputs, passed through two hidden layers, into ten softmax outputs">
+    <defs>
+      <marker id="mah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+    </defs>
+    <!-- image grid -->
+    <g>
+      <text x="60" y="40" text-anchor="middle" class="s-mono s-faint" font-size="10">28&#215;28 image</text>
+      <rect x="30" y="55" width="60" height="60" fill="var(--igm-bg-warm)" stroke="var(--igm-in)"/>
+      <rect x="52" y="62" width="8" height="40" fill="var(--igm-in)"/>
+      <rect x="60" y="62" width="14" height="8" fill="var(--igm-in)"/>
+    </g>
+    <line x1="94" y1="85" x2="150" y2="85" stroke="var(--igm-ink-faint)" marker-end="url(#mah)"/>
+    <text x="122" y="76" text-anchor="middle" class="s-label s-mid" font-size="9.5">flatten</text>
+    <!-- input layer -->
+    <g>
+      <rect x="156" y="30" width="52" height="240" rx="8" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+      <text x="182" y="20" text-anchor="middle" class="s-mono s-mid" font-size="10">784</text>
+      <circle cx="182" cy="55" r="6" fill="var(--igm-in)"/><circle cx="182" cy="80" r="6" fill="var(--igm-in)"/><circle cx="182" cy="105" r="6" fill="var(--igm-in)"/>
+      <text x="182" y="150" text-anchor="middle" class="s-mono s-mid" font-size="14">&#8942;</text>
+      <circle cx="182" cy="220" r="6" fill="var(--igm-in)"/><circle cx="182" cy="245" r="6" fill="var(--igm-in)"/>
+    </g>
+    <!-- hidden 1 -->
+    <g>
+      <rect x="290" y="55" width="52" height="190" rx="8" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+      <text x="316" y="45" text-anchor="middle" class="s-mono s-mid" font-size="10">128 · ReLU</text>
+      <circle cx="316" cy="85" r="6" fill="var(--igm-comp)"/><circle cx="316" cy="115" r="6" fill="var(--igm-comp)"/>
+      <text x="316" y="165" text-anchor="middle" class="s-mono s-mid" font-size="14">&#8942;</text>
+      <circle cx="316" cy="215" r="6" fill="var(--igm-comp)"/>
+    </g>
+    <!-- hidden 2 -->
+    <g>
+      <rect x="424" y="80" width="52" height="140" rx="8" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+      <text x="450" y="70" text-anchor="middle" class="s-mono s-mid" font-size="10">64 · ReLU</text>
+      <circle cx="450" cy="110" r="6" fill="var(--igm-comp)"/>
+      <text x="450" y="155" text-anchor="middle" class="s-mono s-mid" font-size="14">&#8942;</text>
+      <circle cx="450" cy="195" r="6" fill="var(--igm-comp)"/>
+    </g>
+    <!-- output -->
+    <g>
+      <rect x="558" y="60" width="60" height="180" rx="8" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+      <text x="588" y="50" text-anchor="middle" class="s-mono s-mid" font-size="10">10 · softmax</text>
+      <text x="588" y="82" text-anchor="middle" class="s-mono s-ink" font-size="11">0</text>
+      <text x="588" y="102" text-anchor="middle" class="s-mono s-ink" font-size="11">1</text>
+      <text x="588" y="130" text-anchor="middle" class="s-mono s-mid" font-size="13">&#8942;</text>
+      <text x="588" y="170" text-anchor="middle" class="s-mono s-mid" font-size="12" font-weight="600">7</text>
+      <rect x="562" y="158" width="52" height="18" rx="4" fill="none" stroke="var(--igm-out)" stroke-width="1.5"/>
+      <text x="588" y="228" text-anchor="middle" class="s-mono s-ink" font-size="11">9</text>
+    </g>
+    <line x1="632" y1="167" x2="700" y2="167" stroke="var(--igm-out)" marker-end="url(#mah)"/>
+    <text x="712" y="172" text-anchor="middle" class="s-mono s-ink" font-size="16" font-weight="600">7</text>
+    <!-- connection hints -->
+    <g stroke="var(--igm-ink-faint)" opacity="0.35">
+      <line x1="208" y1="85" x2="290" y2="115"/><line x1="208" y1="220" x2="290" y2="115"/>
+      <line x1="342" y1="115" x2="424" y2="140"/><line x1="342" y1="215" x2="424" y2="140"/>
+      <line x1="476" y1="140" x2="558" y2="150"/>
+    </g>
+  </svg>
+  <div class="diagram-caption">Flatten, then two dense layers, then ten probabilities. This actually works on MNIST, around 98% accuracy. It also throws away the single most important fact about the input.</div>
+</div>
+
+<p>Two hidden layers of this kind will hit around 98% on MNIST, which feels like a triumph until you notice what the flattening step quietly destroyed. The instant you unroll a 28&#215;28 grid into 784 numbers in a row, you tell the network that the pixel at position 30 and the pixel directly below it (position 58) are just two entries in a list, no more related than positions 1 and 700. All spatial structure is gone. The network has to relearn, from scratch and separately for every location, that nearby pixels tend to belong together.</p>
+
+<div class="callout">
+  <span class="label">The failure that drives the next step</span>
+  <p>A dense layer treats every input independently, so it has no built-in notion that an image is a grid. Worse, it does not generalise across position: a network that learned to spot an edge in the top-left has learned nothing about the same edge in the bottom-right. And the parameter count explodes. A single dense layer on a modest 224&#215;224 colour image would need over ten billion weights. For real images this is a dead end.</p>
+</div>
+
+<h2><span class="num">03</span>Teaching it to see: the CNN and cat detection</h2>
+
+<p>The convolutional neural network fixes both problems with one idea: instead of giving every pixel its own private weights, slide a small window of shared weights across the whole image. That little window, the <strong>kernel</strong> or filter, is just a tiny grid of numbers, maybe 3&#215;3. You place it over one patch, multiply and sum (that is one convolution), then slide it one step over and do it again. The same kernel sweeps the entire image.</p>
+
+<p>Two enormous wins fall out of this. First, <strong>weight sharing</strong>: a kernel that learns to detect a vertical edge detects that edge everywhere, because the same nine numbers are reused at every position. A cat in the corner and a cat in the centre light up the same filters. Second, <strong>locality</strong>: each output looks only at a small neighbourhood, which is exactly how visual structure works. Edges make textures, textures make parts, parts make objects.</p>
+
+<p>You stack these. Early convolution layers learn edges and blobs. Pooling layers throw away spatial resolution to keep the important activations and grant a little tolerance to shifts. As you go deeper the feature maps get spatially smaller but semantically richer, and their <em>depth</em> (the number of distinct feature channels) grows. Early layers see edges; middle layers see fur texture and ear shapes; late layers fire on <em>whiskers</em>, <em>pointy ears</em>, <em>cat face</em>. Flatten that final rich stack, run it through a small dense head, and out comes cat or not-cat.</p>
+
+<div class="diagram">
+  <div class="diagram-label">A convolutional net for cat detection</div>
+  <legend class="legend">
+    <span><i style="background:var(--igm-in)"></i>input image</span>
+    <span><i style="background:var(--igm-comp)"></i>conv + pool</span>
+    <span><i style="background:var(--igm-out)"></i>dense head</span>
+  </legend>
+  <svg viewBox="0 0 760 250" role="img" aria-label="A CNN: an input image passes through convolution and pooling blocks that shrink spatially and deepen, then a dense head outputs cat or not cat">
+    <defs>
+      <marker id="cah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+    </defs>
+    <!-- input block -->
+    <rect x="24" y="70" width="70" height="70" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="59" y="158" text-anchor="middle" class="s-mono s-mid" font-size="10">224&#178;&#215;3</text>
+    <text x="59" y="60" text-anchor="middle" class="s-label s-faint" font-size="10">image</text>
+    <line x1="98" y1="105" x2="126" y2="105" stroke="var(--igm-ink-faint)" marker-end="url(#cah)"/>
+    <!-- conv block 1 -->
+    <rect x="140" y="78" width="46" height="54" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <rect x="146" y="72" width="46" height="54" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="169" y="150" text-anchor="middle" class="s-mono s-mid" font-size="9.5">112&#178;&#215;64</text>
+    <text x="169" y="60" text-anchor="middle" class="s-label s-faint" font-size="9.5">edges</text>
+    <line x1="196" y1="99" x2="224" y2="99" stroke="var(--igm-ink-faint)" marker-end="url(#cah)"/>
+    <!-- conv block 2 -->
+    <rect x="238" y="82" width="34" height="40" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <rect x="244" y="76" width="34" height="40" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <rect x="250" y="70" width="34" height="40" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="264" y="144" text-anchor="middle" class="s-mono s-mid" font-size="9.5">56&#178;&#215;128</text>
+    <text x="264" y="58" text-anchor="middle" class="s-label s-faint" font-size="9.5">textures</text>
+    <line x1="288" y1="95" x2="316" y2="95" stroke="var(--igm-ink-faint)" marker-end="url(#cah)"/>
+    <!-- conv block 3 -->
+    <rect x="330" y="80" width="24" height="28" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <rect x="335" y="75" width="24" height="28" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <rect x="340" y="70" width="24" height="28" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <rect x="345" y="65" width="24" height="28" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="352" y="130" text-anchor="middle" class="s-mono s-mid" font-size="9.5">14&#178;&#215;512</text>
+    <text x="352" y="52" text-anchor="middle" class="s-label s-faint" font-size="9.5">ears · whiskers</text>
+    <line x1="374" y1="85" x2="402" y2="85" stroke="var(--igm-ink-faint)" marker-end="url(#cah)"/>
+    <!-- flatten -->
+    <rect x="416" y="55" width="20" height="120" rx="5" fill="var(--igm-bg-warm)" stroke="var(--igm-ink-faint)"/>
+    <text x="426" y="190" text-anchor="middle" class="s-label s-mid" font-size="9.5">flatten</text>
+    <line x1="438" y1="115" x2="466" y2="115" stroke="var(--igm-ink-faint)" marker-end="url(#cah)"/>
+    <!-- dense head -->
+    <rect x="480" y="75" width="48" height="80" rx="8" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+    <text x="504" y="118" text-anchor="middle" class="s-title s-ink" font-size="11">dense</text>
+    <text x="504" y="170" text-anchor="middle" class="s-label s-mid" font-size="9.5">classifier</text>
+    <line x1="530" y1="115" x2="560" y2="115" stroke="var(--igm-ink-faint)" marker-end="url(#cah)"/>
+    <!-- outputs -->
+    <rect x="574" y="80" width="150" height="30" rx="6" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+    <text x="584" y="100" class="s-mono s-ink" font-size="12">cat</text>
+    <rect x="690" y="86" width="28" height="18" rx="4" fill="var(--igm-out)"/>
+    <text x="704" y="99" text-anchor="middle" class="s-mono" font-size="10" fill="var(--igm-panel)">0.97</text>
+    <rect x="574" y="120" width="150" height="30" rx="6" fill="var(--igm-bg-warm)" stroke="var(--igm-rule)"/>
+    <text x="584" y="140" class="s-mono s-mid" font-size="12">not cat</text>
+    <text x="704" y="139" text-anchor="middle" class="s-mono s-faint" font-size="10">0.03</text>
+  </svg>
+  <div class="diagram-caption">Spatial size shrinks left to right; channel depth grows. The network trades <em>where</em> for <em>what</em>. This is the shape of LeNet (1998) and, scaled up and trained on a million photos, of AlexNet (2012), the network that started the deep-learning era.</div>
+</div>
+
+<p>This template, convolution and pooling into a dense head, is LeNet from 1998. Scaled up, trained on ImageNet's million photos, and run on GPUs, it became AlexNet in 2012 and cut the image-recognition error rate almost in half overnight. That single result is what kicked off the modern era. Then people tried the obvious thing: if deep is good, deeper must be better. And it broke.</p>
+
+<h2><span class="num">04</span>Going deeper without falling over: ResNet</h2>
+
+<p>Stacking more layers should never make a network <em>worse</em>. In the limit, the extra layers could just copy their input forward and match the shallower model. Yet in practice, a 56-layer plain network trained worse than a 20-layer one, on both training and test data. The problem was not overfitting. It was that gradients, the signals that tell each layer how to adjust, had to travel back through dozens of multiplications to reach the early layers, and along the way they shrank toward zero. The <strong>vanishing gradient</strong>. Deep networks were untrainable not because they lacked capacity but because the learning signal could not reach the bottom.</p>
+
+<p>ResNet's fix is one of the most quietly influential ideas in the whole field, and it is almost trivially simple. Add a shortcut that skips over a couple of layers and adds the input straight to their output.</p>
+
+<div class="math">plain block:    y = F(x)<br>residual block: y = F(x) + x</div>
+
+<p>Now the layers only have to learn the <em>residual</em>, the small change <code class="inline">F(x)</code> to make to the input, rather than the entire useful transformation from scratch. If the best thing a block can do is nothing, it just learns <code class="inline">F(x) = 0</code> and the identity passes through untouched. And crucially, that <code class="inline">+ x</code> gives the gradient a clean highway straight back to earlier layers, bypassing the multiplications that were killing it.</p>
+
+<div class="diagram">
+  <div class="diagram-label">The residual block</div>
+  <svg viewBox="0 0 760 230" role="img" aria-label="A residual block: input passes through two weight layers, and a skip connection adds the original input back before the final activation">
+    <defs>
+      <marker id="rah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+      <marker id="rah2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-accent)"/></marker>
+    </defs>
+    <text x="40" y="118" text-anchor="middle" class="s-mono s-ink" font-size="14">x</text>
+    <line x1="56" y1="115" x2="118" y2="115" stroke="var(--igm-ink-faint)" marker-end="url(#rah)"/>
+    <circle cx="86" cy="115" r="4" fill="var(--igm-accent)"/>
+    <rect x="122" y="90" width="120" height="50" rx="8" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="182" y="112" text-anchor="middle" class="s-title s-ink" font-size="12">conv 3&#215;3 · BN</text>
+    <text x="182" y="128" text-anchor="middle" class="s-label s-mid" font-size="10">ReLU</text>
+    <line x1="242" y1="115" x2="290" y2="115" stroke="var(--igm-ink-faint)" marker-end="url(#rah)"/>
+    <rect x="294" y="90" width="120" height="50" rx="8" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="354" y="112" text-anchor="middle" class="s-title s-ink" font-size="12">conv 3&#215;3 · BN</text>
+    <text x="354" y="128" text-anchor="middle" class="s-label s-mid" font-size="10">F(x)</text>
+    <line x1="414" y1="115" x2="470" y2="115" stroke="var(--igm-ink-faint)" marker-end="url(#rah)"/>
+    <!-- skip -->
+    <path d="M86,115 C86,30 500,30 500,100" fill="none" stroke="var(--igm-accent)" stroke-width="1.8" marker-end="url(#rah2)"/>
+    <text x="290" y="26" text-anchor="middle" class="s-mono" fill="var(--igm-accent)" font-size="11">identity skip: + x</text>
+    <!-- add node -->
+    <circle cx="500" cy="115" r="18" fill="var(--igm-panel)" stroke="var(--igm-accent)" stroke-width="1.8"/>
+    <text x="500" y="121" text-anchor="middle" class="s-mono s-ink" font-size="16">+</text>
+    <line x1="518" y1="115" x2="566" y2="115" stroke="var(--igm-ink-faint)" marker-end="url(#rah)"/>
+    <rect x="570" y="98" width="80" height="34" rx="8" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="610" y="120" text-anchor="middle" class="s-title s-ink" font-size="12">ReLU</text>
+    <line x1="650" y1="115" x2="700" y2="115" stroke="var(--igm-ink-faint)" marker-end="url(#rah)"/>
+    <text x="722" y="120" text-anchor="middle" class="s-mono s-ink" font-size="14">y</text>
+  </svg>
+  <div class="diagram-caption">The block computes a small change <code class="inline">F(x)</code> and adds the untouched input back. The skip connection is a gradient highway: it lets the learning signal reach early layers directly. With this, networks went from ~20 layers to 152 and beyond.</div>
+</div>
+
+<p>With residual connections, networks jumped from around 20 usable layers to 152, then to a thousand in research settings, and accuracy kept climbing. The skip connection turned out to matter far beyond classification. Hold onto it, because the same idea reappears twice more in this post, first as the crossbars of the U-Net, then inside every transformer block.</p>
+
+<div class="pullquote">
+  <q>Everything so far maps an image to a label. To generate images, we have to run that arrow backwards.</q>
+</div>
+
+<h2><span class="num">05</span>Flipping the arrow: from recognising to generating</h2>
+
+<p>Every network up to here is <em>discriminative</em>: image in, label out. Generation is the reverse, and it is a genuinely harder problem. There is exactly one correct answer to <em>is this a cat?</em> There are billions of correct answers to <em>draw me a cat</em>. The model has to learn not a boundary between classes but the entire landscape of what plausible images look like, and then sample new points from it.</p>
+
+<p>The first bridge is the <strong>autoencoder</strong>. Take an image, squeeze it through a narrow bottleneck with an encoder, then reconstruct it with a decoder, and train the output to match the input. The network is forced to compress the image into a compact code and rebuild it, so that small code has to capture the essence. The <strong>variational autoencoder</strong> (VAE) adds a probabilistic twist: it makes that code a smooth, well-behaved region rather than a scattering of isolated points, so you can sample a random code and decode it into a brand-new image.</p>
+
+<p>Around the same time, <strong>GANs</strong> pitted two networks against each other, a generator inventing fakes and a discriminator trying to catch them, and produced sharp results but were famously unstable to train. The autoencoder idea is what carries forward, for two reasons that matter enormously later. First, the decoder shows you can go from a compact code back to a full image. Second, and this is the key architectural donation, the encoder-decoder shape with a bottleneck became the <strong>U-Net</strong>.</p>
+
+<h3>The U-Net: an encoder-decoder with a memory</h3>
+
+<p>The U-Net was invented for medical image segmentation, where you need a pixel-perfect output the same size as the input. Its shape is an encoder that downsamples the image into a small, deep, semantic representation, and a decoder that upsamples back to full resolution. The problem: the downsampling path throws away fine spatial detail (exact edges, precise positions) in exchange for meaning. The decoder, rebuilding from the tiny bottleneck, would produce a blurry mess.</p>
+
+<p>The fix is the same trick as ResNet, applied across the whole network. At each resolution, run a <strong>skip connection</strong> straight across from the encoder to the matching decoder level, handing the fine detail directly over. The decoder gets the best of both: high-level meaning from the bottleneck, sharp detail from the skips. That is the U shape, and it is the workhorse of the first generation of diffusion models.</p>
+
+<div class="diagram">
+  <div class="diagram-label">The U-Net</div>
+  <svg viewBox="0 0 760 320" role="img" aria-label="A U-Net: an encoder downsamples on the left, a bottleneck at the bottom, a decoder upsamples on the right, with skip connections crossing horizontally at each resolution">
+    <defs>
+      <marker id="uah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+      <marker id="uah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--igm-accent)"/></marker>
+    </defs>
+    <!-- encoder -->
+    <rect x="40" y="30" width="90" height="46" rx="6" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="85" y="58" text-anchor="middle" class="s-mono s-ink" font-size="11">enc · high-res</text>
+    <rect x="70" y="110" width="70" height="42" rx="6" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="105" y="136" text-anchor="middle" class="s-mono s-ink" font-size="10.5">enc · mid</text>
+    <rect x="100" y="185" width="54" height="38" rx="6" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="127" y="209" text-anchor="middle" class="s-mono s-ink" font-size="10">enc · low</text>
+    <!-- downsample arrows -->
+    <line x1="85" y1="76" x2="100" y2="108" stroke="var(--igm-ink-faint)" marker-end="url(#uah)"/>
+    <line x1="105" y1="152" x2="120" y2="183" stroke="var(--igm-ink-faint)" marker-end="url(#uah)"/>
+    <text x="60" y="98" class="s-label s-faint" font-size="9.5">&#8595; downsample</text>
+    <!-- bottleneck -->
+    <rect x="320" y="250" width="120" height="46" rx="8" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="380" y="272" text-anchor="middle" class="s-title s-ink" font-size="11">bottleneck</text>
+    <text x="380" y="288" text-anchor="middle" class="s-label s-mid" font-size="9.5">deep · semantic</text>
+    <line x1="154" y1="212" x2="316" y2="262" stroke="var(--igm-ink-faint)" marker-end="url(#uah)"/>
+    <line x1="444" y1="262" x2="606" y2="212" stroke="var(--igm-ink-faint)" marker-end="url(#uah)"/>
+    <!-- decoder -->
+    <rect x="606" y="185" width="54" height="38" rx="6" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="633" y="209" text-anchor="middle" class="s-mono s-ink" font-size="10">dec · low</text>
+    <rect x="620" y="110" width="70" height="42" rx="6" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="655" y="136" text-anchor="middle" class="s-mono s-ink" font-size="10.5">dec · mid</text>
+    <rect x="630" y="30" width="90" height="46" rx="6" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="675" y="58" text-anchor="middle" class="s-mono s-ink" font-size="11">dec · high-res</text>
+    <line x1="633" y1="185" x2="655" y2="154" stroke="var(--igm-ink-faint)" marker-end="url(#uah)"/>
+    <line x1="655" y1="110" x2="675" y2="78" stroke="var(--igm-ink-faint)" marker-end="url(#uah)"/>
+    <text x="668" y="100" class="s-label s-faint" font-size="9.5">&#8593; upsample</text>
+    <!-- skip connections -->
+    <path d="M130,53 L630,53" fill="none" stroke="var(--igm-accent)" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#uah2)"/>
+    <path d="M140,131 L620,131" fill="none" stroke="var(--igm-accent)" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#uah2)"/>
+    <path d="M154,204 L606,204" fill="none" stroke="var(--igm-accent)" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#uah2)"/>
+    <text x="380" y="45" text-anchor="middle" class="s-mono" fill="var(--igm-accent)" font-size="10.5">skip connections carry fine detail across</text>
+  </svg>
+  <div class="diagram-caption">Down the left, up the right, meeting at a deep bottleneck. The dashed skips hand sharp spatial detail straight from encoder to decoder, so the reconstruction stays crisp. This exact shape becomes the denoiser inside Stable Diffusion.</div>
+</div>
+
+<h2><span class="num">06</span>The idea that changed everything: attention</h2>
+
+<p>Before we assemble a real image generator, we need the one building block that the advanced models are organised around. It came from language, not vision. The problem in translation was that a word's meaning depends on other words, sometimes far away in the sentence. Convolutions only look locally; recurrent networks carried information one step at a time and forgot. <strong>Attention</strong> let every element look directly at every other element and decide, per pair, how much to care.</p>
+
+<p>The mechanism is built from three projections of the input, with names borrowed from databases. For each element you compute a <strong>query</strong> (what am I looking for?), a <strong>key</strong> (what do I offer?), and a <strong>value</strong> (what will I actually hand over?). Every query is compared against every key by a dot product, giving a grid of match scores. Softmax turns each row of scores into weights that sum to one, and the output for each element is the weighted blend of all the values.</p>
+
+<div class="math">Attention(Q, K, V) = softmax( Q K&#7488; / &#8730;d ) V</div>
+
+<p>Read it left to right. <code class="inline">Q K&#7488;</code> is every-query-against-every-key, the full grid of affinities. Dividing by <code class="inline">&#8730;d</code> keeps the numbers in a sane range so the softmax does not saturate. Softmax normalises each row into attention weights. Multiplying by <code class="inline">V</code> mixes the values according to those weights. In one shot, every element has gathered information from every other element, near or far.</p>
+
+<div class="diagram">
+  <div class="diagram-label">A self-attention block</div>
+  <svg viewBox="0 0 760 320" role="img" aria-label="Self-attention: input tokens are projected into queries, keys, and values; queries and keys form a scaled score matrix, softmax weights it, and the weights blend the values into the output">
+    <defs>
+      <marker id="aah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+    </defs>
+    <!-- input -->
+    <rect x="24" y="130" width="70" height="60" rx="8" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="59" y="156" text-anchor="middle" class="s-title s-ink" font-size="11">input</text>
+    <text x="59" y="173" text-anchor="middle" class="s-label s-mid" font-size="9.5">tokens</text>
+    <!-- projections -->
+    <line x1="94" y1="150" x2="150" y2="80" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <line x1="94" y1="160" x2="150" y2="160" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <line x1="94" y1="170" x2="150" y2="240" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <rect x="154" y="58" width="72" height="42" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="190" y="78" text-anchor="middle" class="s-mono s-ink" font-size="12">Q</text>
+    <text x="190" y="92" text-anchor="middle" class="s-label s-mid" font-size="9">query · W&#7472;</text>
+    <rect x="154" y="139" width="72" height="42" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="190" y="159" text-anchor="middle" class="s-mono s-ink" font-size="12">K</text>
+    <text x="190" y="173" text-anchor="middle" class="s-label s-mid" font-size="9">key · W&#7472;</text>
+    <rect x="154" y="220" width="72" height="42" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="190" y="240" text-anchor="middle" class="s-mono s-ink" font-size="12">V</text>
+    <text x="190" y="254" text-anchor="middle" class="s-label s-mid" font-size="9">value · W&#7355;</text>
+    <!-- scores -->
+    <line x1="226" y1="79" x2="286" y2="110" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <line x1="226" y1="160" x2="286" y2="125" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <rect x="290" y="92" width="120" height="52" rx="8" fill="var(--igm-panel)" stroke="var(--igm-attn)"/>
+    <text x="350" y="114" text-anchor="middle" class="s-mono s-ink" font-size="12">Q K&#7488; / &#8730;d</text>
+    <text x="350" y="132" text-anchor="middle" class="s-label s-mid" font-size="9.5">score matrix</text>
+    <line x1="410" y1="118" x2="452" y2="118" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <rect x="456" y="92" width="110" height="52" rx="8" fill="var(--igm-panel)" stroke="var(--igm-attn)"/>
+    <text x="511" y="114" text-anchor="middle" class="s-mono s-ink" font-size="12">softmax</text>
+    <text x="511" y="132" text-anchor="middle" class="s-label s-mid" font-size="9.5">attention weights</text>
+    <!-- weighted sum with V -->
+    <line x1="511" y1="144" x2="511" y2="210" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <line x1="226" y1="241" x2="468" y2="228" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <rect x="456" y="212" width="110" height="46" rx="8" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="511" y="232" text-anchor="middle" class="s-mono s-ink" font-size="12">weights &#215; V</text>
+    <text x="511" y="248" text-anchor="middle" class="s-label s-mid" font-size="9">weighted blend</text>
+    <line x1="566" y1="235" x2="622" y2="235" stroke="var(--igm-ink-faint)" marker-end="url(#aah)"/>
+    <rect x="626" y="210" width="80" height="50" rx="8" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+    <text x="666" y="240" text-anchor="middle" class="s-title s-ink" font-size="11">output</text>
+    <text x="380" y="292" text-anchor="middle" class="s-label s-faint" font-size="10.5">multi-head attention runs several of these in parallel, each with its own W&#7472;, W&#7472;, W&#7355;, and concatenates the results</text>
+  </svg>
+  <div class="diagram-caption">Every token asks every other token how relevant it is, then pulls in a weighted mix of their values. When the queries come from the image and the keys and values come from a text prompt, the same block becomes <em>cross-attention</em>, the wire through which words steer pixels.</div>
+</div>
+
+<p>Two variants matter for us. When Q, K and V all come from the same sequence, it is <strong>self-attention</strong>: the image talking to itself, letting distant regions coordinate. When Q comes from one source and K, V come from another, it is <strong>cross-attention</strong>: the exact mechanism by which a text prompt reaches in and steers an image. That single distinction is what turns a denoiser into a text-to-image model. In 2017 the transformer paper showed you could throw away convolutions and recurrence entirely and build a whole model out of attention plus small dense layers. Vision would follow.</p>
+
+<h2><span class="num">07</span>Putting it together: Stable Diffusion</h2>
+
+<p>Now we have every piece. Diffusion is the training idea that finally made image generation stable and controllable, and its recipe is almost suspiciously simple. Take a real image and add a little Gaussian noise. Add a little more. Keep going for many steps until nothing is left but static. That destruction process is fixed and requires no learning. Then train a network to do one thing: given a noisy image and a timestep, <strong>predict the noise that was added</strong>. Subtract the predicted noise and you have stepped one notch back toward a clean image.</p>
+
+<p>To generate, start from pure random static and run that trained denoiser over and over, each pass removing a bit more noise, until a coherent image emerges. It is sculpture: start with a formless block and repeatedly chip away what is not the statue. (For the intuition on why a humble Gaussian is exactly the right tool here, I wrote a whole separate piece, <a href="/blog/gaussian-diffusion">Why a Gaussian Can't Model Faces, But Can Model Diffusion</a>.)</p>
+
+<p>Stable Diffusion added the three refinements that made this practical on a normal GPU, and each one is a building block we have already met.</p>
+
+<ul>
+  <li><strong>Do it in latent space, not pixel space (the VAE).</strong> Denoising a 512&#215;512&#215;3 image directly is enormously expensive. So Stable Diffusion first uses a VAE encoder to compress the image into a small latent grid, roughly 64&#215;64, runs the entire slow diffusion process there, then decodes back to full resolution once at the end. This is the single change that put image generation within reach of consumer hardware, hence the <em>latent diffusion</em> name.</li>
+  <li><strong>Make the denoiser a U-Net.</strong> The network that predicts the noise is exactly the encoder-decoder-with-skips from earlier, operating on the latent grid. Its job is pixel-shaped (noise in, noise out, same size), which is precisely what the U-Net was born to do.</li>
+  <li><strong>Steer it with text via cross-attention (CLIP).</strong> The prompt is encoded by a CLIP text encoder into a sequence of embeddings. Cross-attention layers are inserted throughout the U-Net, where the image latent forms the queries and the text embeddings form the keys and values. At every denoising step, every region of the image asks the prompt <em>what should I be becoming?</em> and pulls the answer in.</li>
+</ul>
+
+<div class="diagram">
+  <div class="diagram-label">Stable Diffusion, end to end</div>
+  <legend class="legend">
+    <span><i style="background:var(--igm-cond)"></i>text conditioning</span>
+    <span><i style="background:var(--igm-in)"></i>VAE</span>
+    <span><i style="background:var(--igm-attn)"></i>denoising U-Net</span>
+    <span><i style="background:var(--igm-out)"></i>output</span>
+  </legend>
+  <svg viewBox="0 0 760 340" role="img" aria-label="Stable Diffusion: a text prompt is encoded by CLIP and injected via cross-attention into a U-Net that iteratively denoises a latent, which the VAE decoder turns into an image">
+    <defs>
+      <marker id="sah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+      <marker id="sah3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--igm-cond)"/></marker>
+    </defs>
+    <!-- text path -->
+    <rect x="24" y="28" width="150" height="34" rx="7" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="99" y="49" text-anchor="middle" class="s-mono s-ink" font-size="11">"a cat, oil painting"</text>
+    <line x1="99" y1="62" x2="99" y2="86" stroke="var(--igm-ink-faint)" marker-end="url(#sah)"/>
+    <rect x="24" y="90" width="150" height="40" rx="7" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="99" y="107" text-anchor="middle" class="s-title s-ink" font-size="11">CLIP text encoder</text>
+    <text x="99" y="122" text-anchor="middle" class="s-label s-mid" font-size="9.5">text embeddings</text>
+    <path d="M174,110 C240,110 250,150 300,158" fill="none" stroke="var(--igm-cond)" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#sah3)"/>
+    <text x="238" y="138" text-anchor="middle" class="s-mono" fill="var(--igm-cond)" font-size="9.5">cross-attention</text>
+    <!-- noise start -->
+    <rect x="24" y="196" width="90" height="50" rx="8" fill="var(--igm-bg-warm)" stroke="var(--igm-ink-faint)"/>
+    <text x="69" y="218" text-anchor="middle" class="s-title s-ink" font-size="11">noise z&#7451;</text>
+    <text x="69" y="233" text-anchor="middle" class="s-label s-mid" font-size="9">random latent</text>
+    <line x1="114" y1="221" x2="150" y2="221" stroke="var(--igm-ink-faint)" marker-end="url(#sah)"/>
+    <!-- U-Net loop -->
+    <rect x="154" y="150" width="292" height="140" rx="10" fill="none" stroke="var(--igm-attn)" stroke-width="1.5"/>
+    <text x="300" y="170" text-anchor="middle" class="s-mono" fill="var(--igm-attn)" font-size="10.5">DENOISING U-NET &#183; repeat &#215; T steps</text>
+    <rect x="176" y="188" width="80" height="80" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="216" y="224" text-anchor="middle" class="s-title s-ink" font-size="10.5">encoder</text>
+    <text x="216" y="240" text-anchor="middle" class="s-label s-mid" font-size="8.5">+ self-attn</text>
+    <rect x="266" y="204" width="60" height="48" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="296" y="232" text-anchor="middle" class="s-label s-ink" font-size="10">mid</text>
+    <rect x="336" y="188" width="86" height="80" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="379" y="224" text-anchor="middle" class="s-title s-ink" font-size="10.5">decoder</text>
+    <text x="379" y="240" text-anchor="middle" class="s-label s-mid" font-size="8.5">+ cross-attn</text>
+    <path d="M256,200 L336,200" fill="none" stroke="var(--igm-accent)" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <text x="296" y="194" text-anchor="middle" class="s-label" fill="var(--igm-accent)" font-size="8">skip</text>
+    <!-- loop-back arrow -->
+    <path d="M400,268 C400,300 216,300 216,272" fill="none" stroke="var(--igm-attn)" stroke-dasharray="4 4" marker-end="url(#sah)"/>
+    <text x="300" y="312" text-anchor="middle" class="s-label s-faint" font-size="9.5">predict noise &#8594; subtract &#8594; slightly cleaner latent &#8594; feed back</text>
+    <!-- to decoder -->
+    <line x1="446" y1="221" x2="486" y2="221" stroke="var(--igm-ink-faint)" marker-end="url(#sah)"/>
+    <text x="466" y="212" text-anchor="middle" class="s-mono s-mid" font-size="9">z&#8320;</text>
+    <rect x="490" y="196" width="96" height="50" rx="8" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="538" y="218" text-anchor="middle" class="s-title s-ink" font-size="11">VAE decoder</text>
+    <text x="538" y="233" text-anchor="middle" class="s-label s-mid" font-size="9">latent &#8594; pixels</text>
+    <line x1="586" y1="221" x2="622" y2="221" stroke="var(--igm-ink-faint)" marker-end="url(#sah)"/>
+    <rect x="626" y="192" width="110" height="58" rx="8" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+    <text x="681" y="216" text-anchor="middle" class="s-title s-ink" font-size="11">512&#215;512</text>
+    <text x="681" y="233" text-anchor="middle" class="s-label s-mid" font-size="9.5">final image</text>
+  </svg>
+  <div class="diagram-caption">The whole model in one frame. All the slow work happens on a small latent grid inside the U-Net loop; the VAE only touches full resolution once, at the very end. Text reaches in through cross-attention at every step. Every coloured block is something we built earlier in this post.</div>
+</div>
+
+<p>Look at what that diagram is made of. A VAE (autoencoder, step 5). A U-Net (encoder-decoder with skips, step 5) whose blocks are stuffed with residual connections (step 4), convolutions (step 3), self-attention and cross-attention (step 6). Nothing here is new. Stable Diffusion is an <em>assembly</em> of the ideas on the staircase, arranged so that noise plus a prompt becomes a picture.</p>
+
+<h2><span class="num">08</span>Scaling it up: SDXL</h2>
+
+<p>SDXL is not a new idea, it is the same architecture built bigger and smarter, and it is a good lesson in how much raw scale plus a few targeted fixes can buy you. The backbone is still a latent-diffusion U-Net with cross-attention. What changed is where the capacity went and how the conditioning got richer.</p>
+
+<div class="pair">
+  <div class="card">
+    <span class="tag">bigger where it counts</span>
+    <h4>A rebalanced U-Net</h4>
+    <p>Roughly 3&#215; the parameters, but not spread evenly. SDXL moves most of the transformer (attention) blocks into the lower-resolution stages of the U-Net, where they are cheaper per token and where semantic composition happens. More attention where meaning lives, less brute convolution at high resolution.</p>
+  </div>
+  <div class="card">
+    <span class="tag">two mouths, not one</span>
+    <h4>Dual text encoders</h4>
+    <p>Instead of one CLIP, SDXL runs two text encoders (CLIP ViT-L and the larger OpenCLIP ViT-bigG) and concatenates their outputs. A richer prompt representation flows into cross-attention, which is a big part of why it follows prompts more faithfully.</p>
+  </div>
+</div>
+
+<p>The cleverest additions are the small conditioning tricks. Earlier models trained by cropping and resizing images, which quietly taught them bad habits (cut-off heads from random crops, a bias toward low resolution from discarding small training images). SDXL fixes this with <strong>micro-conditioning</strong>: it feeds the original image size and the crop coordinates to the model as extra conditioning signals, alongside the timestep. Now the model knows <em>this training example was a top-left crop of a small image</em> and can learn to associate artifacts with those signals, so at generation time you simply ask for a centred, full-size, high-resolution image and it obliges. Finally, an optional second <strong>refiner</strong> model, a small specialist diffusion model, polishes the last few denoising steps for fine detail.</p>
+
+<div class="diagram">
+  <div class="diagram-label">What SDXL adds on top of Stable Diffusion</div>
+  <svg viewBox="0 0 760 250" role="img" aria-label="SDXL additions: two concatenated text encoders, size and crop micro-conditioning added to the timestep, a larger rebalanced U-Net, and an optional refiner">
+    <defs>
+      <marker id="xah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+    </defs>
+    <!-- two text encoders -->
+    <rect x="24" y="30" width="140" height="30" rx="6" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="94" y="50" text-anchor="middle" class="s-mono s-ink" font-size="10.5">CLIP ViT-L</text>
+    <rect x="24" y="66" width="140" height="30" rx="6" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="94" y="86" text-anchor="middle" class="s-mono s-ink" font-size="10.5">OpenCLIP ViT-bigG</text>
+    <path d="M164,45 C190,45 190,60 214,60" fill="none" stroke="var(--igm-ink-faint)"/>
+    <path d="M164,81 C190,81 190,66 214,66" fill="none" stroke="var(--igm-ink-faint)" marker-end="url(#xah)"/>
+    <text x="188" y="112" text-anchor="middle" class="s-label s-mid" font-size="9">concatenate</text>
+    <rect x="218" y="44" width="66" height="38" rx="6" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="251" y="67" text-anchor="middle" class="s-label s-ink" font-size="10">text emb</text>
+    <!-- micro conditioning -->
+    <rect x="24" y="150" width="140" height="54" rx="7" fill="var(--igm-bg-warm)" stroke="var(--igm-ink-faint)"/>
+    <text x="94" y="171" text-anchor="middle" class="s-title s-ink" font-size="10.5">micro-conditioning</text>
+    <text x="94" y="187" text-anchor="middle" class="s-label s-mid" font-size="9">original size</text>
+    <text x="94" y="199" text-anchor="middle" class="s-label s-mid" font-size="9">crop coords</text>
+    <line x1="164" y1="177" x2="214" y2="177" stroke="var(--igm-ink-faint)" marker-end="url(#xah)"/>
+    <rect x="218" y="158" width="66" height="38" rx="6" fill="var(--igm-bg-warm)" stroke="var(--igm-ink-faint)"/>
+    <text x="251" y="176" text-anchor="middle" class="s-label s-ink" font-size="9.5">+ timestep</text>
+    <text x="251" y="189" text-anchor="middle" class="s-label s-mid" font-size="8.5">conditioning</text>
+    <!-- big unet -->
+    <line x1="284" y1="63" x2="330" y2="110" stroke="var(--igm-ink-faint)" marker-end="url(#xah)"/>
+    <line x1="284" y1="177" x2="330" y2="130" stroke="var(--igm-ink-faint)" marker-end="url(#xah)"/>
+    <rect x="334" y="70" width="150" height="110" rx="10" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)" stroke-width="1.5"/>
+    <text x="409" y="112" text-anchor="middle" class="s-title s-ink" font-size="12">larger U-Net</text>
+    <text x="409" y="132" text-anchor="middle" class="s-label s-mid" font-size="9.5">~3&#215; params</text>
+    <text x="409" y="148" text-anchor="middle" class="s-label s-mid" font-size="9.5">attention pushed to</text>
+    <text x="409" y="160" text-anchor="middle" class="s-label s-mid" font-size="9.5">low-res stages</text>
+    <line x1="484" y1="125" x2="524" y2="125" stroke="var(--igm-ink-faint)" marker-end="url(#xah)"/>
+    <rect x="528" y="100" width="96" height="50" rx="8" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+    <text x="576" y="122" text-anchor="middle" class="s-title s-ink" font-size="11">base image</text>
+    <text x="576" y="138" text-anchor="middle" class="s-label s-mid" font-size="9">1024&#215;1024</text>
+    <line x1="624" y1="125" x2="656" y2="125" stroke="var(--igm-ink-faint)" marker-end="url(#xah)"/>
+    <rect x="660" y="100" width="80" height="50" rx="8" fill="var(--igm-comp-soft)" stroke="var(--igm-comp)"/>
+    <text x="700" y="120" text-anchor="middle" class="s-title s-ink" font-size="10.5">refiner</text>
+    <text x="700" y="136" text-anchor="middle" class="s-label s-mid" font-size="9">optional polish</text>
+  </svg>
+  <div class="diagram-caption">Same skeleton as Stable Diffusion, more muscle. Two text encoders for richer prompts, size and crop fed in as explicit conditioning to undo training-crop artifacts, a bigger U-Net with attention concentrated where meaning is composed, and a refiner for the last mile. Native output jumps to 1024&#215;1024.</div>
+</div>
+
+<p>SDXL is the high-water mark of the U-Net era. But notice a tension building. The most powerful parts of the network are the attention blocks, and the whole rest of the U-Net (the convolutions, the hand-designed multi-resolution scaffolding, the skip crossbars) is essentially plumbing built around them. That raises an obvious question. If attention is doing the heavy lifting, what happens if we throw the U-Net away entirely?</p>
+
+<h2><span class="num">09</span>The clean rewrite: the Diffusion Transformer (DiT)</h2>
+
+<p>The Diffusion Transformer answers that question directly: keep the diffusion recipe and the latent space, but replace the U-Net denoiser with a plain transformer, the same kind of architecture that was already dominating language. The convolutional scaffolding is gone. What is left is almost entirely attention.</p>
+
+<p>The move that makes this possible is the same one Vision Transformers used for classification: <strong>patchify</strong>. Cut the latent grid into a checkerboard of small patches, flatten each patch into a vector, add a positional embedding so the model knows where each patch sat, and you now have a sequence of tokens, exactly the diet a transformer eats. From there it is a stack of identical transformer blocks: self-attention lets every patch talk to every other patch (global context from layer one, something the U-Net only achieved at its bottleneck), followed by a small dense network, each wrapped in residual connections.</p>
+
+<p>The one genuinely new piece is <em>how you inject the conditioning</em>, the timestep and the class or text. A U-Net splices in cross-attention layers. DiT's most effective variant, <strong>adaLN-Zero</strong>, does something slicker. It feeds the conditioning through a small network that outputs a set of scale, shift, and gate numbers, and uses them to modulate the normalisation inside each block (this is adaptive layer norm). The <em>Zero</em> part is a lovely detail: the gates are initialised so that every block starts as an identity function, doing nothing, and the network gently learns how much of each block to switch on. It is the residual-block philosophy, "start from identity, learn the change", reincarnated as a conditioning scheme.</p>
+
+<div class="diagram">
+  <div class="diagram-label">The DiT pipeline and one DiT block</div>
+  <legend class="legend">
+    <span><i style="background:var(--igm-in)"></i>patch + position</span>
+    <span><i style="background:var(--igm-attn)"></i>transformer block</span>
+    <span><i style="background:var(--igm-cond)"></i>conditioning (adaLN)</span>
+    <span><i style="background:var(--igm-out)"></i>output</span>
+  </legend>
+  <svg viewBox="0 0 760 400" role="img" aria-label="DiT: a latent is patchified into tokens, passed through N transformer blocks conditioned by adaptive layer norm, then unpatchified into predicted noise. A detail shows one block's internals.">
+    <defs>
+      <marker id="dah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--igm-ink-faint)"/></marker>
+      <marker id="dah2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--igm-cond)"/></marker>
+    </defs>
+    <!-- top pipeline -->
+    <rect x="20" y="34" width="74" height="56" rx="7" fill="var(--igm-bg-warm)" stroke="var(--igm-ink-faint)"/>
+    <text x="57" y="58" text-anchor="middle" class="s-title s-ink" font-size="10.5">noisy</text>
+    <text x="57" y="73" text-anchor="middle" class="s-label s-mid" font-size="9">latent</text>
+    <line x1="94" y1="62" x2="122" y2="62" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <rect x="126" y="34" width="90" height="56" rx="7" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="171" y="55" text-anchor="middle" class="s-title s-ink" font-size="10.5">patchify</text>
+    <text x="171" y="70" text-anchor="middle" class="s-label s-mid" font-size="8.5">+ pos embed</text>
+    <text x="171" y="82" text-anchor="middle" class="s-mono s-mid" font-size="8.5">&#8594; tokens</text>
+    <line x1="216" y1="62" x2="244" y2="62" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <rect x="248" y="30" width="150" height="64" rx="8" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)" stroke-width="1.5"/>
+    <text x="323" y="55" text-anchor="middle" class="s-title s-ink" font-size="11">N &#215; DiT blocks</text>
+    <text x="323" y="72" text-anchor="middle" class="s-label s-mid" font-size="9">identical, stacked</text>
+    <line x1="398" y1="62" x2="426" y2="62" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <rect x="430" y="34" width="86" height="56" rx="7" fill="var(--igm-in-soft)" stroke="var(--igm-in)"/>
+    <text x="473" y="58" text-anchor="middle" class="s-title s-ink" font-size="10">unpatchify</text>
+    <text x="473" y="73" text-anchor="middle" class="s-label s-mid" font-size="8.5">tokens &#8594; grid</text>
+    <line x1="516" y1="62" x2="544" y2="62" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <rect x="548" y="34" width="90" height="56" rx="7" fill="var(--igm-out-soft)" stroke="var(--igm-out)"/>
+    <text x="593" y="58" text-anchor="middle" class="s-title s-ink" font-size="10.5">predicted</text>
+    <text x="593" y="73" text-anchor="middle" class="s-label s-mid" font-size="9">noise</text>
+    <!-- conditioning source -->
+    <rect x="648" y="30" width="92" height="64" rx="7" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="694" y="52" text-anchor="middle" class="s-title s-ink" font-size="10">timestep t</text>
+    <text x="694" y="68" text-anchor="middle" class="s-title s-ink" font-size="10">+ class / text</text>
+    <text x="694" y="83" text-anchor="middle" class="s-label s-mid" font-size="8.5">conditioning</text>
+    <path d="M694,94 C694,118 323,110 323,96" fill="none" stroke="var(--igm-cond)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#dah2)"/>
+    <!-- zoom divider -->
+    <line x1="20" y1="132" x2="740" y2="132" stroke="var(--igm-rule)"/>
+    <text x="20" y="152" class="s-mono s-faint" font-size="10.5" letter-spacing="1.2">INSIDE ONE DiT BLOCK  (adaLN-Zero)</text>
+    <!-- block internals -->
+    <line x1="120" y1="180" x2="120" y2="360" stroke="var(--igm-ink-faint)" stroke-width="1.5"/>
+    <text x="120" y="176" text-anchor="middle" class="s-mono s-mid" font-size="10">tokens in</text>
+    <!-- adaLN 1 -->
+    <rect x="160" y="182" width="120" height="34" rx="7" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="220" y="203" text-anchor="middle" class="s-label s-ink" font-size="10">adaLN (scale, shift)</text>
+    <!-- MHSA -->
+    <rect x="160" y="230" width="120" height="42" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="220" y="251" text-anchor="middle" class="s-title s-ink" font-size="11">multi-head</text>
+    <text x="220" y="265" text-anchor="middle" class="s-label s-mid" font-size="9.5">self-attention</text>
+    <!-- gate 1 -->
+    <rect x="160" y="286" width="120" height="26" rx="6" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="220" y="303" text-anchor="middle" class="s-label s-ink" font-size="9.5">&#215; gate (init 0)</text>
+    <line x1="120" y1="199" x2="156" y2="199" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <line x1="220" y1="216" x2="220" y2="228" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <line x1="220" y1="272" x2="220" y2="284" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <!-- residual add 1 -->
+    <circle cx="120" cy="299" r="14" fill="var(--igm-panel)" stroke="var(--igm-accent)" stroke-width="1.6"/>
+    <text x="120" y="304" text-anchor="middle" class="s-mono s-ink" font-size="13">+</text>
+    <line x1="160" y1="299" x2="136" y2="299" stroke="var(--igm-accent)" marker-end="url(#dah)"/>
+    <text x="70" y="260" text-anchor="middle" class="s-label" fill="var(--igm-accent)" font-size="9">residual</text>
+    <!-- second half: MLP -->
+    <rect x="380" y="182" width="120" height="34" rx="7" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="440" y="203" text-anchor="middle" class="s-label s-ink" font-size="10">adaLN (scale, shift)</text>
+    <rect x="380" y="230" width="120" height="42" rx="7" fill="var(--igm-attn-soft)" stroke="var(--igm-attn)"/>
+    <text x="440" y="251" text-anchor="middle" class="s-title s-ink" font-size="11">MLP</text>
+    <text x="440" y="265" text-anchor="middle" class="s-label s-mid" font-size="9.5">feed-forward</text>
+    <rect x="380" y="286" width="120" height="26" rx="6" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="440" y="303" text-anchor="middle" class="s-label s-ink" font-size="9.5">&#215; gate (init 0)</text>
+    <line x1="440" y1="216" x2="440" y2="228" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <line x1="440" y1="272" x2="440" y2="284" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <!-- flow between halves -->
+    <line x1="120" y1="313" x2="120" y2="340" stroke="var(--igm-ink-faint)"/>
+    <path d="M120,340 L340,340 L340,199 L376,199" fill="none" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <circle cx="440" cy="340" r="14" fill="var(--igm-panel)" stroke="var(--igm-accent)" stroke-width="1.6"/>
+    <text x="440" y="345" text-anchor="middle" class="s-mono s-ink" font-size="13">+</text>
+    <line x1="440" y1="312" x2="440" y2="326" stroke="var(--igm-accent)" marker-end="url(#dah)"/>
+    <path d="M340,340 L426,340" fill="none" stroke="var(--igm-accent)"/>
+    <line x1="454" y1="340" x2="540" y2="340" stroke="var(--igm-ink-faint)" marker-end="url(#dah)"/>
+    <text x="560" y="344" text-anchor="middle" class="s-mono s-mid" font-size="10">tokens out</text>
+    <!-- conditioning feed -->
+    <rect x="560" y="200" width="120" height="70" rx="8" fill="var(--igm-cond-soft)" stroke="var(--igm-cond)"/>
+    <text x="620" y="226" text-anchor="middle" class="s-title s-ink" font-size="10.5">conditioning</text>
+    <text x="620" y="242" text-anchor="middle" class="s-label s-mid" font-size="9">&#8594; small MLP &#8594;</text>
+    <text x="620" y="256" text-anchor="middle" class="s-label s-mid" font-size="9">scale, shift, gate</text>
+    <path d="M560,220 L300,200" fill="none" stroke="var(--igm-cond)" stroke-dasharray="4 4"/>
+    <path d="M560,250 L504,199" fill="none" stroke="var(--igm-cond)" stroke-dasharray="4 4" marker-end="url(#dah2)"/>
+    <path d="M560,235 L284,299" fill="none" stroke="var(--igm-cond)" stroke-dasharray="4 4" opacity="0.7"/>
+  </svg>
+  <div class="diagram-caption">Top: the diffusion recipe is unchanged, but the denoiser is now a pure transformer over patch tokens. Bottom: one block is two residual sub-layers, self-attention then MLP, each normalised by adaptive layer norm whose scale, shift and gate come from the conditioning. The gates start at zero, so the block begins as identity and learns its contribution, the ResNet idea wearing a new hat.</div>
+</div>
+
+<p>Why did this matter beyond elegance? Because transformers <em>scale</em> in a way the U-Net never cleanly did. The DiT paper showed a smooth, predictable relationship: pour in more compute, more parameters, more attention, and image quality improves reliably, no architectural surgery required. That is the property that language models had been riding for years, now available for images. It is the reason the newest generation of image and video models (including the architecture family behind Stable Diffusion 3 and Sora) are transformer-based rather than U-Net-based. The clean rewrite won.</p>
+
+<table class="itable">
+  <tr><th>Model</th><th>Denoiser</th><th>How text gets in</th><th>The one new idea</th></tr>
+  <tr><td>Stable Diffusion</td><td>U-Net</td><td>cross-attention (one CLIP)</td><td>diffusion in a VAE latent space</td></tr>
+  <tr><td>SDXL</td><td>bigger U-Net</td><td>cross-attention (two encoders)</td><td>size / crop micro-conditioning + refiner</td></tr>
+  <tr><td>DiT</td><td>pure transformer</td><td>adaLN-Zero on patch tokens</td><td>drop the U-Net; scale like a language model</td></tr>
+</table>
+
+<h2><span class="num">10</span>The whole staircase, in one breath</h2>
+
+<p>Step back and the evolution reads as a single sentence getting longer. A <strong>neuron</strong> is a weighted sum through a curve. Stack them into an <strong>MLP</strong> and you can classify, until images defeat you. Share the weights and slide them, and the <strong>CNN</strong> learns to see. Add a <strong>skip connection</strong> and ResNet lets you go arbitrarily deep. Bend the encoder-decoder into a <strong>U-Net</strong> and you can output a full image, not just a label. Bolt on <strong>attention</strong> and every part of the image can consult every other part, and a text prompt can consult all of them. Wrap that in the <strong>diffusion</strong> recipe and run it in a compressed <strong>latent</strong> space, and you have Stable Diffusion. Scale it and you have SDXL. Throw away the convolutional scaffolding, keep only the attention, and you have <strong>DiT</strong>.</p>
+
+<p>Not one of those steps is a magic leap. Each is a specific, legible fix for the failure of the step before it. The models that paint dreamlike images today are the same neuron from 1958, multiplied a few hundred billion times and wired with a handful of very good ideas about how information should flow. That is the whole trick, and once you can see the staircase, none of the steps look like magic anymore.</p>
+
+<p class="closing">From one weighted sum to a transformer that dreams in pixels. Same idea, better plumbing, all the way up.<span class="signoff">Thanks for reading &#10022;</span></p>
+
+<p class="footnote">Architectures referenced, roughly in order: the perceptron (Rosenblatt, 1958), backpropagation and MLPs (Rumelhart et al., 1986), LeNet (LeCun et al., 1998), AlexNet (Krizhevsky et al., 2012), ResNet (He et al., 2015), U-Net (Ronneberger et al., 2015), the transformer and attention (Vaswani et al., 2017), the Vision Transformer (Dosovitskiy et al., 2020), DDPM diffusion (Ho et al., 2020), latent / Stable Diffusion (Rombach et al., 2022), SDXL (Podell et al., 2023), and DiT (Peebles &amp; Xie, 2023). Diagrams are schematic and omit many details for clarity.</p>
+
+</article>
+</div>

@@ -1545,6 +1545,30 @@ body:has(.insl-root) .site-footer {
   --gas-warn: #e07060;
   --gas-warn-soft: #2e1a18;
 }
+[data-theme="dark"] .igm-root {
+  --igm-ink: #e8e2d8;
+  --igm-ink-mid: #a8a099;
+  --igm-ink-faint: #7a7470;
+  --igm-panel: #242018;
+  --igm-bg-warm: #2a2520;
+  --igm-bg-code: #0f0d0b;
+  --igm-rule: #3a3530;
+  --igm-accent: #8a92e0;
+  --igm-accent-bright: #a2a8ee;
+  --igm-accent-soft: #23213a;
+  --igm-in: #5a9ed6;
+  --igm-in-soft: #1a2a3a;
+  --igm-comp: #6abf6a;
+  --igm-comp-soft: #1e2e1e;
+  --igm-attn: #c07ad0;
+  --igm-attn-soft: #2a1e3a;
+  --igm-cond: #d0a850;
+  --igm-cond-soft: #2e2a18;
+  --igm-out: #8a92e0;
+  --igm-out-soft: #23213a;
+  --igm-warn: #e07060;
+  --igm-warn-soft: #2e1a18;
+}
 [data-theme="dark"] .gd-root {
   --gd-ink: #e8e2d8;
   --gd-ink-mid: #a8a099;
